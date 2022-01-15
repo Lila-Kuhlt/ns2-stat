@@ -50,7 +50,7 @@ pub struct KillFeed {
     #[serde(rename = "killerWeapon")]
     pub killer_weapon: KillerWeapon,
     #[serde(rename = "killerSteamID")]
-    pub killer_steam_id: Option<i64>,
+    pub killer_steam_id: Option<u32>,
     #[serde(rename = "doerPosition")]
     pub doer_position: Option<String>,
     #[serde(rename = "killerLocation")]
@@ -66,7 +66,7 @@ pub struct KillFeed {
     #[serde(rename = "victimLocation")]
     pub victim_location: Option<i64>,
     #[serde(rename = "victimSteamID")]
-    pub victim_steam_id: i64,
+    pub victim_steam_id: u32,
     #[serde(rename = "victimClass")]
     pub victim_class: VictimClass,
     #[serde(rename = "victimPosition")]
@@ -191,14 +191,14 @@ pub struct ServerInfo {
     #[serde(rename = "buildNumber")]
     pub build_number: i64,
     pub ip: String,
-    pub name: ServerInfoName,
+    pub name: String,
     pub port: i64,
 }
 
 #[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct Mod {
     #[serde(rename = "modId")]
-    pub mod_id: ModId,
+    pub mod_id: String,
     pub name: ModName,
 }
 
@@ -356,28 +356,9 @@ pub enum ResearchId {
 }
 
 #[derive(Debug, Serialize, Deserialize, Clone)]
-pub enum ModId {
-    #[serde(rename = "4241b84e")]
-    The4241B84E,
-    #[serde(rename = "9e113555")]
-    The9E113555,
-}
-
-#[derive(Debug, Serialize, Deserialize, Clone)]
 pub enum ModName {
     #[serde(rename = "Matched Play Balance")]
     MatchedPlayBalance,
     #[serde(rename = "UWE Extension")]
     UweExtension,
-}
-
-#[derive(Debug, Serialize, Deserialize, Clone)]
-pub enum ServerInfoName {
-    Leid,
-    #[serde(rename = "Lila Pause")]
-    LilaPause,
-    #[serde(rename = "Lila Pause aber cool")]
-    LilaPauseAberCool,
-    #[serde(rename = "NS2 Dedicated Server")]
-    Ns2DedicatedServer,
 }
