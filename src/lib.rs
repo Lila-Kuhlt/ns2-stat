@@ -1,26 +1,23 @@
 pub mod types;
 
+fn load_data(path: &str) -> std::io::Result<Vec<types::GameStats>> {
+    std::fs::read_dir(path)?
+        .flat_map(|res| res.map(|e| e.path()))
+        .filter_map(|path| path.is_file().then(|| std::fs::read_to_string(&path)))
+        .flatten()
+        .map(|path| {
+            types::GameStats::from_json(&path)
+                .map_err(|e| std::io::Error::new(std::io::ErrorKind::Other, format!("{e}")))
+        })
+        .collect::<std::io::Result<Vec<_>>>()
+}
+
 #[cfg(test)]
 mod tests {
     use crate::types::GameStats;
 
     #[test]
     fn test_data_parsable() -> std::io::Result<()> {
-        use std::fs;
-
-        for entry in fs::read_dir("test_data")? {
-            let entry = entry?;
-            let path = entry.path();
-
-            if !path.is_file() {
-                continue;
-            }
-
-            if let Err(e) = GameStats::from_json(&fs::read_to_string(&path)?) {
-                panic!("{path:?} is not a parsable file\nError: {e}");
-            }
-        }
-
-        Ok(())
+        super::load_data("test_data").map(|_| ())
     }
 }
