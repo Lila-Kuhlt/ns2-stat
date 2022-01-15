@@ -1,4 +1,4 @@
-mod types;
+use ns2_stat::types;
 
 fn main() {
     let input = include_str!("test_data.json");
