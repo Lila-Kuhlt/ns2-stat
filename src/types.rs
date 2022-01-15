@@ -2,7 +2,7 @@ use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct NS2Stats {
+pub struct GameStats {
     #[serde(rename = "KillFeed")]
     pub kill_feed: Vec<KillFeed>,
     #[serde(rename = "Locations")]
@@ -19,6 +19,12 @@ pub struct NS2Stats {
     pub server_info: ServerInfo,
     #[serde(rename = "MarineCommStats")]
     pub marine_comm_stats: HashMap<String, MarineCommStat>,
+}
+
+impl GameStats {
+    pub fn from_json(json: &str) -> Result<Self, serde_json::Error> {
+        serde_json::from_str(json)
+    }
 }
 
 #[derive(Debug, Serialize, Deserialize)]
