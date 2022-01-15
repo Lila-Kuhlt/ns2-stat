@@ -1,6 +1,6 @@
-use std::collections::HashSet;
+use std::{collections::HashSet};
 
-use types::{GameStats, PlayerStat};
+use types::{GameStats, KillFeed, PlayerStat};
 
 pub mod types;
 
@@ -26,6 +26,13 @@ impl NS2Stats {
         self.player_stats()
             .map(|ps| ps.player_name.as_str())
             .collect::<HashSet<_>>()
+    }
+
+    pub fn kill_feed(&self) -> impl Iterator<Item = &KillFeed> {
+        self.games
+            .iter()
+            .map(|game| game.kill_feed.iter())
+            .flatten()
     }
 
     fn load_data(path: &str) -> std::io::Result<Vec<types::GameStats>> {
