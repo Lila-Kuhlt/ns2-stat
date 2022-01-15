@@ -1,7 +1,7 @@
 use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct GameStats {
     #[serde(rename = "KillFeed")]
     pub kill_feed: Vec<KillFeed>,
@@ -27,7 +27,7 @@ impl GameStats {
     }
 }
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct Building {
     #[serde(rename = "teamNumber")]
     pub team_number: i64,
@@ -45,7 +45,7 @@ pub struct Building {
     pub event: Option<Event>,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct KillFeed {
     #[serde(rename = "killerWeapon")]
     pub killer_weapon: KillerWeapon,
@@ -75,14 +75,14 @@ pub struct KillFeed {
     pub game_time: f64,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct MarineCommStat {
     pub catpack: Catpack,
     pub medpack: Pack,
     pub ammopack: Pack,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct Pack {
     pub picks: i64,
     pub misses: i64,
@@ -91,13 +91,13 @@ pub struct Pack {
     pub hits_acc: Option<i64>,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct Catpack {
     pub misses: i64,
     pub picks: i64,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct PlayerStat {
     #[serde(rename = "1")]
     pub the_1: HashMap<String, f64>,
@@ -121,7 +121,7 @@ pub struct PlayerStat {
     pub player_skill_offset: Option<i64>,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct Status {
     #[serde(rename = "statusId")]
     pub status_id: VictimClass,
@@ -129,7 +129,7 @@ pub struct Status {
     pub class_time: f64,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct Weapon {
     #[serde(rename = "teamNumber")]
     pub team_number: i64,
@@ -144,7 +144,7 @@ pub struct Weapon {
     pub misses: i64,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct Research {
     #[serde(rename = "teamNumber")]
     pub team_number: i64,
@@ -154,7 +154,7 @@ pub struct Research {
     pub research_id: ResearchId,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct RoundInfo {
     #[serde(rename = "roundDate")]
     pub round_date: i64,
@@ -176,13 +176,13 @@ pub struct RoundInfo {
     pub map_name: String,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct MinimapExtents {
     pub origin: String,
     pub scale: String,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct ServerInfo {
     pub mods: Vec<Mod>,
     pub slots: i64,
@@ -195,21 +195,21 @@ pub struct ServerInfo {
     pub port: i64,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct Mod {
     #[serde(rename = "modId")]
     pub mod_id: ModId,
     pub name: ModName,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Serialize, Deserialize, Clone)]
 #[serde(untagged)]
 pub enum Weapons {
     AnythingArray(Vec<Option<serde_json::Value>>),
     WeaponMap(HashMap<String, Weapon>),
 }
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Serialize, Deserialize, Clone)]
 pub enum Event {
     Built,
     Destroyed,
@@ -218,7 +218,7 @@ pub enum Event {
     Teleported,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Serialize, Deserialize, Clone)]
 pub enum TechId {
     AdvancedArmory,
     #[serde(rename = "ARC")]
@@ -259,7 +259,7 @@ pub enum TechId {
     Whip,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Serialize, Deserialize, Clone)]
 pub enum VictimClass {
     Commander,
     Dead,
@@ -283,7 +283,7 @@ pub enum VictimClass {
     Void,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Serialize, Deserialize, Clone)]
 pub enum KillerWeapon {
     Axe,
     Babbler,
@@ -313,7 +313,7 @@ pub enum KillerWeapon {
     Xenocide,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Serialize, Deserialize, Clone)]
 pub enum ResearchId {
     AdvancedArmoryUpgrade,
     AdvancedMarineSupport,
@@ -355,7 +355,7 @@ pub enum ResearchId {
     Xenocide,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Serialize, Deserialize, Clone)]
 pub enum ModId {
     #[serde(rename = "4241b84e")]
     The4241B84E,
@@ -363,7 +363,7 @@ pub enum ModId {
     The9E113555,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Serialize, Deserialize, Clone)]
 pub enum ModName {
     #[serde(rename = "Matched Play Balance")]
     MatchedPlayBalance,
@@ -371,7 +371,7 @@ pub enum ModName {
     UweExtension,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Serialize, Deserialize, Clone)]
 pub enum ServerInfoName {
     Leid,
     #[serde(rename = "Lila Pause")]
