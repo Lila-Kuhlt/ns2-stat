@@ -1,6 +1,8 @@
 use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
 
+pub type SteamId = u32;
+
 #[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct GameStats {
     #[serde(rename = "KillFeed")]
@@ -12,7 +14,7 @@ pub struct GameStats {
     #[serde(rename = "Buildings")]
     pub buildings: Vec<Building>,
     #[serde(rename = "PlayerStats")]
-    pub player_stats: HashMap<String, PlayerStat>,
+    pub player_stats: HashMap<SteamId, PlayerStat>,
     #[serde(rename = "RoundInfo")]
     pub round_info: RoundInfo,
     #[serde(rename = "ServerInfo")]
@@ -50,7 +52,7 @@ pub struct KillFeed {
     #[serde(rename = "killerWeapon")]
     pub killer_weapon: KillerWeapon,
     #[serde(rename = "killerSteamID")]
-    pub killer_steam_id: Option<u32>,
+    pub killer_steam_id: Option<SteamId>,
     #[serde(rename = "doerPosition")]
     pub doer_position: Option<String>,
     #[serde(rename = "killerLocation")]
@@ -66,7 +68,7 @@ pub struct KillFeed {
     #[serde(rename = "victimLocation")]
     pub victim_location: Option<i64>,
     #[serde(rename = "victimSteamID")]
-    pub victim_steam_id: u32,
+    pub victim_steam_id: SteamId,
     #[serde(rename = "victimClass")]
     pub victim_class: VictimClass,
     #[serde(rename = "victimPosition")]
