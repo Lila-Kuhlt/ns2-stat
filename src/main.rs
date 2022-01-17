@@ -16,7 +16,7 @@ fn main() -> std::io::Result<()> {
     vec.sort_by_key(|(k, d, _)| ((*k as f32 / *d as f32) * 100.) as u32);
 
     for (k, d, name) in vec.iter().rev() {
-        println!("{}: {:.2} {k} {d}", name, *k as f32 / *d as f32);
+        println!("{}:\t\tKD:{:.2}\tKills:{k}\tDeaths:{d}", name, *k as f32 / *d as f32);
     }
     Ok(())
 }
