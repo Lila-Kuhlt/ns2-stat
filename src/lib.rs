@@ -39,7 +39,7 @@ impl NS2Stats {
     }
 
     pub fn kd(&self, player: u32) -> (u32, u32) {
-        let property = |stat: &PlayerStat, property| stat.the_1.get(property).unwrap_or(&0.) + stat.the_2.get(property).unwrap_or(&0.);
+        let property = |stat: &PlayerStat, property| stat.marines.get(property).unwrap_or(&0.) + stat.aliens.get(property).unwrap_or(&0.);
         let kills: f64 = self.player_stats(&player).map(|ps| property(ps, "kills")).sum();
         let deaths: f64 = self.player_stats(&player).map(|ps| property(ps, "deaths")).sum();
         (kills as u32, deaths as u32)

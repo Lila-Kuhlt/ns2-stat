@@ -102,9 +102,9 @@ pub struct Catpack {
 #[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct PlayerStat {
     #[serde(rename = "1")]
-    pub the_1: HashMap<String, f64>,
+    pub marines: HashMap<String, f64>,
     #[serde(rename = "2")]
-    pub the_2: HashMap<String, f64>,
+    pub aliens: HashMap<String, f64>,
     #[serde(rename = "isRookie")]
     pub is_rookie: bool,
     pub weapons: Weapons,
@@ -161,7 +161,9 @@ pub struct RoundInfo {
     #[serde(rename = "roundDate")]
     pub round_date: i64,
     #[serde(rename = "maxPlayers1")]
-    pub max_players1: i64,
+    pub max_players_marines: i64,
+    #[serde(rename = "maxPlayers2")]
+    pub max_players_aliens: i64,
     #[serde(rename = "minimapExtents")]
     pub minimap_extents: MinimapExtents,
     #[serde(rename = "startingLocations")]
@@ -170,8 +172,6 @@ pub struct RoundInfo {
     pub winning_team: i64,
     #[serde(rename = "tournamentMode")]
     pub tournament_mode: bool,
-    #[serde(rename = "maxPlayers2")]
-    pub max_players2: i64,
     #[serde(rename = "roundLength")]
     pub round_length: f64,
     #[serde(rename = "mapName")]
@@ -220,147 +220,8 @@ pub enum Event {
     Teleported,
 }
 
-#[derive(Debug, Serialize, Deserialize, Clone)]
-pub enum TechId {
-    AdvancedArmory,
-    #[serde(rename = "ARC")]
-    Arc,
-    #[serde(rename = "ARCRoboticsFactory")]
-    ArcRoboticsFactory,
-    Armory,
-    ArmsLab,
-    BabblerEgg,
-    CommandStation,
-    Crag,
-    CragHive,
-    Cyst,
-    Drifter,
-    Extractor,
-    Harvester,
-    Hive,
-    Hydra,
-    InfantryPortal,
-    InfestedTunnel,
-    #[serde(rename = "MAC")]
-    Mac,
-    Observatory,
-    PhaseGate,
-    PowerPoint,
-    PrototypeLab,
-    RoboticsFactory,
-    Sentry,
-    SentryBattery,
-    Shade,
-    ShadeHive,
-    Shell,
-    Shift,
-    ShiftHive,
-    Spur,
-    Tunnel,
-    Veil,
-    Whip,
-}
-
-#[derive(Debug, Serialize, Deserialize, Clone)]
-pub enum VictimClass {
-    Commander,
-    Dead,
-    DeathTrigger,
-    Embryo,
-    Exo,
-    Fade,
-    FadeEgg,
-    Flamethrower,
-    Gorge,
-    GorgeEgg,
-    GrenadeLauncher,
-    HeavyMachineGun,
-    Lerk,
-    LerkEgg,
-    Onos,
-    OnosEgg,
-    Rifle,
-    Shotgun,
-    Skulk,
-    Void,
-}
-
-#[derive(Debug, Serialize, Deserialize, Clone)]
-pub enum KillerWeapon {
-    Axe,
-    Babbler,
-    Bite,
-    Flamethrower,
-    Gore,
-    GrenadeLauncher,
-    HeavyMachineGun,
-    LayMines,
-    LerkBite,
-    Minigun,
-    None,
-    Parasite,
-    Pistol,
-    Railgun,
-    Rifle,
-    Sentry,
-    Shotgun,
-    Spikes,
-    Spit,
-    Spores,
-    Spray,
-    Stomp,
-    Swipe,
-    Welder,
-    Whip,
-    Xenocide,
-}
-
-#[derive(Debug, Serialize, Deserialize, Clone)]
-pub enum ResearchId {
-    AdvancedArmoryUpgrade,
-    AdvancedMarineSupport,
-    AdvancedWeaponry,
-    Armor1,
-    Armor2,
-    Armor3,
-    BileBomb,
-    BoneShield,
-    Charge,
-    ExosuitTech,
-    FadeEgg,
-    GorgeEgg,
-    GrenadeTech,
-    JetpackTech,
-    Leap,
-    LerkEgg,
-    MetabolizeEnergy,
-    MetabolizeHealth,
-    MinesTech,
-    OnosEgg,
-    PhaseTech,
-    ResearchBioMassOne,
-    ResearchBioMassThree,
-    ResearchBioMassTwo,
-    ShotgunTech,
-    Spores,
-    Stab,
-    Stomp,
-    Umbra,
-    UpgradeRoboticsFactory,
-    UpgradeToCragHive,
-    UpgradeToInfestedTunnel,
-    UpgradeToShadeHive,
-    UpgradeToShiftHive,
-    Weapons1,
-    Weapons2,
-    Weapons3,
-    Xenocide,
-}
-
-#[derive(Debug, Serialize, Deserialize, Clone)]
-pub enum ModName {
-    #[serde(rename = "Matched Play Balance")]
-    MatchedPlayBalance,
-    #[serde(rename = "UWE Extension")]
-    UweExtension,
-}
+pub type TechId = String;
+pub type VictimClass = String;
+pub type KillerWeapon = String;
+pub type ResearchId = String;
+pub type ModName = String;

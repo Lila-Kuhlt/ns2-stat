@@ -1,0 +1,413 @@
+{
+  "KillFeed":[],
+  "Locations":["Cargo","Y Junction","NanoGrid","Overlook","Sub-Sector","System Waypointing","West Junction","Skylights","Pipeline","The Dome","Topographical","Control","The Neck","East Junction","C-12","Nanogrid"],
+  "Research":[],
+  "Buildings":[{
+      "teamNumber":1,
+      "techId":"Extractor",
+      "built":true,
+      "entityId":733,
+      "event":"Built",
+      "location":"56.940285 -1.549400 -77.368401",
+      "gameTime":0,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":1,
+      "techId":"CommandStation",
+      "built":true,
+      "entityId":3433,
+      "event":"Built",
+      "location":"50.850807 -1.320800 -95.072197",
+      "gameTime":0,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":1,
+      "techId":"InfantryPortal",
+      "built":true,
+      "entityId":797,
+      "event":"Built",
+      "location":"55.644753 -1.549400 -99.623238",
+      "gameTime":0,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Harvester",
+      "built":true,
+      "entityId":2753,
+      "event":"Built",
+      "location":"-31.038799 -7.340600 -17.779999",
+      "gameTime":0,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Hive",
+      "built":true,
+      "entityId":1009,
+      "event":"Built",
+      "location":"-54.133106 -4.770400 -9.337702",
+      "gameTime":0,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":true,
+      "entityId":996,
+      "event":"Built",
+      "location":"-42.672001 -7.362006 -13.995399",
+      "gameTime":0,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":true,
+      "entityId":1345,
+      "event":"Built",
+      "location":"-31.876999 -7.340600 -15.824200",
+      "gameTime":0,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":true,
+      "entityId":1253,
+      "event":"Built",
+      "location":"-28.676600 -7.340600 -19.786600",
+      "gameTime":0,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":true,
+      "entityId":676,
+      "event":"Built",
+      "location":"-62.026798 -7.366000 -26.568399",
+      "gameTime":0,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":true,
+      "entityId":2011,
+      "event":"Built",
+      "location":"-51.054001 -7.340600 -31.241999",
+      "gameTime":0,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":true,
+      "entityId":3702,
+      "event":"Built",
+      "location":"-31.826200 -6.527800 -7.797800",
+      "gameTime":0,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":true,
+      "entityId":3893,
+      "event":"Built",
+      "location":"-95.986595 -4.140200 -67.106796",
+      "gameTime":0,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":true,
+      "entityId":2944,
+      "event":"Built",
+      "location":"-52.552601 -5.003800 -40.538399",
+      "gameTime":0,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":true,
+      "entityId":3611,
+      "event":"Built",
+      "location":"-18.008600 -4.114800 -8.331200",
+      "gameTime":0,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":1,
+      "techId":"PowerPoint",
+      "built":true,
+      "entityId":3212,
+      "event":"Built",
+      "location":"62.033134 -0.539116 -110.121689",
+      "gameTime":0,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":1,
+      "techId":"PowerPoint",
+      "built":true,
+      "entityId":2544,
+      "event":"Built",
+      "location":"-54.178200 -5.562600 -22.275799",
+      "gameTime":0,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":1,
+      "techId":"PowerPoint",
+      "built":true,
+      "entityId":2544,
+      "event":"Destroyed",
+      "location":"-54.178200 -5.562600 -22.275799",
+      "gameTime":0,
+      "destroyed":true,
+      "recycled":false
+    },{
+      "teamNumber":1,
+      "techId":"PowerPoint",
+      "built":false,
+      "entityId":40,
+      "event":"Placed",
+      "location":"-24.511000 -0.808770 -138.887192",
+      "gameTime":0.033786028623581,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":1,
+      "techId":"PowerPoint",
+      "built":false,
+      "entityId":582,
+      "event":"Placed",
+      "location":"2.590800 -1.219200 -157.570236",
+      "gameTime":0.033786028623581,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":1,
+      "techId":"PowerPoint",
+      "built":false,
+      "entityId":854,
+      "event":"Placed",
+      "location":"-1.371600 -0.874726 -94.310242",
+      "gameTime":0.033786028623581,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":1,
+      "techId":"PowerPoint",
+      "built":false,
+      "entityId":1107,
+      "event":"Placed",
+      "location":"-1.663995 -0.549006 -66.471802",
+      "gameTime":0.033786028623581,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":1,
+      "techId":"PowerPoint",
+      "built":false,
+      "entityId":1921,
+      "event":"Placed",
+      "location":"4.064000 -0.911963 -137.972794",
+      "gameTime":0.033786028623581,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":1,
+      "techId":"PowerPoint",
+      "built":false,
+      "entityId":2122,
+      "event":"Placed",
+      "location":"2.159000 -0.635000 -41.503601",
+      "gameTime":0.033786028623581,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":1,
+      "techId":"PowerPoint",
+      "built":false,
+      "entityId":2270,
+      "event":"Placed",
+      "location":"43.992798 -0.762000 -153.085800",
+      "gameTime":0.033786028623581,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":1,
+      "techId":"PowerPoint",
+      "built":false,
+      "entityId":2318,
+      "event":"Placed",
+      "location":"26.082331 -0.889000 -40.309620",
+      "gameTime":0.033786028623581,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":1,
+      "techId":"PowerPoint",
+      "built":false,
+      "entityId":2817,
+      "event":"Placed",
+      "location":"-60.223400 -2.463800 -97.688400",
+      "gameTime":0.033786028623581,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":1,
+      "techId":"PowerPoint",
+      "built":false,
+      "entityId":2956,
+      "event":"Placed",
+      "location":"-71.729599 -1.371569 -158.628098",
+      "gameTime":0.033786028623581,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":1,
+      "techId":"PowerPoint",
+      "built":false,
+      "entityId":3153,
+      "event":"Placed",
+      "location":"-29.667200 -0.660400 -61.442600",
+      "gameTime":0.033786028623581,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":1,
+      "techId":"PowerPoint",
+      "built":false,
+      "entityId":3612,
+      "event":"Placed",
+      "location":"-85.394798 -2.362200 -100.721848",
+      "gameTime":0.033786028623581,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":1,
+      "techId":"PowerPoint",
+      "built":false,
+      "entityId":4034,
+      "event":"Placed",
+      "location":"-14.122400 -0.700762 -21.590000",
+      "gameTime":0.033786028623581,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":true,
+      "entityId":3893,
+      "event":"Destroyed",
+      "location":"-95.986595 -4.140200 -67.106796",
+      "gameTime":1.1335638388991,
+      "destroyed":true,
+      "recycled":false
+    }],
+  "PlayerStats":{
+    "229271678":{
+      "1":{
+        "structureDamage":0,
+        "assists":0,
+        "killstreak":0,
+        "timeBuilding":0,
+        "deaths":0,
+        "kills":0,
+        "onosHits":0,
+        "misses":0,
+        "playerDamage":0,
+        "hits":0,
+        "timePlayed":3.000005222857,
+        "commanderTime":0,
+        "score":0
+      },
+      "2":{
+        "structureDamage":0,
+        "assists":0,
+        "killstreak":0,
+        "timeBuilding":0,
+        "deaths":0,
+        "kills":0,
+        "onosHits":0,
+        "misses":0,
+        "playerDamage":0,
+        "hits":0,
+        "timePlayed":0,
+        "commanderTime":0,
+        "score":0
+      },
+      "commanderSkillOffset":0,
+      "commanderSkill":0,
+      "playerName":"Kid Ilias",
+      "status":[{
+          "statusId":"Rifle",
+          "classTime":3.000005222857
+        }],
+      "isRookie":true,
+      "playerSkillOffset":0,
+      "lastTeam":1,
+      "hiveSkill":0,
+      "weapons":[]
+    }
+  },
+  "RoundInfo":{
+    "roundDate":1642721781,
+    "maxPlayers1":1,
+    "minimapExtents":{
+      "origin":"-14.572644 -47.955158 -87.426842",
+      "scale":"424.560120 151.128113 424.560150"
+    },
+    "startingLocations":{
+      "1":12,
+      "2":9
+    },
+    "winningTeam":1,
+    "tournamentMode":false,
+    "maxPlayers2":0,
+    "roundLength":3.0003645345569,
+    "mapName":"ns2_veil"
+  },
+  "ServerInfo":{
+    "mods":[{
+        "modId":"4241b84e",
+        "name":"UWE Extension"
+      },{
+        "modId":"9e113555",
+        "name":"Matched Play Balance"
+      }],
+    "slots":16,
+    "rookieOnly":false,
+    "buildNumber":340,
+    "ip":"77.181.155.64",
+    "name":"Lila Pause",
+    "port":27015
+  },
+  "MarineCommStats":{
+    "0":{
+      "catpack":{
+        "misses":0,
+        "picks":0
+      },
+      "medpack":{
+        "hitsAcc":0,
+        "picks":0,
+        "misses":0,
+        "refilled":0
+      },
+      "ammopack":{
+        "picks":0,
+        "misses":0,
+        "refilled":0
+      }
+    }
+  }
+}
