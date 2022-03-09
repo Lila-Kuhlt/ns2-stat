@@ -48,7 +48,7 @@ impl NS2Stats {
     fn load_data(path: &str) -> std::io::Result<Vec<types::GameStats>> {
         std::fs::read_dir(path)?
             .flat_map(|res| res.map(|e| e.path()))
-            .filter_map(|path| path.is_file().then(|| std::fs::read_to_string(&path)))
+            .filter_map(|path| (path.is_file() && path.ends_with(".json")).then(|| std::fs::read_to_string(&path)))
             .flatten()
             .map(|path| types::GameStats::from_json(&path).map_err(|e| std::io::Error::new(std::io::ErrorKind::Other, format!("{e}"))))
             .collect::<std::io::Result<Vec<_>>>()
