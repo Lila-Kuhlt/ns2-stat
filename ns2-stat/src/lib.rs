@@ -1,12 +1,14 @@
-use std::collections::HashMap;
+use std::collections::{HashMap, HashSet};
 
+use nalgebra::{DMatrix, Dynamic};
 use serde::Serialize;
 
-use types::{GameStats, WinningTeam};
+use types::{GameStats, KillFeed, PlayerClass, PlayerStat, SteamId, WinningTeam};
 
 pub mod types;
 
 /// A wrapper around an `Iterator<Item = &GameStats>`.
+#[derive(Clone)]
 pub struct Games<'a, I: Iterator<Item = &'a GameStats>>(pub I);
 
 impl<'a, I: Iterator<Item = &'a GameStats>> Iterator for Games<'a, I> {
@@ -126,5 +128,74 @@ impl NS2Stats {
             marine_wins,
             alien_wins,
         }
+    }
+}
+
+impl<'a, I: Iterator<Item = &'a GameStats> + Clone> Games<'a, I> {
+    pub fn all_player_stats(self) -> impl Iterator<Item = &'a PlayerStat> {
+        self.flat_map(|game| game.player_stats.values())
+    }
+
+    pub fn player_stats(self, id: &'a SteamId) -> impl Iterator<Item = &'a PlayerStat> {
+        self.flat_map(|game| game.player_stats.get(id))
+    }
+
+    pub fn player_ids(self) -> HashSet<SteamId> {
+        self.flat_map(|game| game.player_stats.keys()).copied().collect::<HashSet<_>>()
+    }
+
+    pub fn player_ids_sorted(self) -> Vec<SteamId> {
+        let mut ids = self.player_ids().into_iter().collect::<Vec<_>>();
+        ids.sort();
+        ids
+    }
+
+    pub fn kill_feed(self) -> impl Iterator<Item = &'a KillFeed> {
+        self.flat_map(|game| game.kill_feed.iter())
+    }
+
+    pub fn complex_kd(self) -> Vec<f32> {
+        let mut kds = HashMap::<(SteamId, SteamId), u32>::new();
+        for kill in self.clone().kill_feed() {
+            match (kill.killer_steam_id, kill.victim_steam_id, kill.killer_class) {
+                (Some(killer_id), victim_id, Some(class)) if class != PlayerClass::Commander => {
+                    *kds.entry((killer_id, victim_id)).or_default() += 1;
+                }
+                _ => (),
+            }
+        }
+        //dbg!(&kds);
+        let mut scores = HashMap::new();
+        let mut ids = self.player_ids_sorted();
+        for (i, player1) in ids.iter().enumerate() {
+            for player2 in &ids[i..] {
+                let p1_k = *kds.get(&(*player1, *player2)).unwrap_or(&0);
+                let p2_k = *kds.get(&(*player2, *player1)).unwrap_or(&0);
+                let mut kd = p1_k as f32 / p2_k as f32;
+                if player1 == player2 {
+                    scores.insert((*player1, *player2), 0.);
+                } else if kd.is_finite() && p1_k + p2_k > 60 && (1. / kd).is_finite() {
+                    scores.insert((*player1, *player2), kd);
+                    scores.insert((*player2, *player1), 1. / kd);
+                } else {
+                    scores.insert((*player1, *player2), 0.);
+                    scores.insert((*player2, *player1), 0.);
+                }
+            }
+        }
+        dbg!(scores.len());
+        ids.retain(|id| scores.keys().any(|(kid, _)| kid == id));
+        //dbg!(&scores);
+        dbg!(&ids);
+        let mut results = Vec::new();
+        for player1 in &ids {
+            for player2 in &ids {
+                results.push(*scores.get(&(*player1, *player2)).unwrap());
+            }
+        }
+        //dbg!(results.len());
+        dbg!(ids.len());
+        let mat = DMatrix::from_iterator(ids.len(), ids.len(), results.clone());
+        dbg!(results)
     }
 }
