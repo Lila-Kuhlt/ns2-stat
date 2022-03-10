@@ -1,6 +1,6 @@
 use std::collections::{HashMap, HashSet};
 
-use nalgebra::{DMatrix, Dynamic};
+use nalgebra::{DMatrix, Dynamic, Norm};
 use serde::Serialize;
 
 use types::{GameStats, KillFeed, PlayerClass, PlayerStat, SteamId, WinningTeam};
@@ -136,8 +136,8 @@ impl<'a, I: Iterator<Item = &'a GameStats> + Clone> Games<'a, I> {
         self.flat_map(|game| game.player_stats.values())
     }
 
-    pub fn player_stats(self, id: &'a SteamId) -> impl Iterator<Item = &'a PlayerStat> {
-        self.flat_map(|game| game.player_stats.get(id))
+    pub fn player_stats(self, id: SteamId) -> impl Iterator<Item = &'a PlayerStat> {
+        self.flat_map(move |game| game.player_stats.get(&id))
     }
 
     pub fn player_ids(self) -> HashSet<SteamId> {
@@ -150,11 +150,19 @@ impl<'a, I: Iterator<Item = &'a GameStats> + Clone> Games<'a, I> {
         ids
     }
 
+    pub fn player_name(self, id: SteamId) -> &'a str {
+        self.player_stats(id)
+            .next()
+            .expect("Player with given steam id was not found")
+            .player_name
+            .as_str()
+    }
+
     pub fn kill_feed(self) -> impl Iterator<Item = &'a KillFeed> {
         self.flat_map(|game| game.kill_feed.iter())
     }
 
-    pub fn complex_kd(self) -> Vec<f32> {
+    pub fn complex_kd(self) -> Vec<(String, f32)> {
         let mut kds = HashMap::<(SteamId, SteamId), u32>::new();
         for kill in self.clone().kill_feed() {
             match (kill.killer_steam_id, kill.victim_steam_id, kill.killer_class) {
@@ -166,17 +174,17 @@ impl<'a, I: Iterator<Item = &'a GameStats> + Clone> Games<'a, I> {
         }
         //dbg!(&kds);
         let mut scores = HashMap::new();
-        let mut ids = self.player_ids_sorted();
+        let mut ids = self.clone().player_ids_sorted();
         for (i, player1) in ids.iter().enumerate() {
             for player2 in &ids[i..] {
                 let p1_k = *kds.get(&(*player1, *player2)).unwrap_or(&0);
                 let p2_k = *kds.get(&(*player2, *player1)).unwrap_or(&0);
-                let mut kd = p1_k as f32 / p2_k as f32;
+                let kd = p1_k as f32 / p2_k as f32;
                 if player1 == player2 {
                     scores.insert((*player1, *player2), 0.);
                 } else if kd.is_finite() && p1_k + p2_k > 60 && (1. / kd).is_finite() {
-                    scores.insert((*player1, *player2), kd);
-                    scores.insert((*player2, *player1), 1. / kd);
+                    scores.insert((*player1, *player2), 1. / kd);
+                    scores.insert((*player2, *player1), kd);
                 } else {
                     scores.insert((*player1, *player2), 0.);
                     scores.insert((*player2, *player1), 0.);
@@ -186,7 +194,7 @@ impl<'a, I: Iterator<Item = &'a GameStats> + Clone> Games<'a, I> {
         dbg!(scores.len());
         ids.retain(|id| scores.keys().any(|(kid, _)| kid == id));
         //dbg!(&scores);
-        dbg!(&ids);
+        //dbg!(&ids);
         let mut results = Vec::new();
         for player1 in &ids {
             for player2 in &ids {
@@ -194,8 +202,29 @@ impl<'a, I: Iterator<Item = &'a GameStats> + Clone> Games<'a, I> {
             }
         }
         //dbg!(results.len());
-        dbg!(ids.len());
+        //dbg!(ids.len());
         let mat = DMatrix::from_iterator(ids.len(), ids.len(), results.clone());
-        dbg!(results)
+        let eigenvector = Self::vector_iteration(mat, ids.len());
+        let scores: Vec<_> = ids
+            .into_iter()
+            .map(|id| self.clone().player_name(id).to_string())
+            .zip(eigenvector.iter().cloned())
+            .collect();
+        for score in scores.iter() {
+            println!("{:?}", score);
+        }
+        scores
+    }
+
+    fn vector_iteration(matrix: DMatrix<f32>, dimensions: usize) -> nalgebra::DVector<f32> {
+        let mut r = nalgebra::DVector::from_element(dimensions, 1.);
+        for _ in 0..1000 {
+            let new_r = (&matrix * &r).normalize();
+            if (r - &new_r).norm() < 0.1 {
+                return new_r;
+            }
+            r = new_r;
+        }
+        unreachable!("No eigenvector has been found");
     }
 }
