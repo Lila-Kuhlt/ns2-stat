@@ -205,19 +205,25 @@ impl<'a, I: Iterator<Item = &'a GameStats> + Clone> Games<'a, I> {
         //dbg!(ids.len());
         let mat = DMatrix::from_iterator(ids.len(), ids.len(), results.clone());
         let eigenvector = Self::vector_iteration(mat, ids.len());
-        let scores: Vec<_> = ids
+        let mut scores: Vec<_> = ids
             .into_iter()
             .map(|id| self.clone().player_name(id).to_string())
             .zip(eigenvector.iter().cloned())
             .collect();
+        scores.sort_by(|(_, a), (_, b)| b.partial_cmp(a).unwrap_or(std::cmp::Ordering::Less));
+
+        println!("\n\n\n\n\n=======");
         for score in scores.iter() {
-            println!("{:?}", score);
+            if score.1 > 0. {
+                println!("{:?}", score);
+            }
         }
+        println!("\n\n\n\n\n=======");
         scores
     }
 
     fn vector_iteration(matrix: DMatrix<f32>, dimensions: usize) -> nalgebra::DVector<f32> {
-        let mut r = nalgebra::DVector::from_element(dimensions, 1.);
+        let mut r = nalgebra::DVector::from_element(dimensions, 1.).normalize();
         for _ in 0..1000 {
             let new_r = (&matrix * &r).normalize();
             if (r - &new_r).norm() < 0.1 {
