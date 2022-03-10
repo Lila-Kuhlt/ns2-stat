@@ -1,63 +1,93 @@
-use std::collections::HashSet;
-
-use types::{GameStats, KillFeed, PlayerStat, SteamId};
+use std::collections::HashMap;
+use std::{fs, io};
 
 pub mod types;
 
+#[derive(Default)]
+pub struct User {
+    pub kills: u32,
+    pub deaths: u32,
+    pub commander_skill: u32,
+}
+
+pub struct Map {
+    pub total_games: u32,
+    pub marine_wins: u32,
+}
+
 pub struct NS2Stats {
-    pub games: Vec<GameStats>,
+    pub users: HashMap<String, User>,
+    pub maps: HashMap<String, Map>,
+    pub total_games: u32,
+    pub marine_wins: u32,
 }
 
 impl NS2Stats {
-    pub fn from_dir(path: &str) -> std::io::Result<Self> {
-        Ok(Self { games: Self::load_data(path)? })
+    pub fn from_dir(path: &str) -> io::Result<Self> {
+        let games = Self::load_data(path)?;
+        let mut users = HashMap::new();
+        let mut maps = HashMap::new();
+        let mut marine_wins = 0;
+        let total_games = games.len() as u32;
+
+        for game in games {
+            for player_stat in game.player_stats.into_values() {
+                let user = users.entry(player_stat.player_name).or_insert_with(|| User::default());
+
+                if let Some(cs) = player_stat.commander_skill {
+                    if cs >= user.commander_skill as i64 {
+                        user.commander_skill = cs as u32;
+                    }
+                }
+
+                for stats in [player_stat.marines, player_stat.aliens] {
+                    user.kills += stats.get("kills").copied().unwrap_or(0f64) as u32;
+                    user.deaths += stats.get("deaths").copied().unwrap_or(0f64) as u32;
+                }
+            }
+
+            if game.round_info.round_length < 300.0 {
+                continue;
+            }
+            let map_entry = maps.entry(game.round_info.map_name).or_insert(Map { total_games: 0, marine_wins: 0 });
+            map_entry.total_games += 1;
+            if game.round_info.winning_team == 1 {
+                map_entry.marine_wins += 1;
+            }
+
+            if game.round_info.winning_team == 1 {
+                marine_wins += 1;
+            }
+        }
+
+        Ok(NS2Stats {
+            users,
+            maps,
+            total_games,
+            marine_wins,
+        })
     }
 
-    pub fn all_player_stats(&self) -> impl Iterator<Item = &PlayerStat> {
-        self.games.iter().map(|game| game.player_stats.values()).flatten()
-    }
-
-    pub fn player_stats<'a>(&'a self, id: &'a SteamId) -> impl Iterator<Item = &'a PlayerStat> {
-        self.games.iter().map(|game| game.player_stats.get(id)).flatten()
-    }
-
-    pub fn player_names(&self) -> HashSet<&str> {
-        self.all_player_stats().map(|ps| ps.player_name.as_str()).collect::<HashSet<_>>()
-    }
-
-    pub fn player_ids(&self) -> HashSet<SteamId> {
-        self.games
-            .iter()
-            .map(|game| game.player_stats.keys())
-            .flatten()
-            .copied()
-            .collect::<HashSet<_>>()
-    }
-
-    pub fn kill_feed(&self) -> impl Iterator<Item = &KillFeed> {
-        self.games.iter().map(|game| game.kill_feed.iter()).flatten()
-    }
-
-    pub fn kd(&self, player: u32) -> (u32, u32) {
-        let property = |stat: &PlayerStat, property| stat.marines.get(property).unwrap_or(&0.) + stat.aliens.get(property).unwrap_or(&0.);
-        let kills: f64 = self.player_stats(&player).map(|ps| property(ps, "kills")).sum();
-        let deaths: f64 = self.player_stats(&player).map(|ps| property(ps, "deaths")).sum();
-        (kills as u32, deaths as u32)
-    }
-
-    fn load_data(path: &str) -> std::io::Result<Vec<types::GameStats>> {
-        std::fs::read_dir(path)?
-            .flat_map(|res| res.map(|e| e.path()))
-            .filter_map(|path| (path.is_file() && path.ends_with(".json")).then(|| std::fs::read_to_string(&path)))
-            .flatten()
-            .map(|path| types::GameStats::from_json(&path).map_err(|e| std::io::Error::new(std::io::ErrorKind::Other, format!("{e}"))))
-            .collect::<std::io::Result<Vec<_>>>()
+    fn load_data(path: &str) -> io::Result<Vec<types::GameStats>> {
+        let mut stats = Vec::new();
+        for entry in fs::read_dir(path)? {
+            let path = entry?.path();
+            if path.is_file() && path.extension().unwrap_or_default() == "json" {
+                let data = fs::read_to_string(path)?;
+                let stat = serde_json::from_str(&data).map_err(|e| io::Error::new(io::ErrorKind::Other, e))?;
+                stats.push(stat);
+            }
+        }
+        Ok(stats)
     }
 }
+
 #[cfg(test)]
 mod tests {
+    use super::*;
+
     #[test]
-    fn test_data_parsable() -> std::io::Result<()> {
-        super::NS2Stats::load_data("test_data").map(|_| ())
+    fn test_data_parsable() -> io::Result<()> {
+        NS2Stats::from_dir("test_data").map(|_| ())
     }
 }

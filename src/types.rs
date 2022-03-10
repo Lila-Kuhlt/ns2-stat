@@ -23,12 +23,6 @@ pub struct GameStats {
     pub marine_comm_stats: HashMap<String, MarineCommStat>,
 }
 
-impl GameStats {
-    pub fn from_json(json: &str) -> Result<Self, serde_json::Error> {
-        serde_json::from_str(json)
-    }
-}
-
 #[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct Building {
     #[serde(rename = "teamNumber")]
