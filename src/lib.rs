@@ -1,25 +1,26 @@
 use std::collections::HashMap;
 use std::{fs, io};
+use types::Team;
 
 pub mod types;
 
 #[derive(Default)]
 pub struct User {
-    pub kills: u64,
-    pub deaths: u64,
-    pub commander_skill: u64,
+    pub kills: u32,
+    pub deaths: u32,
+    pub commander_skill: u32,
 }
 
 pub struct Map {
-    pub total_games: u64,
-    pub marine_wins: u64,
+    pub total_games: u32,
+    pub marine_wins: u32,
 }
 
 pub struct NS2Stats {
     pub users: HashMap<String, User>,
     pub maps: HashMap<String, Map>,
-    pub total_games: u64,
-    pub marine_wins: u64,
+    pub total_games: u32,
+    pub marine_wins: u32,
 }
 
 impl NS2Stats {
@@ -28,7 +29,7 @@ impl NS2Stats {
         let mut users = HashMap::new();
         let mut maps = HashMap::new();
         let mut marine_wins = 0;
-        let total_games = games.len() as u64;
+        let total_games = games.len() as u32;
 
         for game in games {
             for player_stat in game.player_stats.into_values() {
@@ -49,13 +50,16 @@ impl NS2Stats {
             if game.round_info.round_length < 300.0 {
                 continue;
             }
-            let map_entry = maps.entry(game.round_info.map_name).or_insert(Map { total_games: 0, marine_wins: 0 });
+            let map_entry = maps.entry(game.round_info.map_name).or_insert(Map {
+                total_games: 0,
+                marine_wins: 0,
+            });
             map_entry.total_games += 1;
-            if game.round_info.winning_team == 1 {
+            if game.round_info.winning_team == Team::Marines {
                 map_entry.marine_wins += 1;
             }
 
-            if game.round_info.winning_team == 1 {
+            if game.round_info.winning_team == Team::Marines {
                 marine_wins += 1;
             }
         }
