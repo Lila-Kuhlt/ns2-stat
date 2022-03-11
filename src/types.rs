@@ -217,7 +217,7 @@ pub struct RoundInfo {
     /// Starting locations for each team.
     pub starting_locations: StartingLocations,
     /// Team that won the game.
-    pub winning_team: Team,
+    pub winning_team: WinningTeam,
     /// If the game had tournament mode enabled.
     pub tournament_mode: bool,
     /// Round length (in seconds).
@@ -287,6 +287,13 @@ pub enum Event {
 #[derive(Debug, Serialize_repr, Deserialize_repr, PartialEq, Eq, Copy, Clone)]
 #[repr(u8)]
 pub enum Team {
+    Marines = 1,
+    Aliens = 2,
+}
+
+#[derive(Debug, Serialize_repr, Deserialize_repr, PartialEq, Eq, Copy, Clone)]
+#[repr(u8)]
+pub enum WinningTeam {
     None = 0,
     Marines = 1,
     Aliens = 2,

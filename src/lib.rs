@@ -1,6 +1,7 @@
 use std::collections::HashMap;
 use std::{fs, io};
-use types::Team;
+
+use types::WinningTeam;
 
 pub mod types;
 
@@ -55,11 +56,11 @@ impl NS2Stats {
                 marine_wins: 0,
             });
             map_entry.total_games += 1;
-            if game.round_info.winning_team == Team::Marines {
+            if game.round_info.winning_team == WinningTeam::Marines {
                 map_entry.marine_wins += 1;
             }
 
-            if game.round_info.winning_team == Team::Marines {
+            if game.round_info.winning_team == WinningTeam::Marines {
                 marine_wins += 1;
             }
         }
