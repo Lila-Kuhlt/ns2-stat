@@ -5,21 +5,21 @@ pub mod types;
 
 #[derive(Default)]
 pub struct User {
-    pub kills: u32,
-    pub deaths: u32,
-    pub commander_skill: u32,
+    pub kills: u64,
+    pub deaths: u64,
+    pub commander_skill: u64,
 }
 
 pub struct Map {
-    pub total_games: u32,
-    pub marine_wins: u32,
+    pub total_games: u64,
+    pub marine_wins: u64,
 }
 
 pub struct NS2Stats {
     pub users: HashMap<String, User>,
     pub maps: HashMap<String, Map>,
-    pub total_games: u32,
-    pub marine_wins: u32,
+    pub total_games: u64,
+    pub marine_wins: u64,
 }
 
 impl NS2Stats {
@@ -28,21 +28,21 @@ impl NS2Stats {
         let mut users = HashMap::new();
         let mut maps = HashMap::new();
         let mut marine_wins = 0;
-        let total_games = games.len() as u32;
+        let total_games = games.len() as u64;
 
         for game in games {
             for player_stat in game.player_stats.into_values() {
                 let user = users.entry(player_stat.player_name).or_insert_with(|| User::default());
 
                 if let Some(cs) = player_stat.commander_skill {
-                    if cs >= user.commander_skill as i64 {
-                        user.commander_skill = cs as u32;
+                    if cs >= user.commander_skill {
+                        user.commander_skill = cs;
                     }
                 }
 
                 for stats in [player_stat.marines, player_stat.aliens] {
-                    user.kills += stats.get("kills").copied().unwrap_or(0f64) as u32;
-                    user.deaths += stats.get("deaths").copied().unwrap_or(0f64) as u32;
+                    user.kills += stats.kills;
+                    user.deaths += stats.deaths;
                 }
             }
 
