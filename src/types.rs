@@ -1,11 +1,11 @@
 use std::collections::HashMap;
 
-use serde::{Deserialize, Serialize};
-use serde_repr::{Deserialize_repr, Serialize_repr};
+use serde::Deserialize;
+use serde_repr::Deserialize_repr;
 
 pub type SteamId = u32;
 
-#[derive(Debug, Serialize, Deserialize, Clone)]
+#[derive(Debug, Deserialize, Clone)]
 #[serde(rename_all = "PascalCase")]
 pub struct GameStats {
     pub kill_feed: Vec<KillFeed>,
@@ -20,7 +20,7 @@ pub struct GameStats {
 }
 
 /// Building completions, deaths and recycles during the game.
-#[derive(Debug, Serialize, Deserialize, Clone)]
+#[derive(Debug, Deserialize, Clone)]
 #[serde(rename_all = "camelCase")]
 pub struct Building {
     /// Team that owns the building.
@@ -43,7 +43,7 @@ pub struct Building {
     pub event: Option<Event>,
 }
 
-#[derive(Debug, Serialize, Deserialize, Clone)]
+#[derive(Debug, Deserialize, Clone)]
 #[serde(rename_all = "camelCase")]
 pub struct KillFeed {
     /// Weapon used for the kill.
@@ -75,14 +75,14 @@ pub struct KillFeed {
     pub game_time: f32,
 }
 
-#[derive(Debug, Serialize, Deserialize, Clone)]
+#[derive(Debug, Deserialize, Clone)]
 pub struct MarineCommStat {
     pub medpack: Medpack,
     pub ammopack: Ammopack,
     pub catpack: Catpack,
 }
 
-#[derive(Debug, Serialize, Deserialize, Clone)]
+#[derive(Debug, Deserialize, Clone)]
 #[serde(rename_all = "camelCase")]
 pub struct Medpack {
     /// Number of medpacks picked up by players.
@@ -95,7 +95,7 @@ pub struct Medpack {
     pub hits_acc: u32,
 }
 
-#[derive(Debug, Serialize, Deserialize, Clone)]
+#[derive(Debug, Deserialize, Clone)]
 pub struct Ammopack {
     /// Number of ammopacks picked up by players.
     pub picks: u32,
@@ -105,7 +105,7 @@ pub struct Ammopack {
     pub refilled: f32,
 }
 
-#[derive(Debug, Serialize, Deserialize, Clone)]
+#[derive(Debug, Deserialize, Clone)]
 pub struct Catpack {
     /// Number of catpacks picked up by players.
     pub picks: u32,
@@ -113,7 +113,7 @@ pub struct Catpack {
     pub misses: u32,
 }
 
-#[derive(Debug, Serialize, Deserialize, Clone)]
+#[derive(Debug, Deserialize, Clone)]
 #[serde(rename_all = "camelCase")]
 pub struct PlayerStat {
     #[serde(rename = "1")]
@@ -136,7 +136,7 @@ pub struct PlayerStat {
     pub player_skill_offset: Option<i32>,
 }
 
-#[derive(Debug, Serialize, Deserialize, Clone)]
+#[derive(Debug, Deserialize, Clone)]
 #[serde(rename_all = "camelCase")]
 pub struct PlayerTeamStats {
     /// Number of kills.
@@ -167,7 +167,7 @@ pub struct PlayerTeamStats {
     pub structure_damage: f32,
 }
 
-#[derive(Debug, Serialize, Deserialize, Clone)]
+#[derive(Debug, Deserialize, Clone)]
 #[serde(rename_all = "camelCase")]
 pub struct Status {
     /// The class.
@@ -176,7 +176,7 @@ pub struct Status {
     pub class_time: f32,
 }
 
-#[derive(Debug, Serialize, Deserialize, Clone)]
+#[derive(Debug, Deserialize, Clone)]
 #[serde(rename_all = "camelCase")]
 pub struct Weapon {
     #[serde(rename = "teamNumber")]
@@ -190,7 +190,7 @@ pub struct Weapon {
 }
 
 // Research done during the game.
-#[derive(Debug, Serialize, Deserialize, Clone)]
+#[derive(Debug, Deserialize, Clone)]
 #[serde(rename_all = "camelCase")]
 pub struct Research {
     /// Team that owns the research.
@@ -202,7 +202,7 @@ pub struct Research {
     pub research_id: String,
 }
 
-#[derive(Debug, Serialize, Deserialize, Clone)]
+#[derive(Debug, Deserialize, Clone)]
 #[serde(rename_all = "camelCase")]
 pub struct RoundInfo {
     /// Epoch time for the round.
@@ -226,23 +226,23 @@ pub struct RoundInfo {
     pub map_name: String,
 }
 
-#[derive(Debug, Serialize, Deserialize, Clone)]
+#[derive(Debug, Deserialize, Clone)]
 pub struct MinimapExtents {
     pub origin: String,
     pub scale: String,
 }
 
-#[derive(Debug, Serialize, Deserialize, Clone)]
+#[derive(Debug, Deserialize, Clone)]
 pub struct StartingLocations {
     /// The marine's starting location.
     #[serde(rename = "1")]
-    marines: usize,
+    pub marines: usize,
     /// The alien's starting location.
     #[serde(rename = "2")]
-    aliens: usize,
+    pub aliens: usize,
 }
 
-#[derive(Debug, Serialize, Deserialize, Clone)]
+#[derive(Debug, Deserialize, Clone)]
 #[serde(rename_all = "camelCase")]
 pub struct ServerInfo {
     /// The mods active on this server.
@@ -261,21 +261,21 @@ pub struct ServerInfo {
     pub port: u16,
 }
 
-#[derive(Debug, Serialize, Deserialize, Clone)]
+#[derive(Debug, Deserialize, Clone)]
 #[serde(rename_all = "camelCase")]
 pub struct Mod {
     pub mod_id: String,
     pub name: String,
 }
 
-#[derive(Debug, Serialize, Deserialize, Clone)]
+#[derive(Debug, Deserialize, Clone)]
 #[serde(untagged)]
 pub enum Weapons {
     AnythingArray(Vec<Option<serde_json::Value>>),
     WeaponMap(HashMap<String, Weapon>),
 }
 
-#[derive(Debug, Serialize, Deserialize, Clone)]
+#[derive(Debug, Deserialize, Clone)]
 pub enum Event {
     Built,
     Destroyed,
@@ -284,14 +284,14 @@ pub enum Event {
     Teleported,
 }
 
-#[derive(Debug, Serialize_repr, Deserialize_repr, PartialEq, Eq, Copy, Clone)]
+#[derive(Debug, Deserialize_repr, PartialEq, Eq, Copy, Clone)]
 #[repr(u8)]
 pub enum Team {
     Marines = 1,
     Aliens = 2,
 }
 
-#[derive(Debug, Serialize_repr, Deserialize_repr, PartialEq, Eq, Copy, Clone)]
+#[derive(Debug, Deserialize_repr, PartialEq, Eq, Copy, Clone)]
 #[repr(u8)]
 pub enum WinningTeam {
     None = 0,
@@ -299,7 +299,7 @@ pub enum WinningTeam {
     Aliens = 2,
 }
 
-#[derive(Debug, Serialize, Deserialize, Clone, Copy, PartialEq, Eq, Hash)]
+#[derive(Debug, Deserialize, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum PlayerClass {
     CommandStation,
     Commander,
