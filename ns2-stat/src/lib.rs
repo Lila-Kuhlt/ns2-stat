@@ -146,20 +146,22 @@ impl<'a, I: Iterator<Item = &'a GameStats> + Clone> Games<'a, I> {
 
     pub fn player_ids_sorted(self) -> Vec<SteamId> {
         let mut ids = self.player_ids().into_iter().collect::<Vec<_>>();
-        ids.sort();
+        ids.sort_unstable();
         ids
     }
 
     pub fn player_name(self, id: SteamId) -> &'a str {
         self.player_stats(id)
             .next()
-            .expect("Player with given steam id was not found")
+            .unwrap_or_else(|| panic!("Player with given steam id {id} was not found"))
             .player_name
             .as_str()
     }
 
     pub fn kill_feed(self) -> impl Iterator<Item = &'a KillFeed> {
-        self.flat_map(|game| game.kill_feed.iter())
+        self
+            .filter_genuine_games()
+            .flat_map(|game| game.kill_feed.iter())
     }
 
     pub fn complex_kd(self) -> Vec<(String, f32)> {
@@ -172,9 +174,25 @@ impl<'a, I: Iterator<Item = &'a GameStats> + Clone> Games<'a, I> {
                 _ => (),
             }
         }
+        let mut to_remove: Vec<u32> = self
+            .clone()
+            .player_ids()
+            .iter()
+            .map(|id| (id, kds.iter().filter_map(|((_, id2), deaths)| (id == id2).then(|| deaths)).sum::<u32>()))
+            .filter_map(|(&id, deaths)| (deaths < 100).then(|| id))
+            .collect();
+        to_remove.push(0);
+        for id in dbg!(to_remove) {
+            kds.retain(|&(id1, id2), _| id != id1 && id != id2);
+        }
+
+        let mut ids: Vec<_> = kds.keys().map(|(id, _)| *id).collect();
+        ids.sort_unstable();
+        ids.dedup();
+        dbg!(&ids);
+
         //dbg!(&kds);
         let mut scores = HashMap::new();
-        let mut ids = self.clone().player_ids_sorted();
         for (i, player1) in ids.iter().enumerate() {
             for player2 in &ids[i..] {
                 let p1_k = *kds.get(&(*player1, *player2)).unwrap_or(&0);
@@ -182,19 +200,22 @@ impl<'a, I: Iterator<Item = &'a GameStats> + Clone> Games<'a, I> {
                 let kd = p1_k as f32 / p2_k as f32;
                 if player1 == player2 {
                     scores.insert((*player1, *player2), 0.);
-                } else if kd.is_finite() && p1_k + p2_k > 60 && (1. / kd).is_finite() {
+                } else if kd.is_finite() && p1_k + p2_k > 20 && (1. / kd).is_finite() {
                     scores.insert((*player1, *player2), 1. / kd);
                     scores.insert((*player2, *player1), kd);
-                } else {
-                    scores.insert((*player1, *player2), 0.);
-                    scores.insert((*player2, *player1), 0.);
                 }
             }
         }
         dbg!(scores.len());
-        ids.retain(|id| scores.keys().any(|(kid, _)| kid == id));
+        let mut encounter_count: Vec<_> = ids.iter().map(|&id| (id, scores.keys().filter(|(kid, _)| *kid == id).count())).collect();
+        encounter_count.sort_by_key(|&(_, count)| count);
+        let dimension = dbg!(&encounter_count).last().unwrap_or(&(0, 0)).1;
+        let ids: Vec<_> = encounter_count
+            .into_iter()
+            .filter_map(|(id, count)| (count > dimension - 4).then(|| id))
+            .collect();
         //dbg!(&scores);
-        //dbg!(&ids);
+        dbg!(&ids);
         let mut results = Vec::new();
         for player1 in &ids {
             for player2 in &ids {
