@@ -7,7 +7,7 @@ fn main() -> std::io::Result<()> {
     users.sort_by_key(|(_, user)| ((user.kills as f32 / user.deaths as f32) * 100f32) as u32);
     println!("NAME\t\tKILLS\tDEATHS\tKD");
     for (name, User { kills, deaths, .. }) in users.into_iter().rev() {
-        if kills <= 100 || deaths <= 100 {
+        if kills <= 50 || deaths <= 50 {
             continue;
         }
         let kd = kills as f32 / deaths as f32;
