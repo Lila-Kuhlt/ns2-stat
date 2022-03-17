@@ -12,9 +12,11 @@ pub struct User {
     pub commander_skill: u32,
 }
 
+#[derive(Default)]
 pub struct Map {
     pub total_games: u32,
     pub marine_wins: u32,
+    pub alien_wins: u32,
 }
 
 pub struct NS2Stats<'a> {
@@ -22,6 +24,7 @@ pub struct NS2Stats<'a> {
     pub maps: HashMap<&'a str, Map>,
     pub total_games: u32,
     pub marine_wins: u32,
+    pub alien_wins: u32,
 }
 
 impl<'a> NS2Stats<'a> {
@@ -29,11 +32,12 @@ impl<'a> NS2Stats<'a> {
         let mut users = HashMap::new();
         let mut maps = HashMap::new();
         let mut marine_wins = 0;
+        let mut alien_wins = 0;
         let total_games = games.len() as u32;
 
         for game in games {
             for player_stat in game.player_stats.values() {
-                let user = users.entry(&*player_stat.player_name).or_insert_with(|| User::default());
+                let user = users.entry(&*player_stat.player_name).or_insert_with(User::default);
 
                 if let Some(cs) = player_stat.commander_skill {
                     if cs >= user.commander_skill {
@@ -51,17 +55,18 @@ impl<'a> NS2Stats<'a> {
             if game.round_info.round_length < 300.0 {
                 continue;
             }
-            let map_entry = maps.entry(&*game.round_info.map_name).or_insert(Map {
-                total_games: 0,
-                marine_wins: 0,
-            });
+            let map_entry = maps.entry(&*game.round_info.map_name).or_insert_with(Map::default);
             map_entry.total_games += 1;
-            if game.round_info.winning_team == WinningTeam::Marines {
-                map_entry.marine_wins += 1;
-            }
-
-            if game.round_info.winning_team == WinningTeam::Marines {
-                marine_wins += 1;
+            match game.round_info.winning_team {
+                WinningTeam::Marines => {
+                    map_entry.marine_wins += 1;
+                    marine_wins += 1;
+                }
+                WinningTeam::Aliens => {
+                    map_entry.alien_wins += 1;
+                    alien_wins += 1;
+                }
+                WinningTeam::None => {}
             }
         }
 
@@ -70,6 +75,7 @@ impl<'a> NS2Stats<'a> {
             maps,
             total_games,
             marine_wins,
+            alien_wins,
         }
     }
 }
