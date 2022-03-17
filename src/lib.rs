@@ -7,6 +7,7 @@ pub mod types;
 #[derive(Default)]
 pub struct User {
     pub kills: u32,
+    pub assists: u32,
     pub deaths: u32,
     pub commander_skill: u32,
 }
@@ -42,6 +43,7 @@ impl<'a> NS2Stats<'a> {
 
                 for stats in [&player_stat.marines, &player_stat.aliens] {
                     user.kills += stats.kills;
+                    user.assists += stats.assists;
                     user.deaths += stats.deaths;
                 }
             }

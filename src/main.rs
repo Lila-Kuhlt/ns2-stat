@@ -7,8 +7,10 @@ use table::Alignment;
 struct UserRow<'a> {
     name: &'a str,
     kills: u32,
+    assists: u32,
     deaths: u32,
     kd: f32,
+    kda: f32,
 }
 
 struct MapRow<'a> {
@@ -21,20 +23,21 @@ fn main() -> std::io::Result<()> {
     let game_stats = GameStats::from_dir("test_data")?;
     let stats = NS2Stats::compute(&game_stats);
 
-    let mut users = stats.users.into_iter().filter_map(|(name, User { kills, deaths, .. })| {
+    let mut users = stats.users.into_iter().filter_map(|(name, User { kills, assists, deaths, .. })| {
         if kills <= 50 || deaths <= 50 {
             None
         } else {
             let kd = kills as f32 / deaths as f32;
-            Some(UserRow { name, kills, deaths, kd })
+            let kda = (kills + assists) as f32 / deaths as f32;
+            Some(UserRow { name, kills, assists, deaths, kd, kda })
         }
     }).collect::<Vec<_>>();
     users.sort_by_key(|user| -(user.kd * 100f32) as i32);
     table::print_table(
-        ["NAME", "KILLS", "DEATHS", "KD"],
-        [Alignment::Left, Alignment::Right, Alignment::Right, Alignment::Right],
+        ["NAME", "KILLS", "ASSISTS", "DEATHS", "KD", "KDA"],
+        [Alignment::Left, Alignment::Right, Alignment::Right, Alignment::Right, Alignment::Right, Alignment::Right],
         users,
-        |UserRow { name, kills, deaths, kd }| row!["{name}", "{kills}", "{deaths}", "{kd:.2}"],
+        |UserRow { name, kills, assists, deaths, kd, kda }| row!["{name}", "{kills}", "{assists}", "{deaths}", "{kd:.2}", "{kda:.2}"],
     );
 
     println!("\n\n");
