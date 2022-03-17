@@ -5,6 +5,7 @@ macro_rules! row {
     }
 }
 
+#[allow(unused)]
 #[derive(Clone, Copy)]
 pub enum Alignment {
     Left,
