@@ -16,15 +16,15 @@ pub struct Map {
     pub marine_wins: u32,
 }
 
-pub struct NS2Stats {
-    pub users: HashMap<String, User>,
-    pub maps: HashMap<String, Map>,
+pub struct NS2Stats<'a> {
+    pub users: HashMap<&'a str, User>,
+    pub maps: HashMap<&'a str, Map>,
     pub total_games: u32,
     pub marine_wins: u32,
 }
 
-impl NS2Stats {
-    pub fn compute(games: &[GameStats]) -> Self {
+impl<'a> NS2Stats<'a> {
+    pub fn compute(games: &'a [GameStats]) -> Self {
         let mut users = HashMap::new();
         let mut maps = HashMap::new();
         let mut marine_wins = 0;
@@ -32,7 +32,7 @@ impl NS2Stats {
 
         for game in games {
             for player_stat in game.player_stats.values() {
-                let user = users.entry(player_stat.player_name.clone()).or_insert_with(|| User::default());
+                let user = users.entry(&*player_stat.player_name).or_insert_with(|| User::default());
 
                 if let Some(cs) = player_stat.commander_skill {
                     if cs >= user.commander_skill {
@@ -49,7 +49,7 @@ impl NS2Stats {
             if game.round_info.round_length < 300.0 {
                 continue;
             }
-            let map_entry = maps.entry(game.round_info.map_name.clone()).or_insert(Map {
+            let map_entry = maps.entry(&*game.round_info.map_name).or_insert(Map {
                 total_games: 0,
                 marine_wins: 0,
             });

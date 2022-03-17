@@ -4,15 +4,15 @@ use ns2_stat::{NS2Stats, User, Map};
 use ns2_stat::types::GameStats;
 use table::Alignment;
 
-struct UserRow {
-    name: String,
+struct UserRow<'a> {
+    name: &'a str,
     kills: u32,
     deaths: u32,
     kd: f32,
 }
 
-struct MapRow {
-    map: String,
+struct MapRow<'a> {
+    map: &'a str,
     marine_wr: f32,
     total_games: u32,
 }
