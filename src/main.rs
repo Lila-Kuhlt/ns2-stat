@@ -1,23 +1,25 @@
 mod table;
 
 use ns2_stat::{NS2Stats, User, Map};
+use ns2_stat::types::GameStats;
 use table::Alignment;
 
-struct UserRow {
-    name: String,
+struct UserRow<'a> {
+    name: &'a str,
     kills: u32,
     deaths: u32,
     kd: f32,
 }
 
-struct MapRow {
-    map: String,
+struct MapRow<'a> {
+    map: &'a str,
     marine_wr: f32,
     total_games: u32,
 }
 
 fn main() -> std::io::Result<()> {
-    let stats = NS2Stats::from_dir("test_data")?;
+    let game_stats = GameStats::from_dir("test_data")?;
+    let stats = NS2Stats::compute(&game_stats);
 
     let mut users = stats.users.into_iter().filter_map(|(name, User { kills, deaths, .. })| {
         if kills <= 50 || deaths <= 50 {

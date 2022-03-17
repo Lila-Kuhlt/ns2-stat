@@ -1,4 +1,6 @@
 use std::collections::HashMap;
+use std::{fs, io};
+use std::path::Path;
 
 use serde::Deserialize;
 use serde_repr::Deserialize_repr;
@@ -17,6 +19,25 @@ pub struct GameStats {
     pub round_info: RoundInfo,
     pub server_info: ServerInfo,
     pub marine_comm_stats: HashMap<String, MarineCommStat>,
+}
+
+impl GameStats {
+    pub fn from_file<P: AsRef<Path>>(path: P) -> io::Result<Self> {
+        let data = fs::read_to_string(path)?;
+        let stat = serde_json::from_str(&data).map_err(|e| io::Error::new(io::ErrorKind::Other, e))?;
+        Ok(stat)
+    }
+
+    pub fn from_dir<P: AsRef<Path>>(path: P) -> io::Result<Vec<Self>> {
+        let mut stats = Vec::new();
+        for entry in fs::read_dir(path)? {
+            let path = entry?.path();
+            if path.is_file() && path.extension().unwrap_or_default() == "json" {
+                stats.push(Self::from_file(path)?)
+            }
+        }
+        Ok(stats)
+    }
 }
 
 /// Building completions, deaths and recycles during the game.
@@ -324,4 +345,14 @@ pub enum PlayerClass {
     Shotgun,
     Skulk,
     Void,
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_data_parsable() -> io::Result<()> {
+        GameStats::from_dir("test_data").map(|_| ())
+    }
 }
