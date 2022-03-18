@@ -36,6 +36,11 @@ impl<'a> NS2Stats<'a> {
         let total_games = games.len() as u32;
 
         for game in games {
+            if game.round_info.round_length < 300.0 {
+                // ignore games that took under 5 minutes
+                continue;
+            }
+
             for player_stat in game.player_stats.values() {
                 let user = users.entry(&*player_stat.player_name).or_insert_with(User::default);
 
@@ -52,9 +57,6 @@ impl<'a> NS2Stats<'a> {
                 }
             }
 
-            if game.round_info.round_length < 300.0 {
-                continue;
-            }
             let map_entry = maps.entry(&*game.round_info.map_name).or_insert_with(Map::default);
             map_entry.total_games += 1;
             match game.round_info.winning_team {
