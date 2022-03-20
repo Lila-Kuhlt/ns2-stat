@@ -1,11 +1,13 @@
 use std::collections::HashMap;
-use std::{fs, io};
 use std::path::Path;
+use std::{fs, io};
 
+use serde::de::Visitor;
 use serde::Deserialize;
 use serde_repr::Deserialize_repr;
 
 pub type SteamId = u32;
+pub type Location = usize;
 
 #[derive(Debug, Deserialize, Clone)]
 #[serde(rename_all = "PascalCase")]
@@ -51,7 +53,7 @@ pub struct Building {
     pub game_time: f32,
     // If the building was completely built when this happened.
     pub built: bool,
-    pub location: String,
+    pub location: Position,
     /// The building was recycled.
     pub recycled: bool,
     /// The building was destroyed.
@@ -72,26 +74,26 @@ pub struct KillFeed {
     #[serde(rename = "killerSteamID")]
     pub killer_steam_id: Option<SteamId>,
     /// Location of the killer.
-    pub killer_location: Option<usize>,
+    pub killer_location: Option<Location>,
     /// Map coordinates of the killer.
-    pub killer_position: Option<String>,
+    pub killer_position: Option<Position>,
     /// The killer's class.
     pub killer_class: Option<PlayerClass>,
     /// Location of the killer entity position (grenades/turrets/hydras, etc.).
-    pub doer_location: Option<usize>,
+    pub doer_location: Option<Location>,
     /// Map coordinates for the killer entity position (grenades/turrets/hydras, etc.).
-    pub doer_position: Option<String>,
+    pub doer_position: Option<Position>,
     /// Team that got awarded this kill.
     #[serde(rename = "killerTeamNumber")]
     pub killer_team: Team,
     /// Location of the victim.
-    pub victim_location: Option<usize>,
+    pub victim_location: Option<Location>,
     #[serde(rename = "victimSteamID")]
     pub victim_steam_id: SteamId,
     /// The victim's class.
     pub victim_class: PlayerClass,
     /// Map coordinates for the victim.
-    pub victim_position: String,
+    pub victim_position: Position,
     /// Game time when the kill happened (in seconds).
     pub game_time: f32,
 }
@@ -257,10 +259,10 @@ pub struct MinimapExtents {
 pub struct StartingLocations {
     /// The marine's starting location.
     #[serde(rename = "1")]
-    pub marines: usize,
+    pub marines: Location,
     /// The alien's starting location.
     #[serde(rename = "2")]
-    pub aliens: usize,
+    pub aliens: Location,
 }
 
 #[derive(Debug, Deserialize, Clone)]
@@ -347,12 +349,63 @@ pub enum PlayerClass {
     Void,
 }
 
+#[derive(Debug, Clone)]
+pub struct Position {
+    x: f32,
+    y: f32,
+    z: f32,
+}
+
+impl<'de> Deserialize<'de> for Position {
+    fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+    where
+        D: serde::Deserializer<'de>,
+    {
+        struct PositonVisitor {}
+
+        impl<'de> Visitor<'de> for PositonVisitor {
+            type Value = Position;
+
+            fn expecting(&self, formatter: &mut std::fmt::Formatter) -> std::fmt::Result {
+                formatter.write_str("a 3 element list of f32 seperated by space")
+            }
+
+            fn visit_str<E>(self, s: &str) -> Result<Self::Value, E>
+            where
+                E: serde::de::Error,
+            {
+                let mut coords = [0f32; 3];
+                for (i, s) in s.split(" ").enumerate() {
+                    coords[i] = s.parse().map_err(|_| serde::de::Error::invalid_type(serde::de::Unexpected::Str(s), &self))?;
+                }
+                let [x, y, z] = coords;
+                Ok(Position { x, y, z })
+            }
+
+            fn visit_string<E>(self, s: String) -> Result<Self::Value, E>
+            where
+                E: serde::de::Error,
+            {
+                self.visit_str(&s)
+            }
+        }
+
+        deserializer.deserialize_str(PositonVisitor {})
+    }
+}
+
 #[cfg(test)]
 mod tests {
+
     use super::*;
 
     #[test]
     fn test_data_parsable() -> io::Result<()> {
         GameStats::from_dir("test_data").map(|_| ())
+    }
+
+    #[test]
+    fn position_deserialize() -> serde_json::Result<()> {
+        serde_json::from_str::<Vec<Position>>("[\"1.0 -1.0 0.1\"]").map(|_| ())
     }
 }
