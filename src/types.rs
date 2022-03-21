@@ -351,9 +351,9 @@ pub enum PlayerClass {
 
 #[derive(Debug, Clone)]
 pub struct Position {
-    x: f32,
-    y: f32,
-    z: f32,
+    pub x: f32,
+    pub y: f32,
+    pub z: f32,
 }
 
 impl<'de> Deserialize<'de> for Position {
@@ -374,24 +374,16 @@ impl<'de> Deserialize<'de> for Position {
             where
                 E: serde::de::Error,
             {
-                let mut coords = [0f32; 3];
                 let splits = s.split(" ").collect::<Vec<&str>>();
                 if splits.len() != 3 {
                     return Err(serde::de::Error::invalid_length(splits.len(), &self));
                 }
-
-                for (i, s) in splits.iter().enumerate() {
-                    coords[i] = s.parse().map_err(|_| serde::de::Error::invalid_type(serde::de::Unexpected::Str(s), &self))?;
-                }
-                let [x, y, z] = coords;
-                Ok(Position { x, y, z })
-            }
-
-            fn visit_string<E>(self, s: String) -> Result<Self::Value, E>
-            where
-                E: serde::de::Error,
-            {
-                self.visit_str(&s)
+                let parse = |split: &str| split.parse().map_err(|_| serde::de::Error::invalid_type(serde::de::Unexpected::Str(s), &self));
+                Ok(Position {
+                    x: parse(splits[0])?,
+                    y: parse(splits[1])?,
+                    z: parse(splits[2])?,
+                })
             }
         }
 
