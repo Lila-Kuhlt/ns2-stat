@@ -375,7 +375,12 @@ impl<'de> Deserialize<'de> for Position {
                 E: serde::de::Error,
             {
                 let mut coords = [0f32; 3];
-                for (i, s) in s.split(" ").enumerate() {
+                let splits = s.split(" ").collect::<Vec<&str>>();
+                if splits.len() != 3 {
+                    return Err(serde::de::Error::invalid_length(splits.len(), &self));
+                }
+
+                for (i, s) in splits.iter().enumerate() {
                     coords[i] = s.parse().map_err(|_| serde::de::Error::invalid_type(serde::de::Unexpected::Str(s), &self))?;
                 }
                 let [x, y, z] = coords;
@@ -406,6 +411,6 @@ mod tests {
 
     #[test]
     fn position_deserialize() -> serde_json::Result<()> {
-        serde_json::from_str::<Vec<Position>>("[\"1.0 -1.0 0.1\"]").map(|_| ())
+        serde_json::from_str::<Position>("\"1.0 -1.0 0.1\"").map(|_| ())
     }
 }
