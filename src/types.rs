@@ -349,7 +349,7 @@ pub enum PlayerClass {
     Void,
 }
 
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct Position {
     pub x: f32,
     pub y: f32,
@@ -402,7 +402,11 @@ mod tests {
     }
 
     #[test]
-    fn position_deserialize() -> serde_json::Result<()> {
-        serde_json::from_str::<Position>("\"1.0 -1.0 0.1\"").map(|_| ())
+    fn position_deserialize() {
+        assert_eq!(
+            serde_json::from_str::<Position>("\"1.0 -1.0 0.1\"").expect("Failed to parse position"),
+            Position { x: 1.0, y: -1.0, z: 0.1 }
+        );
+        assert_eq!(serde_json::from_str::<Position>("\"1.0 -1.0\"").is_err(), true);
     }
 }
