@@ -407,6 +407,6 @@ mod tests {
             serde_json::from_str::<Position>("\"1.0 -1.0 0.1\"").expect("Failed to parse position"),
             Position { x: 1.0, y: -1.0, z: 0.1 }
         );
-        assert_eq!(serde_json::from_str::<Position>("\"1.0 -1.0\"").is_err(), true);
+        assert!(serde_json::from_str::<Position>("\"1.0 -1.0\"").is_err());
     }
 }
