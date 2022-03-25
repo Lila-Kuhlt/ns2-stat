@@ -36,7 +36,7 @@ fn main() -> std::io::Result<()> {
     table::print_table(
         ["NAME", "KILLS", "ASSISTS", "DEATHS", "KD", "KDA"],
         [Alignment::Left, Alignment::Right, Alignment::Right, Alignment::Right, Alignment::Right, Alignment::Right],
-        users,
+        &users,
         |UserRow { name, kills, assists, deaths, kd, kda }| row!["{name}", "{kills}", "{assists}", "{deaths}", "{kd:.2}", "{kda:.2}"],
     );
 
@@ -55,7 +55,7 @@ fn main() -> std::io::Result<()> {
     table::print_table(
         ["MAP", "MARINE WR", "TOTAL ROUNDS"],
         [Alignment::Left, Alignment::Right, Alignment::Right],
-        kvp,
+        &kvp,
         |MapRow { map, marine_wr, total_games }| row!["{map}", "{marine_wr:.2}%", "{total_games} rounds"],
     );
 

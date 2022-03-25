@@ -13,9 +13,9 @@ pub enum Alignment {
     Right,
 }
 
-pub fn print_table<T, const N: usize>(titles: [&str; N], alignments: [Alignment; N], table: Vec<T>, formatter: impl Fn(T) -> [String; N]) {
+pub fn print_table<T, const N: usize>(titles: [&str; N], alignments: [Alignment; N], table: &[T], formatter: impl Fn(&T) -> [String; N]) {
     let mut lengths = [0; N]; // `lengths[i]` is the length of the ith column
-    let rows = table.into_iter().map(formatter).collect::<Vec<_>>();
+    let rows = table.iter().map(formatter).collect::<Vec<_>>();
     for i in 0..N {
         lengths[i] = std::cmp::max(
             titles[i].len(),
