@@ -19,7 +19,7 @@ pub fn print_table<T, const N: usize>(titles: [&str; N], alignments: [Alignment;
     for i in 0..N {
         lengths[i] = std::cmp::max(
             titles[i].len(),
-            rows.iter().map(|row| row[i].len()).max().unwrap_or(0)
+            rows.iter().map(|row| row[i].len()).max().unwrap_or(0),
         );
     }
 

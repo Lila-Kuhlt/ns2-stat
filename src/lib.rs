@@ -43,7 +43,6 @@ impl<'a, I: Iterator<Item = &'a GameStats>> Games<'a, I> {
             max_marines > 2 && max_aliens > 2
         }))
     }
-
 }
 
 #[derive(Default)]

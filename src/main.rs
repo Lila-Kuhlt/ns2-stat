@@ -1,7 +1,7 @@
 mod table;
 
-use ns2_stat::{NS2Stats, User, Map, Games};
 use ns2_stat::types::GameStats;
+use ns2_stat::{Games, Map, NS2Stats, User};
 use table::Alignment;
 
 struct UserRow {
@@ -23,15 +23,19 @@ fn main() -> std::io::Result<()> {
     let game_stats = GameStats::from_dir("test_data")?;
     let stats = NS2Stats::compute(Games(game_stats.iter()).filter_genuine_games());
 
-    let mut users = stats.users.into_iter().filter_map(|(name, User { kills, assists, deaths, .. })| {
-        if kills <= 50 || deaths <= 50 {
-            None
-        } else {
-            let kd = kills as f32 / deaths as f32;
-            let kda = (kills + assists) as f32 / deaths as f32;
-            Some(UserRow { name, kills, assists, deaths, kd, kda })
-        }
-    }).collect::<Vec<_>>();
+    let mut users = stats
+        .users
+        .into_iter()
+        .filter_map(|(name, User { kills, assists, deaths, .. })| {
+            if kills <= 50 || deaths <= 50 {
+                None
+            } else {
+                let kd = kills as f32 / deaths as f32;
+                let kda = (kills + assists) as f32 / deaths as f32;
+                Some(UserRow { name, kills, assists, deaths, kd, kda })
+            }
+        })
+        .collect::<Vec<_>>();
     users.sort_by_key(|user| -(user.kd * 100f32) as i32);
     table::print_table(
         ["NAME", "KILLS", "ASSISTS", "DEATHS", "KD", "KDA"],
@@ -47,10 +51,14 @@ fn main() -> std::io::Result<()> {
 
     println!();
 
-    let mut kvp = stats.maps.into_iter().map(|(map, Map { total_games, marine_wins, .. })| {
-        let marine_wr = marine_wins as f32 * 100f32 / total_games as f32;
-        MapRow { map, marine_wr, total_games }
-    }).collect::<Vec<_>>();
+    let mut kvp = stats
+        .maps
+        .into_iter()
+        .map(|(map, Map { total_games, marine_wins, .. })| {
+            let marine_wr = marine_wins as f32 * 100f32 / total_games as f32;
+            MapRow { map, marine_wr, total_games }
+        })
+        .collect::<Vec<_>>();
     kvp.sort_by_key(|map| -map.marine_wr as i32);
     table::print_table(
         ["MAP", "MARINE WR", "TOTAL ROUNDS"],

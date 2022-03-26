@@ -374,7 +374,7 @@ impl<'de> Deserialize<'de> for Position {
             where
                 E: serde::de::Error,
             {
-                let splits = s.split(" ").collect::<Vec<&str>>();
+                let splits = s.split(' ').collect::<Vec<&str>>();
                 if splits.len() != 3 {
                     return Err(serde::de::Error::invalid_length(splits.len(), &self));
                 }
