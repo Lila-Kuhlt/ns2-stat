@@ -4,8 +4,8 @@ use ns2_stat::{NS2Stats, User, Map};
 use ns2_stat::types::GameStats;
 use table::Alignment;
 
-struct UserRow<'a> {
-    name: &'a str,
+struct UserRow {
+    name: String,
     kills: u32,
     assists: u32,
     deaths: u32,
@@ -13,8 +13,8 @@ struct UserRow<'a> {
     kda: f32,
 }
 
-struct MapRow<'a> {
-    map: &'a str,
+struct MapRow {
+    map: String,
     marine_wr: f32,
     total_games: u32,
 }

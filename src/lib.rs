@@ -19,16 +19,16 @@ pub struct Map {
     pub alien_wins: u32,
 }
 
-pub struct NS2Stats<'a> {
-    pub users: HashMap<&'a str, User>,
-    pub maps: HashMap<&'a str, Map>,
+pub struct NS2Stats {
+    pub users: HashMap<String, User>,
+    pub maps: HashMap<String, Map>,
     pub total_games: u32,
     pub marine_wins: u32,
     pub alien_wins: u32,
 }
 
-impl<'a> NS2Stats<'a> {
-    pub fn compute(games: &'a [GameStats]) -> Self {
+impl NS2Stats {
+    pub fn compute(games: &[GameStats]) -> Self {
         let mut users = HashMap::new();
         let mut maps = HashMap::new();
         let mut marine_wins = 0;
@@ -36,13 +36,11 @@ impl<'a> NS2Stats<'a> {
         let total_games = games.len() as u32;
 
         for game in games {
-            if game.round_info.round_length < 300.0 {
-                // ignore games that took under 5 minutes
-                continue;
-            }
-
             for player_stat in game.player_stats.values() {
-                let user = users.entry(&*player_stat.player_name).or_insert_with(User::default);
+                let user = match users.get_mut(&player_stat.player_name) {
+                    Some(user) => user,
+                    None => users.entry(player_stat.player_name.clone()).or_insert_with(User::default),
+                };
 
                 if let Some(cs) = player_stat.commander_skill {
                     if cs >= user.commander_skill {
@@ -57,7 +55,10 @@ impl<'a> NS2Stats<'a> {
                 }
             }
 
-            let map_entry = maps.entry(&*game.round_info.map_name).or_insert_with(Map::default);
+            let map_entry = match maps.get_mut(&game.round_info.map_name) {
+                Some(map) => map,
+                None => maps.entry(game.round_info.map_name.clone()).or_insert_with(Map::default),
+            };
             map_entry.total_games += 1;
             match game.round_info.winning_team {
                 WinningTeam::Marines => {
