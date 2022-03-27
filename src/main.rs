@@ -26,7 +26,7 @@ fn main() -> std::io::Result<()> {
     let mut users = stats
         .users
         .into_iter()
-        .filter_map(|(name, User { kills, assists, deaths, kd, kda, .. })| {
+        .filter_map(|(name, User { kills, assists, deaths, kd, kda })| {
             if kills <= 50 || deaths <= 50 {
                 None
             } else {

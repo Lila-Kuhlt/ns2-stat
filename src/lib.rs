@@ -54,7 +54,6 @@ pub struct User {
     pub deaths: u32,
     pub kd: f32,
     pub kda: f32,
-    pub commander_skill: u32,
 }
 
 #[derive(Default, Serialize)]
@@ -87,12 +86,6 @@ impl NS2Stats {
                     Some(user) => user,
                     None => users.entry(player_stat.player_name.clone()).or_insert_with(User::default),
                 };
-
-                if let Some(cs) = player_stat.commander_skill {
-                    if cs >= user.commander_skill {
-                        user.commander_skill = cs;
-                    }
-                }
 
                 for stats in [&player_stat.marines, &player_stat.aliens] {
                     user.kills += stats.kills;
