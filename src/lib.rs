@@ -1,5 +1,7 @@
 use std::collections::HashMap;
 
+use serde::Serialize;
+
 use types::{GameStats, WinningTeam};
 
 pub mod types;
@@ -45,7 +47,7 @@ impl<'a, I: Iterator<Item = &'a GameStats>> Games<'a, I> {
     }
 }
 
-#[derive(Default)]
+#[derive(Default, Serialize)]
 pub struct User {
     pub kills: u32,
     pub assists: u32,
@@ -55,13 +57,14 @@ pub struct User {
     pub commander_skill: u32,
 }
 
-#[derive(Default)]
+#[derive(Default, Serialize)]
 pub struct Map {
     pub total_games: u32,
     pub marine_wins: u32,
     pub alien_wins: u32,
 }
 
+#[derive(Serialize)]
 pub struct NS2Stats {
     pub users: HashMap<String, User>,
     pub maps: HashMap<String, Map>,
