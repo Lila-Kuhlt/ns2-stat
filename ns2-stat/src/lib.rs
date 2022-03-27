@@ -159,9 +159,7 @@ impl<'a, I: Iterator<Item = &'a GameStats> + Clone> Games<'a, I> {
     }
 
     pub fn kill_feed(self) -> impl Iterator<Item = &'a KillFeed> {
-        self
-            .filter_genuine_games()
-            .flat_map(|game| game.kill_feed.iter())
+        self.filter_genuine_games().flat_map(|game| game.kill_feed.iter())
     }
 
     pub fn complex_kd(self) -> Vec<(String, f32)> {
@@ -210,21 +208,28 @@ impl<'a, I: Iterator<Item = &'a GameStats> + Clone> Games<'a, I> {
         let mut encounter_count: Vec<_> = ids.iter().map(|&id| (id, scores.keys().filter(|(kid, _)| *kid == id).count())).collect();
         encounter_count.sort_by_key(|&(_, count)| count);
         let dimension = dbg!(&encounter_count).last().unwrap_or(&(0, 0)).1;
-        let ids: Vec<_> = encounter_count
-            .into_iter()
-            .filter_map(|(id, count)| (count > dimension - 4).then(|| id))
-            .collect();
-        //dbg!(&scores);
-        dbg!(&ids);
         let mut results = Vec::new();
-        for player1 in &ids {
-            for player2 in &ids {
-                results.push(*scores.get(&(*player1, *player2)).unwrap());
+        for i in 0.. {
+            let ids: Vec<_> = encounter_count
+                .clone()
+                .into_iter()
+                .filter_map(|(id, count)| (count > dimension - i).then(|| id))
+                .collect();
+
+            let mut tmp_results = Vec::new();
+            for player1 in &ids {
+                for player2 in &ids {
+                    match scores.get(dbg!(&(*player1, *player2))) {
+                        Some(&value) => tmp_results.push(value),
+                        None => break,
+                    }
+                }
             }
+            results = tmp_results;
         }
         //dbg!(results.len());
         //dbg!(ids.len());
-        let mat = DMatrix::from_iterator(ids.len(), ids.len(), results.clone());
+        let mat = DMatrix::from_iterator(ids.len(), ids.len(), results);
         let eigenvector = Self::vector_iteration(mat, ids.len());
         let mut scores: Vec<_> = ids
             .into_iter()
