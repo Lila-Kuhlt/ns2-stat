@@ -50,6 +50,8 @@ pub struct User {
     pub kills: u32,
     pub assists: u32,
     pub deaths: u32,
+    pub kd: f32,
+    pub kda: f32,
     pub commander_skill: u32,
 }
 
@@ -114,6 +116,11 @@ impl NS2Stats {
             }
 
             total_games += 1;
+        }
+
+        for user in users.values_mut() {
+            user.kd = user.kills as f32 / user.deaths as f32;
+            user.kda = (user.kills + user.assists) as f32 / user.deaths as f32;
         }
 
         Self {

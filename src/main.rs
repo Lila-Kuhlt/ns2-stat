@@ -26,12 +26,10 @@ fn main() -> std::io::Result<()> {
     let mut users = stats
         .users
         .into_iter()
-        .filter_map(|(name, User { kills, assists, deaths, .. })| {
+        .filter_map(|(name, User { kills, assists, deaths, kd, kda, .. })| {
             if kills <= 50 || deaths <= 50 {
                 None
             } else {
-                let kd = kills as f32 / deaths as f32;
-                let kda = (kills + assists) as f32 / deaths as f32;
                 Some(UserRow { name, kills, assists, deaths, kd, kda })
             }
         })
