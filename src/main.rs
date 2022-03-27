@@ -1,8 +1,23 @@
 mod table;
 
+use clap::Parser;
+
 use ns2_stat::types::GameStats;
 use ns2_stat::{Games, Map, NS2Stats, User};
 use table::Alignment;
+
+#[derive(Parser)]
+struct CliArgs {
+    /// The path for the game data.
+    #[clap(default_value = "test_data")]
+    data: String,
+    /// Write the output to <OUTPUT>.
+    #[clap(long)]
+    output: Option<String>,
+    /// Output the statistics as JSON.
+    #[clap(long)]
+    json: bool,
+}
 
 struct UserRow {
     name: String,
@@ -20,8 +35,24 @@ struct MapRow {
 }
 
 fn main() -> std::io::Result<()> {
-    let game_stats = GameStats::from_dir("test_data")?;
+    let args = CliArgs::parse();
+
+    let game_stats = GameStats::from_dir(args.data)?;
     let stats = NS2Stats::compute(Games(game_stats.iter()).filter_genuine_games());
+
+    if args.json {
+        let json = serde_json::to_string_pretty(&stats)?;
+        match args.output {
+            Some(path) => {
+                use std::io::Write;
+
+                let mut f = std::fs::File::create(path)?;
+                write!(f, "{}", json)?;
+            }
+            None => println!("{}", json),
+        }
+        return Ok(())
+    }
 
     let mut users = stats
         .users
