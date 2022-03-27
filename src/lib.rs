@@ -19,11 +19,11 @@ impl<'a, I: Iterator<Item = &'a GameStats>> Games<'a, I> {
     /// Filter the genuine games. This is done by ignoring games that took under 5 minutes
     /// and games that were likely bot games.
     pub fn filter_genuine_games(self) -> Games<'a, impl Iterator<Item = &'a GameStats>> {
-        self.filter_by_length(|length| length >= 300.0).filter_bot_games()
+        self.filter_on_length(|length| length >= 300.0).filter_bot_games()
     }
 
     /// Filter games with a predicate that takes the length of each game.
-    pub fn filter_by_length(self, f: impl Fn(f32) -> bool) -> Games<'a, impl Iterator<Item = &'a GameStats>> {
+    pub fn filter_on_length(self, f: impl Fn(f32) -> bool) -> Games<'a, impl Iterator<Item = &'a GameStats>> {
         Games(self.filter(move |game| f(game.round_info.round_length)))
     }
 
