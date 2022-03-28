@@ -31,14 +31,17 @@ impl GameStats {
     }
 
     pub fn from_dir<P: AsRef<Path>>(path: P) -> io::Result<Vec<Self>> {
-        let mut stats = Vec::new();
+        use rayon::prelude::*;
+
+        let mut paths = Vec::new();
         for entry in fs::read_dir(path)? {
             let path = entry?.path();
             if path.is_file() && path.extension().unwrap_or_default() == "json" {
-                stats.push(Self::from_file(path)?)
+                paths.push(path)
             }
         }
-        Ok(stats)
+
+        paths.into_par_iter().map(Self::from_file).collect()
     }
 }
 
