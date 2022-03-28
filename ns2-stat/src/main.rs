@@ -1,11 +1,12 @@
 mod table;
 
-use std::io;
+use std::{fs, io};
 
 use clap::Parser;
+use ns2_stat_lib::types::GameStats;
+use ns2_stat_lib::{Games, Map, NS2Stats, User};
+use rayon::prelude::*;
 
-use ns2_stat::types::GameStats;
-use ns2_stat::{Games, Map, NS2Stats, User};
 use table::Alignment;
 
 #[derive(Parser)]
@@ -95,10 +96,28 @@ fn run(mut f: impl io::Write, stats: NS2Stats, json: bool) -> io::Result<()> {
     Ok(())
 }
 
+fn load_data<P: AsRef<std::path::Path>>(data: P) -> io::Result<Vec<GameStats>> {
+    let mut paths = Vec::new();
+    for entry in fs::read_dir(data)? {
+        let path = entry?.path();
+        if path.is_file() && path.extension().unwrap_or_default() == "json" {
+            paths.push(path)
+        }
+    }
+
+    paths
+        .into_par_iter()
+        .map(|path| {
+            let data = fs::read_to_string(path)?;
+            serde_json::from_str(&data).map_err(|e| io::Error::new(io::ErrorKind::Other, e))
+        })
+        .collect()
+}
+
 fn main() -> io::Result<()> {
     let args = CliArgs::parse();
 
-    let game_stats = GameStats::from_dir(args.data)?;
+    let game_stats = load_data(args.data)?;
     let stats = NS2Stats::compute(Games(game_stats.iter()).filter_genuine_games());
 
     match args.output {
@@ -108,4 +127,15 @@ fn main() -> io::Result<()> {
         }
         None => run(io::stdout(), stats, args.json),
     }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_data_parsable() {
+        load_data("../test_data").unwrap();
+    }
+
 }
