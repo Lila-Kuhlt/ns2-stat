@@ -1,5 +1,5 @@
 [package]
-name = "ns2-stat-lib"
+name = "ns2-stat-cli"
 version = "0.1.0"
 edition = "2021"
 license = "MIT"
@@ -7,6 +7,8 @@ license = "MIT"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
+ns2-stat = { path = "../ns2-stat" }
 serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0"
-serde_repr = "0.1"
+rayon = "1.5"
+clap = { version = "3.1", default_features = false, features = ["std", "derive"] }

@@ -1,2 +1,2 @@
 [workspace]
-members = ["ns2-stat", "ns2-stat-lib"]
+members = ["ns2-stat", "ns2-stat-cli"]

@@ -3,8 +3,8 @@ mod table;
 use std::{fs, io};
 
 use clap::Parser;
-use ns2_stat_lib::types::GameStats;
-use ns2_stat_lib::{Games, Map, NS2Stats, User};
+use ns2_stat::types::GameStats;
+use ns2_stat::{Games, Map, NS2Stats, User};
 use rayon::prelude::*;
 
 use table::Alignment;
