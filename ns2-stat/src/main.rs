@@ -6,6 +6,7 @@ use clap::Parser;
 use ns2_stat_lib::types::GameStats;
 use ns2_stat_lib::{Games, Map, NS2Stats, User};
 use rayon::prelude::*;
+use serde::Serialize;
 
 use table::Alignment;
 
@@ -20,6 +21,9 @@ struct CliArgs {
     /// Output the statistics as JSON.
     #[clap(long)]
     json: bool,
+    /// Write the continuous stats as JSON to a file.
+    #[clap(short, long)]
+    continuous: Option<String>,
 }
 
 struct UserRow {
@@ -118,6 +122,33 @@ fn main() -> io::Result<()> {
     let args = CliArgs::parse();
 
     let game_stats = load_data(args.data)?;
+    // HACK
+    if let Some(path) = args.continuous {
+        use io::Write;
+
+        #[derive(Serialize)]
+        struct Entry {
+            date: u32,
+            stats: NS2Stats,
+        }
+
+        let mut f = std::fs::File::create(path)?;
+        let mut game_stats: Vec<&GameStats> = Games(game_stats.iter()).filter_genuine_games().collect();
+        game_stats.sort_by_key(|game| game.round_info.round_date);
+
+        let continuous_stats = (0..game_stats.len())
+            .map(|i| {
+                let stats = NS2Stats::compute(Games(game_stats[..=i].iter().copied()));
+                Entry { date: game_stats[i].round_info.round_date, stats }
+            })
+            .collect::<Vec<_>>();
+
+        let json_data = serde_json::to_string_pretty(&continuous_stats)?;
+        writeln!(f, "{}", json_data)?;
+
+        return Ok(())
+    }
+
     let stats = NS2Stats::compute(Games(game_stats.iter()).filter_genuine_games());
 
     match args.output {
