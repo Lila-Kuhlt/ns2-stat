@@ -178,7 +178,6 @@ dependencies = [
  "clap",
  "ns2-stat",
  "rayon",
- "serde",
  "serde_json",
 ]
 
