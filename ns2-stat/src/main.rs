@@ -14,12 +14,6 @@ struct CliArgs {
     /// The path for the game data.
     #[clap(default_value = "test_data")]
     data: String,
-    /// Write the output to <OUTPUT>.
-    #[clap(long)]
-    output: Option<String>,
-    /// Output the statistics as JSON.
-    #[clap(long)]
-    json: bool,
 }
 
 struct UserRow {
@@ -37,13 +31,7 @@ struct MapRow {
     total_games: u32,
 }
 
-fn run(mut f: impl io::Write, stats: NS2Stats, json: bool) -> io::Result<()> {
-    if json {
-        let json_data = serde_json::to_string_pretty(&stats)?;
-        writeln!(f, "{}", json_data)?;
-        return Ok(());
-    }
-
+fn print_stats(stats: NS2Stats) {
     let mut users = stats
         .users
         .into_iter()
@@ -57,19 +45,18 @@ fn run(mut f: impl io::Write, stats: NS2Stats, json: bool) -> io::Result<()> {
         .collect::<Vec<_>>();
     users.sort_by_key(|user| -(user.kd * 100f32) as i32);
     table::print_table(
-        &mut f,
         ["NAME", "KILLS", "ASSISTS", "DEATHS", "KD", "KDA"],
         [Alignment::Left, Alignment::Right, Alignment::Right, Alignment::Right, Alignment::Right, Alignment::Right],
         &users,
         |UserRow { name, kills, assists, deaths, kd, kda }| row!["{name}", "{kills}", "{assists}", "{deaths}", "{kd:.2}", "{kda:.2}"],
-    )?;
+    );
 
-    writeln!(f, "\n\n")?;
+    println!("\n\n");
 
     let marine_wr = stats.marine_wins as f32 * 100f32 / stats.total_games as f32;
-    writeln!(f, "MARINE WR: {marine_wr:.2}%")?;
+    println!("MARINE WR: {marine_wr:.2}%");
 
-    writeln!(f)?;
+    println!();
 
     let mut kvp = stats
         .maps
@@ -81,19 +68,16 @@ fn run(mut f: impl io::Write, stats: NS2Stats, json: bool) -> io::Result<()> {
         .collect::<Vec<_>>();
     kvp.sort_by_key(|map| -map.marine_wr as i32);
     table::print_table(
-        &mut f,
         ["MAP", "MARINE WR", "TOTAL ROUNDS"],
         [Alignment::Left, Alignment::Right, Alignment::Right],
         &kvp,
         |MapRow { map, marine_wr, total_games }| row!["{map}", "{marine_wr:.2}%", "{total_games} rounds"],
-    )?;
+    );
 
-    writeln!(f)?;
+    println!();
 
     let total_games = stats.total_games;
-    writeln!(f, "TOTAL GAMES: {total_games}")?;
-
-    Ok(())
+    println!("TOTAL GAMES: {total_games}");
 }
 
 fn load_data<P: AsRef<std::path::Path>>(data: P) -> io::Result<Vec<GameStats>> {
@@ -119,14 +103,9 @@ fn main() -> io::Result<()> {
 
     let game_stats = load_data(args.data)?;
     let stats = NS2Stats::compute(Games(game_stats.iter()).filter_genuine_games());
+    print_stats(stats);
 
-    match args.output {
-        Some(path) => {
-            let f = std::fs::File::create(path)?;
-            run(f, stats, args.json)
-        }
-        None => run(io::stdout(), stats, args.json),
-    }
+    Ok(())
 }
 
 #[cfg(test)]
