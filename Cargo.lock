@@ -767,6 +767,10 @@ name = "ns2-stat-api"
 version = "0.1.0"
 dependencies = [
  "actix-web",
+ "clap",
+ "ns2-stat",
+ "serde",
+ "serde_json",
 ]
 
 [[package]]
