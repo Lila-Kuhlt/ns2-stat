@@ -10,25 +10,16 @@ struct AppData {
 }
 
 #[derive(Debug, Deserialize, Serialize)]
-pub struct DatedResponse<T> {
+pub struct DatedData<T> {
     date: u32,
     data: T,
 }
 
-#[derive(Debug, Parser)]
-struct CliArgs {
-    data: PathBuf,
-    #[clap(long, default_value = "127.0.0.1")]
-    address: String,
-    #[clap(long, short, default_value = "8080")]
-    port: u16,
-}
-
-#[get("/player")]
-async fn get_player(data: Data<AppData>) -> impl Responder {
-    serde_json::to_string(&DatedResponse {
+#[get("/players")]
+async fn get_players(data: Data<AppData>) -> impl Responder {
+    serde_json::to_string(&DatedData {
         date: data.newest,
-        data: NS2Stats::compute(Games(data.games.iter())),
+        data: NS2Stats::compute(Games(data.games.iter()).filter_genuine_games()),
     })
 }
 
@@ -46,8 +37,17 @@ async fn main() -> io::Result<()> {
         games,
     });
 
-    HttpServer::new(move || App::new().app_data(data.clone()).service(get_player))
+    HttpServer::new(move || App::new().app_data(data.clone()).service(get_players))
         .bind((args.address, args.port))?
         .run()
         .await
+}
+
+#[derive(Debug, Parser)]
+struct CliArgs {
+    data: PathBuf,
+    #[clap(long, default_value = "127.0.0.1")]
+    address: String,
+    #[clap(long, short, default_value = "8080")]
+    port: u16,
 }
