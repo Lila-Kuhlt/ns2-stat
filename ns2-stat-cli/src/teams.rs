@@ -50,6 +50,18 @@ fn balanced_partitioning<S: AsRef<str>>(players: &[S], score: impl Fn(&str) -> f
 
 /// Print balanced team suggestions.
 pub fn suggest_teams<S: AsRef<str>>(stats: NS2Stats, players: &[S]) {
+    let mut unknown_player = false;
+    for player in players {
+        let player = player.as_ref();
+        if !stats.users.contains_key(player) {
+            eprintln!("Error: unknown player `{}`", player);
+            unknown_player = true;
+        }
+    }
+    if unknown_player {
+        std::process::exit(1);
+    }
+
     println!("Team suggestions");
     println!("================");
     balanced_partitioning(players, |p| stats.users[p].kd, 4).for_each(|(team1, team2)| {
