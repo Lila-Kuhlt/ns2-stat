@@ -1,7 +1,5 @@
-use std::collections::HashMap;
-
 use serde::Serialize;
-
+use std::collections::HashMap;
 use types::{GameStats, WinningTeam};
 
 pub mod types;

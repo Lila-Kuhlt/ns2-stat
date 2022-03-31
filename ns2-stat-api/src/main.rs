@@ -1,4 +1,8 @@
-use actix_web::{get, web::Data, App, HttpServer, Responder};
+use actix_web::{
+    get,
+    web::{Data, Query},
+    App, HttpServer, Responder,
+};
 use clap::Parser;
 use ns2_stat::{types::GameStats, Games, NS2Stats};
 use serde::{Deserialize, Serialize};
@@ -6,38 +10,60 @@ use std::{fs, io, path::PathBuf};
 
 struct AppData {
     games: Vec<GameStats>,
+    stats: NS2Stats,
     newest: u32,
 }
 
-#[derive(Debug, Deserialize, Serialize)]
+#[derive(Debug, Serialize)]
 pub struct DatedData<T> {
     date: u32,
     data: T,
 }
 
-#[get("/players")]
-async fn get_players(data: Data<AppData>) -> impl Responder {
+#[derive(Debug, Deserialize)]
+pub struct GameQuery {
+    limit: usize,
+    skip: usize,
+}
+
+impl Default for GameQuery {
+    fn default() -> Self {
+        Self { limit: 10, skip: 0 }
+    }
+}
+
+#[get("/stats/global")]
+async fn get_global_stats(data: Data<AppData>) -> impl Responder {
     serde_json::to_string(&DatedData {
         date: data.newest,
-        data: NS2Stats::compute(Games(data.games.iter()).filter_genuine_games()),
+        data: &data.stats,
     })
+}
+
+#[get("/games")]
+async fn get_games(data: Data<AppData>, query: Query<GameQuery>) -> impl Responder {
+    let games = data.games.iter().rev().skip(query.skip).take(query.limit).collect::<Vec<_>>();
+    serde_json::to_string(&games)
 }
 
 #[actix_web::main]
 async fn main() -> io::Result<()> {
     let args = CliArgs::parse();
-    let games = fs::read_dir(args.data)?
+    let mut games = fs::read_dir(args.data)?
         .map(|e| e.unwrap().path())
         .map(|p| fs::read_to_string(p).unwrap())
         .map(|s| serde_json::from_str::<GameStats>(&s).unwrap())
         .collect::<Vec<_>>();
 
+    games.sort_by_key(|game| game.round_info.round_date);
+
     let data = Data::new(AppData {
         newest: games.iter().map(|game| game.round_info.round_date).max().unwrap_or(0),
+        stats: NS2Stats::compute(Games(games.iter()).filter_genuine_games()),
         games,
     });
 
-    HttpServer::new(move || App::new().app_data(data.clone()).service(get_players))
+    HttpServer::new(move || App::new().app_data(data.clone()).service(get_global_stats).service(get_games))
         .bind((args.address, args.port))?
         .run()
         .await

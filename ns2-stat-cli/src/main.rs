@@ -35,20 +35,53 @@ fn print_stats(stats: NS2Stats) {
     let mut users = stats
         .users
         .into_iter()
-        .filter_map(|(name, User { kills, assists, deaths, kd, kda })| {
-            if kills <= 50 || deaths <= 50 {
-                None
-            } else {
-                Some(UserRow { name, kills, assists, deaths, kd, kda })
-            }
-        })
+        .filter_map(
+            |(
+                name,
+                User {
+                    kills,
+                    assists,
+                    deaths,
+                    kd,
+                    kda,
+                    ..
+                },
+            )| {
+                if kills <= 50 || deaths <= 50 {
+                    None
+                } else {
+                    Some(UserRow {
+                        name,
+                        kills,
+                        assists,
+                        deaths,
+                        kd,
+                        kda,
+                    })
+                }
+            },
+        )
         .collect::<Vec<_>>();
     users.sort_by_key(|user| -(user.kd * 100f32) as i32);
     table::print_table(
         ["NAME", "KILLS", "ASSISTS", "DEATHS", "KD", "KDA"],
-        [Alignment::Left, Alignment::Right, Alignment::Right, Alignment::Right, Alignment::Right, Alignment::Right],
+        [
+            Alignment::Left,
+            Alignment::Right,
+            Alignment::Right,
+            Alignment::Right,
+            Alignment::Right,
+            Alignment::Right,
+        ],
         &users,
-        |UserRow { name, kills, assists, deaths, kd, kda }| row!["{name}", "{kills}", "{assists}", "{deaths}", "{kd:.2}", "{kda:.2}"],
+        |UserRow {
+             name,
+             kills,
+             assists,
+             deaths,
+             kd,
+             kda,
+         }| row!["{name}", "{kills}", "{assists}", "{deaths}", "{kd:.2}", "{kda:.2}"],
     );
 
     println!("\n\n");
@@ -116,5 +149,4 @@ mod tests {
     fn test_data_parsable() {
         load_data("../test_data").unwrap();
     }
-
 }
