@@ -1,5 +1,3 @@
-mod table;
-
 use std::{fs, io};
 
 use clap::Parser;
@@ -8,6 +6,9 @@ use ns2_stat::{Games, Map, NS2Stats, User};
 use rayon::prelude::*;
 
 use table::Alignment;
+
+mod table;
+mod teams;
 
 #[derive(Parser)]
 struct CliArgs {
