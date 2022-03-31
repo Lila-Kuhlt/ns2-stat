@@ -1,6 +1,4 @@
-mod table;
-
-use std::{fs, io};
+use std::fs;
 
 use clap::Parser;
 use ns2_stat::types::GameStats;
@@ -9,11 +7,17 @@ use rayon::prelude::*;
 
 use table::Alignment;
 
+mod table;
+mod teams;
+
 #[derive(Parser)]
 struct CliArgs {
     /// The path for the game data.
     #[clap(default_value = "test_data")]
     data: String,
+    /// Show team suggestions.
+    #[clap(long, multiple_values = true)]
+    teams: Option<Vec<String>>,
 }
 
 struct UserRow {
@@ -35,32 +39,13 @@ fn print_stats(stats: NS2Stats) {
     let mut users = stats
         .users
         .into_iter()
-        .filter_map(
-            |(
-                name,
-                User {
-                    kills,
-                    assists,
-                    deaths,
-                    kd,
-                    kda,
-                    ..
-                },
-            )| {
-                if kills <= 50 || deaths <= 50 {
-                    None
-                } else {
-                    Some(UserRow {
-                        name,
-                        kills,
-                        assists,
-                        deaths,
-                        kd,
-                        kda,
-                    })
-                }
-            },
-        )
+        .filter_map(|(name, User { kills, assists, deaths, kd, kda })| {
+            if kills > 50 || deaths > 50 {
+                Some(UserRow { name, kills, assists, deaths, kd, kda })
+            } else {
+                None
+            }
+        })
         .collect::<Vec<_>>();
     users.sort_by_key(|user| -(user.kd * 100f32) as i32);
     table::print_table(
@@ -113,10 +98,11 @@ fn print_stats(stats: NS2Stats) {
     println!("TOTAL GAMES: {total_games}");
 }
 
-fn load_data<P: AsRef<std::path::Path>>(data: P) -> io::Result<Vec<GameStats>> {
+fn load_data<P: AsRef<std::path::Path>>(data: P) -> Result<Vec<GameStats>, String> {
+    let data = data.as_ref();
     let mut paths = Vec::new();
-    for entry in fs::read_dir(data)? {
-        let path = entry?.path();
+    for entry in fs::read_dir(data).map_err(|e| format!("failed to read directory `{}`\n{}", data.display(), e))? {
+        let path = entry.map_err(|e| format!("{}", e))?.path();
         if path.is_file() && path.extension().unwrap_or_default() == "json" {
             paths.push(path)
         }
@@ -125,20 +111,25 @@ fn load_data<P: AsRef<std::path::Path>>(data: P) -> io::Result<Vec<GameStats>> {
     paths
         .into_par_iter()
         .map(|path| {
-            let data = fs::read_to_string(path)?;
-            serde_json::from_str(&data).map_err(|e| io::Error::new(io::ErrorKind::Other, e))
+            let data = fs::read_to_string(&path).map_err(|e| format!("failed to read `{}`\n{}", path.display(), e))?;
+            serde_json::from_str(&data).map_err(|e| format!("failed to parse `{}`\n{}", path.display(), e))
         })
         .collect()
 }
 
-fn main() -> io::Result<()> {
+fn main() {
     let args = CliArgs::parse();
 
-    let game_stats = load_data(args.data)?;
+    let game_stats = load_data(args.data).unwrap_or_else(|err| {
+        eprintln!("Error: {}", err);
+        std::process::exit(1);
+    });
     let stats = NS2Stats::compute(Games(game_stats.iter()).filter_genuine_games());
-    print_stats(stats);
-
-    Ok(())
+    if let Some(players) = args.teams {
+        teams::suggest_teams(stats, &players);
+    } else {
+        print_stats(stats);
+    }
 }
 
 #[cfg(test)]
