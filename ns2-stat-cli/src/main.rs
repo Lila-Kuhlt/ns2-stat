@@ -40,10 +40,10 @@ fn print_stats(stats: NS2Stats) {
         .users
         .into_iter()
         .filter_map(|(name, User { kills, assists, deaths, kd, kda })| {
-            if kills <= 50 || deaths <= 50 {
-                None
-            } else {
+            if kills > 50 || deaths > 50 {
                 Some(UserRow { name, kills, assists, deaths, kd, kda })
+            } else {
+                None
             }
         })
         .collect::<Vec<_>>();
