@@ -15,6 +15,9 @@ struct CliArgs {
     /// The path for the game data.
     #[clap(default_value = "test_data")]
     data: String,
+    /// Show team suggestions.
+    #[clap(long, multiple_values = true)]
+    teams: Option<Vec<String>>,
 }
 
 struct UserRow {
@@ -104,7 +107,11 @@ fn main() -> io::Result<()> {
 
     let game_stats = load_data(args.data)?;
     let stats = NS2Stats::compute(Games(game_stats.iter()).filter_genuine_games());
-    print_stats(stats);
+    if let Some(players) = args.teams {
+        teams::suggest_teams(stats, &players);
+    } else {
+        print_stats(stats);
+    }
 
     Ok(())
 }
