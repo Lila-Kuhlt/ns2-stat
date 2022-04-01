@@ -50,15 +50,15 @@ async fn get_games(data: Data<AppData>, query: Query<GameQuery>) -> impl Respond
 async fn main() -> io::Result<()> {
     let args = CliArgs::parse();
     let mut games = fs::read_dir(args.data)?
-        .map(|e| e.unwrap().path())
-        .map(|p| fs::read_to_string(p).unwrap())
-        .map(|s| serde_json::from_str::<GameStats>(&s).unwrap())
-        .collect::<Vec<_>>();
+        .map(|e| e.and_then(|e| Ok(e.path())))
+        .map(|p| p.and_then(|p| fs::read_to_string(p)))
+        .map(|s| s.and_then(|o| serde_json::from_str::<GameStats>(&o).map_err(|e| io::Error::new(io::ErrorKind::Other, e))))
+        .collect::<io::Result<Vec<_>>>()?;
 
     games.sort_by_key(|game| game.round_info.round_date);
 
     let data = Data::new(AppData {
-        newest: games.iter().map(|game| game.round_info.round_date).max().unwrap_or(0),
+        newest: games.iter().map(|game| game.round_info.round_date).max().unwrap_or_default(),
         stats: NS2Stats::compute(Games(games.iter()).filter_genuine_games()),
         games,
     });
