@@ -42,6 +42,21 @@ async fn get_stats(data: Data<AppData>) -> impl Responder {
     })
 }
 
+#[get("/stats/continuous")]
+async fn get_continuous_stats(data: Data<AppData>) -> impl Responder {
+    let game_stats = Games(data.games.iter()).filter_genuine_games().collect::<Vec<_>>();
+    let continuous_stats = (0..game_stats.len())
+        .map(|i| {
+            let stats = NS2Stats::compute(Games(game_stats[..=i].iter().copied()));
+            DatedData {
+                date: game_stats[i].round_info.round_date,
+                data: stats,
+            }
+        })
+        .collect::<Vec<_>>();
+    serde_json::to_string(&continuous_stats)
+}
+
 #[get("/games")]
 async fn get_games(data: Data<AppData>, query: Query<GameQuery>) -> impl Responder {
     let games = data.games.iter().rev().skip(query.skip).take(query.limit).collect::<Vec<_>>();
@@ -65,10 +80,16 @@ async fn main() -> io::Result<()> {
         games,
     });
 
-    HttpServer::new(move || App::new().app_data(data.clone()).service(get_stats).service(get_games))
-        .bind((args.address, args.port))?
-        .run()
-        .await
+    HttpServer::new(move || {
+        App::new()
+            .app_data(data.clone())
+            .service(get_stats)
+            .service(get_continuous_stats)
+            .service(get_games)
+    })
+    .bind((args.address, args.port))?
+    .run()
+    .await
 }
 
 #[derive(Debug, Parser)]
