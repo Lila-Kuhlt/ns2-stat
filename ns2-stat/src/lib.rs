@@ -1,12 +1,14 @@
-use std::collections::HashMap;
+use std::collections::{HashMap, HashSet};
 
+use nalgebra::{DMatrix, Dynamic, Norm};
 use serde::Serialize;
 
-use types::{GameStats, WinningTeam};
+use types::{GameStats, KillFeed, PlayerClass, PlayerStat, SteamId, WinningTeam};
 
 pub mod types;
 
 /// A wrapper around an `Iterator<Item = &GameStats>`.
+#[derive(Clone)]
 pub struct Games<'a, I: Iterator<Item = &'a GameStats>>(pub I);
 
 impl<'a, I: Iterator<Item = &'a GameStats>> Iterator for Games<'a, I> {
@@ -126,5 +128,135 @@ impl NS2Stats {
             marine_wins,
             alien_wins,
         }
+    }
+}
+
+impl<'a, I: Iterator<Item = &'a GameStats> + Clone> Games<'a, I> {
+    pub fn all_player_stats(self) -> impl Iterator<Item = &'a PlayerStat> {
+        self.flat_map(|game| game.player_stats.values())
+    }
+
+    pub fn player_stats(self, id: SteamId) -> impl Iterator<Item = &'a PlayerStat> {
+        self.flat_map(move |game| game.player_stats.get(&id))
+    }
+
+    pub fn player_ids(self) -> HashSet<SteamId> {
+        self.flat_map(|game| game.player_stats.keys()).copied().collect::<HashSet<_>>()
+    }
+
+    pub fn player_ids_sorted(self) -> Vec<SteamId> {
+        let mut ids = self.player_ids().into_iter().collect::<Vec<_>>();
+        ids.sort_unstable();
+        ids
+    }
+
+    pub fn player_name(self, id: SteamId) -> &'a str {
+        self.player_stats(id)
+            .next()
+            .unwrap_or_else(|| panic!("Player with given steam id {id} was not found"))
+            .player_name
+            .as_str()
+    }
+
+    pub fn kill_feed(self) -> impl Iterator<Item = &'a KillFeed> {
+        self.filter_genuine_games().flat_map(|game| game.kill_feed.iter())
+    }
+
+    pub fn complex_kd(self) -> Vec<(String, f32)> {
+        let mut kds = HashMap::<(SteamId, SteamId), u32>::new();
+        for kill in self.clone().kill_feed() {
+            match (kill.killer_steam_id, kill.victim_steam_id, kill.killer_class) {
+                (Some(killer_id), victim_id, Some(class)) if class != PlayerClass::Commander => {
+                    *kds.entry((killer_id, victim_id)).or_default() += 1;
+                }
+                _ => (),
+            }
+        }
+        let mut to_remove: Vec<u32> = self
+            .clone()
+            .player_ids()
+            .iter()
+            .map(|id| (id, kds.iter().filter_map(|((_, id2), deaths)| (id == id2).then(|| deaths)).sum::<u32>()))
+            .filter_map(|(&id, deaths)| (deaths < 100).then(|| id))
+            .collect();
+        to_remove.push(0);
+        for id in dbg!(to_remove) {
+            kds.retain(|&(id1, id2), _| id != id1 && id != id2);
+        }
+
+        let mut ids: Vec<_> = kds.keys().map(|(id, _)| *id).collect();
+        ids.sort_unstable();
+        ids.dedup();
+        dbg!(&ids);
+
+        //dbg!(&kds);
+        let mut scores = HashMap::new();
+        for (i, player1) in ids.iter().enumerate() {
+            for player2 in &ids[i..] {
+                let p1_k = *kds.get(&(*player1, *player2)).unwrap_or(&0);
+                let p2_k = *kds.get(&(*player2, *player1)).unwrap_or(&0);
+                let kd = p1_k as f32 / p2_k as f32;
+                if player1 == player2 {
+                    scores.insert((*player1, *player2), 0.);
+                } else if kd.is_finite() && p1_k + p2_k > 20 && (1. / kd).is_finite() {
+                    scores.insert((*player1, *player2), 1. / kd);
+                    scores.insert((*player2, *player1), kd);
+                }
+            }
+        }
+        dbg!(scores.len());
+        let mut encounter_count: Vec<_> = ids.iter().map(|&id| (id, scores.keys().filter(|(kid, _)| *kid == id).count())).collect();
+        encounter_count.sort_by_key(|&(_, count)| count);
+        let dimension = dbg!(&encounter_count).last().unwrap_or(&(0, 0)).1;
+        let mut results = Vec::new();
+        for i in 0.. {
+            let ids: Vec<_> = encounter_count
+                .clone()
+                .into_iter()
+                .filter_map(|(id, count)| (count > dimension - i).then(|| id))
+                .collect();
+
+            let mut tmp_results = Vec::new();
+            for player1 in &ids {
+                for player2 in &ids {
+                    match scores.get(dbg!(&(*player1, *player2))) {
+                        Some(&value) => tmp_results.push(value),
+                        None => break,
+                    }
+                }
+            }
+            results = tmp_results;
+        }
+        //dbg!(results.len());
+        //dbg!(ids.len());
+        let mat = DMatrix::from_iterator(ids.len(), ids.len(), results);
+        let eigenvector = Self::vector_iteration(mat, ids.len());
+        let mut scores: Vec<_> = ids
+            .into_iter()
+            .map(|id| self.clone().player_name(id).to_string())
+            .zip(eigenvector.iter().cloned())
+            .collect();
+        scores.sort_by(|(_, a), (_, b)| b.partial_cmp(a).unwrap_or(std::cmp::Ordering::Less));
+
+        println!("\n\n\n\n\n=======");
+        for score in scores.iter() {
+            if score.1 > 0. {
+                println!("{:?}", score);
+            }
+        }
+        println!("\n\n\n\n\n=======");
+        scores
+    }
+
+    fn vector_iteration(matrix: DMatrix<f32>, dimensions: usize) -> nalgebra::DVector<f32> {
+        let mut r = nalgebra::DVector::from_element(dimensions, 1.).normalize();
+        for _ in 0..1000 {
+            let new_r = (&matrix * &r).normalize();
+            if (r - &new_r).norm() < 0.1 {
+                return new_r;
+            }
+            r = new_r;
+        }
+        unreachable!("No eigenvector has been found");
     }
 }

@@ -115,6 +115,7 @@ fn main() {
         teams::suggest_teams(stats, &players);
     } else {
         print_stats(stats);
+        let _foo = Games(game_stats.iter()).complex_kd();
     }
 }
 
@@ -126,5 +127,4 @@ mod tests {
     fn test_data_parsable() {
         load_data("../test_data").unwrap();
     }
-
 }
