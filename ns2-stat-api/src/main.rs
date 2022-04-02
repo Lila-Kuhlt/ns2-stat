@@ -1,13 +1,26 @@
 use std::{fs, io, net::IpAddr, path::PathBuf};
 
 use actix_web::{
+    body::EitherBody,
+    error::JsonPayloadError,
     get,
+    http::header::ContentType,
     web::{Data, Query},
-    App, HttpServer, Responder,
+    App, HttpResponse, HttpServer, Responder,
 };
 use clap::Parser;
 use ns2_stat::{types::GameStats, Games, NS2Stats};
 use serde::{Deserialize, Serialize};
+
+fn json_response<T: Serialize>(data: &T) -> HttpResponse<EitherBody<String>> {
+    match serde_json::to_string(data) {
+        Ok(body) => match HttpResponse::Ok().content_type(ContentType::json()).message_body(body) {
+            Ok(res) => res.map_into_left_body(),
+            Err(err) => HttpResponse::from_error(err).map_into_right_body(),
+        },
+        Err(err) => HttpResponse::from_error(JsonPayloadError::Serialize(err)).map_into_right_body(),
+    }
+}
 
 struct AppData {
     games: Vec<GameStats>,
@@ -37,7 +50,7 @@ impl DateQuery {
 
 #[get("/stats")]
 async fn get_stats(data: Data<AppData>) -> impl Responder {
-    serde_json::to_string(&DatedData {
+    json_response(&DatedData {
         date: data.newest,
         data: &data.stats,
     })
@@ -57,13 +70,13 @@ async fn get_continuous_stats(data: Data<AppData>, query: Query<DateQuery>) -> i
             }
         })
         .collect::<Vec<_>>();
-    serde_json::to_string(&continuous_stats)
+    json_response(&continuous_stats)
 }
 
 #[get("/games")]
 async fn get_games(data: Data<AppData>, query: Query<DateQuery>) -> impl Responder {
     let games = query.slice(&data.games, |game| game.round_info.round_date);
-    serde_json::to_string(&games)
+    json_response(&games)
 }
 
 #[actix_web::main]
