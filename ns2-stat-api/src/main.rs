@@ -1,4 +1,4 @@
-use std::{fs, io, path::PathBuf};
+use std::{fs, io, net::IpAddr, path::PathBuf};
 
 use actix_web::{
     get,
@@ -22,6 +22,7 @@ pub struct DatedData<T> {
 }
 
 #[derive(Debug, Deserialize)]
+#[serde(default)]
 pub struct GameQuery {
     limit: usize,
     skip: usize,
@@ -51,8 +52,8 @@ async fn get_games(data: Data<AppData>, query: Query<GameQuery>) -> impl Respond
 async fn main() -> io::Result<()> {
     let args = CliArgs::parse();
     let mut games = fs::read_dir(args.data)?
-        .map(|e| e.and_then(|e| Ok(e.path())))
-        .map(|p| p.and_then(|p| fs::read_to_string(p)))
+        .map(|e| e.map(|e| e.path()))
+        .map(|p| p.and_then(fs::read_to_string))
         .map(|s| s.and_then(|o| serde_json::from_str::<GameStats>(&o).map_err(|e| io::Error::new(io::ErrorKind::Other, e))))
         .collect::<io::Result<Vec<_>>>()?;
 
@@ -74,7 +75,7 @@ async fn main() -> io::Result<()> {
 struct CliArgs {
     data: PathBuf,
     #[clap(long, default_value = "127.0.0.1")]
-    address: String,
+    address: IpAddr,
     #[clap(long, short, default_value = "8080")]
     port: u16,
 }
