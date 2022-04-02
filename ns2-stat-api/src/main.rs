@@ -16,14 +16,14 @@ struct AppData {
 }
 
 #[derive(Debug, Serialize)]
-pub struct DatedData<T> {
+struct DatedData<T> {
     date: u32,
     data: T,
 }
 
 #[derive(Debug, Deserialize)]
 #[serde(default)]
-pub struct GameQuery {
+struct GameQuery {
     limit: usize,
     skip: usize,
 }
@@ -34,8 +34,8 @@ impl Default for GameQuery {
     }
 }
 
-#[get("/stats/global")]
-async fn get_global_stats(data: Data<AppData>) -> impl Responder {
+#[get("/stats")]
+async fn get_stats(data: Data<AppData>) -> impl Responder {
     serde_json::to_string(&DatedData {
         date: data.newest,
         data: &data.stats,
@@ -65,7 +65,7 @@ async fn main() -> io::Result<()> {
         games,
     });
 
-    HttpServer::new(move || App::new().app_data(data.clone()).service(get_global_stats).service(get_games))
+    HttpServer::new(move || App::new().app_data(data.clone()).service(get_stats).service(get_games))
         .bind((args.address, args.port))?
         .run()
         .await
