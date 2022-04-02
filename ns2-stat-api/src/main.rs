@@ -1,3 +1,5 @@
+use std::{fs, io, path::PathBuf};
+
 use actix_web::{
     get,
     web::{Data, Query},
@@ -6,7 +8,6 @@ use actix_web::{
 use clap::Parser;
 use ns2_stat::{types::GameStats, Games, NS2Stats};
 use serde::{Deserialize, Serialize};
-use std::{fs, io, path::PathBuf};
 
 struct AppData {
     games: Vec<GameStats>,
