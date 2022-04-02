@@ -35,19 +35,6 @@ impl DateQuery {
     }
 }
 
-#[derive(Debug, Deserialize)]
-#[serde(default)]
-struct GameQuery {
-    limit: usize,
-    skip: usize,
-}
-
-impl Default for GameQuery {
-    fn default() -> Self {
-        Self { limit: 10, skip: 0 }
-    }
-}
-
 #[get("/stats")]
 async fn get_stats(data: Data<AppData>) -> impl Responder {
     serde_json::to_string(&DatedData {
@@ -74,8 +61,8 @@ async fn get_continuous_stats(data: Data<AppData>, query: Query<DateQuery>) -> i
 }
 
 #[get("/games")]
-async fn get_games(data: Data<AppData>, query: Query<GameQuery>) -> impl Responder {
-    let games = data.games.iter().rev().skip(query.skip).take(query.limit).collect::<Vec<_>>();
+async fn get_games(data: Data<AppData>, query: Query<DateQuery>) -> impl Responder {
+    let games = query.slice(&data.games, |game| game.round_info.round_date);
     serde_json::to_string(&games)
 }
 
