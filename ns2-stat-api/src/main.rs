@@ -22,6 +22,20 @@ struct DatedData<T> {
 }
 
 #[derive(Debug, Deserialize)]
+struct DateQuery {
+    from: Option<u32>,
+    to: Option<u32>,
+}
+
+impl DateQuery {
+    fn slice<'a, T>(&self, data: &'a [T], mut get_date: impl FnMut(&T) -> u32) -> &'a [T] {
+        let start = self.from.map(|date| data.partition_point(|x| get_date(x) < date)).unwrap_or(0);
+        let end = self.to.map(|date| data.partition_point(|x| get_date(x) <= date)).unwrap_or(data.len());
+        &data[start..end]
+    }
+}
+
+#[derive(Debug, Deserialize)]
 #[serde(default)]
 struct GameQuery {
     limit: usize,
@@ -43,8 +57,10 @@ async fn get_stats(data: Data<AppData>) -> impl Responder {
 }
 
 #[get("/stats/continuous")]
-async fn get_continuous_stats(data: Data<AppData>) -> impl Responder {
-    let game_stats = Games(data.games.iter()).filter_genuine_games().collect::<Vec<_>>();
+async fn get_continuous_stats(data: Data<AppData>, query: Query<DateQuery>) -> impl Responder {
+    let game_stats = Games(query.slice(&data.games, |game| game.round_info.round_date).iter())
+        .filter_genuine_games()
+        .collect::<Vec<_>>();
     let continuous_stats = (0..game_stats.len())
         .map(|i| {
             let stats = NS2Stats::compute(Games(game_stats[..=i].iter().copied()));
