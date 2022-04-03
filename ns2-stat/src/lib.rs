@@ -21,16 +21,16 @@ impl<'a, I: Iterator<Item = &'a GameStats>> Games<'a, I> {
     /// Filter the genuine games. This is done by ignoring games that took under 5 minutes
     /// and games that were likely bot games.
     pub fn genuine(self) -> Games<'a, impl Iterator<Item = &'a GameStats>> {
-        self.by_length(|length| length >= 300.0).bots()
+        self.filter_by_length(|length| length >= 300.0).filter_bot_games()
     }
 
     /// Filter games with a predicate that takes the length of each game.
-    pub fn by_length(self, f: impl Fn(f32) -> bool) -> Games<'a, impl Iterator<Item = &'a GameStats>> {
+    pub fn filter_by_length(self, f: impl Fn(f32) -> bool) -> Games<'a, impl Iterator<Item = &'a GameStats>> {
         Games(self.filter(move |game| f(game.round_info.round_length)))
     }
 
     /// Ignore games that were likely bot games.
-    pub fn bots(self) -> Games<'a, impl Iterator<Item = &'a GameStats>> {
+    pub fn filter_bot_games(self) -> Games<'a, impl Iterator<Item = &'a GameStats>> {
         Games(self.filter(move |game| {
             let mut max_marines = 0;
             let mut max_aliens = 0;
@@ -113,7 +113,7 @@ impl NS2Stats {
                 WinningTeam::None => {}
             }
 
-            if latest_game < game.round_info.round_date {
+            if game.round_info.round_date > latest_game {
                 latest_game = game.round_info.round_date;
             }
             total_games += 1;

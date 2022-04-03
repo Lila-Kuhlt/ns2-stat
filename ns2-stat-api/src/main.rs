@@ -76,7 +76,7 @@ async fn get_stats(data: Data<AppData>) -> impl Responder {
 
 #[get("/stats/continuous")]
 async fn get_continuous_stats(data: Data<AppData>, query: Query<DateQuery>) -> impl Responder {
-    let game_stats = Games(query.slice(&data.games).iter()).filter_genuine_games().collect::<Vec<_>>();
+    let game_stats = Games(query.slice(&data.games).iter()).genuine().collect::<Vec<_>>();
     let continuous_stats = (0..game_stats.len())
         .map(|i| DatedData {
             date: game_stats[i].round_info.round_date,
@@ -103,7 +103,7 @@ async fn main() -> io::Result<()> {
     games.sort_by_key(|game| game.round_info.round_date);
 
     let data = Data::new(AppData {
-        stats: NS2Stats::compute(Games(games.iter()).filter_genuine_games()),
+        stats: NS2Stats::compute(Games(games.iter()).genuine()),
         games,
     });
 
