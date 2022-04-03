@@ -33,29 +33,29 @@ struct DatedData<T> {
     data: T,
 }
 
-trait Dated<T: Ord> {
-    fn date(&self) -> T;
+trait Dated {
+    fn date(&self) -> u32;
 }
 
-impl Dated<u32> for GameStats {
+impl Dated for GameStats {
     fn date(&self) -> u32 {
         self.round_info.round_date
     }
 }
 
-impl Dated<u32> for NS2Stats {
+impl Dated for NS2Stats {
     fn date(&self) -> u32 {
         self.latest_game
     }
 }
 
-impl<T: Dated<u32>> Dated<u32> for &T {
+impl<T: Dated> Dated for &T {
     fn date(&self) -> u32 {
         (*self).date()
     }
 }
 
-impl<T: Dated<u32>> From<T> for DatedData<T> {
+impl<T: Dated> From<T> for DatedData<T> {
     fn from(data: T) -> Self {
         Self { date: data.date(), data }
     }
@@ -68,7 +68,7 @@ struct DateQuery {
 }
 
 impl DateQuery {
-    fn slice<'a, T: Dated<u32>>(&self, data: &'a [T]) -> &'a [T] {
+    fn slice<'a, T: Dated>(&self, data: &'a [T]) -> &'a [T] {
         let start = self.from.map(|date| data.partition_point(|x| x.date() < date)).unwrap_or(0);
         let end = self.to.map(|date| data.partition_point(|x| x.date() <= date)).unwrap_or(data.len());
         &data[start..end]
