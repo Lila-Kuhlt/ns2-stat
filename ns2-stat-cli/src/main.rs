@@ -2,7 +2,7 @@ use std::fs;
 
 use clap::Parser;
 use ns2_stat::types::GameStats;
-use ns2_stat::{Games, Map, NS2Stats, User};
+use ns2_stat::{Games, Map, NS2Stats};
 use rayon::prelude::*;
 
 use table::Alignment;

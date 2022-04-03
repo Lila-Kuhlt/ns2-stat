@@ -1,4 +1,4 @@
-use std::{fs, io, net::IpAddr, ops::Deref, path::PathBuf};
+use std::{fs, io, net::IpAddr, path::PathBuf};
 
 use actix_web::{
     body::EitherBody,
