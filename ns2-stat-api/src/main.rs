@@ -25,13 +25,37 @@ fn json_response<T: Serialize>(data: &T) -> HttpResponse<EitherBody<String>> {
 struct AppData {
     games: Vec<GameStats>,
     stats: NS2Stats,
-    newest: u32,
 }
 
 #[derive(Debug, Serialize)]
 struct DatedData<T> {
     date: u32,
     data: T,
+}
+
+trait Dated<T: Ord> {
+    fn date(&self) -> T;
+}
+
+impl Dated<u32> for GameStats {
+    fn date(&self) -> u32 {
+        self.round_info.round_date
+    }
+}
+
+impl Dated<u32> for &NS2Stats {
+    fn date(&self) -> u32 {
+        self.latest_game
+    }
+}
+
+impl<T> From<T> for DatedData<T>
+where
+    T: Dated<u32>,
+{
+    fn from(data: T) -> Self {
+        Self { date: data.date(), data }
+    }
 }
 
 #[derive(Debug, Deserialize)]
@@ -41,33 +65,25 @@ struct DateQuery {
 }
 
 impl DateQuery {
-    fn slice<'a, T>(&self, data: &'a [T], mut get_date: impl FnMut(&T) -> u32) -> &'a [T] {
-        let start = self.from.map(|date| data.partition_point(|x| get_date(x) < date)).unwrap_or(0);
-        let end = self.to.map(|date| data.partition_point(|x| get_date(x) <= date)).unwrap_or(data.len());
+    fn slice<'a, T: Dated<u32>>(&self, data: &'a [T]) -> &'a [T] {
+        let start = self.from.map(|date| data.partition_point(|x| x.date() < date)).unwrap_or(0);
+        let end = self.to.map(|date| data.partition_point(|x| x.date() <= date)).unwrap_or(data.len());
         &data[start..end]
     }
 }
 
 #[get("/stats")]
 async fn get_stats(data: Data<AppData>) -> impl Responder {
-    json_response(&DatedData {
-        date: data.newest,
-        data: &data.stats,
-    })
+    json_response(&DatedData::from(&data.stats))
 }
 
 #[get("/stats/continuous")]
 async fn get_continuous_stats(data: Data<AppData>, query: Query<DateQuery>) -> impl Responder {
-    let game_stats = Games(query.slice(&data.games, |game| game.round_info.round_date).iter())
-        .filter_genuine_games()
-        .collect::<Vec<_>>();
+    let game_stats = Games(query.slice(&data.games).iter()).filter_genuine_games().collect::<Vec<_>>();
     let continuous_stats = (0..game_stats.len())
-        .map(|i| {
-            let stats = NS2Stats::compute(Games(game_stats[..=i].iter().copied()));
-            DatedData {
-                date: game_stats[i].round_info.round_date,
-                data: stats,
-            }
+        .map(|i| DatedData {
+            date: game_stats[i].round_info.round_date,
+            data: NS2Stats::compute(Games(game_stats[..=i].iter().copied())),
         })
         .collect::<Vec<_>>();
     json_response(&continuous_stats)
@@ -75,8 +91,7 @@ async fn get_continuous_stats(data: Data<AppData>, query: Query<DateQuery>) -> i
 
 #[get("/games")]
 async fn get_games(data: Data<AppData>, query: Query<DateQuery>) -> impl Responder {
-    let games = query.slice(&data.games, |game| game.round_info.round_date);
-    json_response(&games)
+    json_response(&query.slice(&data.games))
 }
 
 #[actix_web::main]
@@ -91,7 +106,6 @@ async fn main() -> io::Result<()> {
     games.sort_by_key(|game| game.round_info.round_date);
 
     let data = Data::new(AppData {
-        newest: games.iter().map(|game| game.round_info.round_date).max().unwrap_or_default(),
         stats: NS2Stats::compute(Games(games.iter()).filter_genuine_games()),
         games,
     });

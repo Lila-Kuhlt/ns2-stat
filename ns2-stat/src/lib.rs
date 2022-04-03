@@ -65,6 +65,7 @@ pub struct Map {
 
 #[derive(Serialize)]
 pub struct NS2Stats {
+    pub latest_game: u32,
     pub users: HashMap<String, User>,
     pub maps: HashMap<String, Map>,
     pub total_games: u32,
@@ -79,6 +80,7 @@ impl NS2Stats {
         let mut marine_wins = 0;
         let mut alien_wins = 0;
         let mut total_games = 0;
+        let mut latest_game = 0;
 
         for game in games {
             for player_stat in game.player_stats.values() {
@@ -111,6 +113,9 @@ impl NS2Stats {
                 WinningTeam::None => {}
             }
 
+            if latest_game < game.round_info.round_date {
+                latest_game = game.round_info.round_date;
+            }
             total_games += 1;
         }
 
@@ -120,6 +125,7 @@ impl NS2Stats {
         }
 
         Self {
+            latest_game,
             users,
             maps,
             total_games,
