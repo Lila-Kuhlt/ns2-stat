@@ -39,9 +39,16 @@ fn print_stats(stats: NS2Stats) {
     let mut users = stats
         .users
         .into_iter()
-        .filter_map(|(name, User { kills, assists, deaths, kd, kda })| {
-            if kills > 50 || deaths > 50 {
-                Some(UserRow { name, kills, assists, deaths, kd, kda })
+        .filter_map(|(name, user)| {
+            if user.kills > 50 || user.deaths > 50 {
+                Some(UserRow {
+                    name,
+                    kills: user.kills,
+                    assists: user.assists,
+                    deaths: user.deaths,
+                    kd: user.kd,
+                    kda: user.kda,
+                })
             } else {
                 None
             }
@@ -124,7 +131,7 @@ fn main() {
         eprintln!("Error: {}", err);
         std::process::exit(1);
     });
-    let stats = NS2Stats::compute(Games(game_stats.iter()).filter_genuine_games());
+    let stats = NS2Stats::compute(Games(game_stats.iter()).genuine());
     if let Some(players) = args.teams {
         teams::suggest_teams(stats, &players);
     } else {
