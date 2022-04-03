@@ -49,10 +49,7 @@ impl Dated<u32> for &NS2Stats {
     }
 }
 
-impl<T> From<T> for DatedData<T>
-where
-    T: Dated<u32>,
-{
+impl<T: Dated<u32>> From<T> for DatedData<T> {
     fn from(data: T) -> Self {
         Self { date: data.date(), data }
     }
