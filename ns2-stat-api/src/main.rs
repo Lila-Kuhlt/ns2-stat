@@ -1,4 +1,4 @@
-use std::{fs, io, net::IpAddr, path::PathBuf};
+use std::{fs, io, net::IpAddr, ops::Deref, path::PathBuf};
 
 use actix_web::{
     body::EitherBody,
@@ -43,9 +43,15 @@ impl Dated<u32> for GameStats {
     }
 }
 
-impl Dated<u32> for &NS2Stats {
+impl Dated<u32> for NS2Stats {
     fn date(&self) -> u32 {
         self.latest_game
+    }
+}
+
+impl<T: Dated<u32>> Dated<u32> for &T {
+    fn date(&self) -> u32 {
+        self.deref().date()
     }
 }
 
