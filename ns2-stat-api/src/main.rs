@@ -51,7 +51,7 @@ impl Dated<u32> for NS2Stats {
 
 impl<T: Dated<u32>> Dated<u32> for &T {
     fn date(&self) -> u32 {
-        self.deref().date()
+        (*self).date()
     }
 }
 
