@@ -2,7 +2,7 @@ use std::fs;
 
 use clap::Parser;
 use ns2_stat::types::GameStats;
-use ns2_stat::{Games, Map, NS2Stats, User};
+use ns2_stat::{Games, Map, NS2Stats};
 use rayon::prelude::*;
 
 use table::Alignment;
@@ -39,9 +39,16 @@ fn print_stats(stats: NS2Stats) {
     let mut users = stats
         .users
         .into_iter()
-        .filter_map(|(name, User { kills, assists, deaths, kd, kda })| {
-            if kills > 50 || deaths > 50 {
-                Some(UserRow { name, kills, assists, deaths, kd, kda })
+        .filter_map(|(name, user)| {
+            if user.kills > 50 || user.deaths > 50 {
+                Some(UserRow {
+                    name,
+                    kills: user.kills,
+                    assists: user.assists,
+                    deaths: user.deaths,
+                    kd: user.kd,
+                    kda: user.kda,
+                })
             } else {
                 None
             }
@@ -50,9 +57,23 @@ fn print_stats(stats: NS2Stats) {
     users.sort_by_key(|user| -(user.kd * 100f32) as i32);
     table::print_table(
         ["NAME", "KILLS", "ASSISTS", "DEATHS", "KD", "KDA"],
-        [Alignment::Left, Alignment::Right, Alignment::Right, Alignment::Right, Alignment::Right, Alignment::Right],
+        [
+            Alignment::Left,
+            Alignment::Right,
+            Alignment::Right,
+            Alignment::Right,
+            Alignment::Right,
+            Alignment::Right,
+        ],
         &users,
-        |UserRow { name, kills, assists, deaths, kd, kda }| row!["{name}", "{kills}", "{assists}", "{deaths}", "{kd:.2}", "{kda:.2}"],
+        |UserRow {
+             name,
+             kills,
+             assists,
+             deaths,
+             kd,
+             kda,
+         }| row!["{name}", "{kills}", "{assists}", "{deaths}", "{kd:.2}", "{kda:.2}"],
     );
 
     println!("\n\n");
@@ -110,7 +131,7 @@ fn main() {
         eprintln!("Error: {}", err);
         std::process::exit(1);
     });
-    let stats = NS2Stats::compute(Games(game_stats.iter()).filter_genuine_games());
+    let stats = NS2Stats::compute(Games(game_stats.iter()).genuine());
     if let Some(players) = args.teams {
         teams::suggest_teams(stats, &players);
     } else {
@@ -126,5 +147,4 @@ mod tests {
     fn test_data_parsable() {
         load_data("../test_data").unwrap();
     }
-
 }

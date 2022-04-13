@@ -20,12 +20,12 @@ impl<'a, I: Iterator<Item = &'a GameStats>> Iterator for Games<'a, I> {
 impl<'a, I: Iterator<Item = &'a GameStats>> Games<'a, I> {
     /// Filter the genuine games. This is done by ignoring games that took under 5 minutes
     /// and games that were likely bot games.
-    pub fn filter_genuine_games(self) -> Games<'a, impl Iterator<Item = &'a GameStats>> {
-        self.filter_on_length(|length| length >= 300.0).filter_bot_games()
+    pub fn genuine(self) -> Games<'a, impl Iterator<Item = &'a GameStats>> {
+        self.filter_by_length(|length| length >= 300.0).filter_bot_games()
     }
 
     /// Filter games with a predicate that takes the length of each game.
-    pub fn filter_on_length(self, f: impl Fn(f32) -> bool) -> Games<'a, impl Iterator<Item = &'a GameStats>> {
+    pub fn filter_by_length(self, f: impl Fn(f32) -> bool) -> Games<'a, impl Iterator<Item = &'a GameStats>> {
         Games(self.filter(move |game| f(game.round_info.round_length)))
     }
 
@@ -65,6 +65,7 @@ pub struct Map {
 
 #[derive(Serialize)]
 pub struct NS2Stats {
+    pub latest_game: u32,
     pub users: HashMap<String, User>,
     pub maps: HashMap<String, Map>,
     pub total_games: u32,
@@ -79,6 +80,7 @@ impl NS2Stats {
         let mut marine_wins = 0;
         let mut alien_wins = 0;
         let mut total_games = 0;
+        let mut latest_game = 0;
 
         for game in games {
             for player_stat in game.player_stats.values() {
@@ -111,6 +113,9 @@ impl NS2Stats {
                 WinningTeam::None => {}
             }
 
+            if game.round_info.round_date > latest_game {
+                latest_game = game.round_info.round_date;
+            }
             total_games += 1;
         }
 
@@ -120,6 +125,7 @@ impl NS2Stats {
         }
 
         Self {
+            latest_game,
             users,
             maps,
             total_games,
