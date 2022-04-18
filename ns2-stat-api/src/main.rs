@@ -10,7 +10,7 @@ use actix_web::{
     App, HttpResponse, HttpServer, Responder,
 };
 use clap::Parser;
-use ns2_stat::{types::GameStats, Games, NS2Stats};
+use ns2_stat::{input_types::GameStats, Games, NS2Stats};
 use serde::{Deserialize, Serialize};
 
 fn json_response<T: Serialize>(data: &T) -> HttpResponse<EitherBody<String>> {

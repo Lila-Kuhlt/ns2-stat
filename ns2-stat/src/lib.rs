@@ -2,9 +2,9 @@ use std::collections::HashMap;
 
 use serde::Serialize;
 
-use types::{GameStats, WinningTeam};
+use input_types::{GameStats, WinningTeam};
 
-pub mod types;
+pub mod input_types;
 
 /// A wrapper around an `Iterator<Item = &GameStats>`.
 pub struct Games<'a, I: Iterator<Item = &'a GameStats>>(pub I);

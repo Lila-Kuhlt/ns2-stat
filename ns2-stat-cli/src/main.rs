@@ -2,7 +2,7 @@ use std::fs;
 use std::path::PathBuf;
 
 use clap::Parser;
-use ns2_stat::types::GameStats;
+use ns2_stat::input_types::GameStats;
 use ns2_stat::{Games, Map, NS2Stats};
 use rayon::prelude::*;
 
