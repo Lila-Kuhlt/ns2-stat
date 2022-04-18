@@ -1,4 +1,5 @@
 use std::fs;
+use std::path::PathBuf;
 
 use clap::Parser;
 use ns2_stat::types::GameStats;
@@ -14,7 +15,7 @@ mod teams;
 struct CliArgs {
     /// The path for the game data.
     #[clap(default_value = "test_data")]
-    data: String,
+    data_path: PathBuf,
     /// Show team suggestions.
     #[clap(long, multiple_values = true)]
     teams: Option<Vec<String>>,
@@ -127,7 +128,7 @@ fn load_data<P: AsRef<std::path::Path>>(data: P) -> Result<Vec<GameStats>, Strin
 fn main() {
     let args = CliArgs::parse();
 
-    let game_stats = load_data(args.data).unwrap_or_else(|err| {
+    let game_stats = load_data(args.data_path).unwrap_or_else(|err| {
         eprintln!("Error: {}", err);
         std::process::exit(1);
     });

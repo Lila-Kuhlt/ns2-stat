@@ -1,4 +1,5 @@
-use std::{fs, io, net::IpAddr, path::PathBuf};
+use std::{fs, io, path::PathBuf};
+use std::net::{IpAddr, SocketAddr};
 
 use actix_web::{
     body::EitherBody,
@@ -100,7 +101,7 @@ async fn get_games(data: Data<AppData>, query: Query<DateQuery>) -> impl Respond
 #[actix_web::main]
 async fn main() -> io::Result<()> {
     let args = CliArgs::parse();
-    let mut games = fs::read_dir(args.data)?
+    let mut games = fs::read_dir(args.data_path)?
         .map(|e| e.map(|e| e.path()))
         .map(|p| p.and_then(fs::read_to_string))
         .map(|s| s.and_then(|o| serde_json::from_str::<GameStats>(&o).map_err(|e| io::Error::new(io::ErrorKind::Other, e))))
@@ -113,6 +114,8 @@ async fn main() -> io::Result<()> {
         games,
     });
 
+    let addr = SocketAddr::new(args.address, args.port);
+    println!("starting server at {}...", addr);
     HttpServer::new(move || {
         App::new()
             .app_data(data.clone())
@@ -120,14 +123,15 @@ async fn main() -> io::Result<()> {
             .service(get_continuous_stats)
             .service(get_games)
     })
-    .bind((args.address, args.port))?
+    .bind(addr)?
     .run()
     .await
 }
 
 #[derive(Debug, Parser)]
 struct CliArgs {
-    data: PathBuf,
+    /// The path for the game data.
+    data_path: PathBuf,
     #[clap(long, default_value = "127.0.0.1")]
     address: IpAddr,
     #[clap(long, short, default_value = "8080")]

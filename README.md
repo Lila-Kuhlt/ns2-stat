@@ -1,11 +1,4 @@
 # Natural Selection 2 Stat reader
 
-## Usage
-Use `cargo run` to run the program. It currently reads all `test_data/*.json` files and prints statistics about these games.
-
-## Generating Types from json
-Using [quicktype](https://github.com/quicktype/quicktype) we can generate our structs using:
-```shell
-quicktype -o types.rs types --density dense --derive-debug -t GameStats --visibility public *.json
-```
-
+Rust crates for analyzing Natural Selection 2 game data. To install Rust, see https://www.rust-lang.org/tools/install.
+For more information on a specific crate, see the respective readme.
