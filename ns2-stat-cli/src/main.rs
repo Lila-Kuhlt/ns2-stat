@@ -40,7 +40,7 @@ fn print_stats(stats: NS2Stats) {
         .users
         .into_iter()
         .filter_map(|(name, user)| {
-            if user.kills > 50 || user.deaths > 50 {
+            if user.total_games > 2 {
                 Some(UserRow {
                     name,
                     kills: user.kills,

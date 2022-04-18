@@ -49,6 +49,7 @@ impl<'a, I: Iterator<Item = &'a GameStats>> Games<'a, I> {
 
 #[derive(Default, Serialize)]
 pub struct User {
+    pub total_games: u32,
     pub kills: u32,
     pub assists: u32,
     pub deaths: u32,
@@ -88,6 +89,7 @@ impl NS2Stats {
                     Some(user) => user,
                     None => users.entry(player_stat.player_name.clone()).or_insert_with(User::default),
                 };
+                user.total_games += 1;
 
                 for stats in [&player_stat.marines, &player_stat.aliens] {
                     user.kills += stats.kills;
