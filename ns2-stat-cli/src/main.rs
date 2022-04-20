@@ -8,6 +8,7 @@ use rayon::prelude::*;
 
 use table::Alignment;
 
+mod helpers;
 mod table;
 mod teams;
 
@@ -16,9 +17,14 @@ struct CliArgs {
     /// The path for the game data.
     #[clap(default_value = "test_data")]
     data_path: PathBuf,
+
     /// Show team suggestions.
     #[clap(long, multiple_values = true)]
     teams: Option<Vec<String>>,
+    #[clap(long, requires = "teams")]
+    marine_com: Option<String>,
+    #[clap(long, requires = "teams")]
+    alien_com: Option<String>,
 }
 
 struct UserRow {
@@ -132,11 +138,11 @@ fn main() {
         eprintln!("Error: {}", err);
         std::process::exit(1);
     });
-    let stats = NS2Stats::compute(Games(game_stats.iter()).genuine());
+    let games = Games(game_stats.iter()).genuine();
     if let Some(players) = args.teams {
-        teams::suggest_teams(stats, &players);
+        teams::suggest_teams(games, &players, args.marine_com, args.alien_com);
     } else {
-        print_stats(stats);
+        print_stats(NS2Stats::compute(games));
     }
 }
 
