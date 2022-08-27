@@ -132,9 +132,6 @@ impl Merge for NS2Stats {
     }
 }
 
-// While this method is slower than thre previous, it is more convinient.
-// Also this enables iterative building the stats eg. while the server is already
-// started, without parsing game again.
 impl FromIterator<NS2Stats> for Option<NS2Stats> {
     fn from_iter<T: IntoIterator<Item = NS2Stats>>(iter: T) -> Self {
         iter.into_iter().reduce(|mut acc, item| {
