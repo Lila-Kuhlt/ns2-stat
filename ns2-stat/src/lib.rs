@@ -6,6 +6,10 @@ use input_types::{GameStats, WinningTeam};
 
 pub mod input_types;
 
+pub trait Merge {
+    fn merge(&mut self, other: Self);
+}
+
 /// A wrapper around an `Iterator<Item = &GameStats>`.
 pub struct Games<'a, I: Iterator<Item = &'a GameStats>>(pub I);
 
@@ -64,7 +68,7 @@ pub struct Map {
     pub alien_wins: u32,
 }
 
-#[derive(Serialize)]
+#[derive(Serialize, Default)]
 pub struct NS2Stats {
     pub latest_game: u32,
     pub users: HashMap<String, User>,
@@ -74,65 +78,133 @@ pub struct NS2Stats {
     pub alien_wins: u32,
 }
 
-impl NS2Stats {
-    pub fn compute<'a, I: Iterator<Item = &'a GameStats>>(games: Games<'a, I>) -> Self {
-        let mut users = HashMap::new();
-        let mut maps = HashMap::new();
-        let mut marine_wins = 0;
-        let mut alien_wins = 0;
-        let mut total_games = 0;
-        let mut latest_game = 0;
+impl Merge for User {
+    fn merge(&mut self, other: Self) {
+        self.total_games += other.total_games;
+        self.kills += other.kills;
+        self.assists += other.assists;
+        self.deaths += other.assists;
+        self.kd = self.kills as f32 / self.deaths as f32;
+        self.kda = (self.kills + self.assists) as f32 / self.deaths as f32;
+    }
+}
 
-        for game in games {
-            for player_stat in game.player_stats.values() {
-                let user = match users.get_mut(&player_stat.player_name) {
-                    Some(user) => user,
-                    None => users.entry(player_stat.player_name.clone()).or_insert_with(User::default),
-                };
-                user.total_games += 1;
+impl Merge for Map {
+    fn merge(&mut self, other: Self) {
+        self.total_games += other.total_games;
+        self.marine_wins += other.marine_wins;
+        self.alien_wins += other.alien_wins;
+    }
+}
 
-                for stats in [&player_stat.marines, &player_stat.aliens] {
-                    user.kills += stats.kills;
-                    user.assists += stats.assists;
-                    user.deaths += stats.deaths;
-                }
-            }
+impl Merge for NS2Stats {
+    fn merge(&mut self, other: Self) {
+        self.total_games += other.total_games;
+        self.marine_wins += other.marine_wins;
+        self.alien_wins += other.marine_wins;
 
-            let map_entry = match maps.get_mut(&game.round_info.map_name) {
-                Some(map) => map,
-                None => maps.entry(game.round_info.map_name.clone()).or_insert_with(Map::default),
-            };
-            map_entry.total_games += 1;
-            match game.round_info.winning_team {
-                WinningTeam::Marines => {
-                    map_entry.marine_wins += 1;
-                    marine_wins += 1;
-                }
-                WinningTeam::Aliens => {
-                    map_entry.alien_wins += 1;
-                    alien_wins += 1;
-                }
-                WinningTeam::None => {}
-            }
-
-            if game.round_info.round_date > latest_game {
-                latest_game = game.round_info.round_date;
-            }
-            total_games += 1;
+        if self.latest_game < other.latest_game {
+            self.latest_game = other.latest_game
         }
 
-        for user in users.values_mut() {
-            user.kd = user.kills as f32 / user.deaths as f32;
-            user.kda = (user.kills + user.assists) as f32 / user.deaths as f32;
+        // There should be a better way for this
+        for (key, value) in other.users {
+            match self.users.get_mut(&key) {
+                Some(t) => {
+                    t.merge(value);
+                }
+                None => {
+                    self.users.insert(key, value);
+                }
+            }
         }
 
-        Self {
-            latest_game,
+        for (key, value) in other.maps {
+            match self.maps.get_mut(&key) {
+                Some(t) => {
+                    t.merge(value);
+                }
+                None => {
+                    self.maps.insert(key, value);
+                }
+            }
+        }
+    }
+}
+
+// While this method is slower than thre previous, it is more convinient.
+// Also this enables iterative building the stats eg. while the server is already
+// started, without parsing game again.
+impl FromIterator<NS2Stats> for Option<NS2Stats> {
+    fn from_iter<T: IntoIterator<Item = NS2Stats>>(iter: T) -> Self {
+        iter.into_iter().reduce(|mut acc, item| {
+            acc.merge(item);
+            acc
+        })
+    }
+}
+
+impl From<GameStats> for NS2Stats {
+    fn from(gs: GameStats) -> Self {
+        (&gs).into()
+    }
+}
+
+impl From<&GameStats> for NS2Stats {
+    fn from(game: &GameStats) -> Self {
+        use std::collections::hash_map::Entry;
+        let mut stats = Self::default();
+
+        let Self {
             users,
             maps,
-            total_games,
-            marine_wins,
             alien_wins,
+            latest_game,
+            marine_wins,
+            total_games,
+        } = &mut stats;
+
+        for player_stat in game.player_stats.values() {
+            let user = match users.entry(player_stat.player_name.clone()) {
+                Entry::Occupied(o) => o.into_mut(),
+                Entry::Vacant(v) => v.insert(User::default()),
+            };
+
+            user.total_games += 1;
+
+            for stats in [&player_stat.marines, &player_stat.aliens] {
+                user.kills += stats.kills;
+                user.assists += stats.assists;
+                user.deaths += stats.deaths;
+            }
         }
+
+        let map_entry = match maps.entry(game.round_info.map_name.clone()) {
+            Entry::Occupied(o) => o.into_mut(),
+            Entry::Vacant(v) => v.insert(Map::default()),
+        };
+
+        map_entry.total_games += 1;
+        match game.round_info.winning_team {
+            WinningTeam::Marines => {
+                map_entry.marine_wins += 1;
+                *marine_wins += 1;
+            }
+            WinningTeam::Aliens => {
+                map_entry.alien_wins += 1;
+                *alien_wins += 1;
+            }
+            WinningTeam::None => {}
+        }
+
+        *latest_game = game.round_info.round_date;
+        *total_games += 1;
+        stats
+    }
+}
+
+impl NS2Stats {
+    pub fn compute<'a, I: Iterator<Item = &'a GameStats>>(games: Games<'a, I>) -> Option<Self> {
+        games.map(NS2Stats::from).collect()
     }
 }

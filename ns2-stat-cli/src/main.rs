@@ -142,7 +142,7 @@ fn main() {
     if let Some(players) = args.teams {
         teams::suggest_teams(games, &players, args.marine_com, args.alien_com);
     } else {
-        print_stats(NS2Stats::compute(games));
+        print_stats(NS2Stats::compute(games).expect("No stats found"));
     }
 }
 

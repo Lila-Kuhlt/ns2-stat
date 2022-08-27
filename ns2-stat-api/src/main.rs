@@ -1,6 +1,9 @@
-use std::{fs, io, path::PathBuf};
 use std::net::{IpAddr, SocketAddr};
+use std::sync::RwLock;
+use std::{fs, io, path::PathBuf};
 
+use actix_web::post;
+use actix_web::web::Json;
 use actix_web::{
     body::EitherBody,
     error::JsonPayloadError,
@@ -9,8 +12,9 @@ use actix_web::{
     web::{Data, Query},
     App, HttpResponse, HttpServer, Responder,
 };
+
 use clap::Parser;
-use ns2_stat::{input_types::GameStats, Games, NS2Stats};
+use ns2_stat::{input_types::GameStats, Games, Merge, NS2Stats};
 use serde::{Deserialize, Serialize};
 
 fn json_response<T: Serialize>(data: &T) -> HttpResponse<EitherBody<String>> {
@@ -22,10 +26,10 @@ fn json_response<T: Serialize>(data: &T) -> HttpResponse<EitherBody<String>> {
         Err(err) => HttpResponse::from_error(JsonPayloadError::Serialize(err)).map_into_right_body(),
     }
 }
-
 struct AppData {
     games: Vec<GameStats>,
     stats: NS2Stats,
+    cli_args: CliArgs,
 }
 
 #[derive(Debug, Serialize)]
@@ -77,12 +81,14 @@ impl DateQuery {
 }
 
 #[get("/stats")]
-async fn get_stats(data: Data<AppData>) -> impl Responder {
+async fn get_stats(data: Data<RwLock<AppData>>) -> impl Responder {
+    let data = data.read().unwrap();
     json_response(&DatedData::from(&data.stats))
 }
 
 #[get("/stats/continuous")]
-async fn get_continuous_stats(data: Data<AppData>, query: Query<DateQuery>) -> impl Responder {
+async fn get_continuous_stats(data: Data<RwLock<AppData>>, query: Query<DateQuery>) -> impl Responder {
+    let data = data.read().unwrap();
     let game_stats = Games(query.slice(&data.games).iter()).genuine().collect::<Vec<_>>();
     let continuous_stats = (0..game_stats.len())
         .map(|i| DatedData {
@@ -94,14 +100,42 @@ async fn get_continuous_stats(data: Data<AppData>, query: Query<DateQuery>) -> i
 }
 
 #[get("/games")]
-async fn get_games(data: Data<AppData>, query: Query<DateQuery>) -> impl Responder {
+async fn get_games(data: Data<RwLock<AppData>>, query: Query<DateQuery>) -> impl Responder {
+    let data = data.read().unwrap();
     json_response(&query.slice(&data.games))
+}
+
+#[post("/post/game")]
+async fn post_game(data: Data<RwLock<AppData>>, game: Json<GameStats>) -> impl Responder {
+    let res = {
+        let mut data = data.write().unwrap(); // Needs better error handling -- esp. with if the RwLock is poisoned
+        let game = game.into_inner();
+        let stats = NS2Stats::from(&game);
+        let res = json_response(&stats);
+
+        data.stats.merge(stats);
+        data.games.push(game);
+        res
+    };
+
+    let data = data.read().unwrap();
+    if !data.cli_args.no_copy {
+        let game = data.games.last().unwrap();
+        let path = data.cli_args.data_path.join(&format!("{}.json", game.date()));
+        if path.exists() {
+            println!("Tried to write {path:?}, but file already exists -- skipping.");
+            return res;
+        }
+        fs::write(path, serde_json::to_string_pretty(&game).unwrap()).unwrap();
+    }
+
+    res
 }
 
 #[actix_web::main]
 async fn main() -> io::Result<()> {
-    let args = CliArgs::parse();
-    let mut games = fs::read_dir(args.data_path)?
+    let cli_args = CliArgs::parse();
+    let mut games = fs::read_dir(&cli_args.data_path)?
         .map(|e| e.map(|e| e.path()))
         .map(|p| p.and_then(fs::read_to_string))
         .map(|s| s.and_then(|o| serde_json::from_str::<GameStats>(&o).map_err(|e| io::Error::new(io::ErrorKind::Other, e))))
@@ -109,16 +143,18 @@ async fn main() -> io::Result<()> {
 
     games.sort_by_key(|game| game.round_info.round_date);
 
-    let data = Data::new(AppData {
-        stats: NS2Stats::compute(Games(games.iter()).genuine()),
+    let addr = SocketAddr::new(cli_args.address, cli_args.port);
+    let data = Data::new(RwLock::new(AppData {
+        cli_args,
+        stats: NS2Stats::compute(Games(games.iter()).genuine()).expect("No stats found"),
         games,
-    });
+    }));
 
-    let addr = SocketAddr::new(args.address, args.port);
     println!("starting server at {}...", addr);
     HttpServer::new(move || {
         App::new()
             .app_data(data.clone())
+            .service(post_game)
             .service(get_stats)
             .service(get_continuous_stats)
             .service(get_games)
@@ -132,8 +168,14 @@ async fn main() -> io::Result<()> {
 struct CliArgs {
     /// The path for the game data.
     data_path: PathBuf,
+
     #[clap(long, default_value = "127.0.0.1")]
     address: IpAddr,
+
     #[clap(long, short, default_value = "8080")]
     port: u16,
+
+    /// Wether the Webserver should copy new games (e.g. via /post/game) to `data_path`
+    #[clap(long, short)]
+    no_copy: bool,
 }
