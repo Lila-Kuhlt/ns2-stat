@@ -83,7 +83,7 @@ impl Merge for User {
         self.total_games += other.total_games;
         self.kills += other.kills;
         self.assists += other.assists;
-        self.deaths += other.assists;
+        self.deaths += other.deaths;
         self.kd = self.kills as f32 / self.deaths as f32;
         self.kda = (self.kills + self.assists) as f32 / self.deaths as f32;
     }
