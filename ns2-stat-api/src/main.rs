@@ -120,7 +120,7 @@ async fn post_game(data: Data<RwLock<AppData>>, game: Json<GameStats>) -> impl R
 
     let data = data.read().unwrap();
     if !data.cli_args.no_copy {
-        let game = data.games.last().unwrap();
+        let game = data.games.last().unwrap(); // we just pushed a game
         let path = data.cli_args.data_path.join(&format!("{}.json", game.date()));
         if path.exists() {
             log::warn!("Tried to write {path:?}, but file already exists -- skipping.");
