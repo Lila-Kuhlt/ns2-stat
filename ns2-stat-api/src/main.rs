@@ -123,10 +123,11 @@ async fn post_game(data: Data<RwLock<AppData>>, game: Json<GameStats>) -> impl R
         let game = data.games.last().unwrap();
         let path = data.cli_args.data_path.join(&format!("{}.json", game.date()));
         if path.exists() {
-            println!("Tried to write {path:?}, but file already exists -- skipping.");
+            log::warn!("Tried to write {path:?}, but file already exists -- skipping.");
             return res;
         }
-        fs::write(path, serde_json::to_string_pretty(&game).unwrap()).unwrap();
+        fs::write(&path, serde_json::to_string_pretty(&game).unwrap()).unwrap();
+        log::trace!("Writing {path:?}");
     }
 
     res
@@ -135,6 +136,8 @@ async fn post_game(data: Data<RwLock<AppData>>, game: Json<GameStats>) -> impl R
 #[actix_web::main]
 async fn main() -> io::Result<()> {
     let cli_args = CliArgs::parse();
+    init_logger(&cli_args);
+
     let mut games = fs::read_dir(&cli_args.data_path)?
         .map(|e| e.map(|e| e.path()))
         .map(|p| p.and_then(fs::read_to_string))
@@ -150,7 +153,7 @@ async fn main() -> io::Result<()> {
         games,
     }));
 
-    println!("starting server at {}...", addr);
+    log::info!("starting server at {}...", addr);
     HttpServer::new(move || {
         App::new()
             .app_data(data.clone())
@@ -178,4 +181,24 @@ struct CliArgs {
     /// Wether the Webserver should copy new games (e.g. via /post/game) to `data_path`
     #[clap(long, short)]
     no_copy: bool,
+}
+
+fn init_logger(_args: &CliArgs) {
+    use fern::colors::{Color, ColoredLevelConfig};
+    let colors = ColoredLevelConfig::new().debug(Color::Magenta).info(Color::Green).error(Color::Red);
+
+    fern::Dispatch::new()
+        .chain(std::io::stdout())
+        .level_for("ns2_stat_api", log::LevelFilter::Trace)
+        .level(log::LevelFilter::Warn)
+        .format(move |out, message, record| {
+            out.finish(format_args!(
+                "[{}] {}",
+                // This will color the log level only, not the whole line. Just a touch.
+                colors.color(record.level()),
+                message
+            ))
+        })
+        .apply()
+        .unwrap();
 }

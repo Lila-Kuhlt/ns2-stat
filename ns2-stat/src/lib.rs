@@ -107,27 +107,12 @@ impl Merge for NS2Stats {
             self.latest_game = other.latest_game
         }
 
-        // There should be a better way for this
         for (key, value) in other.users {
-            match self.users.get_mut(&key) {
-                Some(t) => {
-                    t.merge(value);
-                }
-                None => {
-                    self.users.insert(key, value);
-                }
-            }
+            self.users.entry(key).or_default().merge(value);
         }
 
         for (key, value) in other.maps {
-            match self.maps.get_mut(&key) {
-                Some(t) => {
-                    t.merge(value);
-                }
-                None => {
-                    self.maps.insert(key, value);
-                }
-            }
+            self.maps.entry(key).or_default().merge(value);
         }
     }
 }
@@ -142,14 +127,13 @@ impl FromIterator<NS2Stats> for Option<NS2Stats> {
 }
 
 impl From<GameStats> for NS2Stats {
-    fn from(gs: GameStats) -> Self {
-        (&gs).into()
+    fn from(game: GameStats) -> Self {
+        (&game).into()
     }
 }
 
 impl From<&GameStats> for NS2Stats {
     fn from(game: &GameStats) -> Self {
-        use std::collections::hash_map::Entry;
         let mut stats = Self::default();
 
         let Self {
@@ -162,11 +146,7 @@ impl From<&GameStats> for NS2Stats {
         } = &mut stats;
 
         for player_stat in game.player_stats.values() {
-            let user = match users.entry(player_stat.player_name.clone()) {
-                Entry::Occupied(o) => o.into_mut(),
-                Entry::Vacant(v) => v.insert(User::default()),
-            };
-
+            let user = users.entry(player_stat.player_name.clone()).or_default();
             user.total_games += 1;
 
             for stats in [&player_stat.marines, &player_stat.aliens] {
@@ -176,10 +156,7 @@ impl From<&GameStats> for NS2Stats {
             }
         }
 
-        let map_entry = match maps.entry(game.round_info.map_name.clone()) {
-            Entry::Occupied(o) => o.into_mut(),
-            Entry::Vacant(v) => v.insert(Map::default()),
-        };
+        let map_entry = maps.entry(game.round_info.map_name.clone()).or_default();
 
         map_entry.total_games += 1;
         match game.round_info.winning_team {
