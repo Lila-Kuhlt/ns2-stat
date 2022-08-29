@@ -101,7 +101,7 @@ impl Merge for NS2Stats {
     fn merge(&mut self, other: Self) {
         self.total_games += other.total_games;
         self.marine_wins += other.marine_wins;
-        self.alien_wins += other.marine_wins;
+        self.alien_wins += other.alien_wins;
 
         if self.latest_game < other.latest_game {
             self.latest_game = other.latest_game

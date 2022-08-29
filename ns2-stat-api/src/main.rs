@@ -181,11 +181,17 @@ struct CliArgs {
     /// Wether the Webserver should copy new games (e.g. via /post/game) to `data_path`
     #[clap(long, short)]
     no_copy: bool,
+
+    #[clap(long)]
+    no_color: bool,
 }
 
-fn init_logger(_args: &CliArgs) {
+fn init_logger(args: &CliArgs) {
     use fern::colors::{Color, ColoredLevelConfig};
-    let colors = ColoredLevelConfig::new().debug(Color::Magenta).info(Color::Green).error(Color::Red);
+    let colors = match args.no_color {
+        false => ColoredLevelConfig::new().debug(Color::Magenta).info(Color::Green).error(Color::Red),
+        true => ColoredLevelConfig::default(),
+    };
 
     fern::Dispatch::new()
         .chain(std::io::stdout())
