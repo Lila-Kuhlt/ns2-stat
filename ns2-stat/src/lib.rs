@@ -117,12 +117,44 @@ impl Merge for NS2Stats {
     }
 }
 
-impl FromIterator<NS2Stats> for Option<NS2Stats> {
-    fn from_iter<T: IntoIterator<Item = NS2Stats>>(iter: T) -> Self {
-        iter.into_iter().reduce(|mut acc, item| {
+impl<T> Merge for Option<T>
+where
+    T: Merge,
+{
+    fn merge(&mut self, other: Self) {
+        match (self, other) {
+            // (Some, Some)
+            (Some(v), Some(other)) => v.merge(other),
+
+            // (None, Some)
+            (s, Some(other)) => *s = Some(other),
+
+            // (None, None) or (Some, None)
+            _ => (),
+        }
+    }
+}
+
+pub struct Merged<T: Merge>(Option<T>);
+
+impl<T> Merged<T>
+where
+    T: Merge,
+{
+    fn into_inner(self) -> Option<T> {
+        self.0
+    }
+}
+
+impl<S> FromIterator<S> for Merged<S>
+where
+    S: Merge,
+{
+    fn from_iter<T: IntoIterator<Item = S>>(iter: T) -> Self {
+        Merged(iter.into_iter().reduce(|mut acc, item| {
             acc.merge(item);
             acc
-        })
+        }))
     }
 }
 
@@ -179,6 +211,6 @@ impl From<&GameStats> for NS2Stats {
 
 impl NS2Stats {
     pub fn compute<'a, I: Iterator<Item = &'a GameStats>>(games: Games<'a, I>) -> Option<Self> {
-        games.map(NS2Stats::from).collect()
+        games.map(NS2Stats::from).collect::<Merged<NS2Stats>>().into_inner()
     }
 }

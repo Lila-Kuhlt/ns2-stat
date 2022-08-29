@@ -153,7 +153,7 @@ async fn main() -> io::Result<()> {
         games,
     }));
 
-    log::info!("starting server at {}...", addr);
+    log::info!("starting server at http://{}", addr);
     HttpServer::new(move || {
         App::new()
             .app_data(data.clone())
