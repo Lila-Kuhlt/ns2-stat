@@ -178,7 +178,7 @@ struct CliArgs {
     #[clap(long, short, default_value = "8080")]
     port: u16,
 
-    /// Wether the Webserver should copy new games (e.g. via /post/game) to `data_path`
+    /// Don't copy new games (e.g. via /post/game) to `data_path`.
     #[clap(long, short)]
     no_copy: bool,
 
