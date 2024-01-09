@@ -4,7 +4,7 @@ use serde::de::Visitor;
 use serde::{Deserialize, Serialize};
 use serde_repr::{Deserialize_repr, Serialize_repr};
 
-pub type SteamId = u32;
+pub type SteamId = i64;
 pub type Location = usize;
 
 #[derive(Debug, Serialize, Deserialize, Clone)]
@@ -151,7 +151,7 @@ pub struct PlayerTeamStats {
     pub score: u32,
     /// Time that the player has spent building during the round (in seconds).
     pub time_building: f32,
-    /// Number if attacks that hit (including Onos hits).
+    /// Number of attacks that hit (including Onos hits).
     pub hits: u32,
     /// Number of attacks that hit an Onos.
     pub onos_hits: u32,
@@ -370,7 +370,7 @@ impl<'de> Deserialize<'de> for Position {
     }
 }
 
-impl<'de> Serialize for Position {
+impl Serialize for Position {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
         S: serde::Serializer,
@@ -396,7 +396,7 @@ mod tests {
     fn position_serialize() {
         assert_eq!(
             &*serde_json::to_string(&Position { x: 1.0, y: -1.0, z: 0.1 }).expect("Failed to deserialize position"),
-            "\"1 -1 0.1\"" // Serde removes trailing zeros
+            "\"1 -1 0.1\"" // serde removes trailing zeros
         )
     }
 }
