@@ -19,7 +19,7 @@ struct CliArgs {
     data_path: PathBuf,
 
     /// Show team suggestions.
-    #[clap(long, multiple_values = true)]
+    #[clap(long, num_args = 1..)]
     teams: Option<Vec<String>>,
     #[clap(long, requires = "teams")]
     marine_com: Option<String>,
