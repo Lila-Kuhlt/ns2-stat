@@ -1,5 +1,5 @@
-use std::{fs, io, path::PathBuf};
 use std::net::{IpAddr, SocketAddr};
+use std::{fs, io, path::PathBuf};
 
 use actix_web::{
     body::EitherBody,
@@ -36,6 +36,12 @@ struct DatedData<T> {
 
 trait Dated {
     fn date(&self) -> u32;
+}
+
+impl<T> Dated for DatedData<T> {
+    fn date(&self) -> u32 {
+        self.date
+    }
 }
 
 impl Dated for GameStats {

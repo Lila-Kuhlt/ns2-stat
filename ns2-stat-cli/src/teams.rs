@@ -7,15 +7,6 @@ use crate::helpers;
 
 #[allow(dead_code)]
 mod balanced_partitioning {
-    /// Computes the absolute difference of `a` and `b`.
-    fn abs_diff(a: usize, b: usize) -> usize {
-        if a < b {
-            b - a
-        } else {
-            a - b
-        }
-    }
-
     /// Suggests teams by solving the [balanced partitioning problem](https://en.wikipedia.org/wiki/Balanced_number_partitioning).
     /// The `n_suggestions` best suggestions are returned.
     pub fn balanced_partitioning<S: AsRef<str>>(players: &[S], score: impl Fn(&str) -> f32) -> impl Iterator<Item = (Vec<&str>, Vec<&str>)> {
@@ -39,7 +30,7 @@ mod balanced_partitioning {
         total_scores
             .into_iter()
             .map(|(p, _)| p)
-            .filter(|p| abs_diff(players.len(), 2 * p.count_ones() as usize) <= 1) // the player difference between two teams has to be <= 1
+            .filter(|p| usize::abs_diff(players.len(), 2 * p.count_ones() as usize) <= 1) // the player difference between two teams has to be <= 1
             .map(|p| {
                 let mut team1 = Vec::with_capacity(players.len() / 2);
                 let mut team2 = Vec::with_capacity(players.len() / 2);
