@@ -1,7 +1,7 @@
 use std::collections::HashMap;
 
 use serde::de::Visitor;
-use serde::{Deserialize, Serialize};
+use serde::{Deserialize, Deserializer, Serialize, Serializer};
 use serde_repr::{Deserialize_repr, Serialize_repr};
 
 pub type SteamId = i64;
@@ -124,7 +124,8 @@ pub struct PlayerStat {
     pub aliens: PlayerTeamStats,
     /// If the player is a rookie.
     pub is_rookie: bool,
-    pub weapons: Weapons,
+    #[serde(deserialize_with = "deserialize_weapons")]
+    pub weapons: HashMap<String, Weapon>,
     /// Breakdown of classes for the player during the round.
     pub status: Vec<Status>,
     /// Last team the player belonged to.
@@ -136,6 +137,37 @@ pub struct PlayerStat {
     pub commander_skill_offset: Option<i32>,
     pub commander_skill: Option<u32>,
     pub player_skill_offset: Option<i32>,
+}
+
+fn deserialize_weapons<'de, D>(deserializer: D) -> Result<HashMap<String, Weapon>, D::Error>
+where
+    D: Deserializer<'de>,
+{
+    struct WeaponsVisitor {}
+
+    impl<'de> Visitor<'de> for WeaponsVisitor {
+        type Value = HashMap<String, Weapon>;
+
+        fn expecting(&self, formatter: &mut std::fmt::Formatter) -> std::fmt::Result {
+            formatter.write_str("a map or an empty array")
+        }
+
+        fn visit_seq<A>(self, seq: A) -> Result<Self::Value, A::Error>
+        where
+            A: serde::de::SeqAccess<'de>,
+        {
+            <[(); 0]>::deserialize(serde::de::value::SeqAccessDeserializer::new(seq)).map(|_| HashMap::new())
+        }
+
+        fn visit_map<A>(self, map: A) -> Result<Self::Value, A::Error>
+        where
+            A: serde::de::MapAccess<'de>,
+        {
+            HashMap::deserialize(serde::de::value::MapAccessDeserializer::new(map))
+        }
+    }
+
+    deserializer.deserialize_any(WeaponsVisitor {})
 }
 
 #[derive(Debug, Serialize, Deserialize, Clone)]
@@ -271,13 +303,6 @@ pub struct Mod {
 }
 
 #[derive(Debug, Serialize, Deserialize, Clone)]
-#[serde(untagged)]
-pub enum Weapons {
-    AnythingArray(Vec<Option<serde_json::Value>>),
-    WeaponMap(HashMap<String, Weapon>),
-}
-
-#[derive(Debug, Serialize, Deserialize, Clone)]
 pub enum Event {
     Built,
     Destroyed,
@@ -338,7 +363,7 @@ pub struct Position {
 impl<'de> Deserialize<'de> for Position {
     fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
     where
-        D: serde::Deserializer<'de>,
+        D: Deserializer<'de>,
     {
         struct PositonVisitor {}
 
@@ -373,7 +398,7 @@ impl<'de> Deserialize<'de> for Position {
 impl Serialize for Position {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
-        S: serde::Serializer,
+        S: Serializer,
     {
         serializer.serialize_str(&format!("{} {} {}", self.x, self.y, self.z))
     }
