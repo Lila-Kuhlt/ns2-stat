@@ -1,4 +1,6 @@
+use std::collections::BTreeMap;
 use std::net::{IpAddr, SocketAddr};
+use std::ops::Bound;
 use std::{fs, io, path::PathBuf};
 
 use actix_web::{
@@ -24,7 +26,7 @@ fn json_response<T: Serialize>(data: &T) -> HttpResponse<EitherBody<String>> {
 }
 
 struct AppData {
-    games: Vec<GameStats>,
+    games: BTreeMap<u32, GameStats>,
     stats: NS2Stats,
 }
 
@@ -68,17 +70,24 @@ impl<T: Dated> From<T> for DatedData<T> {
     }
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Clone, Copy, Debug, Deserialize)]
 struct DateQuery {
     from: Option<u32>,
     to: Option<u32>,
 }
 
 impl DateQuery {
-    fn slice<'a, T: Dated>(&self, data: &'a [T]) -> &'a [T] {
-        let start = self.from.map(|date| data.partition_point(|x| x.date() < date)).unwrap_or(0);
-        let end = self.to.map(|date| data.partition_point(|x| x.date() <= date)).unwrap_or(data.len());
-        &data[start..end]
+    fn to_range_bounds(self) -> (Bound<u32>, Bound<u32>) {
+        (
+            match self.from {
+                Some(bound) => Bound::Included(bound),
+                None => Bound::Unbounded,
+            },
+            match self.to {
+                Some(bound) => Bound::Included(bound),
+                None => Bound::Unbounded,
+            },
+        )
     }
 }
 
@@ -89,7 +98,9 @@ async fn get_stats(data: Data<AppData>) -> impl Responder {
 
 #[get("/stats/continuous")]
 async fn get_continuous_stats(data: Data<AppData>, query: Query<DateQuery>) -> impl Responder {
-    let game_stats = Games(query.slice(&data.games).iter()).genuine().collect::<Vec<_>>();
+    let game_stats = Games(data.games.range(query.to_range_bounds()).map(|(_, game)| game))
+        .genuine()
+        .collect::<Vec<_>>();
     let continuous_stats = (0..game_stats.len())
         .map(|i| DatedData {
             date: game_stats[i].round_info.round_date,
@@ -101,22 +112,28 @@ async fn get_continuous_stats(data: Data<AppData>, query: Query<DateQuery>) -> i
 
 #[get("/games")]
 async fn get_games(data: Data<AppData>, query: Query<DateQuery>) -> impl Responder {
-    json_response(&query.slice(&data.games))
+    json_response(&data.games.range(query.to_range_bounds()).map(|(_, game)| game).collect::<Vec<_>>())
+}
+
+fn load_data<P: AsRef<Path>>(path: P) -> io::Result<BTreeMap<u32, GameStats>> {
+    fs::read_dir(path)?
+        .map(|result| {
+            result
+                .map(|entry| entry.path())
+                .and_then(fs::read_to_string)
+                .and_then(|o| serde_json::from_str::<GameStats>(&o).map_err(|e| io::Error::new(io::ErrorKind::Other, e)))
+                .map(|game| (game.round_info.round_date, game))
+        })
+        .collect::<io::Result<_>>()
 }
 
 #[actix_web::main]
 async fn main() -> io::Result<()> {
     let args = CliArgs::parse();
-    let mut games = fs::read_dir(args.data_path)?
-        .map(|e| e.map(|e| e.path()))
-        .map(|p| p.and_then(fs::read_to_string))
-        .map(|s| s.and_then(|o| serde_json::from_str::<GameStats>(&o).map_err(|e| io::Error::new(io::ErrorKind::Other, e))))
-        .collect::<io::Result<Vec<_>>>()?;
-
-    games.sort_by_key(|game| game.round_info.round_date);
+    let games = load_data(&args.data_path)?;
 
     let data = Data::new(AppData {
-        stats: NS2Stats::compute(Games(games.iter()).genuine()),
+        stats: NS2Stats::compute(Games(games.values()).genuine()),
         games,
     });
 
