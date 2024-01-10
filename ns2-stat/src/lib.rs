@@ -51,6 +51,8 @@ impl<'a, I: Iterator<Item = &'a GameStats>> Games<'a, I> {
 pub struct User {
     pub total_games: u32,
     pub commander: u32,
+    pub marines: u32,
+    pub aliens: u32,
     pub kills: u32,
     pub assists: u32,
     pub deaths: u32,
@@ -111,12 +113,20 @@ impl NS2Stats {
                     user.deaths += stats.deaths;
                 }
 
-                if player_stat.marines.commander_time > marine_comm_time {
-                    marine_comm = &player_stat.player_name;
-                    marine_comm_time = player_stat.marines.commander_time;
-                } else if player_stat.aliens.commander_time > alien_comm_time {
-                    alien_comm = &player_stat.player_name;
-                    alien_comm_time = player_stat.aliens.commander_time;
+                if player_stat.marines.time_played > player_stat.aliens.time_played {
+                    // player was in marine team
+                    user.marines += 1;
+                    if player_stat.marines.commander_time > marine_comm_time {
+                        marine_comm = &player_stat.player_name;
+                        marine_comm_time = player_stat.marines.commander_time;
+                    }
+                } else {
+                    // player was in alien team
+                    user.aliens += 1;
+                    if player_stat.aliens.commander_time > alien_comm_time {
+                        alien_comm = &player_stat.player_name;
+                        alien_comm_time = player_stat.aliens.commander_time;
+                    }
                 }
             }
             if let Some(user) = users.get_mut(marine_comm) {
