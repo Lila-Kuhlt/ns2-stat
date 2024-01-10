@@ -1,0 +1,6740 @@
+{
+  "KillFeed":[{
+      "killerWeapon":"Bite",
+      "killerSteamID":0,
+      "killerLocation":4,
+      "killerPosition":"34.229362 4.141325 73.193420",
+      "killerClass":"Skulk",
+      "killerTeamNumber":2,
+      "victimLocation":4,
+      "victimSteamID":0,
+      "victimClass":"Rifle",
+      "victimPosition":"33.671875 4.421875 74.023438",
+      "gameTime":18.5690537747
+    },{
+      "killerWeapon":"Rifle",
+      "killerSteamID":229271678,
+      "killerLocation":8,
+      "killerPosition":"84.592018 3.126128 116.699402",
+      "killerClass":"Rifle",
+      "killerTeamNumber":1,
+      "victimLocation":8,
+      "victimSteamID":0,
+      "victimClass":"Skulk",
+      "victimPosition":"82.507813 3.515625 128.593750",
+      "gameTime":54.304687118158
+    },{
+      "killerWeapon":"Rifle",
+      "killerSteamID":328040242,
+      "killerLocation":2,
+      "killerPosition":"8.532733 5.741800 115.179192",
+      "killerClass":"Rifle",
+      "killerTeamNumber":1,
+      "victimLocation":13,
+      "victimSteamID":0,
+      "victimClass":"Skulk",
+      "victimPosition":"7.856388 5.507123 113.559746",
+      "gameTime":68.64275014773
+    },{
+      "killerWeapon":"Bite",
+      "killerSteamID":0,
+      "killerLocation":2,
+      "killerPosition":"8.878319 6.318299 117.259529",
+      "killerClass":"Skulk",
+      "killerTeamNumber":2,
+      "victimLocation":2,
+      "victimSteamID":328040242,
+      "victimClass":"Rifle",
+      "victimPosition":"9.320313 6.703125 118.210938",
+      "gameTime":70.177113277838
+    },{
+      "killerWeapon":"Rifle",
+      "killerSteamID":328040242,
+      "killerLocation":2,
+      "killerPosition":"28.600943 8.354010 142.601242",
+      "killerClass":"Rifle",
+      "killerTeamNumber":1,
+      "victimLocation":2,
+      "victimSteamID":0,
+      "victimClass":"Skulk",
+      "victimPosition":"4.343750 7.867188 143.734375",
+      "gameTime":83.580481741577
+    },{
+      "killerWeapon":"Rifle",
+      "killerSteamID":97011543,
+      "killerLocation":9,
+      "killerPosition":"101.075737 2.143600 65.126785",
+      "killerClass":"Rifle",
+      "killerTeamNumber":1,
+      "victimLocation":9,
+      "victimSteamID":0,
+      "victimClass":"Skulk",
+      "victimPosition":"97.295959 3.473346 64.031708",
+      "gameTime":88.482234345749
+    },{
+      "killerWeapon":"Bite",
+      "killerSteamID":0,
+      "killerLocation":9,
+      "killerPosition":"102.753487 2.041628 66.408875",
+      "killerClass":"Skulk",
+      "killerTeamNumber":2,
+      "victimLocation":9,
+      "victimSteamID":97011543,
+      "victimClass":"Rifle",
+      "victimPosition":"103.656250 2.140625 65.726563",
+      "gameTime":89.651435481384
+    },{
+      "killerWeapon":"Rifle",
+      "killerSteamID":0,
+      "killerLocation":9,
+      "killerPosition":"87.560806 4.620165 70.414360",
+      "killerClass":"Rifle",
+      "killerTeamNumber":1,
+      "victimLocation":9,
+      "victimSteamID":0,
+      "victimClass":"Skulk",
+      "victimPosition":"100.234375 2.773438 64.953125",
+      "gameTime":90.383190475404
+    },{
+      "killerWeapon":"Rifle",
+      "killerSteamID":229271678,
+      "killerLocation":7,
+      "killerPosition":"75.918678 0.009973 40.822556",
+      "killerClass":"Rifle",
+      "killerTeamNumber":1,
+      "victimLocation":7,
+      "victimSteamID":0,
+      "victimClass":"Skulk",
+      "victimPosition":"72.122704 0.500460 33.157627",
+      "gameTime":115.72039115056
+    },{
+      "killerWeapon":"Rifle",
+      "killerSteamID":229271678,
+      "killerLocation":7,
+      "killerPosition":"75.583435 0.004966 40.139889",
+      "killerClass":"Rifle",
+      "killerTeamNumber":1,
+      "victimLocation":7,
+      "victimSteamID":0,
+      "victimClass":"Skulk",
+      "victimPosition":"72.750000 0.758523 35.461647",
+      "gameTime":116.75415211916
+    },{
+      "killerWeapon":"Rifle",
+      "killerSteamID":0,
+      "killerLocation":7,
+      "killerPosition":"70.955040 0.006560 36.550861",
+      "killerClass":"Rifle",
+      "killerTeamNumber":1,
+      "victimLocation":7,
+      "victimSteamID":0,
+      "victimClass":"Skulk",
+      "victimPosition":"71.953125 0.000000 36.859375",
+      "gameTime":126.72038984857
+    },{
+      "killerWeapon":"Bite",
+      "killerSteamID":0,
+      "killerLocation":7,
+      "killerPosition":"62.649963 1.693061 24.569262",
+      "killerClass":"Skulk",
+      "killerTeamNumber":2,
+      "victimLocation":7,
+      "victimSteamID":0,
+      "victimClass":"Rifle",
+      "victimPosition":"62.359375 -0.093750 25.632813",
+      "gameTime":136.31946893223
+    },{
+      "killerWeapon":"Rifle",
+      "killerSteamID":229271678,
+      "killerLocation":7,
+      "killerPosition":"76.891190 0.349734 31.668791",
+      "killerClass":"Rifle",
+      "killerTeamNumber":1,
+      "victimLocation":7,
+      "victimSteamID":0,
+      "victimClass":"Skulk",
+      "victimPosition":"75.934746 -0.039063 32.110294",
+      "gameTime":139.82037383504
+    },{
+      "killerWeapon":"Bite",
+      "killerSteamID":0,
+      "killerLocation":7,
+      "killerPosition":"73.860794 -0.071745 31.194313",
+      "killerClass":"Skulk",
+      "killerTeamNumber":2,
+      "victimLocation":7,
+      "victimSteamID":229271678,
+      "victimClass":"Rifle",
+      "victimPosition":"74.273438 -0.070313 30.234375",
+      "gameTime":142.98704344593
+    },{
+      "killerWeapon":"Bite",
+      "killerSteamID":0,
+      "killerLocation":7,
+      "killerPosition":"74.648605 1.374783 39.407894",
+      "killerClass":"Skulk",
+      "killerTeamNumber":2,
+      "victimLocation":7,
+      "victimSteamID":151654373,
+      "victimClass":"Rifle",
+      "victimPosition":"74.289063 1.171875 40.460938",
+      "gameTime":144.62039155327
+    },{
+      "killerWeapon":"Rifle",
+      "killerSteamID":229271678,
+      "killerLocation":8,
+      "killerPosition":"83.259132 3.126083 119.460426",
+      "killerClass":"Rifle",
+      "killerTeamNumber":1,
+      "victimLocation":8,
+      "victimSteamID":0,
+      "victimClass":"Skulk",
+      "victimPosition":"82.257813 3.578125 128.328125",
+      "gameTime":172.02095764689
+    },{
+      "killerWeapon":"Rifle",
+      "killerSteamID":229271678,
+      "killerLocation":8,
+      "killerPosition":"90.072105 3.119543 111.653603",
+      "killerClass":"Rifle",
+      "killerTeamNumber":1,
+      "victimLocation":8,
+      "victimSteamID":0,
+      "victimClass":"Skulk",
+      "victimPosition":"89.582718 3.141544 110.852943",
+      "gameTime":176.22037772276
+    },{
+      "killerWeapon":"Bite",
+      "killerSteamID":0,
+      "killerLocation":9,
+      "killerPosition":"105.857079 5.527129 75.310783",
+      "killerClass":"Skulk",
+      "killerTeamNumber":2,
+      "victimLocation":9,
+      "victimSteamID":229271678,
+      "victimClass":"Rifle",
+      "victimPosition":"106.515625 4.531250 76.976563",
+      "gameTime":186.4244078435
+    },{
+      "killerWeapon":"Rifle",
+      "killerSteamID":0,
+      "killerLocation":9,
+      "killerPosition":"112.759171 4.522750 79.102287",
+      "killerClass":"Rifle",
+      "killerTeamNumber":1,
+      "victimLocation":9,
+      "victimSteamID":0,
+      "victimClass":"Skulk",
+      "victimPosition":"112.820313 4.507813 80.171875",
+      "gameTime":188.35772891715
+    },{
+      "killerWeapon":"Bite",
+      "killerSteamID":0,
+      "killerLocation":8,
+      "killerPosition":"85.435303 4.183640 110.228683",
+      "killerClass":"Skulk",
+      "killerTeamNumber":2,
+      "victimLocation":8,
+      "victimSteamID":151654373,
+      "victimClass":"Rifle",
+      "victimPosition":"85.914063 4.476563 109.218750",
+      "gameTime":198.09202274121
+    },{
+      "killerWeapon":"Rifle",
+      "killerSteamID":229271678,
+      "killerLocation":2,
+      "killerPosition":"27.937010 7.943068 140.648773",
+      "killerClass":"Rifle",
+      "killerTeamNumber":1,
+      "victimLocation":2,
+      "victimSteamID":0,
+      "victimClass":"Skulk",
+      "victimPosition":"24.789063 9.195313 136.296875",
+      "gameTime":198.89909652062
+    },{
+      "killerWeapon":"Pistol",
+      "killerSteamID":0,
+      "killerLocation":8,
+      "killerPosition":"95.150810 3.159599 105.781059",
+      "killerClass":"Rifle",
+      "killerTeamNumber":1,
+      "victimLocation":8,
+      "victimSteamID":0,
+      "victimClass":"Skulk",
+      "victimPosition":"94.429688 3.156250 105.046875",
+      "gameTime":202.36574438401
+    },{
+      "killerWeapon":"Rifle",
+      "killerSteamID":97011543,
+      "killerLocation":3,
+      "killerPosition":"-55.350971 2.956400 34.639885",
+      "killerClass":"Rifle",
+      "killerTeamNumber":1,
+      "victimLocation":3,
+      "victimSteamID":0,
+      "victimClass":"Skulk",
+      "victimPosition":"-49.416294 3.649554 33.668526",
+      "gameTime":205.86573079787
+    },{
+      "killerWeapon":"Rifle",
+      "killerSteamID":97011543,
+      "killerLocation":5,
+      "killerPosition":"-28.757547 2.956400 18.236029",
+      "killerClass":"Rifle",
+      "killerTeamNumber":1,
+      "victimLocation":5,
+      "victimSteamID":0,
+      "victimClass":"Skulk",
+      "victimPosition":"-26.741268 3.853401 16.409008",
+      "gameTime":220.35873426311
+    },{
+      "killerWeapon":"Rifle",
+      "killerSteamID":328040242,
+      "killerLocation":5,
+      "killerPosition":"-19.056070 2.947652 11.152179",
+      "killerClass":"Rifle",
+      "killerTeamNumber":1,
+      "victimLocation":5,
+      "victimSteamID":0,
+      "victimClass":"Skulk",
+      "victimPosition":"-12.926930 3.928309 14.738051",
+      "gameTime":230.35832297057
+    },{
+      "killerWeapon":"Rifle",
+      "killerSteamID":97011543,
+      "killerLocation":5,
+      "killerPosition":"-20.092783 2.956403 11.884744",
+      "killerClass":"Rifle",
+      "killerTeamNumber":1,
+      "victimLocation":5,
+      "victimSteamID":0,
+      "victimClass":"Lerk",
+      "victimPosition":"-18.246323 2.929688 10.140625",
+      "gameTime":241.81407029834
+    },{
+      "killerWeapon":"Bite",
+      "killerSteamID":0,
+      "killerLocation":8,
+      "killerPosition":"82.179520 3.253186 113.477287",
+      "killerClass":"Skulk",
+      "killerTeamNumber":2,
+      "victimLocation":8,
+      "victimSteamID":0,
+      "victimClass":"Rifle",
+      "victimPosition":"80.929688 3.132813 113.554688",
+      "gameTime":243.44807072077
+    },{
+      "killerWeapon":"Rifle",
+      "killerSteamID":328040242,
+      "killerLocation":5,
+      "killerPosition":"-20.617435 2.534384 8.903359",
+      "killerClass":"Rifle",
+      "killerTeamNumber":1,
+      "victimLocation":5,
+      "victimSteamID":0,
+      "victimClass":"Skulk",
+      "victimPosition":"-13.417279 3.576287 14.082261",
+      "gameTime":245.61302839499
+    },{
+      "killerWeapon":"Rifle",
+      "killerSteamID":0,
+      "killerLocation":8,
+      "killerPosition":"97.260666 4.482285 106.212280",
+      "killerClass":"Rifle",
+      "killerTeamNumber":1,
+      "victimLocation":8,
+      "victimSteamID":0,
+      "victimClass":"Skulk",
+      "victimPosition":"97.468750 3.703125 105.296875",
+      "gameTime":247.81403056812
+    },{
+      "killerWeapon":"Rifle",
+      "killerSteamID":97011543,
+      "killerLocation":5,
+      "killerPosition":"-20.455078 2.526322 8.887043",
+      "killerClass":"Rifle",
+      "killerTeamNumber":1,
+      "victimLocation":5,
+      "victimSteamID":0,
+      "victimClass":"Skulk",
+      "victimPosition":"-14.170036 4.189338 13.286305",
+      "gameTime":269.98672229331
+    },{
+      "killerWeapon":"Bite",
+      "killerSteamID":0,
+      "killerLocation":5,
+      "killerPosition":"-20.632774 2.009772 7.819975",
+      "killerClass":"Skulk",
+      "killerTeamNumber":2,
+      "victimLocation":5,
+      "victimSteamID":328040242,
+      "victimClass":"Rifle",
+      "victimPosition":"-21.546875 2.218750 8.390625",
+      "gameTime":273.9203134859
+    },{
+      "killerWeapon":"Rifle",
+      "killerSteamID":151654373,
+      "killerLocation":9,
+      "killerPosition":"105.046913 6.240803 62.340164",
+      "killerClass":"Rifle",
+      "killerTeamNumber":1,
+      "victimLocation":9,
+      "victimSteamID":0,
+      "victimClass":"Skulk",
+      "victimPosition":"104.425781 5.953125 63.808105",
+      "gameTime":275.08672140259
+    },{
+      "killerWeapon":"Bite",
+      "killerSteamID":0,
+      "killerLocation":5,
+      "killerPosition":"-16.756918 1.838807 2.076288",
+      "killerClass":"Skulk",
+      "killerTeamNumber":2,
+      "victimLocation":5,
+      "victimSteamID":97011543,
+      "victimClass":"Rifle",
+      "victimPosition":"-17.562500 1.835938 3.445313",
+      "gameTime":276.18672231305
+    },{
+      "killerWeapon":"Rifle",
+      "killerSteamID":97011543,
+      "killerLocation":6,
+      "killerPosition":"-21.969727 5.778709 92.466476",
+      "killerClass":"Rifle",
+      "killerTeamNumber":1,
+      "victimLocation":6,
+      "victimSteamID":0,
+      "victimClass":"Lerk",
+      "victimPosition":"-20.764246 8.195313 85.259651",
+      "gameTime":314.58874135371
+    },{
+      "killerWeapon":"Rifle",
+      "killerSteamID":328040242,
+      "killerLocation":6,
+      "killerPosition":"-24.654438 5.791395 90.210556",
+      "killerClass":"Rifle",
+      "killerTeamNumber":1,
+      "victimLocation":6,
+      "victimSteamID":0,
+      "victimClass":"Skulk",
+      "victimPosition":"-24.081343 5.679688 89.012405",
+      "gameTime":318.82204937842
+    },{
+      "killerWeapon":"Bite",
+      "killerSteamID":0,
+      "killerLocation":6,
+      "killerPosition":"-22.258888 6.728472 90.991852",
+      "killerClass":"Skulk",
+      "killerTeamNumber":2,
+      "victimLocation":6,
+      "victimSteamID":328040242,
+      "victimClass":"Rifle",
+      "victimPosition":"-21.718750 6.890625 90.039063",
+      "gameTime":321.85499116313
+    },{
+      "killerWeapon":"Rifle",
+      "killerSteamID":97011543,
+      "killerLocation":6,
+      "killerPosition":"-21.437748 5.788499 88.392159",
+      "killerClass":"Rifle",
+      "killerTeamNumber":1,
+      "victimLocation":6,
+      "victimSteamID":0,
+      "victimClass":"Skulk",
+      "victimPosition":"-20.564108 5.875460 86.935204",
+      "gameTime":323.35508315731
+    },{
+      "killerWeapon":"Rifle",
+      "killerSteamID":0,
+      "killerLocation":8,
+      "killerPosition":"82.808899 3.134200 120.647873",
+      "killerClass":"Rifle",
+      "killerTeamNumber":1,
+      "victimLocation":8,
+      "victimSteamID":0,
+      "victimClass":"Skulk",
+      "victimPosition":"80.757813 3.132813 128.679688",
+      "gameTime":324.45539686549
+    },{
+      "killerWeapon":"Bite",
+      "killerSteamID":0,
+      "killerLocation":3,
+      "killerPosition":"-48.028740 2.664028 60.492409",
+      "killerClass":"Skulk",
+      "killerTeamNumber":2,
+      "victimLocation":3,
+      "victimSteamID":97011543,
+      "victimClass":"Rifle",
+      "victimPosition":"-48.640625 2.687500 61.351563",
+      "gameTime":363.02207669709
+    },{
+      "killerWeapon":"Rifle",
+      "killerSteamID":328040242,
+      "killerLocation":3,
+      "killerPosition":"-41.035950 4.229982 63.268494",
+      "killerClass":"Rifle",
+      "killerTeamNumber":1,
+      "victimLocation":3,
+      "victimSteamID":0,
+      "victimClass":"Skulk",
+      "victimPosition":"-44.422565 4.420037 62.601563",
+      "gameTime":363.98874077667
+    },{
+      "killerWeapon":"Bite",
+      "killerSteamID":0,
+      "killerLocation":9,
+      "killerPosition":"110.779671 4.525687 80.757523",
+      "killerClass":"Skulk",
+      "killerTeamNumber":2,
+      "victimLocation":9,
+      "victimSteamID":0,
+      "victimClass":"Rifle",
+      "victimPosition":"110.718750 4.445313 79.726563",
+      "gameTime":368.28893129807
+    },{
+      "killerWeapon":"Rifle",
+      "killerSteamID":151654373,
+      "killerLocation":9,
+      "killerPosition":"114.273552 3.723739 83.164764",
+      "killerClass":"Rifle",
+      "killerTeamNumber":1,
+      "victimLocation":9,
+      "victimSteamID":0,
+      "victimClass":"Skulk",
+      "victimPosition":"112.602676 5.242411 81.367409",
+      "gameTime":368.7888661949
+    },{
+      "killerWeapon":"Rifle",
+      "killerSteamID":328040242,
+      "killerLocation":3,
+      "killerPosition":"-50.090347 2.651609 62.319309",
+      "killerClass":"Rifle",
+      "killerTeamNumber":1,
+      "victimLocation":3,
+      "victimSteamID":0,
+      "victimClass":"Skulk",
+      "victimPosition":"-50.296417 2.554228 60.647518",
+      "gameTime":370.72231908422
+    },{
+      "killerWeapon":"Bite",
+      "killerSteamID":0,
+      "killerLocation":3,
+      "killerPosition":"-51.611122 4.623601 53.746986",
+      "killerClass":"Skulk",
+      "killerTeamNumber":2,
+      "victimLocation":3,
+      "victimSteamID":328040242,
+      "victimClass":"Rifle",
+      "victimPosition":"-50.703125 4.570313 53.085938",
+      "gameTime":380.22205401864
+    },{
+      "killerWeapon":"Rifle",
+      "killerSteamID":0,
+      "killerLocation":2,
+      "killerPosition":"6.578152 6.787295 118.442802",
+      "killerClass":"Rifle",
+      "killerTeamNumber":1,
+      "victimLocation":2,
+      "victimSteamID":0,
+      "victimClass":"Skulk",
+      "victimPosition":"8.703125 6.046875 115.429688",
+      "gameTime":408.75640259404
+    },{
+      "killerWeapon":"Rifle",
+      "killerSteamID":0,
+      "killerLocation":2,
+      "killerPosition":"7.727866 7.231817 119.856163",
+      "killerClass":"Rifle",
+      "killerTeamNumber":1,
+      "victimLocation":2,
+      "victimSteamID":0,
+      "victimClass":"Skulk",
+      "victimPosition":"8.312500 6.937500 119.015625",
+      "gameTime":411.98976801429
+    },{
+      "killerWeapon":"Rifle",
+      "killerSteamID":97011543,
+      "killerLocation":3,
+      "killerPosition":"-52.526581 2.651609 59.529041",
+      "killerClass":"Rifle",
+      "killerTeamNumber":1,
+      "victimLocation":3,
+      "victimSteamID":0,
+      "victimClass":"Skulk",
+      "victimPosition":"-50.600185 3.585708 58.884880",
+      "gameTime":414.72529016156
+    },{
+      "killerWeapon":"Bite",
+      "killerSteamID":0,
+      "killerLocation":2,
+      "killerPosition":"8.468814 7.675199 120.863251",
+      "killerClass":"Skulk",
+      "killerTeamNumber":2,
+      "victimLocation":2,
+      "victimSteamID":0,
+      "victimClass":"Rifle",
+      "victimPosition":"7.484375 7.640625 120.781250",
+      "gameTime":416.45929763932
+    },{
+      "killerWeapon":"Bite",
+      "killerSteamID":0,
+      "killerLocation":2,
+      "killerPosition":"7.819058 5.675580 115.280434",
+      "killerClass":"Skulk",
+      "killerTeamNumber":2,
+      "victimLocation":2,
+      "victimSteamID":0,
+      "victimClass":"Rifle",
+      "victimPosition":"8.265625 6.015625 116.320313",
+      "gameTime":423.1613902105
+    },{
+      "killerWeapon":"Bite",
+      "killerSteamID":0,
+      "killerLocation":3,
+      "killerPosition":"-49.112949 4.588882 51.811947",
+      "killerClass":"Skulk",
+      "killerTeamNumber":2,
+      "victimLocation":3,
+      "victimSteamID":328040242,
+      "victimClass":"Rifle",
+      "victimPosition":"-50.179688 3.125000 52.210938",
+      "gameTime":438.89484230522
+    },{
+      "killerWeapon":"Rifle",
+      "killerSteamID":97011543,
+      "killerLocation":3,
+      "killerPosition":"-44.239147 2.651609 53.513680",
+      "killerClass":"Rifle",
+      "killerTeamNumber":1,
+      "victimLocation":3,
+      "victimSteamID":0,
+      "victimClass":"Skulk",
+      "victimPosition":"-48.020222 3.302849 53.161304",
+      "gameTime":439.62808116991
+    },{
+      "killerWeapon":"Bite",
+      "killerSteamID":0,
+      "killerLocation":3,
+      "killerPosition":"-49.857246 4.086562 53.390549",
+      "killerClass":"Skulk",
+      "killerTeamNumber":2,
+      "victimLocation":3,
+      "victimSteamID":97011543,
+      "victimClass":"Rifle",
+      "victimPosition":"-49.617188 3.593750 52.406250",
+      "gameTime":444.56105743069
+    },{
+      "killerWeapon":"Bite",
+      "killerSteamID":0,
+      "killerLocation":11,
+      "killerPosition":"-15.094667 4.366141 76.745392",
+      "killerClass":"Skulk",
+      "killerTeamNumber":2,
+      "victimLocation":11,
+      "victimSteamID":0,
+      "victimClass":"Rifle",
+      "victimPosition":"-14.203125 4.382813 77.195313",
+      "gameTime":453.52635483909
+    },{
+      "killerWeapon":"Rifle",
+      "killerSteamID":328040242,
+      "killerLocation":6,
+      "killerPosition":"-14.768358 5.788499 97.680946",
+      "killerClass":"Rifle",
+      "killerTeamNumber":1,
+      "victimLocation":6,
+      "victimSteamID":0,
+      "victimClass":"Skulk",
+      "victimPosition":"-4.650000 5.825000 98.279686",
+      "gameTime":466.46174318623
+    },{
+      "killerWeapon":"Swipe",
+      "killerSteamID":0,
+      "killerLocation":4,
+      "killerPosition":"41.460453 4.419540 77.416878",
+      "killerClass":"Fade",
+      "killerTeamNumber":2,
+      "victimLocation":4,
+      "victimSteamID":151654373,
+      "victimClass":"Rifle",
+      "victimPosition":"41.601563 3.210938 78.906250",
+      "gameTime":472.92842892092
+    },{
+      "killerWeapon":"Rifle",
+      "killerSteamID":328040242,
+      "killerLocation":11,
+      "killerPosition":"-17.986183 4.923579 78.955299",
+      "killerClass":"Rifle",
+      "killerTeamNumber":1,
+      "victimLocation":11,
+      "victimSteamID":0,
+      "victimClass":"Skulk",
+      "victimPosition":"-22.217831 5.522518 77.554230",
+      "gameTime":479.4283866724
+    },{
+      "killerWeapon":"Swipe",
+      "killerSteamID":0,
+      "killerLocation":11,
+      "killerPosition":"-18.365412 5.324275 77.317261",
+      "killerClass":"Fade",
+      "killerTeamNumber":2,
+      "victimLocation":11,
+      "victimSteamID":328040242,
+      "victimClass":"Rifle",
+      "victimPosition":"-17.367188 4.906250 77.234375",
+      "gameTime":482.0945534287
+    },{
+      "killerWeapon":"Swipe",
+      "killerSteamID":0,
+      "killerLocation":2,
+      "killerPosition":"38.580688 7.636476 118.124878",
+      "killerClass":"Fade",
+      "killerTeamNumber":2,
+      "victimLocation":2,
+      "victimSteamID":0,
+      "victimClass":"Rifle",
+      "victimPosition":"36.320313 7.648438 118.164063",
+      "gameTime":485.16129762586
+    },{
+      "killerWeapon":"Swipe",
+      "killerSteamID":0,
+      "killerLocation":6,
+      "killerPosition":"-24.174177 6.473940 83.978836",
+      "killerClass":"Fade",
+      "killerTeamNumber":2,
+      "victimLocation":6,
+      "victimSteamID":97011543,
+      "victimClass":"Rifle",
+      "victimPosition":"-22.710938 5.789063 85.195313",
+      "gameTime":490.19455991779
+    },{
+      "killerWeapon":"Swipe",
+      "killerSteamID":0,
+      "killerLocation":11,
+      "killerPosition":"-20.589411 5.844256 81.750839",
+      "killerClass":"Fade",
+      "killerTeamNumber":2,
+      "victimLocation":11,
+      "victimSteamID":0,
+      "victimClass":"Rifle",
+      "victimPosition":"-21.664063 5.796875 83.882813",
+      "gameTime":508.03040989395
+    },{
+      "killerWeapon":"Rifle",
+      "killerSteamID":328040242,
+      "killerLocation":6,
+      "killerPosition":"-20.125526 5.788499 94.952751",
+      "killerClass":"Rifle",
+      "killerTeamNumber":1,
+      "victimLocation":6,
+      "victimSteamID":0,
+      "victimClass":"Skulk",
+      "victimPosition":"-20.890165 5.758272 93.381897",
+      "gameTime":511.1970616309
+    },{
+      "killerWeapon":"Rifle",
+      "killerSteamID":328040242,
+      "killerLocation":3,
+      "killerPosition":"-34.065220 4.404199 72.377792",
+      "killerClass":"Rifle",
+      "killerTeamNumber":1,
+      "victimLocation":3,
+      "victimSteamID":0,
+      "victimClass":"Fade",
+      "victimPosition":"-40.417850 4.757339 62.463543",
+      "gameTime":549.86562603619
+    },{
+      "killerWeapon":"Swipe",
+      "killerSteamID":0,
+      "killerLocation":5,
+      "killerPosition":"-6.645772 4.065180 32.493874",
+      "killerClass":"Fade",
+      "killerTeamNumber":2,
+      "victimLocation":5,
+      "victimSteamID":0,
+      "victimClass":"GrenadeLauncher",
+      "victimPosition":"-5.703125 2.445313 33.203125",
+      "gameTime":590.5816208506
+    },{
+      "killerWeapon":"Rifle",
+      "killerSteamID":328040242,
+      "killerLocation":3,
+      "killerPosition":"-49.133366 2.651600 56.895260",
+      "killerClass":"Rifle",
+      "killerTeamNumber":1,
+      "victimLocation":3,
+      "victimSteamID":0,
+      "victimClass":"Lerk",
+      "victimPosition":"-47.319195 5.542411 55.850445",
+      "gameTime":601.7886161292
+    },{
+      "killerWeapon":"Rifle",
+      "killerSteamID":229271678,
+      "killerLocation":2,
+      "killerPosition":"29.941475 7.674145 142.319519",
+      "killerClass":"Rifle",
+      "killerTeamNumber":1,
+      "victimLocation":2,
+      "victimSteamID":0,
+      "victimClass":"Skulk",
+      "victimPosition":"22.414063 9.031250 136.015625",
+      "gameTime":617.33002704848
+    },{
+      "killerWeapon":"Rifle",
+      "killerSteamID":97011543,
+      "killerLocation":3,
+      "killerPosition":"-56.136242 2.956400 36.398502",
+      "killerClass":"Rifle",
+      "killerTeamNumber":1,
+      "victimLocation":3,
+      "victimSteamID":0,
+      "victimClass":"Skulk",
+      "victimPosition":"-54.531250 3.946232 36.497242",
+      "gameTime":646.76323754247
+    },{
+      "killerWeapon":"Bite",
+      "killerSteamID":0,
+      "killerLocation":9,
+      "killerPosition":"111.826538 4.565247 74.833092",
+      "killerClass":"Skulk",
+      "killerTeamNumber":2,
+      "victimLocation":9,
+      "victimSteamID":0,
+      "victimClass":"Rifle",
+      "victimPosition":"111.625000 4.539063 76.015625",
+      "gameTime":669.83285706956
+    },{
+      "killerWeapon":"Rifle",
+      "killerSteamID":328040242,
+      "killerLocation":9,
+      "killerPosition":"120.260391 4.531206 75.554802",
+      "killerClass":"Rifle",
+      "killerTeamNumber":1,
+      "victimLocation":9,
+      "victimSteamID":0,
+      "victimClass":"Skulk",
+      "victimPosition":"115.159241 4.482537 74.973343",
+      "gameTime":671.06726818252
+    },{
+      "killerWeapon":"GrenadeLauncher",
+      "killerSteamID":0,
+      "doerPosition":"-6.666965 3.021902 19.422346",
+      "killerLocation":5,
+      "killerPosition":"-15.350177 2.956396 13.108232",
+      "killerClass":"GrenadeLauncher",
+      "doerLocation":5,
+      "killerTeamNumber":1,
+      "victimLocation":5,
+      "victimSteamID":0,
+      "victimClass":"Lerk",
+      "victimPosition":"-7.492188 3.273438 19.750000",
+      "gameTime":671.10396137182
+    },{
+      "killerWeapon":"Bite",
+      "killerSteamID":0,
+      "killerLocation":5,
+      "killerPosition":"-12.759069 2.933661 12.024829",
+      "killerClass":"Skulk",
+      "killerTeamNumber":2,
+      "victimLocation":5,
+      "victimSteamID":0,
+      "victimClass":"GrenadeLauncher",
+      "victimPosition":"-13.640625 2.953125 11.656250",
+      "gameTime":671.66708523873
+    },{
+      "killerWeapon":"Bite",
+      "killerSteamID":0,
+      "killerLocation":5,
+      "killerPosition":"-13.785341 2.956181 8.931319",
+      "killerClass":"Skulk",
+      "killerTeamNumber":2,
+      "victimLocation":5,
+      "victimSteamID":97011543,
+      "victimClass":"Rifle",
+      "victimPosition":"-15.265625 2.953125 8.140625",
+      "gameTime":672.13391890097
+    },{
+      "killerWeapon":"Bite",
+      "killerSteamID":0,
+      "killerLocation":3,
+      "killerPosition":"-55.375370 2.867647 40.066986",
+      "killerClass":"Skulk",
+      "killerTeamNumber":2,
+      "victimLocation":3,
+      "victimSteamID":97011543,
+      "victimClass":"Flamethrower",
+      "victimPosition":"-55.757813 2.953125 40.796875",
+      "gameTime":704.07539444696
+    },{
+      "killerWeapon":"Flamethrower",
+      "killerSteamID":97011543,
+      "doerPosition":"-56.397530 3.478497 41.756611",
+      "killerLocation":3,
+      "killerPosition":"-55.757813 2.953125 40.796875",
+      "killerClass":"Dead",
+      "doerLocation":3,
+      "killerTeamNumber":1,
+      "victimLocation":3,
+      "victimSteamID":0,
+      "victimClass":"Skulk",
+      "victimPosition":"-54.171059 2.956400 41.549099",
+      "gameTime":704.40863291454
+    },{
+      "killerWeapon":"Flamethrower",
+      "killerSteamID":97011543,
+      "doerPosition":"-54.556362 2.946400 40.112541",
+      "killerLocation":3,
+      "killerPosition":"-55.757813 2.953125 40.796875",
+      "killerClass":"Dead",
+      "doerLocation":3,
+      "killerTeamNumber":1,
+      "victimLocation":3,
+      "victimSteamID":0,
+      "victimClass":"Skulk",
+      "victimPosition":"-53.859375 2.953125 39.765625",
+      "gameTime":705.44192779716
+    },{
+      "killerWeapon":"Bite",
+      "killerSteamID":0,
+      "killerLocation":3,
+      "killerPosition":"-52.039364 2.951913 33.875832",
+      "killerClass":"Skulk",
+      "killerTeamNumber":2,
+      "victimLocation":3,
+      "victimSteamID":0,
+      "victimClass":"Rifle",
+      "victimPosition":"-51.562500 3.179688 34.757813",
+      "gameTime":710.11061031651
+    },{
+      "killerWeapon":"Rifle",
+      "killerSteamID":0,
+      "killerLocation":3,
+      "killerPosition":"-56.959229 2.956400 33.234188",
+      "killerClass":"Rifle",
+      "killerTeamNumber":1,
+      "victimLocation":3,
+      "victimSteamID":0,
+      "victimClass":"Skulk",
+      "victimPosition":"-57.960938 3.257813 33.414063",
+      "gameTime":711.01059878897
+    },{
+      "killerWeapon":"Rifle",
+      "killerSteamID":328040242,
+      "killerLocation":7,
+      "killerPosition":"87.377541 0.899546 32.151051",
+      "killerClass":"Rifle",
+      "killerTeamNumber":1,
+      "victimLocation":7,
+      "victimSteamID":0,
+      "victimClass":"Skulk",
+      "victimPosition":"80.136948 1.054688 34.796875",
+      "gameTime":732.71059666667
+    },{
+      "killerWeapon":"Bite",
+      "killerSteamID":0,
+      "killerLocation":7,
+      "killerPosition":"92.181763 0.011403 32.383736",
+      "killerClass":"Skulk",
+      "killerTeamNumber":2,
+      "victimLocation":7,
+      "victimSteamID":151654373,
+      "victimClass":"Rifle",
+      "victimPosition":"92.937500 0.039063 31.539063",
+      "gameTime":736.64793045539
+    },{
+      "killerWeapon":"Rifle",
+      "killerSteamID":328040242,
+      "killerLocation":7,
+      "killerPosition":"96.580994 0.384149 32.496414",
+      "killerClass":"Rifle",
+      "killerTeamNumber":1,
+      "victimLocation":7,
+      "victimSteamID":0,
+      "victimClass":"Skulk",
+      "victimPosition":"95.755760 1.650905 35.833057",
+      "gameTime":739.11657931749
+    },{
+      "killerWeapon":"Bite",
+      "killerSteamID":0,
+      "killerLocation":7,
+      "killerPosition":"98.990898 1.313173 37.894135",
+      "killerClass":"Skulk",
+      "killerTeamNumber":2,
+      "victimLocation":7,
+      "victimSteamID":328040242,
+      "victimClass":"Rifle",
+      "victimPosition":"98.640625 0.945313 36.984375",
+      "gameTime":742.81657122169
+    },{
+      "killerWeapon":"HeavyMachineGun",
+      "killerSteamID":97011543,
+      "killerLocation":9,
+      "killerPosition":"98.862541 0.568756 49.301151",
+      "killerClass":"HeavyMachineGun",
+      "killerTeamNumber":1,
+      "victimLocation":9,
+      "victimSteamID":0,
+      "victimClass":"Skulk",
+      "victimPosition":"95.437958 2.099265 48.319855",
+      "gameTime":745.08327023406
+    },{
+      "killerWeapon":"Rifle",
+      "killerSteamID":328040242,
+      "killerLocation":2,
+      "killerPosition":"7.923953 9.052401 128.324585",
+      "killerClass":"Rifle",
+      "killerTeamNumber":1,
+      "victimLocation":2,
+      "victimSteamID":0,
+      "victimClass":"Skulk",
+      "victimPosition":"8.394301 9.046875 126.685661",
+      "gameTime":771.3596898606
+    },{
+      "killerWeapon":"Bite",
+      "killerSteamID":0,
+      "killerLocation":3,
+      "killerPosition":"-47.532841 2.873891 51.799164",
+      "killerClass":"Skulk",
+      "killerTeamNumber":2,
+      "victimLocation":3,
+      "victimSteamID":229271678,
+      "victimClass":"Rifle",
+      "victimPosition":"-47.789063 2.882813 53.132813",
+      "gameTime":782.559913476
+    },{
+      "killerWeapon":"Bite",
+      "killerSteamID":0,
+      "killerLocation":4,
+      "killerPosition":"40.150467 4.199747 85.933090",
+      "killerClass":"Skulk",
+      "killerTeamNumber":2,
+      "victimLocation":4,
+      "victimSteamID":0,
+      "victimClass":"Flamethrower",
+      "victimPosition":"38.195313 4.109375 85.921875",
+      "gameTime":782.85887562204
+    },{
+      "killerWeapon":"Rifle",
+      "killerSteamID":328040242,
+      "killerLocation":13,
+      "killerPosition":"24.243645 4.178147 95.669418",
+      "killerClass":"Rifle",
+      "killerTeamNumber":1,
+      "victimLocation":13,
+      "victimSteamID":0,
+      "victimClass":"Skulk",
+      "victimPosition":"25.435268 4.195313 94.869423",
+      "gameTime":785.59408167843
+    },{
+      "killerWeapon":"Bite",
+      "killerSteamID":0,
+      "killerLocation":4,
+      "killerPosition":"45.569389 2.752098 43.592014",
+      "killerClass":"Skulk",
+      "killerTeamNumber":2,
+      "victimLocation":4,
+      "victimSteamID":0,
+      "victimClass":"Rifle",
+      "victimPosition":"45.734375 2.750000 44.835938",
+      "gameTime":806.63462891709
+    },{
+      "killerWeapon":"HeavyMachineGun",
+      "killerSteamID":97011543,
+      "killerLocation":10,
+      "killerPosition":"27.347868 5.873465 29.436810",
+      "killerClass":"HeavyMachineGun",
+      "killerTeamNumber":1,
+      "victimLocation":10,
+      "victimSteamID":0,
+      "victimClass":"Skulk",
+      "victimPosition":"27.509651 4.036765 29.196232",
+      "gameTime":814.90326520335
+    },{
+      "killerWeapon":"Bite",
+      "killerSteamID":0,
+      "killerLocation":4,
+      "killerPosition":"48.491539 7.504004 67.049828",
+      "killerClass":"Skulk",
+      "killerTeamNumber":2,
+      "victimLocation":4,
+      "victimSteamID":328040242,
+      "victimClass":"Flamethrower",
+      "victimPosition":"48.914063 6.546875 66.359375",
+      "gameTime":815.13658305164
+    },{
+      "killerWeapon":"Flamethrower",
+      "killerSteamID":0,
+      "killerLocation":4,
+      "killerPosition":"32.824791 4.175600 69.289963",
+      "killerClass":"Flamethrower",
+      "killerTeamNumber":1,
+      "victimLocation":4,
+      "victimSteamID":0,
+      "victimClass":"Skulk",
+      "victimPosition":"32.109375 4.132813 68.484375",
+      "gameTime":820.23670495022
+    },{
+      "killerWeapon":"Flamethrower",
+      "killerSteamID":0,
+      "killerLocation":4,
+      "killerPosition":"32.824791 4.175600 69.289963",
+      "killerClass":"Flamethrower",
+      "killerTeamNumber":1,
+      "victimLocation":4,
+      "victimSteamID":0,
+      "victimClass":"Skulk",
+      "victimPosition":"31.179688 4.171875 69.164063",
+      "gameTime":820.23670495022
+    },{
+      "killerWeapon":"Bite",
+      "killerSteamID":0,
+      "killerLocation":5,
+      "killerPosition":"-11.428115 2.996169 29.027113",
+      "killerClass":"Skulk",
+      "killerTeamNumber":2,
+      "victimLocation":5,
+      "victimSteamID":0,
+      "victimClass":"Flamethrower",
+      "victimPosition":"-11.632813 2.953125 28.015625",
+      "gameTime":839.57380528096
+    },{
+      "killerWeapon":"Flamethrower",
+      "killerSteamID":0,
+      "doerPosition":"-11.960218 3.096839 28.196247",
+      "killerLocation":5,
+      "killerPosition":"28.601563 7.820313 142.593750",
+      "killerClass":"Dead",
+      "doerLocation":5,
+      "killerTeamNumber":1,
+      "victimLocation":5,
+      "victimSteamID":0,
+      "victimClass":"Skulk",
+      "victimPosition":"-0.410084 3.002057 22.316776",
+      "gameTime":841.64059907105
+    },{
+      "killerWeapon":"Swipe",
+      "killerSteamID":0,
+      "killerLocation":4,
+      "killerPosition":"47.232887 5.464993 62.940060",
+      "killerClass":"Fade",
+      "killerTeamNumber":2,
+      "victimLocation":4,
+      "victimSteamID":151654373,
+      "victimClass":"Flamethrower",
+      "victimPosition":"48.867188 5.484375 62.773438",
+      "gameTime":860.94607035723
+    },{
+      "killerWeapon":"Bite",
+      "killerSteamID":0,
+      "killerLocation":4,
+      "killerPosition":"39.162182 5.298962 63.823570",
+      "killerClass":"Skulk",
+      "killerTeamNumber":2,
+      "victimLocation":4,
+      "victimSteamID":328040242,
+      "victimClass":"Flamethrower",
+      "victimPosition":"38.101563 5.398438 63.984375",
+      "gameTime":866.21276682895
+    },{
+      "killerWeapon":"HeavyMachineGun",
+      "killerSteamID":97011543,
+      "killerLocation":4,
+      "killerPosition":"23.991856 4.733561 57.367752",
+      "killerClass":"HeavyMachineGun",
+      "killerTeamNumber":1,
+      "victimLocation":4,
+      "victimSteamID":0,
+      "victimClass":"Skulk",
+      "victimPosition":"26.456696 5.192634 55.493526",
+      "gameTime":871.61717415135
+    },{
+      "killerWeapon":"Rifle",
+      "killerSteamID":328040242,
+      "killerLocation":2,
+      "killerPosition":"23.435173 9.052400 129.404083",
+      "killerClass":"Rifle",
+      "killerTeamNumber":1,
+      "victimLocation":2,
+      "victimSteamID":0,
+      "victimClass":"Skulk",
+      "victimPosition":"18.859375 9.046875 128.351563",
+      "gameTime":883.31937817391
+    },{
+      "killerWeapon":"Swipe",
+      "killerSteamID":0,
+      "killerLocation":4,
+      "killerPosition":"42.443817 5.394801 60.750717",
+      "killerClass":"Fade",
+      "killerTeamNumber":2,
+      "victimLocation":4,
+      "victimSteamID":97011543,
+      "victimClass":"Flamethrower",
+      "victimPosition":"42.140625 8.453125 61.664063",
+      "gameTime":885.85159187112
+    },{
+      "killerWeapon":"Bite",
+      "killerSteamID":0,
+      "killerLocation":7,
+      "killerPosition":"61.650177 -0.195689 19.452093",
+      "killerClass":"Skulk",
+      "killerTeamNumber":2,
+      "victimLocation":7,
+      "victimSteamID":0,
+      "victimClass":"Rifle",
+      "victimPosition":"61.640625 -0.093750 18.328125",
+      "gameTime":893.18530273903
+    },{
+      "killerWeapon":"Flamethrower",
+      "killerSteamID":438638886,
+      "killerLocation":7,
+      "killerPosition":"63.263470 0.035400 27.843323",
+      "killerClass":"Flamethrower",
+      "killerTeamNumber":1,
+      "victimLocation":7,
+      "victimSteamID":0,
+      "victimClass":"Skulk",
+      "victimPosition":"62.815971 -0.146701 26.681858",
+      "gameTime":895.25260450412
+    },{
+      "killerWeapon":"Rifle",
+      "killerSteamID":328040242,
+      "killerLocation":6,
+      "killerPosition":"-11.589455 5.724826 102.974243",
+      "killerClass":"Rifle",
+      "killerTeamNumber":1,
+      "victimLocation":6,
+      "victimSteamID":0,
+      "victimClass":"Skulk",
+      "victimPosition":"-24.414063 4.531250 100.570313",
+      "gameTime":897.18619902525
+    },{
+      "killerWeapon":"Rifle",
+      "killerSteamID":328040242,
+      "killerLocation":4,
+      "killerPosition":"26.118330 4.175601 69.844093",
+      "killerClass":"Rifle",
+      "killerTeamNumber":1,
+      "victimLocation":4,
+      "victimSteamID":0,
+      "victimClass":"Skulk",
+      "victimPosition":"28.936197 4.171875 69.492188",
+      "gameTime":931.55460753758
+    },{
+      "killerWeapon":"LerkBite",
+      "killerSteamID":0,
+      "killerLocation":4,
+      "killerPosition":"51.285378 5.489796 67.279533",
+      "killerClass":"Lerk",
+      "killerTeamNumber":2,
+      "victimLocation":4,
+      "victimSteamID":328040242,
+      "victimClass":"Rifle",
+      "victimPosition":"51.820313 6.289063 67.367188",
+      "gameTime":948.35458623338
+    },{
+      "killerWeapon":"Spikes",
+      "killerSteamID":0,
+      "killerLocation":4,
+      "killerPosition":"36.139526 5.569497 74.557220",
+      "killerClass":"Lerk",
+      "killerTeamNumber":2,
+      "victimLocation":4,
+      "victimSteamID":0,
+      "victimClass":"Rifle",
+      "victimPosition":"36.734375 4.171875 76.796875",
+      "gameTime":957.05460893828
+    },{
+      "killerWeapon":"Rifle",
+      "killerSteamID":328040242,
+      "killerLocation":2,
+      "killerPosition":"16.267838 9.052400 129.457535",
+      "killerClass":"Rifle",
+      "killerTeamNumber":1,
+      "victimLocation":2,
+      "victimSteamID":0,
+      "victimClass":"Lerk",
+      "victimPosition":"9.765625 12.948529 118.447151",
+      "gameTime":968.12280536909
+    },{
+      "killerWeapon":"LerkBite",
+      "killerSteamID":0,
+      "killerLocation":2,
+      "killerPosition":"12.192199 9.136773 126.640968",
+      "killerClass":"Lerk",
+      "killerTeamNumber":2,
+      "victimLocation":2,
+      "victimSteamID":328040242,
+      "victimClass":"Rifle",
+      "victimPosition":"13.320313 9.054688 126.070313",
+      "gameTime":970.9234158406
+    },{
+      "killerWeapon":"Bite",
+      "killerSteamID":0,
+      "killerLocation":2,
+      "killerPosition":"27.412687 8.180786 140.627182",
+      "killerClass":"Skulk",
+      "killerTeamNumber":2,
+      "victimLocation":2,
+      "victimSteamID":438638886,
+      "victimClass":"Flamethrower",
+      "victimPosition":"28.429688 7.898438 140.312500",
+      "gameTime":976.48991677444
+    },{
+      "killerWeapon":"Bite",
+      "killerSteamID":0,
+      "killerLocation":2,
+      "killerPosition":"26.231020 10.609308 138.126648",
+      "killerClass":"Skulk",
+      "killerTeamNumber":2,
+      "victimLocation":2,
+      "victimSteamID":0,
+      "victimClass":"Rifle",
+      "victimPosition":"25.375000 9.109375 138.671875",
+      "gameTime":983.45974329393
+    },{
+      "killerWeapon":"Flamethrower",
+      "killerSteamID":328040242,
+      "doerPosition":"26.067093 12.123449 139.582336",
+      "killerLocation":2,
+      "killerPosition":"26.843750 8.742188 138.882813",
+      "killerClass":"Flamethrower",
+      "doerLocation":2,
+      "killerTeamNumber":1,
+      "victimLocation":2,
+      "victimSteamID":0,
+      "victimClass":"Skulk",
+      "victimPosition":"26.046875 10.562500 140.000000",
+      "gameTime":983.95860356744
+    },{
+      "killerWeapon":"Bite",
+      "killerSteamID":0,
+      "killerLocation":3,
+      "killerPosition":"-47.801277 2.563663 49.353970",
+      "killerClass":"Skulk",
+      "killerTeamNumber":2,
+      "victimLocation":3,
+      "victimSteamID":328040242,
+      "victimClass":"Flamethrower",
+      "victimPosition":"-48.804688 2.648438 49.234375",
+      "gameTime":1010.199918502
+    },{
+      "killerWeapon":"GrenadeLauncher",
+      "killerSteamID":151654373,
+      "doerPosition":"-35.343060 5.460408 47.057571",
+      "killerLocation":3,
+      "killerPosition":"-37.459045 7.618946 54.335934",
+      "killerClass":"GrenadeLauncher",
+      "doerLocation":3,
+      "killerTeamNumber":1,
+      "victimLocation":3,
+      "victimSteamID":0,
+      "victimClass":"Skulk",
+      "victimPosition":"-35.301929 4.360294 46.053768",
+      "gameTime":1016.2665918106
+    },{
+      "killerWeapon":"Rifle",
+      "killerSteamID":97011543,
+      "killerLocation":2,
+      "killerPosition":"17.157211 9.079297 138.204773",
+      "killerClass":"Rifle",
+      "killerTeamNumber":1,
+      "victimLocation":2,
+      "victimSteamID":0,
+      "victimClass":"Fade",
+      "victimPosition":"8.029411 9.049632 124.490349",
+      "gameTime":1027.8999275742
+    },{
+      "killerWeapon":"Bite",
+      "killerSteamID":0,
+      "killerLocation":7,
+      "killerPosition":"84.251091 0.423397 33.628590",
+      "killerClass":"Skulk",
+      "killerTeamNumber":2,
+      "victimLocation":7,
+      "victimSteamID":0,
+      "victimClass":"Rifle",
+      "victimPosition":"83.976563 0.007813 32.617188",
+      "gameTime":1045.7765856115
+    },{
+      "killerWeapon":"Minigun",
+      "killerSteamID":328040242,
+      "killerLocation":13,
+      "killerPosition":"7.444063 5.598000 107.808311",
+      "killerClass":"Exo",
+      "killerTeamNumber":1,
+      "victimLocation":13,
+      "victimSteamID":0,
+      "victimClass":"Skulk",
+      "victimPosition":"12.130515 5.593750 103.875916",
+      "gameTime":1076.7765968041
+    },{
+      "killerWeapon":"Swipe",
+      "killerSteamID":0,
+      "killerLocation":5,
+      "killerPosition":"-8.883335 4.186533 16.822096",
+      "killerClass":"Fade",
+      "killerTeamNumber":2,
+      "victimLocation":5,
+      "victimSteamID":438638886,
+      "victimClass":"Rifle",
+      "victimPosition":"-9.250000 2.953125 15.257813",
+      "gameTime":1100.8193623675
+    },{
+      "killerWeapon":"Flamethrower",
+      "killerSteamID":97011543,
+      "killerLocation":5,
+      "killerPosition":"-17.723007 2.956389 13.768595",
+      "killerClass":"Flamethrower",
+      "killerTeamNumber":1,
+      "victimLocation":5,
+      "victimSteamID":0,
+      "victimClass":"Skulk",
+      "victimPosition":"-14.096967 3.799173 13.632353",
+      "gameTime":1101.8532640254
+    },{
+      "killerWeapon":"Bite",
+      "killerSteamID":0,
+      "killerLocation":5,
+      "killerPosition":"-2.116540 2.751009 21.336826",
+      "killerClass":"Skulk",
+      "killerTeamNumber":2,
+      "victimLocation":5,
+      "victimSteamID":0,
+      "victimClass":"Shotgun",
+      "victimPosition":"-1.210938 2.539063 20.984375",
+      "gameTime":1132.257258798
+    },{
+      "killerWeapon":"Rifle",
+      "killerSteamID":438638886,
+      "killerLocation":5,
+      "killerPosition":"-14.166128 2.956400 13.107801",
+      "killerClass":"Rifle",
+      "killerTeamNumber":1,
+      "victimLocation":5,
+      "victimSteamID":0,
+      "victimClass":"Skulk",
+      "victimPosition":"-9.415039 2.953125 15.662109",
+      "gameTime":1135.4592818962
+    },{
+      "killerWeapon":"Swipe",
+      "killerSteamID":0,
+      "killerLocation":5,
+      "killerPosition":"-8.248485 3.097949 14.707276",
+      "killerClass":"Fade",
+      "killerTeamNumber":2,
+      "victimLocation":5,
+      "victimSteamID":97011543,
+      "victimClass":"Flamethrower",
+      "victimPosition":"-8.585938 5.312500 13.492188",
+      "gameTime":1136.6940583857
+    },{
+      "killerWeapon":"Rifle",
+      "killerSteamID":438638886,
+      "killerLocation":5,
+      "killerPosition":"-13.100912 2.956400 15.072924",
+      "killerClass":"Rifle",
+      "killerTeamNumber":1,
+      "victimLocation":5,
+      "victimSteamID":0,
+      "victimClass":"Fade",
+      "victimPosition":"-8.320313 2.898438 25.320313",
+      "gameTime":1144.1591790235
+    },{
+      "killerWeapon":"Minigun",
+      "killerSteamID":328040242,
+      "killerLocation":5,
+      "killerPosition":"-12.189743 2.949588 22.559490",
+      "killerClass":"Exo",
+      "killerTeamNumber":1,
+      "victimLocation":5,
+      "victimSteamID":0,
+      "victimClass":"Skulk",
+      "victimPosition":"10.101563 1.226563 21.363281",
+      "gameTime":1156.8937364733
+    },{
+      "killerWeapon":"Minigun",
+      "killerSteamID":328040242,
+      "killerLocation":5,
+      "killerPosition":"-10.455882 2.950003 22.363026",
+      "killerClass":"Exo",
+      "killerTeamNumber":1,
+      "victimLocation":5,
+      "victimSteamID":0,
+      "victimClass":"Fade",
+      "victimPosition":"3.662109 2.820313 20.380077",
+      "gameTime":1163.6687790258
+    },{
+      "killerWeapon":"LerkBite",
+      "killerSteamID":0,
+      "killerLocation":1,
+      "killerPosition":"16.927416 1.978436 5.755538",
+      "killerClass":"Lerk",
+      "killerTeamNumber":2,
+      "victimLocation":1,
+      "victimSteamID":0,
+      "victimClass":"Rifle",
+      "victimPosition":"16.867188 1.125000 3.781250",
+      "gameTime":1169.1046111332
+    },{
+      "killerWeapon":"Minigun",
+      "killerSteamID":328040242,
+      "killerLocation":5,
+      "killerPosition":"16.186192 1.229615 20.228706",
+      "killerClass":"Exo",
+      "killerTeamNumber":1,
+      "victimLocation":1,
+      "victimSteamID":0,
+      "victimClass":"Lerk",
+      "victimPosition":"16.064339 4.162224 -8.759651",
+      "gameTime":1172.8710924322
+    },{
+      "killerWeapon":"Flamethrower",
+      "killerSteamID":438638886,
+      "doerPosition":"15.565784 1.117600 9.447144",
+      "killerLocation":1,
+      "killerPosition":"16.546875 1.250000 11.890625",
+      "killerClass":"Flamethrower",
+      "doerLocation":1,
+      "killerTeamNumber":1,
+      "victimLocation":1,
+      "victimSteamID":0,
+      "victimClass":"Skulk",
+      "victimPosition":"16.031250 1.078125 10.968750",
+      "gameTime":1174.6424773047
+    },{
+      "killerWeapon":"Minigun",
+      "killerSteamID":328040242,
+      "killerLocation":1,
+      "killerPosition":"11.553007 1.312812 -7.136771",
+      "killerClass":"Exo",
+      "killerTeamNumber":1,
+      "victimLocation":1,
+      "victimSteamID":0,
+      "victimClass":"Skulk",
+      "victimPosition":"8.121652 2.714286 -11.136161",
+      "gameTime":1193.4205871383
+    },{
+      "killerWeapon":"Bite",
+      "killerSteamID":0,
+      "killerLocation":1,
+      "killerPosition":"14.425633 3.037738 -6.743345",
+      "killerClass":"Skulk",
+      "killerTeamNumber":2,
+      "victimLocation":1,
+      "victimSteamID":438638886,
+      "victimClass":"Flamethrower",
+      "victimPosition":"14.101563 1.125000 -6.726563",
+      "gameTime":1195.9184744218
+    },{
+      "killerWeapon":"Minigun",
+      "killerSteamID":328040242,
+      "killerLocation":1,
+      "killerPosition":"13.601264 1.127600 -0.465858",
+      "killerClass":"Exo",
+      "killerTeamNumber":1,
+      "victimLocation":1,
+      "victimSteamID":0,
+      "victimClass":"Skulk",
+      "victimPosition":"14.210938 3.082261 -7.904871",
+      "gameTime":1196.0519694546
+    },{
+      "killerWeapon":"Minigun",
+      "killerSteamID":328040242,
+      "killerLocation":1,
+      "killerPosition":"15.132474 1.767653 6.544674",
+      "killerClass":"Exo",
+      "killerTeamNumber":1,
+      "victimLocation":1,
+      "victimSteamID":0,
+      "victimClass":"Skulk",
+      "victimPosition":"13.978401 4.135570 -12.974724",
+      "gameTime":1205.7246759897
+    },{
+      "killerWeapon":"Minigun",
+      "killerSteamID":328040242,
+      "killerLocation":5,
+      "killerPosition":"16.314611 1.229200 16.428541",
+      "killerClass":"Exo",
+      "killerTeamNumber":1,
+      "victimLocation":1,
+      "victimSteamID":0,
+      "victimClass":"Skulk",
+      "victimPosition":"15.406250 1.718750 0.437500",
+      "gameTime":1223.36394192
+    },{
+      "killerWeapon":"Minigun",
+      "killerSteamID":328040242,
+      "killerLocation":1,
+      "killerPosition":"16.366171 1.120162 8.029293",
+      "killerClass":"Exo",
+      "killerTeamNumber":1,
+      "victimLocation":1,
+      "victimSteamID":0,
+      "victimClass":"Skulk",
+      "victimPosition":"17.101563 1.125000 1.726563",
+      "gameTime":1233.730279942
+    }],
+  "Locations":["Flight Control","Data Core","Sub Access","Crossroads","Computer Lab","Ventilation","Crevice","Reactor Core","Atrium","Summit Reception","Maintenance Access","Glass Hallway","Pipe Junction"],
+  "Research":[{
+      "teamNumber":2,
+      "gameTime":80.181056981906,
+      "researchId":"UpgradeToShadeHive"
+    },{
+      "teamNumber":1,
+      "gameTime":124.18703418784,
+      "researchId":"Armor1"
+    },{
+      "teamNumber":1,
+      "gameTime":148.78704394214,
+      "researchId":"PhaseTech"
+    },{
+      "teamNumber":1,
+      "gameTime":262.55140301306,
+      "researchId":"Armor2"
+    },{
+      "teamNumber":2,
+      "gameTime":402.29145918135,
+      "researchId":"ResearchBioMassOne"
+    },{
+      "teamNumber":1,
+      "gameTime":461.56088762823,
+      "researchId":"Weapons1"
+    },{
+      "teamNumber":2,
+      "gameTime":512.99606406968,
+      "researchId":"BileBomb"
+    },{
+      "teamNumber":1,
+      "gameTime":522.2293757638,
+      "researchId":"AdvancedArmoryUpgrade"
+    },{
+      "teamNumber":1,
+      "gameTime":522.2293757638,
+      "researchId":"AdvancedWeaponry"
+    },{
+      "teamNumber":2,
+      "gameTime":537.59657076839,
+      "researchId":"ResearchBioMassTwo"
+    },{
+      "teamNumber":2,
+      "gameTime":578.55140126869,
+      "researchId":"MetabolizeEnergy"
+    },{
+      "teamNumber":1,
+      "gameTime":595.98420950118,
+      "researchId":"MinesTech"
+    },{
+      "teamNumber":2,
+      "gameTime":630.8299092548,
+      "researchId":"ResearchBioMassThree"
+    },{
+      "teamNumber":1,
+      "gameTime":707.77726277616,
+      "researchId":"GrenadeTech"
+    },{
+      "teamNumber":2,
+      "gameTime":712.91021307092,
+      "researchId":"Leap"
+    },{
+      "teamNumber":1,
+      "gameTime":724.20962028112,
+      "researchId":"JetpackTech"
+    },{
+      "teamNumber":1,
+      "gameTime":818.63658175711,
+      "researchId":"ExosuitTech"
+    },{
+      "teamNumber":1,
+      "gameTime":825.80325009394,
+      "researchId":"Weapons2"
+    },{
+      "teamNumber":1,
+      "gameTime":974.35658856574,
+      "researchId":"UpgradeRoboticsFactory"
+    },{
+      "teamNumber":1,
+      "gameTime":1014.3328592265,
+      "researchId":"ShotgunTech"
+    },{
+      "teamNumber":1,
+      "gameTime":1026.6330750501,
+      "researchId":"Armor3"
+    },{
+      "teamNumber":1,
+      "gameTime":1149.3926184541,
+      "researchId":"UpgradeRoboticsFactory"
+    },{
+      "teamNumber":1,
+      "gameTime":1233.2629270898,
+      "researchId":"AdvancedArmoryUpgrade"
+    },{
+      "teamNumber":1,
+      "gameTime":1233.2629270898,
+      "researchId":"AdvancedWeaponry"
+    }],
+  "Buildings":[{
+      "teamNumber":1,
+      "techId":"Extractor",
+      "built":true,
+      "entityId":1770,
+      "event":"Built",
+      "location":"5.029200 7.620000 144.983200",
+      "gameTime":0,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":1,
+      "techId":"CommandStation",
+      "built":true,
+      "entityId":3563,
+      "event":"Built",
+      "location":"34.290001 7.721600 144.932343",
+      "gameTime":0,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":1,
+      "techId":"InfantryPortal",
+      "built":true,
+      "entityId":1734,
+      "event":"Built",
+      "location":"28.600399 7.823200 142.595596",
+      "gameTime":0,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Harvester",
+      "built":true,
+      "entityId":3935,
+      "event":"Built",
+      "location":"29.032200 2.743200 -13.233399",
+      "gameTime":0,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Hive",
+      "built":true,
+      "entityId":2821,
+      "event":"Built",
+      "location":"23.368000 5.237200 -21.539200",
+      "gameTime":0,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":true,
+      "entityId":580,
+      "event":"Built",
+      "location":"17.475201 2.743200 -12.395200",
+      "gameTime":0,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":true,
+      "entityId":1935,
+      "event":"Built",
+      "location":"35.534599 2.540000 -16.687799",
+      "gameTime":0,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":true,
+      "entityId":3030,
+      "event":"Built",
+      "location":"30.607000 2.743200 -11.430000",
+      "gameTime":0,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":true,
+      "entityId":3507,
+      "event":"Built",
+      "location":"10.312400 2.743201 -15.214600",
+      "gameTime":0,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":true,
+      "entityId":923,
+      "event":"Built",
+      "location":"29.768799 2.743198 -4.597400",
+      "gameTime":0,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":1,
+      "techId":"PowerPoint",
+      "built":true,
+      "entityId":497,
+      "event":"Built",
+      "location":"19.608801 10.553700 125.459732",
+      "gameTime":0,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":1,
+      "techId":"PowerPoint",
+      "built":true,
+      "entityId":410,
+      "event":"Built",
+      "location":"18.516600 4.318000 -10.414000",
+      "gameTime":0,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":1,
+      "techId":"PowerPoint",
+      "built":true,
+      "entityId":410,
+      "event":"Destroyed",
+      "location":"18.516600 4.318000 -10.414000",
+      "gameTime":0,
+      "destroyed":true,
+      "recycled":false
+    },{
+      "teamNumber":1,
+      "techId":"PowerPoint",
+      "built":false,
+      "entityId":798,
+      "event":"Placed",
+      "location":"48.336201 2.565400 21.056601",
+      "gameTime":0.032486166805029,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":1,
+      "techId":"PowerPoint",
+      "built":false,
+      "entityId":903,
+      "event":"Placed",
+      "location":"67.995796 5.384800 100.025200",
+      "gameTime":0.032486166805029,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":1,
+      "techId":"PowerPoint",
+      "built":false,
+      "entityId":1052,
+      "event":"Placed",
+      "location":"-3.302000 5.969000 75.310997",
+      "gameTime":0.032486166805029,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":1,
+      "techId":"PowerPoint",
+      "built":false,
+      "entityId":1319,
+      "event":"Placed",
+      "location":"-32.308800 5.715000 44.195999",
+      "gameTime":0.032486166805029,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":1,
+      "techId":"PowerPoint",
+      "built":false,
+      "entityId":1337,
+      "event":"Placed",
+      "location":"12.750800 6.959600 107.619797",
+      "gameTime":0.032486166805029,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":1,
+      "techId":"PowerPoint",
+      "built":false,
+      "entityId":1753,
+      "event":"Placed",
+      "location":"87.833199 4.648200 122.275597",
+      "gameTime":0.032486166805029,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":1,
+      "techId":"PowerPoint",
+      "built":false,
+      "entityId":2063,
+      "event":"Placed",
+      "location":"-19.329399 6.985000 90.500198",
+      "gameTime":0.032486166805029,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":1,
+      "techId":"PowerPoint",
+      "built":false,
+      "entityId":2691,
+      "event":"Placed",
+      "location":"106.778053 4.267200 62.483997",
+      "gameTime":0.032486166805029,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":1,
+      "techId":"PowerPoint",
+      "built":false,
+      "entityId":2838,
+      "event":"Placed",
+      "location":"-22.225000 3.962400 12.369800",
+      "gameTime":0.032486166805029,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":1,
+      "techId":"PowerPoint",
+      "built":false,
+      "entityId":3858,
+      "event":"Placed",
+      "location":"74.015602 1.168400 41.503601",
+      "gameTime":0.032486166805029,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":1,
+      "techId":"PowerPoint",
+      "built":false,
+      "entityId":4025,
+      "event":"Placed",
+      "location":"18.567400 5.867400 59.443745",
+      "gameTime":0.032486166805029,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":1,
+      "techId":"Extractor",
+      "built":false,
+      "entityId":2236,
+      "event":"Placed",
+      "location":"-25.603199 4.343400 101.346001",
+      "gameTime":0.033607937395573,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":326,
+      "event":"Placed",
+      "location":"58.631996 -0.076200 19.224520",
+      "gameTime":0.2004494741559,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":1057,
+      "event":"Placed",
+      "location":"39.689041 2.844800 10.086972",
+      "gameTime":0.2004494741559,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":2176,
+      "event":"Placed",
+      "location":"70.711418 -0.076200 35.430927",
+      "gameTime":0.2004494741559,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":2176,
+      "event":"Destroyed",
+      "location":"70.711418 -0.076200 35.430927",
+      "gameTime":0.40046567842364,
+      "destroyed":true,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":2686,
+      "event":"Placed",
+      "location":"74.071571 -0.101600 32.259071",
+      "gameTime":0.40046567842364,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":2686,
+      "event":"Destroyed",
+      "location":"74.071571 -0.101600 32.259071",
+      "gameTime":0.66703471541405,
+      "destroyed":true,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":175,
+      "event":"Placed",
+      "location":"73.516708 0.000000 37.569458",
+      "gameTime":1.8003713786602,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":1,
+      "techId":"Extractor",
+      "built":false,
+      "entityId":1572,
+      "event":"Placed",
+      "location":"81.635590 3.098800 129.757050",
+      "gameTime":5.166490836069,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":1,
+      "techId":"Armory",
+      "built":false,
+      "entityId":2004,
+      "event":"Placed",
+      "location":"29.231735 8.064122 138.872879",
+      "gameTime":5.3662954363972,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":1,
+      "techId":"ArmsLab",
+      "built":false,
+      "entityId":3701,
+      "event":"Placed",
+      "location":"23.608036 9.052400 135.914474",
+      "gameTime":5.5336510110646,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Drifter",
+      "built":true,
+      "entityId":1465,
+      "event":"Built",
+      "location":"18.881077 1.958912 -27.990213",
+      "gameTime":7.0330973882228,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":true,
+      "entityId":1057,
+      "event":"Built",
+      "location":"39.689041 2.844800 10.086972",
+      "gameTime":7.1337062399834,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":1,
+      "techId":"Extractor",
+      "built":false,
+      "entityId":1040,
+      "event":"Placed",
+      "location":"20.548597 2.692400 63.550800",
+      "gameTime":10.20134572871,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":true,
+      "entityId":326,
+      "event":"Built",
+      "location":"58.631996 -0.076200 19.224520",
+      "gameTime":13.568697845563,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":1,
+      "techId":"Extractor",
+      "built":false,
+      "entityId":3170,
+      "event":"Placed",
+      "location":"20.548597 2.692400 63.550800",
+      "gameTime":15.335702298209,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":true,
+      "entityId":175,
+      "event":"Built",
+      "location":"73.516708 0.000000 37.569458",
+      "gameTime":17.702467711642,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":1,
+      "techId":"Extractor",
+      "built":false,
+      "entityId":2897,
+      "event":"Placed",
+      "location":"20.548597 2.692400 63.550800",
+      "gameTime":20.471152080223,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Harvester",
+      "built":false,
+      "entityId":2674,
+      "event":"Placed",
+      "location":"73.990196 -0.127000 34.213799",
+      "gameTime":23.637726524845,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":1187,
+      "event":"Placed",
+      "location":"-5.728636 2.871163 20.790901",
+      "gameTime":23.837725488469,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":2301,
+      "event":"Placed",
+      "location":"15.366730 1.241006 12.294386",
+      "gameTime":23.837725488469,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":4068,
+      "event":"Placed",
+      "location":"-16.073183 1.752603 2.804629",
+      "gameTime":23.837725488469,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":1,
+      "techId":"Extractor",
+      "built":false,
+      "entityId":764,
+      "event":"Placed",
+      "location":"20.548597 2.692400 63.550800",
+      "gameTime":25.637717770413,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":1,
+      "techId":"Extractor",
+      "built":true,
+      "entityId":1572,
+      "event":"Built",
+      "location":"81.632813 3.101563 129.757813",
+      "gameTime":26.07105593197,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":1,
+      "techId":"ArmsLab",
+      "built":true,
+      "entityId":3701,
+      "event":"Built",
+      "location":"23.608036 9.052400 135.914474",
+      "gameTime":28.73772197403,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":1,
+      "techId":"PowerPoint",
+      "built":true,
+      "entityId":1753,
+      "event":"Built",
+      "location":"87.833199 4.648200 122.275597",
+      "gameTime":30.104321444407,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":true,
+      "entityId":2301,
+      "event":"Built",
+      "location":"15.366730 1.241006 12.294386",
+      "gameTime":30.771033478901,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":true,
+      "entityId":1187,
+      "event":"Built",
+      "location":"-5.728636 2.871163 20.790901",
+      "gameTime":37.437726328149,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":1,
+      "techId":"Armory",
+      "built":true,
+      "entityId":2004,
+      "event":"Built",
+      "location":"29.231735 8.064122 138.872879",
+      "gameTime":38.370171098039,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":true,
+      "entityId":4068,
+      "event":"Built",
+      "location":"-16.073183 1.752603 2.804629",
+      "gameTime":44.071026520804,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Harvester",
+      "built":false,
+      "entityId":3879,
+      "event":"Placed",
+      "location":"-18.567400 1.752600 5.080001",
+      "gameTime":49.837821697816,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":907,
+      "event":"Placed",
+      "location":"20.551760 3.302231 60.532993",
+      "gameTime":50.204390736297,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":1541,
+      "event":"Placed",
+      "location":"10.416016 0.821538 50.870510",
+      "gameTime":50.204390736297,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":3243,
+      "event":"Placed",
+      "location":"-1.576079 1.269999 35.112621",
+      "gameTime":50.204390736297,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Harvester",
+      "built":true,
+      "entityId":2674,
+      "event":"Built",
+      "location":"73.990196 -0.127000 34.213799",
+      "gameTime":54.171248232946,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":true,
+      "entityId":3243,
+      "event":"Built",
+      "location":"-1.576079 1.269999 35.112621",
+      "gameTime":57.136924656108,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":true,
+      "entityId":1541,
+      "event":"Built",
+      "location":"10.416016 0.821538 50.870510",
+      "gameTime":63.804366363212,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":true,
+      "entityId":907,
+      "event":"Built",
+      "location":"20.551760 3.302231 60.532993",
+      "gameTime":70.47712357156,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":1,
+      "techId":"PowerPoint",
+      "built":true,
+      "entityId":2691,
+      "event":"Built",
+      "location":"106.778053 4.267200 62.483997",
+      "gameTime":73.14377493225,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Harvester",
+      "built":false,
+      "entityId":522,
+      "event":"Placed",
+      "location":"20.548597 2.692400 63.550800",
+      "gameTime":74.310044558719,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":1,
+      "techId":"Extractor",
+      "built":false,
+      "entityId":905,
+      "event":"Placed",
+      "location":"103.733597 5.918200 62.230000",
+      "gameTime":74.510377677158,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":1712,
+      "event":"Placed",
+      "location":"-36.815304 1.168400 55.823139",
+      "gameTime":74.710334153846,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":2652,
+      "event":"Placed",
+      "location":"-53.630039 2.946400 36.900692",
+      "gameTime":74.710334153846,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":3414,
+      "event":"Placed",
+      "location":"-34.869621 2.946400 20.280912",
+      "gameTime":74.710334153846,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":1,
+      "techId":"Observatory",
+      "built":false,
+      "entityId":1647,
+      "event":"Placed",
+      "location":"32.208908 7.842125 139.764236",
+      "gameTime":79.379048215225,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Veil",
+      "built":false,
+      "entityId":3015,
+      "event":"Placed",
+      "location":"11.599973 2.702400 -20.635736",
+      "gameTime":81.281062437221,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":true,
+      "entityId":3414,
+      "event":"Built",
+      "location":"-34.869621 2.946400 20.280912",
+      "gameTime":81.648033270612,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":1,
+      "techId":"Extractor",
+      "built":true,
+      "entityId":905,
+      "event":"Built",
+      "location":"103.733597 5.918200 62.230000",
+      "gameTime":84.14780081436,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":true,
+      "entityId":2652,
+      "event":"Built",
+      "location":"-53.630039 2.946400 36.900692",
+      "gameTime":88.316400105134,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Harvester",
+      "built":true,
+      "entityId":3879,
+      "event":"Built",
+      "location":"-18.567400 1.752600 5.080001",
+      "gameTime":90.315877247602,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":true,
+      "entityId":1712,
+      "event":"Built",
+      "location":"-36.815304 1.168400 55.823139",
+      "gameTime":94.985550073907,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":1,
+      "techId":"Observatory",
+      "built":true,
+      "entityId":1647,
+      "event":"Built",
+      "location":"32.208908 7.842125 139.764236",
+      "gameTime":101.25142813846,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Harvester",
+      "built":false,
+      "entityId":3908,
+      "event":"Placed",
+      "location":"-38.735001 1.168400 52.959000",
+      "gameTime":101.25142813846,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":713,
+      "event":"Placed",
+      "location":"-38.558491 4.368800 66.636093",
+      "gameTime":101.4497041367,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":2399,
+      "event":"Placed",
+      "location":"-22.789515 4.343400 98.508461",
+      "gameTime":101.4497041367,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":3646,
+      "event":"Placed",
+      "location":"-19.294825 4.368800 78.016319",
+      "gameTime":101.4497041367,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":true,
+      "entityId":713,
+      "event":"Built",
+      "location":"-38.558491 4.368800 66.636093",
+      "gameTime":108.38505686074,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Veil",
+      "built":true,
+      "entityId":3015,
+      "event":"Built",
+      "location":"11.599973 2.702400 -20.635736",
+      "gameTime":109.25370916724,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":true,
+      "entityId":175,
+      "event":"Destroyed",
+      "location":"73.516708 0.000000 37.569458",
+      "gameTime":111.78787940368,
+      "destroyed":true,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":true,
+      "entityId":3646,
+      "event":"Built",
+      "location":"-19.294825 4.368800 78.016319",
+      "gameTime":115.02040214092,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Harvester",
+      "built":true,
+      "entityId":522,
+      "event":"Built",
+      "location":"20.548597 2.692400 63.550800",
+      "gameTime":118.68704345822,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":true,
+      "entityId":2399,
+      "event":"Built",
+      "location":"-22.789515 4.343400 98.508461",
+      "gameTime":121.68703885749,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":2837,
+      "event":"Placed",
+      "location":"77.090714 -0.076200 33.751884",
+      "gameTime":122.2538062185,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":2837,
+      "event":"Destroyed",
+      "location":"77.090714 -0.076200 33.751884",
+      "gameTime":122.45370265096,
+      "destroyed":true,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":2369,
+      "event":"Placed",
+      "location":"71.120728 -0.076200 34.981873",
+      "gameTime":122.45370265096,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":1,
+      "techId":"Extractor",
+      "built":false,
+      "entityId":2426,
+      "event":"Placed",
+      "location":"-25.603199 4.343400 101.346001",
+      "gameTime":122.45370265096,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":2369,
+      "event":"Destroyed",
+      "location":"71.120728 -0.076200 34.981873",
+      "gameTime":122.6537025515,
+      "destroyed":true,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":27,
+      "event":"Placed",
+      "location":"72.003983 0.069499 31.030344",
+      "gameTime":122.6537025515,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":true,
+      "entityId":2399,
+      "event":"Destroyed",
+      "location":"-22.789515 4.343400 98.508461",
+      "gameTime":123.71951250546,
+      "destroyed":true,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":2891,
+      "event":"Placed",
+      "location":"-23.359657 4.343400 99.550179",
+      "gameTime":124.85372756608,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":2891,
+      "event":"Destroyed",
+      "location":"-23.359657 4.343400 99.550179",
+      "gameTime":125.05369969644,
+      "destroyed":true,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":3768,
+      "event":"Placed",
+      "location":"-25.596687 4.419600 97.543747",
+      "gameTime":125.05369969644,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Harvester",
+      "built":true,
+      "entityId":2674,
+      "event":"Destroyed",
+      "location":"73.990196 -0.127000 34.213799",
+      "gameTime":128.65279061161,
+      "destroyed":true,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":true,
+      "entityId":27,
+      "event":"Built",
+      "location":"72.003983 0.069499 31.030344",
+      "gameTime":129.58706211112,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":true,
+      "entityId":27,
+      "event":"Destroyed",
+      "location":"72.003983 0.069499 31.030344",
+      "gameTime":131.41980814375,
+      "destroyed":true,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":true,
+      "entityId":3768,
+      "event":"Built",
+      "location":"-25.596687 4.419600 97.543747",
+      "gameTime":131.98706034385,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":3525,
+      "event":"Placed",
+      "location":"73.302910 0.000000 37.565426",
+      "gameTime":132.0868262928,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":1,
+      "techId":"PowerPoint",
+      "built":true,
+      "entityId":3858,
+      "event":"Built",
+      "location":"74.015602 1.168400 41.503601",
+      "gameTime":133.02039133571,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":3525,
+      "event":"Destroyed",
+      "location":"73.302910 0.000000 37.565426",
+      "gameTime":134.45373064093,
+      "destroyed":true,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":2441,
+      "event":"Placed",
+      "location":"73.941376 -0.076200 31.303301",
+      "gameTime":135.58622410707,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":2441,
+      "event":"Destroyed",
+      "location":"73.941376 -0.076200 31.303301",
+      "gameTime":135.75380666368,
+      "destroyed":true,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":2021,
+      "event":"Placed",
+      "location":"70.198051 -0.076200 33.986832",
+      "gameTime":135.75380666368,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":1,
+      "techId":"Extractor",
+      "built":true,
+      "entityId":2426,
+      "event":"Built",
+      "location":"-25.601563 4.343750 101.343750",
+      "gameTime":138.55371289887,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":1,
+      "techId":"PowerPoint",
+      "built":true,
+      "entityId":2063,
+      "event":"Built",
+      "location":"-19.329399 6.985000 90.500198",
+      "gameTime":140.15370874666,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":1,
+      "techId":"Extractor",
+      "built":false,
+      "entityId":114,
+      "event":"Placed",
+      "location":"73.990196 -0.127000 34.213799",
+      "gameTime":141.35372594558,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":true,
+      "entityId":3768,
+      "event":"Destroyed",
+      "location":"-25.596687 4.419600 97.543747",
+      "gameTime":141.58705298416,
+      "destroyed":true,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":true,
+      "entityId":2021,
+      "event":"Built",
+      "location":"70.198051 -0.076200 33.986832",
+      "gameTime":142.68704416044,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Harvester",
+      "built":false,
+      "entityId":3246,
+      "event":"Placed",
+      "location":"73.990196 -0.127000 34.213799",
+      "gameTime":149.5860803593,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Harvester",
+      "built":true,
+      "entityId":3908,
+      "event":"Built",
+      "location":"-38.735001 1.168400 52.959000",
+      "gameTime":149.61959739216,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":true,
+      "entityId":3646,
+      "event":"Destroyed",
+      "location":"-19.294825 4.368800 78.016319",
+      "gameTime":150.9870612435,
+      "destroyed":true,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Veil",
+      "built":false,
+      "entityId":1306,
+      "event":"Placed",
+      "location":"35.955666 3.108800 -27.990572",
+      "gameTime":162.22039359994,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":true,
+      "entityId":713,
+      "event":"Destroyed",
+      "location":"-38.558491 4.368800 66.636093",
+      "gameTime":167.72039333917,
+      "destroyed":true,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":true,
+      "entityId":1712,
+      "event":"Destroyed",
+      "location":"-36.815304 1.168400 55.823139",
+      "gameTime":175.8537140917,
+      "destroyed":true,
+      "recycled":false
+    },{
+      "teamNumber":1,
+      "techId":"Extractor",
+      "built":true,
+      "entityId":905,
+      "event":"Destroyed",
+      "location":"103.733597 5.918200 62.230000",
+      "gameTime":184.72100991197,
+      "destroyed":true,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":1648,
+      "event":"Placed",
+      "location":"92.033134 0.025399 33.798302",
+      "gameTime":184.78706544079,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":3020,
+      "event":"Placed",
+      "location":"103.992332 6.014452 65.462944",
+      "gameTime":184.78706544079,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":3619,
+      "event":"Placed",
+      "location":"89.482475 4.553235 72.102386",
+      "gameTime":184.78706544079,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":4024,
+      "event":"Placed",
+      "location":"89.075722 1.744304 53.227852",
+      "gameTime":184.78706544079,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":3393,
+      "event":"Placed",
+      "location":"104.183319 5.994400 59.136261",
+      "gameTime":184.9557360094,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":3393,
+      "event":"Destroyed",
+      "location":"104.183319 5.994400 59.136261",
+      "gameTime":185.22423058003,
+      "destroyed":true,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Harvester",
+      "built":true,
+      "entityId":3908,
+      "event":"Destroyed",
+      "location":"-38.734375 1.171875 52.960938",
+      "gameTime":185.82418388501,
+      "destroyed":true,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":459,
+      "event":"Placed",
+      "location":"-40.925129 1.239665 54.344398",
+      "gameTime":187.25737496838,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":459,
+      "event":"Destroyed",
+      "location":"-40.925129 1.239665 54.344398",
+      "gameTime":187.45776212215,
+      "destroyed":true,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":3044,
+      "event":"Placed",
+      "location":"-35.216698 1.168400 53.372211",
+      "gameTime":187.45776212215,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Veil",
+      "built":true,
+      "entityId":1306,
+      "event":"Built",
+      "location":"35.955666 3.108800 -27.990572",
+      "gameTime":190.19033324346,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Harvester",
+      "built":true,
+      "entityId":3246,
+      "event":"Built",
+      "location":"73.990196 -0.127000 34.213799",
+      "gameTime":191.02448096871,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":1,
+      "techId":"Extractor",
+      "built":true,
+      "entityId":1572,
+      "event":"Destroyed",
+      "location":"81.635590 3.098800 129.757050",
+      "gameTime":191.32445830107,
+      "destroyed":true,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":3044,
+      "event":"Destroyed",
+      "location":"-35.216698 1.168400 53.372211",
+      "gameTime":191.35772454739,
+      "destroyed":true,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":true,
+      "entityId":1648,
+      "event":"Built",
+      "location":"92.033134 0.025399 33.798302",
+      "gameTime":191.72469649464,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":2069,
+      "event":"Placed",
+      "location":"-40.230038 1.168400 51.056065",
+      "gameTime":191.72469649464,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":2069,
+      "event":"Destroyed",
+      "location":"-40.230038 1.168400 51.056065",
+      "gameTime":191.92379532382,
+      "destroyed":true,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":958,
+      "event":"Placed",
+      "location":"-41.994698 1.814062 54.517590",
+      "gameTime":191.92379532382,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":1,
+      "techId":"Observatory",
+      "built":true,
+      "entityId":1647,
+      "event":"Destroyed",
+      "location":"32.208908 7.842125 139.764236",
+      "gameTime":192.29128361493,
+      "destroyed":true,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":958,
+      "event":"Destroyed",
+      "location":"-41.994698 1.814062 54.517590",
+      "gameTime":193.69011336938,
+      "destroyed":true,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":488,
+      "event":"Placed",
+      "location":"-37.048981 1.168400 55.325119",
+      "gameTime":194.15781958774,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":true,
+      "entityId":4024,
+      "event":"Built",
+      "location":"89.075722 1.744304 53.227852",
+      "gameTime":196.45780172013,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":1,
+      "techId":"Extractor",
+      "built":false,
+      "entityId":572,
+      "event":"Placed",
+      "location":"81.635590 3.098800 129.757050",
+      "gameTime":196.62439853139,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":true,
+      "entityId":3619,
+      "event":"Built",
+      "location":"89.482475 4.553235 72.102386",
+      "gameTime":200.53239783086,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":488,
+      "event":"Destroyed",
+      "location":"-37.048981 1.168400 55.325119",
+      "gameTime":201.03237688728,
+      "destroyed":true,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":true,
+      "entityId":2652,
+      "event":"Destroyed",
+      "location":"-53.630039 2.946400 36.900692",
+      "gameTime":201.16570953466,
+      "destroyed":true,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":416,
+      "event":"Placed",
+      "location":"-53.621990 2.946400 37.440552",
+      "gameTime":201.93239758722,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":654,
+      "event":"Placed",
+      "location":"-36.180576 1.168400 53.140400",
+      "gameTime":201.93239758722,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":654,
+      "event":"Destroyed",
+      "location":"-36.180576 1.168400 53.140400",
+      "gameTime":202.13242072426,
+      "destroyed":true,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":1624,
+      "event":"Placed",
+      "location":"-40.409859 1.168400 53.823029",
+      "gameTime":202.13242072426,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":true,
+      "entityId":3020,
+      "event":"Built",
+      "location":"103.992332 6.014452 65.462944",
+      "gameTime":204.46570714749,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":true,
+      "entityId":416,
+      "event":"Built",
+      "location":"-53.621990 2.946400 37.440552",
+      "gameTime":208.86577047966,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":true,
+      "entityId":416,
+      "event":"Destroyed",
+      "location":"-53.621990 2.946400 37.440552",
+      "gameTime":208.96573127247,
+      "destroyed":true,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":1624,
+      "event":"Destroyed",
+      "location":"-40.409859 1.168400 53.823029",
+      "gameTime":209.06642420404,
+      "destroyed":true,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":2372,
+      "event":"Placed",
+      "location":"-41.956589 1.793610 52.137524",
+      "gameTime":209.06642420404,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":2372,
+      "event":"Destroyed",
+      "location":"-41.956589 1.793610 52.137524",
+      "gameTime":209.33240340464,
+      "destroyed":true,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Harvester",
+      "built":false,
+      "entityId":2545,
+      "event":"Placed",
+      "location":"103.733597 5.918200 62.230000",
+      "gameTime":210.03232284077,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":2293,
+      "event":"Placed",
+      "location":"-51.982197 2.946400 35.072899",
+      "gameTime":210.79826495238,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":3989,
+      "event":"Placed",
+      "location":"-41.512531 1.555130 53.075386",
+      "gameTime":210.79826495238,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":3989,
+      "event":"Destroyed",
+      "location":"-41.512531 1.555130 53.075386",
+      "gameTime":210.9717167411,
+      "destroyed":true,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":1487,
+      "event":"Placed",
+      "location":"-35.456436 1.168400 54.376709",
+      "gameTime":210.9717167411,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":1487,
+      "event":"Destroyed",
+      "location":"-35.456436 1.168400 54.376709",
+      "gameTime":211.24037976004,
+      "destroyed":true,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":3395,
+      "event":"Placed",
+      "location":"-42.339779 1.999392 52.468037",
+      "gameTime":212.04699043185,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":true,
+      "entityId":2293,
+      "event":"Built",
+      "location":"-51.982197 2.946400 35.072899",
+      "gameTime":217.7406867072,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":true,
+      "entityId":3414,
+      "event":"Destroyed",
+      "location":"-34.869621 2.946400 20.280912",
+      "gameTime":217.94003873318,
+      "destroyed":true,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":3395,
+      "event":"Destroyed",
+      "location":"-42.339779 1.999392 52.468037",
+      "gameTime":217.97609450296,
+      "destroyed":true,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":2960,
+      "event":"Placed",
+      "location":"-37.086617 1.168400 54.349922",
+      "gameTime":217.97609450296,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":2960,
+      "event":"Destroyed",
+      "location":"-37.086617 1.168400 54.349922",
+      "gameTime":218.20722123049,
+      "destroyed":true,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":1091,
+      "event":"Placed",
+      "location":"-40.558388 1.168400 51.029903",
+      "gameTime":219.45684476383,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":1618,
+      "event":"Placed",
+      "location":"-33.428249 2.946400 19.323450",
+      "gameTime":219.45684476383,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":1,
+      "techId":"Extractor",
+      "built":true,
+      "entityId":572,
+      "event":"Built",
+      "location":"81.635590 3.098800 129.757050",
+      "gameTime":224.19153153896,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":true,
+      "entityId":1618,
+      "event":"Built",
+      "location":"-33.428249 2.946400 19.323450",
+      "gameTime":226.3921158798,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":true,
+      "entityId":4068,
+      "event":"Destroyed",
+      "location":"-16.073183 1.752603 2.804629",
+      "gameTime":230.19198377803,
+      "destroyed":true,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":1091,
+      "event":"Destroyed",
+      "location":"-40.558388 1.168400 51.029903",
+      "gameTime":230.52542519942,
+      "destroyed":true,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":206,
+      "event":"Placed",
+      "location":"-36.479412 1.168400 52.219479",
+      "gameTime":230.52542519942,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":206,
+      "event":"Destroyed",
+      "location":"-36.479412 1.168400 52.219479",
+      "gameTime":230.7952756919,
+      "destroyed":true,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":970,
+      "event":"Placed",
+      "location":"-38.488605 1.168400 56.472359",
+      "gameTime":232.04711276107,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":2634,
+      "event":"Placed",
+      "location":"-19.007236 2.946400 14.254181",
+      "gameTime":232.04711276107,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":970,
+      "event":"Destroyed",
+      "location":"-38.488605 1.168400 56.472359",
+      "gameTime":232.24712196924,
+      "destroyed":true,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":335,
+      "event":"Placed",
+      "location":"-42.246948 1.949534 53.964325",
+      "gameTime":232.24712196924,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":335,
+      "event":"Destroyed",
+      "location":"-42.246948 1.949534 53.964325",
+      "gameTime":232.5159162581,
+      "destroyed":true,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":278,
+      "event":"Placed",
+      "location":"-37.112423 1.168400 56.165691",
+      "gameTime":233.70769597962,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":278,
+      "event":"Destroyed",
+      "location":"-37.112423 1.168400 56.165691",
+      "gameTime":233.90268834308,
+      "destroyed":true,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":1034,
+      "event":"Placed",
+      "location":"-41.255199 1.416924 54.202393",
+      "gameTime":233.90268834308,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":2634,
+      "event":"Destroyed",
+      "location":"-19.007236 2.946400 14.254181",
+      "gameTime":234.90086144954,
+      "destroyed":true,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":1034,
+      "event":"Destroyed",
+      "location":"-41.255199 1.416924 54.202393",
+      "gameTime":235.00143340975,
+      "destroyed":true,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":3535,
+      "event":"Placed",
+      "location":"-42.287514 1.971322 52.649284",
+      "gameTime":235.00143340975,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":3535,
+      "event":"Destroyed",
+      "location":"-42.287514 1.971322 52.649284",
+      "gameTime":235.23337681964,
+      "destroyed":true,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":3063,
+      "event":"Placed",
+      "location":"-37.639191 1.168400 50.123161",
+      "gameTime":235.37471858319,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":3063,
+      "event":"Destroyed",
+      "location":"-37.639191 1.168400 50.123161",
+      "gameTime":235.6519218469,
+      "destroyed":true,
+      "recycled":false
+    },{
+      "teamNumber":1,
+      "techId":"RoboticsFactory",
+      "built":false,
+      "entityId":723,
+      "event":"Placed",
+      "location":"25.701298 9.865200 119.977974",
+      "gameTime":235.85728063155,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":1818,
+      "event":"Placed",
+      "location":"-42.286957 1.971031 51.824451",
+      "gameTime":236.60364277568,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":2224,
+      "event":"Placed",
+      "location":"-19.007236 2.946400 14.254181",
+      "gameTime":236.60364277568,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":2224,
+      "event":"Destroyed",
+      "location":"-19.007236 2.946400 14.254181",
+      "gameTime":238.47229095455,
+      "destroyed":true,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":1818,
+      "event":"Destroyed",
+      "location":"-42.286957 1.971031 51.824451",
+      "gameTime":238.57229057234,
+      "destroyed":true,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":3928,
+      "event":"Placed",
+      "location":"-38.481327 1.168400 56.042271",
+      "gameTime":238.57229057234,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":3928,
+      "event":"Destroyed",
+      "location":"-38.481327 1.168400 56.042271",
+      "gameTime":238.77229234111,
+      "destroyed":true,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":306,
+      "event":"Placed",
+      "location":"-36.480743 1.168400 49.890305",
+      "gameTime":238.77229234111,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":306,
+      "event":"Destroyed",
+      "location":"-36.480743 1.168400 49.890305",
+      "gameTime":239.0453133164,
+      "destroyed":true,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":true,
+      "entityId":1618,
+      "event":"Destroyed",
+      "location":"-33.428249 2.946400 19.323450",
+      "gameTime":239.47873571049,
+      "destroyed":true,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":272,
+      "event":"Placed",
+      "location":"-36.910347 1.168400 50.646488",
+      "gameTime":240.64538417105,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":1869,
+      "event":"Placed",
+      "location":"-30.625164 2.895600 18.690624",
+      "gameTime":240.64538417105,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":2711,
+      "event":"Placed",
+      "location":"-15.840372 1.752599 3.647384",
+      "gameTime":242.1473907521,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":2711,
+      "event":"Destroyed",
+      "location":"-15.840372 1.752599 3.647384",
+      "gameTime":242.34743334632,
+      "destroyed":true,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":1111,
+      "event":"Placed",
+      "location":"-20.874886 1.828817 3.490111",
+      "gameTime":242.34743334632,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Harvester",
+      "built":true,
+      "entityId":2545,
+      "event":"Built",
+      "location":"103.733597 5.918200 62.230000",
+      "gameTime":243.34740628395,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":true,
+      "entityId":1869,
+      "event":"Built",
+      "location":"-30.625164 2.895600 18.690624",
+      "gameTime":247.58073654678,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":1111,
+      "event":"Destroyed",
+      "location":"-20.874886 1.828817 3.490111",
+      "gameTime":251.44740199205,
+      "destroyed":true,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":true,
+      "entityId":3020,
+      "event":"Destroyed",
+      "location":"103.992332 6.014452 65.462944",
+      "gameTime":252.11429398973,
+      "destroyed":true,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":true,
+      "entityId":272,
+      "event":"Built",
+      "location":"-36.910347 1.168400 50.646488",
+      "gameTime":254.25056412909,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":660,
+      "event":"Placed",
+      "location":"105.221397 5.943603 62.510921",
+      "gameTime":257.28273157869,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":660,
+      "event":"Destroyed",
+      "location":"105.221397 5.943603 62.510921",
+      "gameTime":257.44932216872,
+      "destroyed":true,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":853,
+      "event":"Placed",
+      "location":"104.522453 5.994400 60.058445",
+      "gameTime":257.44932216872,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":853,
+      "event":"Destroyed",
+      "location":"104.522453 5.994400 60.058445",
+      "gameTime":258.44939834718,
+      "destroyed":true,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Harvester",
+      "built":false,
+      "entityId":1139,
+      "event":"Placed",
+      "location":"-38.735001 1.168400 52.959000",
+      "gameTime":259.75002776179,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":3062,
+      "event":"Placed",
+      "location":"-21.505898 1.752590 7.672534",
+      "gameTime":272.28654359374,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":2178,
+      "event":"Placed",
+      "location":"-16.402905 1.752595 4.070840",
+      "gameTime":272.45259030629,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Harvester",
+      "built":true,
+      "entityId":3879,
+      "event":"Destroyed",
+      "location":"-18.570313 1.750000 5.078125",
+      "gameTime":273.98675590847,
+      "destroyed":true,
+      "recycled":false
+    },{
+      "teamNumber":1,
+      "techId":"Observatory",
+      "built":false,
+      "entityId":2009,
+      "event":"Placed",
+      "location":"19.975243 9.001600 128.295120",
+      "gameTime":277.11912750546,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":true,
+      "entityId":3062,
+      "event":"Built",
+      "location":"-21.505898 1.752590 7.672534",
+      "gameTime":279.22206578683,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":true,
+      "entityId":2178,
+      "event":"Built",
+      "location":"-16.402905 1.752595 4.070840",
+      "gameTime":285.88874358032,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Harvester",
+      "built":false,
+      "entityId":230,
+      "event":"Placed",
+      "location":"-18.567400 1.752600 5.080001",
+      "gameTime":286.2220735522,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Harvester",
+      "built":true,
+      "entityId":2545,
+      "event":"Destroyed",
+      "location":"103.734375 5.921875 62.226563",
+      "gameTime":286.25540001411,
+      "destroyed":true,
+      "recycled":false
+    },{
+      "teamNumber":1,
+      "techId":"Extractor",
+      "built":false,
+      "entityId":1674,
+      "event":"Placed",
+      "location":"103.733597 5.918200 62.230000",
+      "gameTime":287.55541060772,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":3490,
+      "event":"Placed",
+      "location":"104.383995 6.014452 65.086113",
+      "gameTime":287.58796075638,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":3490,
+      "event":"Destroyed",
+      "location":"104.383995 6.014452 65.086113",
+      "gameTime":287.78770253714,
+      "destroyed":true,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":288,
+      "event":"Placed",
+      "location":"105.335114 5.943603 63.441086",
+      "gameTime":287.78770253714,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":288,
+      "event":"Destroyed",
+      "location":"105.335114 5.943603 63.441086",
+      "gameTime":287.98872006964,
+      "destroyed":true,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":4017,
+      "event":"Placed",
+      "location":"102.730919 5.994400 59.833260",
+      "gameTime":287.98872006964,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":4017,
+      "event":"Destroyed",
+      "location":"102.730919 5.994400 59.833260",
+      "gameTime":289.28885042574,
+      "destroyed":true,
+      "recycled":false
+    },{
+      "teamNumber":1,
+      "techId":"RoboticsFactory",
+      "built":true,
+      "entityId":723,
+      "event":"Built",
+      "location":"25.701298 9.865200 119.977974",
+      "gameTime":296.28885579389,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Harvester",
+      "built":true,
+      "entityId":1139,
+      "event":"Built",
+      "location":"-38.735001 1.168400 52.959000",
+      "gameTime":300.08873986732,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":1,
+      "techId":"MAC",
+      "built":true,
+      "entityId":1886,
+      "event":"Built",
+      "location":"25.701298 9.865200 119.977974",
+      "gameTime":303.62215204444,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":1,
+      "techId":"Extractor",
+      "built":true,
+      "entityId":1674,
+      "event":"Built",
+      "location":"103.734375 5.921875 62.226563",
+      "gameTime":304.78809038457,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":1,
+      "techId":"Observatory",
+      "built":true,
+      "entityId":2009,
+      "event":"Built",
+      "location":"19.975243 9.001600 128.295120",
+      "gameTime":311.1220674729,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":true,
+      "entityId":3619,
+      "event":"Destroyed",
+      "location":"89.482475 4.553235 72.102386",
+      "gameTime":313.32209635805,
+      "destroyed":true,
+      "recycled":false
+    },{
+      "teamNumber":1,
+      "techId":"PhaseGate",
+      "built":false,
+      "entityId":527,
+      "event":"Placed",
+      "location":"26.320505 9.052400 133.005798",
+      "gameTime":321.32207056414,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Harvester",
+      "built":true,
+      "entityId":230,
+      "event":"Built",
+      "location":"-18.567400 1.752600 5.080001",
+      "gameTime":328.92205116618,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":1,
+      "techId":"MAC",
+      "built":true,
+      "entityId":533,
+      "event":"Built",
+      "location":"25.701298 9.865200 119.977974",
+      "gameTime":337.42222568113,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Hive",
+      "built":false,
+      "entityId":750,
+      "event":"Placed",
+      "location":"-54.610001 5.669000 52.933594",
+      "gameTime":349.48861252237,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":1,
+      "techId":"PhaseGate",
+      "built":false,
+      "entityId":3286,
+      "event":"Placed",
+      "location":"115.065125 4.528952 77.834946",
+      "gameTime":352.58874760289,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":1,
+      "techId":"PhaseGate",
+      "built":true,
+      "entityId":527,
+      "event":"Built",
+      "location":"26.320505 9.052400 133.005798",
+      "gameTime":353.55444410909,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Drifter",
+      "built":true,
+      "entityId":3104,
+      "event":"Built",
+      "location":"28.527000 2.600800 -25.216753",
+      "gameTime":365.28873382602,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":1,
+      "techId":"PhaseGate",
+      "built":true,
+      "entityId":3286,
+      "event":"Built",
+      "location":"115.065125 4.528952 77.834946",
+      "gameTime":366.0884651849,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Veil",
+      "built":false,
+      "entityId":2285,
+      "event":"Placed",
+      "location":"-43.933434 2.651609 46.456627",
+      "gameTime":395.18779805023,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Hive",
+      "built":false,
+      "entityId":750,
+      "event":"Destroyed",
+      "location":"-54.609375 5.671875 52.937500",
+      "gameTime":410.25739709008,
+      "destroyed":true,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Veil",
+      "built":true,
+      "entityId":2285,
+      "event":"Built",
+      "location":"-43.933434 2.651609 46.456627",
+      "gameTime":414.15941166226,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":true,
+      "entityId":272,
+      "event":"Destroyed",
+      "location":"-36.910347 1.168400 50.646488",
+      "gameTime":429.89473353606,
+      "destroyed":true,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":2020,
+      "event":"Placed",
+      "location":"-39.277931 1.193800 54.490425",
+      "gameTime":446.06154377852,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":2020,
+      "event":"Destroyed",
+      "location":"-39.277931 1.193800 54.490425",
+      "gameTime":446.23571524862,
+      "destroyed":true,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":853,
+      "event":"Placed",
+      "location":"-41.132599 1.351095 52.958557",
+      "gameTime":446.23571524862,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":true,
+      "entityId":853,
+      "event":"Built",
+      "location":"-41.132599 1.351095 52.958557",
+      "gameTime":453.15974366758,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Hive",
+      "built":false,
+      "entityId":3750,
+      "event":"Placed",
+      "location":"-54.610001 5.669000 52.933594",
+      "gameTime":453.69307496119,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":1,
+      "techId":"InfantryPortal",
+      "built":false,
+      "entityId":1176,
+      "event":"Placed",
+      "location":"32.624592 7.667153 140.728622",
+      "gameTime":455.39428933803,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":1,
+      "techId":"InfantryPortal",
+      "built":true,
+      "entityId":1176,
+      "event":"Built",
+      "location":"32.624592 7.667153 140.728622",
+      "gameTime":471.82841044199,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":1,
+      "techId":"PhaseGate",
+      "built":false,
+      "entityId":975,
+      "event":"Placed",
+      "location":"-22.861145 5.725000 86.138695",
+      "gameTime":479.52840990108,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":1,
+      "techId":"PhaseGate",
+      "built":false,
+      "entityId":3328,
+      "event":"Placed",
+      "location":"-23.429823 5.725000 85.627716",
+      "gameTime":517.96374975797,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":1,
+      "techId":"PhaseGate",
+      "built":true,
+      "entityId":3328,
+      "event":"Built",
+      "location":"-23.429823 5.725000 85.627716",
+      "gameTime":524.16374400537,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":1,
+      "techId":"PrototypeLab",
+      "built":false,
+      "entityId":1206,
+      "event":"Placed",
+      "location":"24.134367 9.128600 138.948303",
+      "gameTime":562.29906360526,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":true,
+      "entityId":853,
+      "event":"Destroyed",
+      "location":"-41.132599 1.351095 52.958557",
+      "gameTime":562.99917454366,
+      "destroyed":true,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Harvester",
+      "built":true,
+      "entityId":1139,
+      "event":"Destroyed",
+      "location":"-38.735001 1.168400 52.959000",
+      "gameTime":578.20043125283,
+      "destroyed":true,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":4026,
+      "event":"Placed",
+      "location":"-35.713589 1.168400 50.857674",
+      "gameTime":579.3124025045,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":4026,
+      "event":"Destroyed",
+      "location":"-35.713589 1.168400 50.857674",
+      "gameTime":579.48455002438,
+      "destroyed":true,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":144,
+      "event":"Placed",
+      "location":"-38.705898 1.168400 49.052990",
+      "gameTime":579.48455002438,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":1524,
+      "event":"Placed",
+      "location":"-38.911110 1.168400 56.189648",
+      "gameTime":579.67881705146,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":true,
+      "entityId":2293,
+      "event":"Destroyed",
+      "location":"-51.982197 2.946400 35.072899",
+      "gameTime":580.03523106407,
+      "destroyed":true,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":1524,
+      "event":"Destroyed",
+      "location":"-38.911110 1.168400 56.189648",
+      "gameTime":580.06827773433,
+      "destroyed":true,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":144,
+      "event":"Destroyed",
+      "location":"-38.705898 1.168400 49.052990",
+      "gameTime":580.06827773433,
+      "destroyed":true,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":1859,
+      "event":"Placed",
+      "location":"-42.422035 2.043570 52.016354",
+      "gameTime":580.06827773433,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":1859,
+      "event":"Destroyed",
+      "location":"-42.422035 2.043570 52.016354",
+      "gameTime":580.20191024896,
+      "destroyed":true,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Veil",
+      "built":true,
+      "entityId":2285,
+      "event":"Destroyed",
+      "location":"-43.933434 2.651609 46.456627",
+      "gameTime":580.33703052904,
+      "destroyed":true,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":131,
+      "event":"Placed",
+      "location":"-39.878162 1.168400 55.427292",
+      "gameTime":581.40792330261,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":349,
+      "event":"Placed",
+      "location":"-50.951851 2.946400 34.595066",
+      "gameTime":581.40792330261,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":131,
+      "event":"Destroyed",
+      "location":"-39.878162 1.168400 55.427292",
+      "gameTime":581.57620955165,
+      "destroyed":true,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":420,
+      "event":"Placed",
+      "location":"-37.934460 1.168400 50.247108",
+      "gameTime":581.57620955165,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":420,
+      "event":"Destroyed",
+      "location":"-37.934460 1.168400 50.247108",
+      "gameTime":583.21314914431,
+      "destroyed":true,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":196,
+      "event":"Placed",
+      "location":"-36.662720 1.168400 50.946262",
+      "gameTime":584.37859216984,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":196,
+      "event":"Destroyed",
+      "location":"-36.662720 1.168400 50.946262",
+      "gameTime":584.57869547512,
+      "destroyed":true,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":2879,
+      "event":"Placed",
+      "location":"-37.106052 1.168400 55.749443",
+      "gameTime":584.57869547512,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":2879,
+      "event":"Destroyed",
+      "location":"-37.106052 1.168400 55.749443",
+      "gameTime":584.84724474978,
+      "destroyed":true,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":1645,
+      "event":"Placed",
+      "location":"-42.077286 1.858418 53.424263",
+      "gameTime":585.2826338103,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":1,
+      "techId":"Extractor",
+      "built":false,
+      "entityId":1275,
+      "event":"Placed",
+      "location":"-38.735001 1.168400 52.959000",
+      "gameTime":585.61591123324,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Hive",
+      "built":false,
+      "entityId":3750,
+      "event":"Destroyed",
+      "location":"-54.609375 5.671875 52.937500",
+      "gameTime":586.68257911783,
+      "destroyed":true,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":true,
+      "entityId":349,
+      "event":"Built",
+      "location":"-50.951851 2.946400 34.595066",
+      "gameTime":587.44924882706,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":1645,
+      "event":"Destroyed",
+      "location":"-42.077286 1.858418 53.424263",
+      "gameTime":588.28258635756,
+      "destroyed":true,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":1701,
+      "event":"Placed",
+      "location":"-37.163246 1.168400 50.446579",
+      "gameTime":588.51590471622,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":1701,
+      "event":"Destroyed",
+      "location":"-37.163246 1.168400 50.446579",
+      "gameTime":588.7159193242,
+      "destroyed":true,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":2874,
+      "event":"Placed",
+      "location":"-37.258831 1.193800 52.010376",
+      "gameTime":588.7159193242,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":1,
+      "techId":"CommandStation",
+      "built":false,
+      "entityId":1328,
+      "event":"Placed",
+      "location":"-54.610001 3.175000 52.933594",
+      "gameTime":590.01591656823,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":2874,
+      "event":"Destroyed",
+      "location":"-37.258831 1.193800 52.010376",
+      "gameTime":590.6159221502,
+      "destroyed":true,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":712,
+      "event":"Placed",
+      "location":"-42.096802 1.868896 54.836536",
+      "gameTime":591.38235117961,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":712,
+      "event":"Destroyed",
+      "location":"-42.096802 1.868896 54.836536",
+      "gameTime":591.5825925516,
+      "destroyed":true,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":1214,
+      "event":"Placed",
+      "location":"-39.378670 1.168400 56.046120",
+      "gameTime":591.5825925516,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":1214,
+      "event":"Destroyed",
+      "location":"-39.378670 1.168400 56.046120",
+      "gameTime":596.24923456181,
+      "destroyed":true,
+      "recycled":false
+    },{
+      "teamNumber":1,
+      "techId":"PrototypeLab",
+      "built":true,
+      "entityId":1206,
+      "event":"Built",
+      "location":"24.134367 9.128600 138.948303",
+      "gameTime":599.08356935065,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":1,
+      "techId":"Extractor",
+      "built":true,
+      "entityId":1275,
+      "event":"Built",
+      "location":"-38.734375 1.171875 52.960938",
+      "gameTime":603.2885898063,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":1,
+      "techId":"PowerPoint",
+      "built":true,
+      "entityId":1319,
+      "event":"Built",
+      "location":"-32.308800 5.715000 44.195999",
+      "gameTime":619.12888663728,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":1,
+      "techId":"CommandStation",
+      "built":true,
+      "entityId":1328,
+      "event":"Built",
+      "location":"-54.610001 3.175000 52.933594",
+      "gameTime":626.72995270509,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":true,
+      "entityId":349,
+      "event":"Destroyed",
+      "location":"-50.951851 2.946400 34.595066",
+      "gameTime":647.76253836881,
+      "destroyed":true,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Hive",
+      "built":false,
+      "entityId":247,
+      "event":"Placed",
+      "location":"96.977196 7.066000 77.774796",
+      "gameTime":650.69656893145,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":1,
+      "techId":"PhaseGate",
+      "built":false,
+      "entityId":1627,
+      "event":"Placed",
+      "location":"-47.194664 2.651609 53.010269",
+      "gameTime":653.26723816898,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":1,
+      "techId":"PhaseGate",
+      "built":true,
+      "entityId":3328,
+      "event":"Recycled",
+      "location":"-23.429823 5.725000 85.627716",
+      "gameTime":653.3672587825,
+      "destroyed":true,
+      "recycled":true
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":true,
+      "entityId":1869,
+      "event":"Destroyed",
+      "location":"-30.625164 2.895600 18.690624",
+      "gameTime":657.56724844035,
+      "destroyed":true,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":true,
+      "entityId":2178,
+      "event":"Destroyed",
+      "location":"-16.402905 1.752595 4.070840",
+      "gameTime":660.60060302075,
+      "destroyed":true,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":true,
+      "entityId":3062,
+      "event":"Destroyed",
+      "location":"-21.505898 1.752590 7.672534",
+      "gameTime":661.23394146468,
+      "destroyed":true,
+      "recycled":false
+    },{
+      "teamNumber":1,
+      "techId":"PhaseGate",
+      "built":true,
+      "entityId":1627,
+      "event":"Built",
+      "location":"-47.194664 2.651609 53.010269",
+      "gameTime":662.33362066653,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":true,
+      "entityId":1187,
+      "event":"Destroyed",
+      "location":"-5.728636 2.871163 20.790901",
+      "gameTime":671.10396137182,
+      "destroyed":true,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":1679,
+      "event":"Placed",
+      "location":"-5.214758 2.871163 20.815857",
+      "gameTime":676.20066049416,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":2868,
+      "event":"Placed",
+      "location":"-20.339191 1.828816 3.148691",
+      "gameTime":676.20066049416,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":true,
+      "entityId":1679,
+      "event":"Built",
+      "location":"-5.214758 2.871163 20.815857",
+      "gameTime":682.63392590825,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":true,
+      "entityId":2868,
+      "event":"Built",
+      "location":"-20.339191 1.828816 3.148691",
+      "gameTime":686.66677829716,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Hive",
+      "built":false,
+      "entityId":247,
+      "event":"Destroyed",
+      "location":"96.976563 7.062500 77.773438",
+      "gameTime":693.6405538721,
+      "destroyed":true,
+      "recycled":false
+    },{
+      "teamNumber":1,
+      "techId":"CommandStation",
+      "built":false,
+      "entityId":1722,
+      "event":"Placed",
+      "location":"96.977196 4.572000 77.774796",
+      "gameTime":695.90656793397,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":1,
+      "techId":"CommandStation",
+      "built":true,
+      "entityId":1722,
+      "event":"Built",
+      "location":"96.976563 4.570313 77.773438",
+      "gameTime":710.71059903409,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":true,
+      "entityId":4024,
+      "event":"Destroyed",
+      "location":"89.075722 1.744304 53.227852",
+      "gameTime":719.77697811555,
+      "destroyed":true,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":true,
+      "entityId":1648,
+      "event":"Destroyed",
+      "location":"92.033134 0.025399 33.798302",
+      "gameTime":726.04394491855,
+      "destroyed":true,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Hive",
+      "built":false,
+      "entityId":3574,
+      "event":"Placed",
+      "location":"48.234604 7.929600 63.499996",
+      "gameTime":744.88328739349,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":true,
+      "entityId":2021,
+      "event":"Destroyed",
+      "location":"70.198051 -0.076200 33.986832",
+      "gameTime":761.49039756972,
+      "destroyed":true,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Veil",
+      "built":false,
+      "entityId":2839,
+      "event":"Placed",
+      "location":"15.971607 2.727800 -17.124916",
+      "gameTime":768.69278341439,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":true,
+      "entityId":326,
+      "event":"Destroyed",
+      "location":"58.631996 -0.076200 19.224520",
+      "gameTime":770.99324859772,
+      "destroyed":true,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":true,
+      "entityId":907,
+      "event":"Destroyed",
+      "location":"20.551760 3.302231 60.532993",
+      "gameTime":779.25896672811,
+      "destroyed":true,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Veil",
+      "built":true,
+      "entityId":2839,
+      "event":"Built",
+      "location":"15.971607 2.727800 -17.124916",
+      "gameTime":781.29661907535,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":1,
+      "techId":"PhaseGate",
+      "built":true,
+      "entityId":1627,
+      "event":"Destroyed",
+      "location":"-47.194664 2.651609 53.010269",
+      "gameTime":792.39526555967,
+      "destroyed":true,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":2919,
+      "event":"Placed",
+      "location":"60.155636 -0.102103 19.313770",
+      "gameTime":793.89526757319,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":2973,
+      "event":"Placed",
+      "location":"74.352264 -0.076200 31.262251",
+      "gameTime":793.89526757319,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":2973,
+      "event":"Destroyed",
+      "location":"74.352264 -0.076200 31.262251",
+      "gameTime":794.06193500478,
+      "destroyed":true,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":3838,
+      "event":"Placed",
+      "location":"77.729614 -0.076200 34.417965",
+      "gameTime":794.06193500478,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Drifter",
+      "built":true,
+      "entityId":1465,
+      "event":"Destroyed",
+      "location":"31.415016 5.243185 58.028698",
+      "gameTime":799.3669807082,
+      "destroyed":true,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":true,
+      "entityId":2919,
+      "event":"Built",
+      "location":"60.155636 -0.102103 19.313770",
+      "gameTime":800.20126219001,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Harvester",
+      "built":true,
+      "entityId":3246,
+      "event":"Destroyed",
+      "location":"73.992188 -0.125000 34.210938",
+      "gameTime":802.96719978657,
+      "destroyed":true,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":true,
+      "entityId":1541,
+      "event":"Destroyed",
+      "location":"10.416016 0.821538 50.870510",
+      "gameTime":805.66794457193,
+      "destroyed":true,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Drifter",
+      "built":true,
+      "entityId":3597,
+      "event":"Built",
+      "location":"26.265354 2.752543 -21.493643",
+      "gameTime":806.43458922859,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":true,
+      "entityId":3838,
+      "event":"Built",
+      "location":"77.729614 -0.076200 34.417965",
+      "gameTime":806.83486142289,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Harvester",
+      "built":false,
+      "entityId":2001,
+      "event":"Placed",
+      "location":"73.990196 -0.127000 34.213799",
+      "gameTime":813.20324751642,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":1970,
+      "event":"Placed",
+      "location":"20.205620 2.718396 65.015945",
+      "gameTime":813.40324768703,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":2564,
+      "event":"Placed",
+      "location":"12.835221 1.582753 51.514599",
+      "gameTime":813.40324768703,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":1970,
+      "event":"Destroyed",
+      "location":"20.205620 2.718396 65.015945",
+      "gameTime":813.60327218752,
+      "destroyed":true,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":459,
+      "event":"Placed",
+      "location":"22.598125 2.794000 65.213715",
+      "gameTime":813.60327218752,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":true,
+      "entityId":3243,
+      "event":"Destroyed",
+      "location":"-1.576079 1.269999 35.112621",
+      "gameTime":814.43657688703,
+      "destroyed":true,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":2564,
+      "event":"Destroyed",
+      "location":"12.835221 1.582753 51.514599",
+      "gameTime":814.46992224362,
+      "destroyed":true,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":459,
+      "event":"Destroyed",
+      "location":"22.598125 2.794000 65.213715",
+      "gameTime":814.66990978178,
+      "destroyed":true,
+      "recycled":false
+    },{
+      "teamNumber":1,
+      "techId":"InfantryPortal",
+      "built":false,
+      "entityId":3502,
+      "event":"Placed",
+      "location":"30.756538 7.664487 147.401871",
+      "gameTime":832.23860111553,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Harvester",
+      "built":true,
+      "entityId":522,
+      "event":"Destroyed",
+      "location":"20.548597 2.692400 63.550800",
+      "gameTime":837.33871222939,
+      "destroyed":true,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":913,
+      "event":"Placed",
+      "location":"0.414849 1.320799 36.174736",
+      "gameTime":839.47390781436,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":1341,
+      "event":"Placed",
+      "location":"15.115553 2.300271 51.842972",
+      "gameTime":839.47390781436,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":3602,
+      "event":"Placed",
+      "location":"19.330608 2.794000 66.006493",
+      "gameTime":839.47390781436,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":3959,
+      "event":"Placed",
+      "location":"22.372276 4.571968 66.932991",
+      "gameTime":839.6740208203,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":3959,
+      "event":"Destroyed",
+      "location":"22.372276 4.571968 66.932991",
+      "gameTime":839.70726134721,
+      "destroyed":true,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Hive",
+      "built":false,
+      "entityId":3574,
+      "event":"Destroyed",
+      "location":"48.234375 7.929688 63.500000",
+      "gameTime":844.90927733015,
+      "destroyed":true,
+      "recycled":false
+    },{
+      "teamNumber":1,
+      "techId":"InfantryPortal",
+      "built":true,
+      "entityId":3502,
+      "event":"Built",
+      "location":"30.756538 7.664487 147.401871",
+      "gameTime":845.57549571525,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":true,
+      "entityId":913,
+      "event":"Built",
+      "location":"0.414849 1.320799 36.174736",
+      "gameTime":846.4092452107,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":1,
+      "techId":"RoboticsFactory",
+      "built":false,
+      "entityId":2268,
+      "event":"Placed",
+      "location":"-55.606770 2.956400 42.238869",
+      "gameTime":847.0759352399,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":true,
+      "entityId":1341,
+      "event":"Built",
+      "location":"15.115553 2.300271 51.842972",
+      "gameTime":849.70891032834,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Harvester",
+      "built":true,
+      "entityId":2001,
+      "event":"Built",
+      "location":"73.990196 -0.127000 34.213799",
+      "gameTime":851.68048093002,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":true,
+      "entityId":3602,
+      "event":"Built",
+      "location":"19.330608 2.794000 66.006493",
+      "gameTime":853.3112749299,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Harvester",
+      "built":false,
+      "entityId":930,
+      "event":"Placed",
+      "location":"20.548597 2.692400 63.550800",
+      "gameTime":858.21324525308,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":1,
+      "techId":"CommandStation",
+      "built":false,
+      "entityId":3043,
+      "event":"Placed",
+      "location":"48.234604 5.435600 63.499996",
+      "gameTime":868.04625572916,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":true,
+      "entityId":3838,
+      "event":"Destroyed",
+      "location":"77.729614 -0.076200 34.417965",
+      "gameTime":874.51634529885,
+      "destroyed":true,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Drifter",
+      "built":true,
+      "entityId":3104,
+      "event":"Destroyed",
+      "location":"29.613052 5.242188 57.452206",
+      "gameTime":875.41743034404,
+      "destroyed":true,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":2696,
+      "event":"Placed",
+      "location":"71.326805 -0.076200 33.409027",
+      "gameTime":879.3194633266,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":2696,
+      "event":"Destroyed",
+      "location":"71.326805 -0.076200 33.409027",
+      "gameTime":879.51927327644,
+      "destroyed":true,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":1702,
+      "event":"Placed",
+      "location":"76.565002 -0.076200 32.699940",
+      "gameTime":879.51927327644,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":1702,
+      "event":"Destroyed",
+      "location":"76.565002 -0.076200 32.699940",
+      "gameTime":883.05259793904,
+      "destroyed":true,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Harvester",
+      "built":true,
+      "entityId":930,
+      "event":"Built",
+      "location":"20.548597 2.692400 63.550800",
+      "gameTime":894.11927441973,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":1396,
+      "event":"Placed",
+      "location":"75.026779 -0.101600 32.601902",
+      "gameTime":894.78585328627,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":1396,
+      "event":"Destroyed",
+      "location":"75.026779 -0.101600 32.601902",
+      "gameTime":894.98491587956,
+      "destroyed":true,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":398,
+      "event":"Placed",
+      "location":"77.773575 -0.076200 34.653358",
+      "gameTime":894.98491587956,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Harvester",
+      "built":true,
+      "entityId":2001,
+      "event":"Destroyed",
+      "location":"73.992188 -0.125000 34.210938",
+      "gameTime":899.01927138399,
+      "destroyed":true,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":398,
+      "event":"Destroyed",
+      "location":"77.773575 -0.076200 34.653358",
+      "gameTime":900.35307557788,
+      "destroyed":true,
+      "recycled":false
+    },{
+      "teamNumber":1,
+      "techId":"PhaseGate",
+      "built":false,
+      "entityId":3054,
+      "event":"Placed",
+      "location":"-46.924114 2.651609 53.964649",
+      "gameTime":900.98695359658,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":881,
+      "event":"Placed",
+      "location":"73.683517 -0.076200 31.298708",
+      "gameTime":901.01912724879,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":881,
+      "event":"Destroyed",
+      "location":"73.683517 -0.076200 31.298708",
+      "gameTime":901.18593764212,
+      "destroyed":true,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":3381,
+      "event":"Placed",
+      "location":"74.007843 -0.000000 38.104836",
+      "gameTime":901.41862212028,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":true,
+      "entityId":3381,
+      "event":"Built",
+      "location":"74.007843 -0.000000 38.104836",
+      "gameTime":907.05257773306,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":1,
+      "techId":"RoboticsFactory",
+      "built":false,
+      "entityId":3144,
+      "event":"Placed",
+      "location":"-55.909462 2.956400 41.754715",
+      "gameTime":913.08608507644,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Harvester",
+      "built":false,
+      "entityId":3022,
+      "event":"Placed",
+      "location":"73.990196 -0.127000 34.213799",
+      "gameTime":913.75283563044,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":1,
+      "techId":"PrototypeLab",
+      "built":false,
+      "entityId":3033,
+      "event":"Placed",
+      "location":"-46.961468 2.651609 50.689716",
+      "gameTime":918.45258682501,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":1,
+      "techId":"PhaseGate",
+      "built":true,
+      "entityId":3054,
+      "event":"Built",
+      "location":"-46.924114 2.651609 53.964649",
+      "gameTime":919.38687510323,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":1,
+      "techId":"InfantryPortal",
+      "built":false,
+      "entityId":1914,
+      "event":"Placed",
+      "location":"-49.079891 2.651609 52.440533",
+      "gameTime":928.21927259583,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":1,
+      "techId":"PrototypeLab",
+      "built":true,
+      "entityId":3033,
+      "event":"Built",
+      "location":"-46.961468 2.651609 50.689716",
+      "gameTime":935.1545840567,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Harvester",
+      "built":true,
+      "entityId":3022,
+      "event":"Built",
+      "location":"73.990196 -0.127000 34.213799",
+      "gameTime":944.28763428424,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":1,
+      "techId":"RoboticsFactory",
+      "built":true,
+      "entityId":3144,
+      "event":"Built",
+      "location":"-55.906250 2.953125 41.757813",
+      "gameTime":944.38790037204,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":1,
+      "techId":"InfantryPortal",
+      "built":true,
+      "entityId":1914,
+      "event":"Built",
+      "location":"-49.078125 2.648438 52.437500",
+      "gameTime":947.22136885393,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Harvester",
+      "built":true,
+      "entityId":230,
+      "event":"Destroyed",
+      "location":"-18.570313 1.750000 5.078125",
+      "gameTime":960.68795492034,
+      "destroyed":true,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":true,
+      "entityId":2868,
+      "event":"Destroyed",
+      "location":"-20.339191 1.828816 3.148691",
+      "gameTime":960.68795492034,
+      "destroyed":true,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":3900,
+      "event":"Placed",
+      "location":"-20.984140 2.070459 8.246167",
+      "gameTime":963.78687398229,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":3900,
+      "event":"Destroyed",
+      "location":"-20.984140 2.070459 8.246167",
+      "gameTime":963.98794217501,
+      "destroyed":true,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":2317,
+      "event":"Placed",
+      "location":"-15.895177 1.752591 5.064781",
+      "gameTime":963.98794217501,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":2317,
+      "event":"Destroyed",
+      "location":"-15.895177 1.752591 5.064781",
+      "gameTime":964.18876790721,
+      "destroyed":true,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":708,
+      "event":"Placed",
+      "location":"-18.991518 1.752619 2.613475",
+      "gameTime":964.18876790721,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":708,
+      "event":"Destroyed",
+      "location":"-18.991518 1.752619 2.613475",
+      "gameTime":966.4538486572,
+      "destroyed":true,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":1669,
+      "event":"Placed",
+      "location":"-21.070692 1.752591 7.427705",
+      "gameTime":967.08793453593,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":1669,
+      "event":"Destroyed",
+      "location":"-21.070692 1.752591 7.427705",
+      "gameTime":967.25559564773,
+      "destroyed":true,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":707,
+      "event":"Placed",
+      "location":"-19.856205 2.167148 8.415350",
+      "gameTime":967.25559564773,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":707,
+      "event":"Destroyed",
+      "location":"-19.856205 2.167148 8.415350",
+      "gameTime":973.68982330058,
+      "destroyed":true,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":1903,
+      "event":"Placed",
+      "location":"-18.458687 1.741616 3.591758",
+      "gameTime":974.22325724829,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":1903,
+      "event":"Destroyed",
+      "location":"-18.458687 1.741616 3.591758",
+      "gameTime":976.82234999072,
+      "destroyed":true,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":3154,
+      "event":"Placed",
+      "location":"-19.748339 2.271472 8.597914",
+      "gameTime":977.92316421401,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":3154,
+      "event":"Destroyed",
+      "location":"-19.748339 2.271472 8.597914",
+      "gameTime":978.08992569428,
+      "destroyed":true,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":2285,
+      "event":"Placed",
+      "location":"-19.111603 1.828815 2.270670",
+      "gameTime":978.08992569428,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":true,
+      "entityId":2285,
+      "event":"Built",
+      "location":"-19.111603 1.828815 2.270670",
+      "gameTime":982.62239241693,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Harvester",
+      "built":false,
+      "entityId":1150,
+      "event":"Placed",
+      "location":"-18.567400 1.752600 5.080001",
+      "gameTime":987.69205234479,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":1,
+      "techId":"InfantryPortal",
+      "built":false,
+      "entityId":3025,
+      "event":"Placed",
+      "location":"101.363899 4.530125 75.673965",
+      "gameTime":1004.5647087814,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":1,
+      "techId":"MAC",
+      "built":true,
+      "entityId":533,
+      "event":"Destroyed",
+      "location":"-53.772133 4.068126 40.701996",
+      "gameTime":1013.5665906789,
+      "destroyed":true,
+      "recycled":false
+    },{
+      "teamNumber":1,
+      "techId":"InfantryPortal",
+      "built":true,
+      "entityId":3025,
+      "event":"Built",
+      "location":"101.367188 4.531250 75.671875",
+      "gameTime":1016.8989269221,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Harvester",
+      "built":true,
+      "entityId":1150,
+      "event":"Built",
+      "location":"-18.567400 1.752600 5.080001",
+      "gameTime":1018.1995832371,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":1,
+      "techId":"ARC",
+      "built":true,
+      "entityId":2790,
+      "event":"Built",
+      "location":"-55.909462 2.956400 41.754715",
+      "gameTime":1029.6995824398,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":1,
+      "techId":"MAC",
+      "built":true,
+      "entityId":1997,
+      "event":"Built",
+      "location":"-55.909462 2.956400 41.754715",
+      "gameTime":1039.9761057524,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":1,
+      "techId":"Armory",
+      "built":false,
+      "entityId":3671,
+      "event":"Placed",
+      "location":"-48.803375 2.651600 56.732071",
+      "gameTime":1059.6432845807,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":1,
+      "techId":"MAC",
+      "built":true,
+      "entityId":114,
+      "event":"Built",
+      "location":"-55.909462 2.956400 41.754715",
+      "gameTime":1066.5765886093,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":1,
+      "techId":"PowerPoint",
+      "built":true,
+      "entityId":2838,
+      "event":"Built",
+      "location":"-22.225000 3.962400 12.369800",
+      "gameTime":1077.6432635756,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":true,
+      "entityId":2285,
+      "event":"Destroyed",
+      "location":"-19.111603 1.828815 2.270670",
+      "gameTime":1079.1436290154,
+      "destroyed":true,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":true,
+      "entityId":1679,
+      "event":"Destroyed",
+      "location":"-5.214758 2.871163 20.815857",
+      "gameTime":1084.0432705721,
+      "destroyed":true,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":654,
+      "event":"Placed",
+      "location":"-15.188018 1.752601 2.884938",
+      "gameTime":1090.7862718301,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":3568,
+      "event":"Placed",
+      "location":"-6.211675 2.969749 20.766991",
+      "gameTime":1090.7862718301,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":654,
+      "event":"Destroyed",
+      "location":"-15.188018 1.752601 2.884938",
+      "gameTime":1092.6531727845,
+      "destroyed":true,
+      "recycled":false
+    },{
+      "teamNumber":1,
+      "techId":"PhaseGate",
+      "built":false,
+      "entityId":1447,
+      "event":"Placed",
+      "location":"-15.491716 1.762604 2.390279",
+      "gameTime":1096.286220788,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":3568,
+      "event":"Destroyed",
+      "location":"-6.211675 2.969749 20.766991",
+      "gameTime":1096.7532602316,
+      "destroyed":true,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Harvester",
+      "built":true,
+      "entityId":1150,
+      "event":"Destroyed",
+      "location":"-18.567400 1.752600 5.080001",
+      "gameTime":1097.2199485032,
+      "destroyed":true,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Drifter",
+      "built":true,
+      "entityId":3597,
+      "event":"Destroyed",
+      "location":"-1.531250 3.664063 21.000000",
+      "gameTime":1098.01992667,
+      "destroyed":true,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":482,
+      "event":"Placed",
+      "location":"-19.073732 2.086474 8.274155",
+      "gameTime":1098.4190366743,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":3503,
+      "event":"Placed",
+      "location":"-2.723242 2.861109 20.938242",
+      "gameTime":1098.4190366743,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":482,
+      "event":"Destroyed",
+      "location":"-19.073732 2.086474 8.274155",
+      "gameTime":1098.6190925827,
+      "destroyed":true,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":2255,
+      "event":"Placed",
+      "location":"-17.850925 1.752608 3.379699",
+      "gameTime":1098.6190925827,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":1,
+      "techId":"RoboticsFactory",
+      "built":false,
+      "entityId":4000,
+      "event":"Placed",
+      "location":"-15.099350 2.956403 9.543327",
+      "gameTime":1099.8532645358,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":1,
+      "techId":"Armory",
+      "built":true,
+      "entityId":3671,
+      "event":"Built",
+      "location":"-48.803375 2.651600 56.732071",
+      "gameTime":1103.1199312834,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Drifter",
+      "built":true,
+      "entityId":2077,
+      "event":"Built",
+      "location":"15.674077 2.727800 -19.911701",
+      "gameTime":1105.0219488041,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":true,
+      "entityId":3503,
+      "event":"Built",
+      "location":"-2.723242 2.861109 20.938242",
+      "gameTime":1105.3552754326,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":2255,
+      "event":"Destroyed",
+      "location":"-17.850925 1.752608 3.379699",
+      "gameTime":1106.055276054,
+      "destroyed":true,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":2411,
+      "event":"Placed",
+      "location":"-22.120768 1.752586 6.738217",
+      "gameTime":1106.5542624919,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":1,
+      "techId":"Extractor",
+      "built":false,
+      "entityId":1200,
+      "event":"Placed",
+      "location":"-18.567400 1.752600 5.080001",
+      "gameTime":1107.8547130739,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":2411,
+      "event":"Destroyed",
+      "location":"-22.120768 1.752586 6.738217",
+      "gameTime":1110.4552830635,
+      "destroyed":true,
+      "recycled":false
+    },{
+      "teamNumber":1,
+      "techId":"PhaseGate",
+      "built":true,
+      "entityId":1447,
+      "event":"Built",
+      "location":"-15.491716 1.762604 2.390279",
+      "gameTime":1115.5885983938,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":1,
+      "techId":"Armory",
+      "built":false,
+      "entityId":2312,
+      "event":"Placed",
+      "location":"-9.997993 2.956400 11.272869",
+      "gameTime":1118.2893796405,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":1,
+      "techId":"Extractor",
+      "built":true,
+      "entityId":1200,
+      "event":"Built",
+      "location":"-18.570313 1.750000 5.078125",
+      "gameTime":1126.4543049959,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":1,
+      "techId":"RoboticsFactory",
+      "built":true,
+      "entityId":4000,
+      "event":"Built",
+      "location":"-15.099350 2.956403 9.543327",
+      "gameTime":1127.8552342569,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":1,
+      "techId":"Armory",
+      "built":true,
+      "entityId":2312,
+      "event":"Built",
+      "location":"-9.997993 2.956400 11.272869",
+      "gameTime":1140.7260452053,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":true,
+      "entityId":3503,
+      "event":"Destroyed",
+      "location":"-2.723242 2.861109 20.938242",
+      "gameTime":1159.3330613459,
+      "destroyed":true,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":true,
+      "entityId":913,
+      "event":"Destroyed",
+      "location":"0.414849 1.320799 36.174736",
+      "gameTime":1160.6672773818,
+      "destroyed":true,
+      "recycled":false
+    },{
+      "teamNumber":1,
+      "techId":"ARC",
+      "built":true,
+      "entityId":3474,
+      "event":"Built",
+      "location":"-15.099350 2.956403 9.543327",
+      "gameTime":1164.669071245,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":true,
+      "entityId":2301,
+      "event":"Destroyed",
+      "location":"15.366730 1.241006 12.294386",
+      "gameTime":1170.9711612826,
+      "destroyed":true,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":true,
+      "entityId":1341,
+      "event":"Destroyed",
+      "location":"15.115553 2.300271 51.842972",
+      "gameTime":1171.7049184022,
+      "destroyed":true,
+      "recycled":false
+    },{
+      "teamNumber":1,
+      "techId":"Armory",
+      "built":true,
+      "entityId":3671,
+      "event":"Recycled",
+      "location":"-48.803375 2.651600 56.732071",
+      "gameTime":1171.8712895392,
+      "destroyed":true,
+      "recycled":true
+    },{
+      "teamNumber":1,
+      "techId":"ARC",
+      "built":true,
+      "entityId":2986,
+      "event":"Built",
+      "location":"-15.099350 2.956403 9.543327",
+      "gameTime":1181.1086203707,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":true,
+      "entityId":3602,
+      "event":"Destroyed",
+      "location":"19.330608 2.794000 66.006493",
+      "gameTime":1182.7087727869,
+      "destroyed":true,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Drifter",
+      "built":true,
+      "entityId":2077,
+      "event":"Destroyed",
+      "location":"25.296875 3.796875 -21.539063",
+      "gameTime":1196.9205947751,
+      "destroyed":true,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":41,
+      "event":"Placed",
+      "location":"37.391247 2.692400 29.691977",
+      "gameTime":1198.8892904585,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":2463,
+      "event":"Placed",
+      "location":"20.609772 4.572965 67.166496",
+      "gameTime":1198.8892904585,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":3496,
+      "event":"Placed",
+      "location":"36.378468 4.012864 46.858501",
+      "gameTime":1198.8892904585,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":2463,
+      "event":"Destroyed",
+      "location":"20.609772 4.572965 67.166496",
+      "gameTime":1199.2235501548,
+      "destroyed":true,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":false,
+      "entityId":2404,
+      "event":"Placed",
+      "location":"22.032961 2.719211 64.732567",
+      "gameTime":1199.2235501548,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Drifter",
+      "built":true,
+      "entityId":2131,
+      "event":"Built",
+      "location":"18.875359 2.142287 -27.672918",
+      "gameTime":1203.9584021205,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Veil",
+      "built":true,
+      "entityId":2839,
+      "event":"Destroyed",
+      "location":"15.971607 2.727800 -17.124916",
+      "gameTime":1205.157953945,
+      "destroyed":true,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":true,
+      "entityId":41,
+      "event":"Built",
+      "location":"37.391247 2.692400 29.691977",
+      "gameTime":1205.8246433428,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":true,
+      "entityId":3496,
+      "event":"Built",
+      "location":"36.378468 4.012864 46.858501",
+      "gameTime":1212.4570796927,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"Cyst",
+      "built":true,
+      "entityId":2404,
+      "event":"Built",
+      "location":"22.032961 2.719211 64.732567",
+      "gameTime":1216.8578811483,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":1,
+      "techId":"CommandStation",
+      "built":true,
+      "entityId":3043,
+      "event":"Built",
+      "location":"48.234604 5.435600 63.499996",
+      "gameTime":1224.1639466966,
+      "destroyed":false,
+      "recycled":false
+    },{
+      "teamNumber":2,
+      "techId":"ShadeHive",
+      "built":true,
+      "entityId":2821,
+      "biomass":4,
+      "event":"Destroyed",
+      "location":"23.368000 5.237200 -21.539200",
+      "gameTime":1232.9656741926,
+      "destroyed":true,
+      "recycled":false
+    }],
+  "PlayerStats":{
+    "328040242":{
+      "1":{
+        "structureDamage":10458.657568954,
+        "assists":12,
+        "killstreak":9,
+        "timeBuilding":40.4,
+        "deaths":12,
+        "kills":31,
+        "onosHits":0,
+        "misses":2512,
+        "playerDamage":8605.9900509475,
+        "hits":831,
+        "timePlayed":1188.908415759,
+        "commanderTime":0,
+        "score":375
+      },
+      "2":{
+        "structureDamage":0,
+        "assists":0,
+        "killstreak":0,
+        "timeBuilding":0,
+        "deaths":0,
+        "kills":0,
+        "onosHits":0,
+        "misses":0,
+        "playerDamage":0,
+        "hits":0,
+        "timePlayed":0,
+        "commanderTime":0,
+        "score":0
+      },
+      "commanderSkillOffset":0,
+      "commanderSkill":0,
+      "playerName":"BlueBloodWork",
+      "status":[{
+          "statusId":"Dead",
+          "classTime":147.37412051484
+        },{
+          "statusId":"Exo",
+          "classTime":194.61778732203
+        },{
+          "statusId":"Rifle",
+          "classTime":779.38056343421
+        },{
+          "statusId":"Flamethrower",
+          "classTime":67.5359444879
+        }],
+      "isRookie":true,
+      "playerSkillOffset":-15,
+      "lastTeam":1,
+      "hiveSkill":0,
+      "weapons":{
+        "Rifle":{
+          "teamNumber":1,
+          "kills":21,
+          "onosHits":0,
+          "playerDamage":3740.97082901,
+          "hits":351,
+          "structureDamage":4678.0483204234,
+          "misses":1106
+        },
+        "Minigun":{
+          "teamNumber":1,
+          "kills":9,
+          "onosHits":0,
+          "playerDamage":4437.9783579683,
+          "hits":477,
+          "structureDamage":1202.6799996424,
+          "misses":1395
+        },
+        "Axe":{
+          "teamNumber":1,
+          "kills":0,
+          "onosHits":0,
+          "playerDamage":0,
+          "hits":0,
+          "structureDamage":2503.9999694824,
+          "misses":5
+        },
+        "Flamethrower":{
+          "teamNumber":1,
+          "kills":1,
+          "onosHits":0,
+          "playerDamage":355.04086396927,
+          "hits":0,
+          "structureDamage":1633.9292794059,
+          "misses":0
+        },
+        "Pistol":{
+          "teamNumber":1,
+          "kills":0,
+          "onosHits":0,
+          "playerDamage":72,
+          "hits":3,
+          "structureDamage":440,
+          "misses":6
+        }
+      }
+    },
+    "97011543":{
+      "1":{
+        "structureDamage":12600.316009526,
+        "assists":13,
+        "killstreak":5,
+        "timeBuilding":61.200000000001,
+        "deaths":9,
+        "kills":17,
+        "onosHits":0,
+        "misses":1209,
+        "playerDamage":5855.0227344316,
+        "hits":419,
+        "timePlayed":1232.5774727482,
+        "commanderTime":0,
+        "score":364
+      },
+      "2":{
+        "structureDamage":0,
+        "assists":0,
+        "killstreak":0,
+        "timeBuilding":0,
+        "deaths":0,
+        "kills":0,
+        "onosHits":0,
+        "misses":0,
+        "playerDamage":0,
+        "hits":0,
+        "timePlayed":0,
+        "commanderTime":0,
+        "score":0
+      },
+      "commanderSkillOffset":0,
+      "commanderSkill":0,
+      "playerName":"derLORENZ",
+      "status":[{
+          "statusId":"Dead",
+          "classTime":118.92338119261
+        },{
+          "statusId":"Flamethrower",
+          "classTime":143.73924677446
+        },{
+          "statusId":"Rifle",
+          "classTime":831.0355475042
+        },{
+          "statusId":"HeavyMachineGun",
+          "classTime":138.87929727696
+        }],
+      "isRookie":true,
+      "playerSkillOffset":0,
+      "lastTeam":1,
+      "hiveSkill":0,
+      "weapons":{
+        "Rifle":{
+          "teamNumber":1,
+          "kills":11,
+          "onosHits":0,
+          "playerDamage":3691.846824646,
+          "hits":348,
+          "structureDamage":5037.954359591,
+          "misses":897
+        },
+        "HeavyMachineGun":{
+          "teamNumber":1,
+          "kills":3,
+          "onosHits":0,
+          "playerDamage":843.18000545427,
+          "hits":71,
+          "structureDamage":776.27557220459,
+          "misses":299
+        },
+        "Axe":{
+          "teamNumber":1,
+          "kills":0,
+          "onosHits":0,
+          "playerDamage":0,
+          "hits":0,
+          "structureDamage":2910.130415976,
+          "misses":13
+        },
+        "Welder":{
+          "teamNumber":1,
+          "kills":0,
+          "onosHits":0,
+          "playerDamage":0,
+          "hits":0,
+          "structureDamage":1243.045501709,
+          "misses":0
+        },
+        "Flamethrower":{
+          "teamNumber":1,
+          "kills":3,
+          "onosHits":0,
+          "playerDamage":1319.9959043314,
+          "hits":0,
+          "structureDamage":2632.9101600455,
+          "misses":0
+        }
+      }
+    },
+    "438638886":{
+      "1":{
+        "structureDamage":2966.3096635531,
+        "assists":5,
+        "killstreak":3,
+        "timeBuilding":0.2,
+        "deaths":3,
+        "kills":4,
+        "onosHits":0,
+        "misses":222,
+        "playerDamage":1514.5690613606,
+        "hits":59,
+        "timePlayed":413.14771319367,
+        "commanderTime":0,
+        "score":109
+      },
+      "2":{
+        "structureDamage":0,
+        "assists":0,
+        "killstreak":0,
+        "timeBuilding":0,
+        "deaths":0,
+        "kills":0,
+        "onosHits":0,
+        "misses":0,
+        "playerDamage":0,
+        "hits":0,
+        "timePlayed":0,
+        "commanderTime":0,
+        "score":0
+      },
+      "commanderSkillOffset":0,
+      "commanderSkill":0,
+      "playerName":"Marksism",
+      "status":[{
+          "statusId":"Dead",
+          "classTime":37.885975062847
+        },{
+          "statusId":"Flamethrower",
+          "classTime":170.08364797011
+        },{
+          "statusId":"Rifle",
+          "classTime":205.17809016071
+        }],
+      "isRookie":true,
+      "playerSkillOffset":-20,
+      "lastTeam":1,
+      "hiveSkill":461,
+      "weapons":{
+        "Flamethrower":{
+          "teamNumber":1,
+          "kills":2,
+          "onosHits":0,
+          "playerDamage":827.00908716705,
+          "hits":0,
+          "structureDamage":2645.9247760841,
+          "misses":0
+        },
+        "Rifle":{
+          "teamNumber":1,
+          "kills":2,
+          "onosHits":0,
+          "playerDamage":687.55997419357,
+          "hits":59,
+          "structureDamage":320.384887469,
+          "misses":222
+        }
+      }
+    },
+    "151654373":{
+      "1":{
+        "structureDamage":12645.263193097,
+        "assists":15,
+        "killstreak":2,
+        "timeBuilding":107.1,
+        "deaths":5,
+        "kills":3,
+        "onosHits":0,
+        "misses":536,
+        "playerDamage":1686.4600283458,
+        "hits":78,
+        "timePlayed":1232.8904568739,
+        "commanderTime":0,
+        "score":222
+      },
+      "2":{
+        "structureDamage":0,
+        "assists":0,
+        "killstreak":0,
+        "timeBuilding":0,
+        "deaths":0,
+        "kills":0,
+        "onosHits":0,
+        "misses":0,
+        "playerDamage":0,
+        "hits":0,
+        "timePlayed":0,
+        "commanderTime":0,
+        "score":0
+      },
+      "commanderSkillOffset":0,
+      "commanderSkill":0,
+      "playerName":"konsumlamm",
+      "status":[{
+          "statusId":"Dead",
+          "classTime":65.964275984094
+        },{
+          "statusId":"GrenadeLauncher",
+          "classTime":349.38225963339
+        },{
+          "statusId":"Rifle",
+          "classTime":702.62869961374
+        },{
+          "statusId":"Flamethrower",
+          "classTime":114.9152216427
+        }],
+      "isRookie":true,
+      "playerSkillOffset":-20,
+      "lastTeam":1,
+      "hiveSkill":0,
+      "weapons":{
+        "Rifle":{
+          "teamNumber":1,
+          "kills":2,
+          "onosHits":0,
+          "playerDamage":792,
+          "hits":78,
+          "structureDamage":2478.8253207505,
+          "misses":531
+        },
+        "GrenadeLauncher":{
+          "teamNumber":1,
+          "kills":1,
+          "onosHits":0,
+          "playerDamage":558.67456834576,
+          "hits":0,
+          "structureDamage":6004.0284235365,
+          "misses":0
+        },
+        "Axe":{
+          "teamNumber":1,
+          "kills":0,
+          "onosHits":0,
+          "playerDamage":0,
+          "hits":0,
+          "structureDamage":283,
+          "misses":5
+        },
+        "Welder":{
+          "teamNumber":1,
+          "kills":0,
+          "onosHits":0,
+          "playerDamage":0,
+          "hits":0,
+          "structureDamage":2650.7047813535,
+          "misses":0
+        },
+        "Flamethrower":{
+          "teamNumber":1,
+          "kills":0,
+          "onosHits":0,
+          "playerDamage":335.78546,
+          "hits":0,
+          "structureDamage":1228.7046674567,
+          "misses":0
+        }
+      }
+    },
+    "229271678":{
+      "1":{
+        "structureDamage":3377.4731911481,
+        "assists":4,
+        "killstreak":4,
+        "timeBuilding":16.7,
+        "deaths":3,
+        "kills":8,
+        "onosHits":0,
+        "misses":188,
+        "playerDamage":978.49999237061,
+        "hits":101,
+        "timePlayed":1233.3445295636,
+        "commanderTime":988.90350824594,
+        "score":78
+      },
+      "2":{
+        "structureDamage":0,
+        "assists":0,
+        "killstreak":0,
+        "timeBuilding":0,
+        "deaths":0,
+        "kills":0,
+        "onosHits":0,
+        "misses":0,
+        "playerDamage":0,
+        "hits":0,
+        "timePlayed":0,
+        "commanderTime":0,
+        "score":0
+      },
+      "commanderSkillOffset":-14,
+      "commanderSkill":0,
+      "playerName":"Kid Ilias",
+      "status":[{
+          "statusId":"Dead",
+          "classTime":36.032893890515
+        },{
+          "statusId":"Commander",
+          "classTime":988.90350824594
+        },{
+          "statusId":"Rifle",
+          "classTime":208.4081274271
+        }],
+      "isRookie":true,
+      "playerSkillOffset":-10,
+      "lastTeam":1,
+      "hiveSkill":0,
+      "weapons":{
+        "Rifle":{
+          "teamNumber":1,
+          "kills":8,
+          "onosHits":0,
+          "playerDamage":978.49999237061,
+          "hits":101,
+          "structureDamage":26.895310288761,
+          "misses":188
+        },
+        "ARC":{
+          "teamNumber":1,
+          "kills":0,
+          "onosHits":0,
+          "playerDamage":0,
+          "hits":0,
+          "structureDamage":3350.5778808594,
+          "misses":0
+        }
+      }
+    }
+  },
+  "RoundInfo":{
+    "roundDate":1651170851,
+    "maxPlayers1":7,
+    "minimapExtents":{
+      "origin":"26.666611 -42.163925 59.330097",
+      "scale":"449.228271 269.450745 449.230011"
+    },
+    "startingLocations":{
+      "1":2,
+      "2":1
+    },
+    "winningTeam":1,
+    "tournamentMode":false,
+    "maxPlayers2":6,
+    "roundLength":1233.730279942,
+    "mapName":"ns2_summit"
+  },
+  "ServerInfo":{
+    "mods":[{
+        "modId":"83f489c7",
+        "name":"ns2_mineral_dev"
+      },{
+        "modId":"8f1b64d",
+        "name":"ns2_fracture"
+      },{
+        "modId":"1121d279",
+        "name":"ns2_spaceship"
+      },{
+        "modId":"aaac676",
+        "name":"ns2_fusion"
+      },{
+        "modId":"8e07ac8",
+        "name":"ns2_co_portals"
+      },{
+        "modId":"4241b84e",
+        "name":"UWE Extension"
+      },{
+        "modId":"9e113555",
+        "name":"Matched Play Balance"
+      }],
+    "slots":16,
+    "rookieOnly":false,
+    "buildNumber":341,
+    "ip":"77.179.184.41",
+    "name":"Lila Pause",
+    "port":27015
+  },
+  "MarineCommStats":{
+    "0":{
+      "catpack":{
+        "misses":0,
+        "picks":0
+      },
+      "medpack":{
+        "hitsAcc":25,
+        "picks":30,
+        "misses":6,
+        "refilled":716.02319335938
+      },
+      "ammopack":{
+        "picks":20,
+        "misses":0,
+        "refilled":2972
+      }
+    }
+  }
+}
