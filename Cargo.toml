@@ -1,2 +1,3 @@
 [workspace]
 members = ["ns2-stat", "ns2-stat-cli", "ns2-stat-api"]
+resolver = "2"

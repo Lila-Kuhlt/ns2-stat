@@ -1,6 +1,7 @@
 use std::collections::BTreeMap;
 use std::net::{IpAddr, SocketAddr};
 use std::ops::Bound;
+use std::path::Path;
 use std::{fs, io, path::PathBuf};
 
 use actix_web::{
@@ -12,7 +13,9 @@ use actix_web::{
     App, HttpResponse, HttpServer, Responder,
 };
 use clap::Parser;
+use notify::Watcher;
 use ns2_stat::{input_types::GameStats, Games, NS2Stats};
+use parking_lot::RwLock;
 use serde::{Deserialize, Serialize};
 
 fn json_response<T: Serialize>(data: &T) -> HttpResponse<EitherBody<String>> {
@@ -26,8 +29,9 @@ fn json_response<T: Serialize>(data: &T) -> HttpResponse<EitherBody<String>> {
 }
 
 struct AppData {
-    games: BTreeMap<u32, GameStats>,
-    stats: NS2Stats,
+    games: RwLock<BTreeMap<u32, GameStats>>,
+    stats: RwLock<NS2Stats>,
+    path: PathBuf,
 }
 
 #[derive(Debug, Serialize)]
@@ -93,12 +97,13 @@ impl DateQuery {
 
 #[get("/stats")]
 async fn get_stats(data: Data<AppData>) -> impl Responder {
-    json_response(&DatedData::from(&data.stats))
+    json_response(&DatedData::from(&*data.stats.read()))
 }
 
 #[get("/stats/continuous")]
 async fn get_continuous_stats(data: Data<AppData>, query: Query<DateQuery>) -> impl Responder {
-    let game_stats = Games(data.games.range(query.to_range_bounds()).map(|(_, game)| game))
+    let games = data.games.read();
+    let game_stats = Games(games.range(query.to_range_bounds()).map(|(_, game)| game))
         .genuine()
         .collect::<Vec<_>>();
     let continuous_stats = (0..game_stats.len())
@@ -112,7 +117,8 @@ async fn get_continuous_stats(data: Data<AppData>, query: Query<DateQuery>) -> i
 
 #[get("/games")]
 async fn get_games(data: Data<AppData>, query: Query<DateQuery>) -> impl Responder {
-    json_response(&data.games.range(query.to_range_bounds()).map(|(_, game)| game).collect::<Vec<_>>())
+    let games = data.games.read();
+    json_response(&games.range(query.to_range_bounds()).map(|(_, game)| game).collect::<Vec<_>>())
 }
 
 fn load_data<P: AsRef<Path>>(path: P) -> io::Result<BTreeMap<u32, GameStats>> {
@@ -133,9 +139,23 @@ async fn main() -> io::Result<()> {
     let games = load_data(&args.data_path)?;
 
     let data = Data::new(AppData {
-        stats: NS2Stats::compute(Games(games.values()).genuine()),
-        games,
+        stats: RwLock::new(NS2Stats::compute(Games(games.values()).genuine())),
+        games: RwLock::new(games),
+        path: args.data_path,
     });
+
+    let watcher_data = data.clone();
+    let mut watcher = notify::recommended_watcher(move |res| match res {
+        Ok(_) => {
+            // reload all data
+            let games = load_data(&watcher_data.path).unwrap();
+            *watcher_data.stats.write() = NS2Stats::compute(Games(games.values()).genuine());
+            *watcher_data.games.write() = games;
+        }
+        Err(e) => eprintln!("notify error: {:?}", e),
+    })
+    .unwrap();
+    watcher.watch(&data.path, notify::RecursiveMode::NonRecursive).unwrap();
 
     let addr = SocketAddr::new(args.address, args.port);
     println!("starting server at {}...", addr);
