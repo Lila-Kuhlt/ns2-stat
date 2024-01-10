@@ -50,6 +50,7 @@ impl<'a, I: Iterator<Item = &'a GameStats>> Games<'a, I> {
 #[derive(Default, Serialize)]
 pub struct User {
     pub total_games: u32,
+    pub commander: u32,
     pub kills: u32,
     pub assists: u32,
     pub deaths: u32,
@@ -92,6 +93,11 @@ impl NS2Stats {
         let mut latest_game = 0;
 
         for game in games {
+            let mut marine_comm = "";
+            let mut marine_comm_time = 0.0;
+            let mut alien_comm = "";
+            let mut alien_comm_time = 0.0;
+
             for player_stat in game.player_stats.values() {
                 let user = match users.get_mut(&player_stat.player_name) {
                     Some(user) => user,
@@ -104,6 +110,20 @@ impl NS2Stats {
                     user.assists += stats.assists;
                     user.deaths += stats.deaths;
                 }
+
+                if player_stat.marines.commander_time > marine_comm_time {
+                    marine_comm = &player_stat.player_name;
+                    marine_comm_time = player_stat.marines.commander_time;
+                } else if player_stat.aliens.commander_time > alien_comm_time {
+                    alien_comm = &player_stat.player_name;
+                    alien_comm_time = player_stat.aliens.commander_time;
+                }
+            }
+            if let Some(user) = users.get_mut(marine_comm) {
+                user.commander += 1;
+            }
+            if let Some(user) = users.get_mut(alien_comm) {
+                user.commander += 1;
             }
 
             let map_entry = match maps.get_mut(&game.round_info.map_name) {
