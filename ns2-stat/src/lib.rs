@@ -53,8 +53,16 @@ pub struct User {
     pub kills: u32,
     pub assists: u32,
     pub deaths: u32,
-    pub kd: f32,
-    pub kda: f32,
+}
+
+impl User {
+    pub fn kd(&self) -> f32 {
+        self.kills as f32 / self.deaths as f32
+    }
+
+    pub fn kda(&self) -> f32 {
+        (self.kills + self.assists) as f32 / self.deaths as f32
+    }
 }
 
 #[derive(Default, Serialize)]
@@ -119,11 +127,6 @@ impl NS2Stats {
                 latest_game = game.round_info.round_date;
             }
             total_games += 1;
-        }
-
-        for user in users.values_mut() {
-            user.kd = user.kills as f32 / user.deaths as f32;
-            user.kda = (user.kills + user.assists) as f32 / user.deaths as f32;
         }
 
         Self {

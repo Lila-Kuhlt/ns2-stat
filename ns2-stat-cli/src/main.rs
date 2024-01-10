@@ -53,8 +53,8 @@ fn print_stats(stats: NS2Stats) {
                     kills: user.kills,
                     assists: user.assists,
                     deaths: user.deaths,
-                    kd: user.kd,
-                    kda: user.kda,
+                    kd: user.kd(),
+                    kda: user.kda(),
                 })
             } else {
                 None
