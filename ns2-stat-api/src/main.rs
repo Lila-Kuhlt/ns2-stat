@@ -1,8 +1,10 @@
+mod data;
+
 use std::collections::BTreeMap;
 use std::net::{IpAddr, SocketAddr};
 use std::ops::Bound;
-use std::path::Path;
-use std::{fs, io, path::PathBuf};
+use std::path::PathBuf;
+use std::io;
 
 use actix_web::{
     body::EitherBody,
@@ -121,22 +123,10 @@ async fn get_games(data: Data<AppData>, query: Query<DateQuery>) -> impl Respond
     json_response(&games.range(query.to_range_bounds()).map(|(_, game)| game).collect::<Vec<_>>())
 }
 
-fn load_data<P: AsRef<Path>>(path: P) -> io::Result<BTreeMap<u32, GameStats>> {
-    fs::read_dir(path)?
-        .map(|result| {
-            result
-                .map(|entry| entry.path())
-                .and_then(fs::read_to_string)
-                .and_then(|o| serde_json::from_str::<GameStats>(&o).map_err(|e| io::Error::new(io::ErrorKind::Other, e)))
-                .map(|game| (game.round_info.round_date, game))
-        })
-        .collect::<io::Result<_>>()
-}
-
 #[actix_web::main]
 async fn main() -> io::Result<()> {
     let args = CliArgs::parse();
-    let games = load_data(&args.data_path)?;
+    let games = data::load(&args.data_path)?;
 
     let data = Data::new(AppData {
         stats: RwLock::new(NS2Stats::compute(Games(games.values()).genuine())),
@@ -148,7 +138,14 @@ async fn main() -> io::Result<()> {
     let mut watcher = notify::recommended_watcher(move |res| match res {
         Ok(_) => {
             // reload all data
-            let games = load_data(&watcher_data.path).unwrap();
+            println!("reloading data...");
+            let games = match data::load(&watcher_data.path) {
+                Ok(games) => games,
+                Err(err) => {
+                    eprintln!("Error: {:?}", err);
+                    return;
+                }
+            };
             *watcher_data.stats.write() = NS2Stats::compute(Games(games.values()).genuine());
             *watcher_data.games.write() = games;
         }
