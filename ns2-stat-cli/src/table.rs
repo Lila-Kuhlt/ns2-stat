@@ -1,6 +1,6 @@
 #[macro_export]
 macro_rules! row {
-    ($($e:literal),*) => {
+    ($($e:literal),*$(,)?) => {
         [$(format!($e)),*]
     }
 }

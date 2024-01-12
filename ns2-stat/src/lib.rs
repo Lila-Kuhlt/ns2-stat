@@ -1,8 +1,9 @@
 use std::collections::HashMap;
+use std::ops::AddAssign;
 
 use serde::Serialize;
 
-use input_types::{GameStats, WinningTeam};
+use input_types::{GameStats, Team, WinningTeam};
 
 pub mod input_types;
 
@@ -47,24 +48,66 @@ impl<'a, I: Iterator<Item = &'a GameStats>> Games<'a, I> {
     }
 }
 
+// can be used for games, commander, wins, kills, deaths, assists
+#[derive(Clone, Copy, Default, Serialize)]
+pub struct Stat<T> {
+    pub total: T,
+    pub marines: T,
+    pub aliens: T,
+}
+
+impl<T: AddAssign + Copy> Stat<T> {
+    fn add(&mut self, team: Team, n: T) {
+        self.total += n;
+        match team {
+            Team::Aliens => self.aliens += n,
+            Team::Marines => self.marines += n,
+        }
+    }
+}
+
+impl<T: Copy> Stat<T> {
+    fn map<const N: usize, U>(stats: [Stat<T>; N], f: impl Fn([T; N]) -> U) -> Stat<U> {
+        Stat {
+            total: f(stats.map(|stat| stat.total)),
+            marines: f(stats.map(|stat| stat.marines)),
+            aliens: f(stats.map(|stat| stat.aliens)),
+        }
+    }
+}
+
 #[derive(Default, Serialize)]
 pub struct User {
-    pub total_games: u32,
-    pub commander: u32,
-    pub marines: u32,
-    pub aliens: u32,
-    pub kills: u32,
-    pub assists: u32,
-    pub deaths: u32,
+    /// The number of games played.
+    pub games: Stat<u32>,
+    /// The number of games played as commander.
+    pub commander: Stat<u32>,
+    pub wins: Stat<u32>,
+    pub kills: Stat<u32>,
+    pub assists: Stat<u32>,
+    pub deaths: Stat<u32>,
+    pub score: Stat<u32>,
+    pub hits: Stat<u32>,
+    pub misses: Stat<u32>,
 }
 
 impl User {
-    pub fn kd(&self) -> f32 {
-        self.kills as f32 / self.deaths as f32
+    /// `kills / deaths`
+    pub fn kd(&self) -> Stat<f32> {
+        Stat::map([self.kills, self.deaths], |[kills, deaths]| kills as f32 / deaths as f32)
     }
 
-    pub fn kda(&self) -> f32 {
-        (self.kills + self.assists) as f32 / self.deaths as f32
+    /// `(kills + assists) / deaths`
+    pub fn kda(&self) -> Stat<f32> {
+        Stat::map([self.kills, self.assists, self.deaths], |[kills, assists, deaths]| (kills + assists) as f32 / deaths as f32)
+    }
+
+    pub fn average_score(&self) -> Stat<f32> {
+        Stat::map([self.games, self.score], |[games, score]| score as f32 / games as f32)
+    }
+
+    pub fn accuracy(&self) -> Stat<f32> {
+        Stat::map([self.hits, self.misses], |[hits, misses]| hits as f32 / (hits + misses) as f32)
     }
 }
 
@@ -105,35 +148,41 @@ impl NS2Stats {
                     Some(user) => user,
                     None => users.entry(player_stat.player_name.clone()).or_insert_with(User::default),
                 };
-                user.total_games += 1;
 
-                for stats in [&player_stat.marines, &player_stat.aliens] {
-                    user.kills += stats.kills;
-                    user.assists += stats.assists;
-                    user.deaths += stats.deaths;
-                }
-
-                if player_stat.marines.time_played > player_stat.aliens.time_played {
+                let (team, stats) = if player_stat.marines.time_played > player_stat.aliens.time_played {
                     // player was in marine team
-                    user.marines += 1;
+                    if game.round_info.winning_team == WinningTeam::Marines {
+                        user.wins.add(Team::Marines, 1);
+                    }
                     if player_stat.marines.commander_time > marine_comm_time {
                         marine_comm = &player_stat.player_name;
                         marine_comm_time = player_stat.marines.commander_time;
                     }
+                    (Team::Marines, &player_stat.marines)
                 } else {
                     // player was in alien team
-                    user.aliens += 1;
+                    if game.round_info.winning_team == WinningTeam::Aliens {
+                        user.wins.add(Team::Aliens, 1);
+                    }
                     if player_stat.aliens.commander_time > alien_comm_time {
                         alien_comm = &player_stat.player_name;
                         alien_comm_time = player_stat.aliens.commander_time;
                     }
-                }
+                    (Team::Aliens, &player_stat.aliens)
+                };
+                user.games.add(team, 1);
+                user.kills.add(team, stats.kills);
+                user.assists.add(team, stats.assists);
+                user.deaths.add(team, stats.deaths);
+                user.score.add(team, stats.score);
+                user.hits.add(team, stats.hits);
+                user.misses.add(team, stats.misses);
             }
             if let Some(user) = users.get_mut(marine_comm) {
-                user.commander += 1;
+                user.commander.add(Team::Marines, 1);
             }
             if let Some(user) = users.get_mut(alien_comm) {
-                user.commander += 1;
+                user.commander.add(Team::Aliens, 1);
             }
 
             let map_entry = match maps.get_mut(&game.round_info.map_name) {

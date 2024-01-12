@@ -29,11 +29,12 @@ struct CliArgs {
 
 struct UserRow {
     name: String,
-    kills: u32,
-    assists: u32,
-    deaths: u32,
     kd: f32,
     kda: f32,
+    games: u32,
+    commander: u32,
+    avg_score: f32,
+    accuracy: f32,
 }
 
 struct MapRow {
@@ -47,14 +48,15 @@ fn print_stats(stats: NS2Stats) {
         .users
         .into_iter()
         .filter_map(|(name, user)| {
-            if user.total_games > 2 {
+            if user.games.total > 2 {
                 Some(UserRow {
                     name,
-                    kills: user.kills,
-                    assists: user.assists,
-                    deaths: user.deaths,
-                    kd: user.kd(),
-                    kda: user.kda(),
+                    kd: user.kd().total,
+                    kda: user.kda().total,
+                    games: user.games.total,
+                    commander: user.commander.total,
+                    avg_score: user.average_score().total,
+                    accuracy: user.accuracy().total,
                 })
             } else {
                 None
@@ -63,9 +65,10 @@ fn print_stats(stats: NS2Stats) {
         .collect::<Vec<_>>();
     users.sort_by_key(|user| -(user.kd * 100f32) as i32);
     table::print_table(
-        ["NAME", "KILLS", "ASSISTS", "DEATHS", "KD", "KDA"],
+        ["NAME", "KD", "KDA", "GAMES", "COMMANDER", "AVG SCORE", "ACCURACY"],
         [
             Alignment::Left,
+            Alignment::Right,
             Alignment::Right,
             Alignment::Right,
             Alignment::Right,
@@ -75,12 +78,13 @@ fn print_stats(stats: NS2Stats) {
         &users,
         |UserRow {
              name,
-             kills,
-             assists,
-             deaths,
              kd,
              kda,
-         }| row!["{name}", "{kills}", "{assists}", "{deaths}", "{kd:.2}", "{kda:.2}"],
+             games,
+             commander,
+             avg_score,
+             accuracy,
+         }| row!["{name}", "{kd:.2}", "{kda:.2}", "{games}", "{commander}", "{avg_score:.2}", "{accuracy:.2}"],
     );
 
     println!("\n\n");
