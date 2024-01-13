@@ -17,6 +17,7 @@ use actix_web::{
 };
 use clap::Parser;
 use notify::Watcher;
+use ns2_stat::{GameSummary, summarize_game};
 use ns2_stat::{input_types::GameStats, Games, NS2Stats};
 use parking_lot::RwLock;
 use serde::{Deserialize, Serialize};
@@ -119,9 +120,16 @@ async fn get_continuous_stats(data: Data<AppData>, query: Query<DateQuery>) -> J
 }
 
 #[get("/games")]
-async fn get_games(data: Data<AppData>, query: Query<DateQuery>) -> impl Responder {
+async fn get_games(data: Data<AppData>, query: Query<DateQuery>) -> Json<Vec<GameSummary>> {
     let games = data.games.read();
-    json_response(&games.range(query.to_range_bounds()).map(|(_, game)| game).collect::<Vec<_>>())
+    Json(games.range(query.to_range_bounds()).map(|(_, game)| summarize_game(game)).collect())
+}
+
+#[get("/games/latest")]
+async fn get_latest_games(data: Data<AppData>) -> Json<GameSummary> {
+    let games = data.games.read();
+    let latest_game = games.last_key_value().unwrap().1;
+    Json(summarize_game(latest_game))
 }
 
 #[actix_web::main]
@@ -163,6 +171,7 @@ async fn main() -> io::Result<()> {
             .service(get_stats)
             .service(get_continuous_stats)
             .service(get_games)
+            .service(get_latest_games)
     })
     .bind(addr)?
     .run()

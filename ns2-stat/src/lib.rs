@@ -3,7 +3,7 @@ use std::ops::AddAssign;
 
 use serde::Serialize;
 
-use input_types::{Building, Event, GameStats, PlayerStat, SteamId, Team, WinningTeam};
+use input_types::{Building, Event, GameStats, PlayerStat, SteamId, Team};
 
 pub mod input_types;
 
@@ -130,6 +130,8 @@ pub struct NS2Stats {
 
 impl NS2Stats {
     pub fn compute<'a, I: Iterator<Item = &'a GameStats>>(games: Games<'a, I>) -> Self {
+        use input_types::WinningTeam;
+
         let mut users = HashMap::new();
         let mut maps = HashMap::new();
         let mut marine_wins = 0;
@@ -228,6 +230,23 @@ pub struct TeamSummary {
 }
 
 #[derive(Debug, Serialize)]
+pub enum WinningTeam {
+    None,
+    Aliens,
+    Marines,
+}
+
+impl From<input_types::WinningTeam> for WinningTeam {
+    fn from(value: input_types::WinningTeam) -> Self {
+        match value {
+            input_types::WinningTeam::None => WinningTeam::None,
+            input_types::WinningTeam::Aliens => WinningTeam::Aliens,
+            input_types::WinningTeam::Marines => WinningTeam::Marines,
+        }
+    }
+}
+
+#[derive(Debug, Serialize)]
 pub struct GameSummary {
     /// The round date in Unix time.
     pub round_date: u32,
@@ -263,7 +282,7 @@ pub fn summarize_game(game: &GameStats) -> GameSummary {
     }
     GameSummary {
         round_date: round_info.round_date,
-        winning_team: round_info.winning_team,
+        winning_team: round_info.winning_team.into(),
         round_length: round_info.round_length,
         map_name: round_info.map_name.clone(),
         aliens: TeamSummary {
