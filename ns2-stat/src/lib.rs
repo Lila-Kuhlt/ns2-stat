@@ -3,7 +3,7 @@ use std::ops::AddAssign;
 
 use serde::Serialize;
 
-use input_types::{GameStats, Team, WinningTeam};
+use input_types::{Building, Event, GameStats, PlayerStat, SteamId, Team, WinningTeam};
 
 pub mod input_types;
 
@@ -138,11 +138,6 @@ impl NS2Stats {
         let mut latest_game = 0;
 
         for game in games {
-            let mut marine_comm = "";
-            let mut marine_comm_time = 0.0;
-            let mut alien_comm = "";
-            let mut alien_comm_time = 0.0;
-
             for player_stat in game.player_stats.values() {
                 let user = match users.get_mut(&player_stat.player_name) {
                     Some(user) => user,
@@ -154,19 +149,11 @@ impl NS2Stats {
                     if game.round_info.winning_team == WinningTeam::Marines {
                         user.wins.add(Team::Marines, 1);
                     }
-                    if player_stat.marines.commander_time > marine_comm_time {
-                        marine_comm = &player_stat.player_name;
-                        marine_comm_time = player_stat.marines.commander_time;
-                    }
                     (Team::Marines, &player_stat.marines)
                 } else {
                     // player was in alien team
                     if game.round_info.winning_team == WinningTeam::Aliens {
                         user.wins.add(Team::Aliens, 1);
-                    }
-                    if player_stat.aliens.commander_time > alien_comm_time {
-                        alien_comm = &player_stat.player_name;
-                        alien_comm_time = player_stat.aliens.commander_time;
                     }
                     (Team::Aliens, &player_stat.aliens)
                 };
@@ -178,10 +165,12 @@ impl NS2Stats {
                 user.hits.add(team, stats.hits);
                 user.misses.add(team, stats.misses);
             }
-            if let Some(user) = users.get_mut(marine_comm) {
+            let marine_commander = get_commander(Team::Marines, &game.player_stats).unwrap_or_default();
+            if let Some(user) = users.get_mut(marine_commander) {
                 user.commander.add(Team::Marines, 1);
             }
-            if let Some(user) = users.get_mut(alien_comm) {
+            let alien_commander = get_commander(Team::Aliens, &game.player_stats).unwrap_or_default();
+            if let Some(user) = users.get_mut(alien_commander) {
                 user.commander.add(Team::Aliens, 1);
             }
 
@@ -217,4 +206,113 @@ impl NS2Stats {
             alien_wins,
         }
     }
+}
+
+#[derive(Debug, Serialize)]
+pub struct PlayerSummary {
+    pub kills: u32,
+    pub assists: u32,
+    pub deaths: u32,
+    pub score: u32,
+    pub hits: u32,
+    pub misses: u32,
+}
+
+#[derive(Debug, Serialize)]
+pub struct TeamSummary {
+    pub players: HashMap<String, PlayerSummary>,
+    /// The name of the commander, if present.
+    pub commander: Option<String>,
+    /// The times when the resource tower (RT) amount changed and the amounts it changed to.
+    pub rt_graph: Vec<(f32, u32)>,
+}
+
+#[derive(Debug, Serialize)]
+pub struct GameSummary {
+    /// The round date in Unix time.
+    pub round_date: u32,
+    pub winning_team: WinningTeam,
+    /// The round length in seconds.
+    pub round_length: f32,
+    pub map_name: String,
+    pub aliens: TeamSummary,
+    pub marines: TeamSummary,
+}
+
+pub fn summarize_game(game: &GameStats) -> GameSummary {
+    let round_info = &game.round_info;
+    let mut aliens = HashMap::new();
+    let mut marines = HashMap::new();
+    for player_stat in game.player_stats.values() {
+        let (team, stats) = if player_stat.marines.time_played > player_stat.aliens.time_played {
+            (&mut marines, &player_stat.marines)
+        } else {
+            (&mut aliens, &player_stat.aliens)
+        };
+        team.insert(
+            player_stat.player_name.clone(),
+            PlayerSummary {
+                kills: stats.kills,
+                assists: stats.assists,
+                deaths: stats.deaths,
+                score: stats.score,
+                hits: stats.hits,
+                misses: stats.misses,
+            },
+        );
+    }
+    GameSummary {
+        round_date: round_info.round_date,
+        winning_team: round_info.winning_team,
+        round_length: round_info.round_length,
+        map_name: round_info.map_name.clone(),
+        aliens: TeamSummary {
+            players: aliens,
+            commander: get_commander(Team::Aliens, &game.player_stats).map(|name| name.to_owned()),
+            rt_graph: compute_rt_graph(Team::Aliens, &game.buildings),
+        },
+        marines: TeamSummary {
+            players: marines,
+            commander: get_commander(Team::Marines, &game.player_stats).map(|name| name.to_owned()),
+            rt_graph: compute_rt_graph(Team::Marines, &game.buildings),
+        },
+    }
+}
+
+fn compute_rt_graph(team: Team, buildings: &[Building]) -> Vec<(f32, u32)> {
+    use Event::*;
+
+    let rt_name = match team {
+        Team::Aliens => "Harvester",
+        Team::Marines => "Extractor",
+    };
+    buildings
+        .iter()
+        .filter(|b| b.team == team && b.built && b.tech_id == rt_name)
+        .filter_map(|b| match b.event {
+            Some(Built) => Some((b.game_time, true)),
+            Some(Destroyed | Recycled) => Some((b.game_time, false)),
+            _ => None,
+        })
+        .scan(0, |rt, (time, add)| {
+            if add {
+                *rt += 1;
+            } else {
+                *rt -= 1;
+            }
+            Some((time, *rt))
+        })
+        .collect()
+}
+
+fn get_commander(team: Team, player_stats: &HashMap<SteamId, PlayerStat>) -> Option<&str> {
+    match team {
+        Team::Marines => player_stats
+            .values()
+            .max_by_key(|player_stat| (player_stat.marines.commander_time * 1000.0) as u32),
+        Team::Aliens => player_stats
+            .values()
+            .max_by_key(|player_stat| (player_stat.aliens.commander_time * 1000.0) as u32),
+    }
+    .map(|player_stat| &*player_stat.player_name)
 }

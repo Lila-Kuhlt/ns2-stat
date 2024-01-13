@@ -6,6 +6,7 @@ use std::ops::Bound;
 use std::path::PathBuf;
 use std::io;
 
+use actix_web::web::Json;
 use actix_web::{
     body::EitherBody,
     error::JsonPayloadError,
@@ -99,11 +100,11 @@ impl DateQuery {
 
 #[get("/stats")]
 async fn get_stats(data: Data<AppData>) -> impl Responder {
-    json_response(&DatedData::from(&*data.stats.read()))
+    json_response(&*data.stats.read())
 }
 
 #[get("/stats/continuous")]
-async fn get_continuous_stats(data: Data<AppData>, query: Query<DateQuery>) -> impl Responder {
+async fn get_continuous_stats(data: Data<AppData>, query: Query<DateQuery>) -> Json<Vec<DatedData<NS2Stats>>> {
     let games = data.games.read();
     let game_stats = Games(games.range(query.to_range_bounds()).map(|(_, game)| game))
         .genuine()
@@ -114,7 +115,7 @@ async fn get_continuous_stats(data: Data<AppData>, query: Query<DateQuery>) -> i
             data: NS2Stats::compute(Games(game_stats[..=i].iter().copied())),
         })
         .collect::<Vec<_>>();
-    json_response(&continuous_stats)
+    Json(continuous_stats)
 }
 
 #[get("/games")]

@@ -14,12 +14,12 @@ mod teams;
 
 #[derive(Parser)]
 struct CliArgs {
-    /// The path for the game data.
+    /// The path for the game data
     #[clap(default_value = "test_data")]
     data_path: PathBuf,
 
-    /// Show team suggestions.
-    #[clap(long, num_args = 1..)]
+    /// Show team suggestions
+    #[clap(short, long, num_args = 1..)]
     teams: Option<Vec<String>>,
     #[clap(long, requires = "teams")]
     marine_com: Option<String>,

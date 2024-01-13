@@ -30,7 +30,7 @@ pub struct Building {
     pub team: Team,
     /// Time when this building action completed (in seconds).
     pub game_time: f32,
-    // If the building was completely built when this happened.
+    /// If the building was completely built when this happened.
     pub built: bool,
     pub location: Position,
     /// The building was recycled.
@@ -223,14 +223,14 @@ pub struct Weapon {
     pub misses: u32,
 }
 
-// Research done during the game.
+/// Research done during the game.
 #[derive(Debug, Serialize, Deserialize, Clone)]
 #[serde(rename_all = "camelCase")]
 pub struct Research {
     /// Team that owns the research.
     #[serde(rename = "teamNumber")]
     pub team: Team,
-    // Time when this research completed (in seconds).
+    /// Time when this research completed (in seconds).
     pub game_time: f32,
     /// Name of the tech researched.
     pub research_id: String,
@@ -239,7 +239,7 @@ pub struct Research {
 #[derive(Debug, Serialize, Deserialize, Clone)]
 #[serde(rename_all = "camelCase")]
 pub struct RoundInfo {
-    /// Epoch time for the round.
+    /// Unix time for the round.
     pub round_date: u32,
     /// The maximum amount of marine players during the round.
     #[serde(rename = "maxPlayers1")]
