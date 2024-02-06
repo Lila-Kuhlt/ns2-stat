@@ -1,10 +1,10 @@
 mod data;
 
 use std::collections::BTreeMap;
+use std::io;
 use std::net::{IpAddr, SocketAddr};
 use std::ops::Bound;
 use std::path::PathBuf;
-use std::io;
 
 use actix_web::web::Json;
 use actix_web::{
@@ -17,8 +17,8 @@ use actix_web::{
 };
 use clap::Parser;
 use notify::Watcher;
-use ns2_stat::{GameSummary, summarize_game};
 use ns2_stat::{input_types::GameStats, Games, NS2Stats};
+use ns2_stat::{summarize_game, GameSummary};
 use parking_lot::RwLock;
 use serde::{Deserialize, Serialize};
 
@@ -36,46 +36,6 @@ struct AppData {
     games: RwLock<BTreeMap<u32, GameStats>>,
     stats: RwLock<NS2Stats>,
     path: PathBuf,
-}
-
-#[derive(Debug, Serialize)]
-struct DatedData<T> {
-    date: u32,
-    data: T,
-}
-
-trait Dated {
-    fn date(&self) -> u32;
-}
-
-impl<T> Dated for DatedData<T> {
-    fn date(&self) -> u32 {
-        self.date
-    }
-}
-
-impl Dated for GameStats {
-    fn date(&self) -> u32 {
-        self.round_info.round_date
-    }
-}
-
-impl Dated for NS2Stats {
-    fn date(&self) -> u32 {
-        self.latest_game
-    }
-}
-
-impl<T: Dated> Dated for &T {
-    fn date(&self) -> u32 {
-        (*self).date()
-    }
-}
-
-impl<T: Dated> From<T> for DatedData<T> {
-    fn from(data: T) -> Self {
-        Self { date: data.date(), data }
-    }
 }
 
 #[derive(Clone, Copy, Debug, Deserialize)]
@@ -105,17 +65,12 @@ async fn get_stats(data: Data<AppData>) -> impl Responder {
 }
 
 #[get("/stats/continuous")]
-async fn get_continuous_stats(data: Data<AppData>, query: Query<DateQuery>) -> Json<Vec<DatedData<NS2Stats>>> {
+async fn get_continuous_stats(data: Data<AppData>, query: Query<DateQuery>) -> Json<BTreeMap<u32, NS2Stats>> {
     let games = data.games.read();
-    let game_stats = Games(games.range(query.to_range_bounds()).map(|(_, game)| game))
-        .genuine()
-        .collect::<Vec<_>>();
+    let game_stats = Games(games.range(query.to_range_bounds()).map(|(_, game)| game)).genuine().collect::<Vec<_>>();
     let continuous_stats = (0..game_stats.len())
-        .map(|i| DatedData {
-            date: game_stats[i].round_info.round_date,
-            data: NS2Stats::compute(Games(game_stats[..=i].iter().copied())),
-        })
-        .collect::<Vec<_>>();
+        .map(|i| (game_stats[i].round_info.round_date, NS2Stats::compute(Games(game_stats[..=i].iter().copied()))))
+        .collect::<BTreeMap<_, _>>();
     Json(continuous_stats)
 }
 
