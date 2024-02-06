@@ -6,58 +6,97 @@ Available endpoints:
 
 * `GET /games`:
 
-  The raw game data. Can be filtered by a timestamp range.
+  All games in a summarized form. Can be filtered by a Unix time range.
 
   Query parameters:
 
-  - `from` (optional): the starting timestamp
-  - `to` (optional): the end timestamp
+  - `from` (optional): the starting time
+  - `to` (optional): the end time
 
-  Response format:
+  Response format: `Array<GameSummary>`
 
-  ```json
-  [
-      {
-          ...
-      },
-      ...
-  ]
-  ```
+* `GET /games/latest`
+
+  The latest game in a summarized form.
+
+  Response format: `GameSummary`
 
 * `GET /stats`:
 
   The current stats.
 
-  Response format:
-
-  ```json
-  {
-      "date": timestamp,
-      "data": {
-          ...
-      }
-  }
-  ```
+  Response format: `NS2Stats`
 
 * `GET /stats/continuous`:
 
-  The continuous stats. Can be filtered by a timestamp range.
+  The continuous stats. Can be filtered by a Unix time range.
 
   Query parameters:
 
-  - `from` (optional): the starting timestamp
-  - `to` (optional): the end timestamp
+  - `from` (optional): the starting time
+  - `to` (optional): the end time
 
-  Response format:
+  Response format: `[number: NS2Stats]`
 
-  ```json
-  [
-      {
-          "date": timestamp,
-          "data": {
-              ...
-          }
-      },
-      ...
-  ]
-  ```
+## TypeScript type definitions
+
+```ts
+type Stat<T> = {
+    total: T,
+    marines: T,
+    aliens: T,
+}
+
+type User = {
+    games: Stat<number>,
+    commander: Stat<number>,
+    wins: Stat<number>,
+    kills: Stat<number>,
+    assists: Stat<number>,
+    deaths: Stat<number>,
+    score: Stat<number>,
+    hits: Stat<number>,
+    misses: Stat<number>,
+}
+
+type Map = {
+    total_games: number,
+    marine_wins: number,
+    alien_wins: number,
+}
+
+type NS2Stats = {
+    latest_game: number,
+    users: Record<string, User>,
+    maps: Record<string, Map>,
+    total_games: number,
+    marine_wins: number,
+    alien_wins: number,
+}
+
+type PlayerSummary = {
+    kills: number,
+    assists: number,
+    deaths: number,
+    score: number,
+    hits: number,
+    misses: number,
+}
+
+type TeamSummary = {
+    players: Record<string, PlayerSummary>,
+    commander: string | null,
+    rt_graph: Array<[number, number]>,
+}
+
+type WinningTeam = "None" | "Aliens" | "Marines"
+
+type GameSummary = {
+    round_date: number,
+    winning_team: WinningTeam,
+    round_length: number,
+    map_name: string,
+    aliens: TeamSummary,
+    marines: TeamSummary,
+}
+```
