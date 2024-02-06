@@ -86,7 +86,7 @@ pub struct User {
     pub kills: Stat<u32>,
     pub assists: Stat<u32>,
     pub deaths: Stat<u32>,
-    pub score: Stat<u32>,
+    pub score: Stat<f32>,
     pub hits: Stat<u32>,
     pub misses: Stat<u32>,
 }
@@ -103,7 +103,7 @@ impl User {
     }
 
     pub fn average_score(&self) -> Stat<f32> {
-        Stat::map([self.games, self.score], |[games, score]| score as f32 / games as f32)
+        Stat::map([Stat::map([self.games], |[games]| games as f32), self.score], |[games, score]| score / games)
     }
 
     pub fn accuracy(&self) -> Stat<f32> {
@@ -163,7 +163,7 @@ impl NS2Stats {
                 user.kills.add(team, stats.kills);
                 user.assists.add(team, stats.assists);
                 user.deaths.add(team, stats.deaths);
-                user.score.add(team, stats.score);
+                user.score.add(team, stats.score as f32 / game.round_info.round_length);
                 user.hits.add(team, stats.hits);
                 user.misses.add(team, stats.misses);
             }
@@ -229,7 +229,7 @@ pub struct TeamSummary {
     pub rt_graph: Vec<(f32, u32)>,
 }
 
-#[derive(Debug, Serialize)]
+#[derive(Debug, Serialize, PartialEq, Eq)]
 pub enum WinningTeam {
     None,
     Aliens,
