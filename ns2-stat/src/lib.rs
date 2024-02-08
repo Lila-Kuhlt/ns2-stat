@@ -288,24 +288,24 @@ pub fn summarize_game(game: &GameStats) -> GameSummary {
         aliens: TeamSummary {
             players: aliens,
             commander: get_commander(Team::Aliens, &game.player_stats).map(|name| name.to_owned()),
-            rt_graph: compute_rt_graph(Team::Aliens, &game.buildings),
+            rt_graph: compute_rt_graph(Team::Aliens, &game.buildings, round_info.round_length),
         },
         marines: TeamSummary {
             players: marines,
             commander: get_commander(Team::Marines, &game.player_stats).map(|name| name.to_owned()),
-            rt_graph: compute_rt_graph(Team::Marines, &game.buildings),
+            rt_graph: compute_rt_graph(Team::Marines, &game.buildings, round_info.round_length),
         },
     }
 }
 
-fn compute_rt_graph(team: Team, buildings: &[Building]) -> Vec<(f32, u32)> {
+fn compute_rt_graph(team: Team, buildings: &[Building], round_length: f32) -> Vec<(f32, u32)> {
     use Event::*;
 
     let rt_name = match team {
         Team::Aliens => "Harvester",
         Team::Marines => "Extractor",
     };
-    buildings
+    let mut rt_graph = buildings
         .iter()
         .filter(|b| b.team == team && b.built && b.tech_id == rt_name)
         .filter_map(|b| match b.event {
@@ -321,7 +321,12 @@ fn compute_rt_graph(team: Team, buildings: &[Building]) -> Vec<(f32, u32)> {
             }
             Some((time, *rt))
         })
-        .collect()
+        .collect::<Vec<_>>();
+    if let Some((_, last_rt)) = rt_graph.last().copied() {
+        // add final RT amount
+        rt_graph.push((round_length, last_rt));
+    }
+    rt_graph
 }
 
 fn get_commander(team: Team, player_stats: &HashMap<SteamId, PlayerStat>) -> Option<&str> {
