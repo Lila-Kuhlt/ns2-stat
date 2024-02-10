@@ -75,9 +75,9 @@ async fn get_continuous_stats(data: Data<AppData>, query: Query<DateQuery>) -> J
 }
 
 #[get("/games")]
-async fn get_games(data: Data<AppData>, query: Query<DateQuery>) -> Json<Vec<GameSummary>> {
+async fn get_games(data: Data<AppData>, query: Query<DateQuery>) -> Json<BTreeMap<u32, GameSummary>> {
     let games = data.games.read();
-    Json(games.range(query.to_range_bounds()).map(|(_, game)| summarize_game(game)).collect())
+    Json(games.range(query.to_range_bounds()).map(|(&date, game)| (date, summarize_game(game))).collect())
 }
 
 #[get("/games/latest")]
