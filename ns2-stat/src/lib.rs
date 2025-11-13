@@ -227,6 +227,7 @@ impl TeamSummary {
     }
 }
 
+#[derive(Clone, Copy, Debug, Serialize, PartialEq, Eq)]
 pub enum WinningTeam {
     None,
     Aliens,
