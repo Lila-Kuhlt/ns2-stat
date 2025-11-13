@@ -1,4 +1,4 @@
-use ns2_stat::input_types::{GameStats, WinningTeam};
+use ns2_stat::GameSummary;
 
 use crate::helpers;
 
@@ -47,94 +47,33 @@ mod balanced_partitioning {
     }
 }
 
-struct PastGame<'a> {
-    length: f32,
-    winner: WinningTeam,
-    marines: Team<'a>,
-    aliens: Team<'a>,
-}
-
-struct Team<'a> {
-    commander: &'a str,
-    players: Vec<&'a str>,
-}
-
 /// Analyzes the past games, sorted by the length, in descending order.
-fn analyze_past_games<'a, I, S, S1, S2>(
-    games: I,
-    players: &'a [S],
-    marine_commander: Option<S1>,
-    alien_commander: Option<S2>,
-) -> impl Iterator<Item = PastGame<'a>>
-where
-    I: Iterator<Item = &'a GameStats>,
-    S: AsRef<str>,
-    S1: AsRef<str>,
-    S2: AsRef<str>,
-{
-    let mut summarized_games: Vec<_> = games
-        .map(|game| {
-            let mut marines = Team {
-                commander: "",
-                players: Vec::new(),
-            };
-            let mut marine_com_time = 0.0;
-            let mut aliens = Team {
-                commander: "",
-                players: Vec::new(),
-            };
-            let mut alien_com_time = 0.0;
+fn analyze_past_games(
+    mut games: Vec<GameSummary>,
+    players: Vec<String>,
+    marine_commander: Option<String>,
+    alien_commander: Option<String>,
+) -> impl Iterator<Item = GameSummary> {
+    // sort by length in descending order
+    games.sort_by(|game1, game2| f32::total_cmp(&game1.round_length, &game2.round_length).reverse());
 
-            for player_stat in game.player_stats.values() {
-                if player_stat.marines.time_played >= player_stat.aliens.time_played {
-                    marines.players.push(&player_stat.player_name);
-                    if player_stat.marines.commander_time > marine_com_time {
-                        marine_com_time = player_stat.marines.commander_time;
-                        marines.commander = &player_stat.player_name;
-                    }
-                } else {
-                    aliens.players.push(&player_stat.player_name);
-                    if player_stat.aliens.commander_time > alien_com_time {
-                        alien_com_time = player_stat.aliens.commander_time;
-                        aliens.commander = &player_stat.player_name;
-                    }
-                }
-            }
-
-            PastGame {
-                length: game.round_info.round_length,
-                winner: game.round_info.winning_team,
-                marines,
-                aliens,
-            }
-        })
-        .collect();
-    // sort `summarized_games` by length in descending order
-    summarized_games.sort_by(|game1, game2| f32::total_cmp(&game1.length, &game2.length).reverse());
-
-    summarized_games.into_iter().filter(move |game| {
+    games.into_iter().filter(move |game| {
         players.len() == game.marines.players.len() + game.aliens.players.len() // correct amount of players
-            && marine_commander.iter().all(|player| player.as_ref() == game.marines.commander) // marine commander matches
-            && alien_commander.iter().all(|player| player.as_ref() == game.aliens.commander) // alien commander matches
-            && players.iter().all(|player| game.marines.players.contains(&player.as_ref()) || game.aliens.players.contains(&player.as_ref())) // all players match
+            && marine_commander.as_ref() == game.marines.commander.as_ref() // marine commander matches
+            && alien_commander.as_ref() == game.aliens.commander.as_ref() // alien commander matches
+            && players.iter().all(|player| game.marines.players.contains_key(player) || game.aliens.players.contains_key(player)) // all players match
     })
 }
 
 /// Print balanced team suggestions.
-pub fn suggest_teams<'a, I, S, S1, S2>(games: I, players: &'a [S], marine_commander: Option<S1>, alien_commander: Option<S2>)
-where
-    I: Iterator<Item = &'a GameStats>,
-    S: AsRef<str>,
-    S1: AsRef<str>,
-    S2: AsRef<str>,
-{
+pub fn suggest_teams(games: Vec<GameSummary>, players: Vec<String>, marine_commander: Option<String>, alien_commander: Option<String>) {
     println!("Team suggestions");
     println!("================");
     analyze_past_games(games, players, marine_commander, alien_commander).take(4).for_each(|game| {
         println!();
         println!(
             "Marines: {}",
-            helpers::format_with(game.marines.players.into_iter(), ", ", |f, player| if player == game.marines.commander {
+            helpers::format_with(game.marines.players.keys(), ", ", |f, player| if game.marines.is_commander(&player) {
                 write!(f, "[{}]", player)
             } else {
                 write!(f, "{}", player)
@@ -142,12 +81,12 @@ where
         );
         println!(
             "Aliens: {}",
-            helpers::format_with(game.aliens.players.into_iter(), ", ", |f, player| if player == game.aliens.commander {
+            helpers::format_with(game.aliens.players.keys(), ", ", |f, player| if game.aliens.is_commander(&player) {
                 write!(f, "[{}]", player)
             } else {
                 write!(f, "{}", player)
             }),
         );
-        println!("({:.3} min, winner: {:?})", game.length / 60.0, game.winner);
+        println!("({:.3} min, winner: {:?})", game.round_length / 60.0, game.winning_team);
     });
 }
