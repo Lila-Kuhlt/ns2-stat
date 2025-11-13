@@ -17,14 +17,20 @@ struct CliArgs {
     /// The path for the game data
     #[clap(default_value = "test_data")]
     data_path: PathBuf,
+    #[clap(subcommand)]
+    command: Option<Command>,
+}
 
+#[derive(clap::Subcommand)]
+enum Command {
     /// Show team suggestions
-    #[clap(short, long, num_args = 1..)]
-    teams: Option<Vec<String>>,
-    #[clap(long, requires = "teams")]
-    marine_com: Option<String>,
-    #[clap(long, requires = "teams")]
-    alien_com: Option<String>,
+    Teams {
+        players: Vec<String>,
+        #[arg(long)]
+        marine_com: Option<String>,
+        #[arg(long)]
+        alien_com: Option<String>,
+    },
 }
 
 struct UserRow {
@@ -143,10 +149,13 @@ fn main() {
         std::process::exit(1);
     });
     let games = game_stats.iter().genuine();
-    if let Some(players) = args.teams {
-        teams::suggest_teams(games.map(summarize_game).collect(), players, args.marine_com, args.alien_com);
-    } else {
-        print_stats(NS2Stats::compute(games));
+    match args.command {
+        Some(Command::Teams {
+            players,
+            marine_com,
+            alien_com,
+        }) => teams::suggest_teams(games.map(summarize_game).collect(), players, marine_com, alien_com),
+        None => print_stats(NS2Stats::compute(games)),
     }
 }
 
