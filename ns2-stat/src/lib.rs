@@ -7,35 +7,25 @@ use input_types::{Building, Event, GameStats, PlayerStat, SteamId, Team};
 
 pub mod input_types;
 
-/// A wrapper around an `Iterator<Item = &GameStats>`.
-pub struct Games<'a, I: Iterator<Item = &'a GameStats>>(pub I);
-
-impl<'a, I: Iterator<Item = &'a GameStats>> Iterator for Games<'a, I> {
-    type Item = &'a GameStats;
-
-    fn next(&mut self) -> Option<Self::Item> {
-        self.0.next()
-    }
-}
-
-impl<'a, I: Iterator<Item = &'a GameStats>> Games<'a, I> {
+/// An extension trait for `Iterator` that adds functions related to `GameStats`.
+pub trait GameIterator<G: AsRef<GameStats>>: Iterator<Item = G> where Self: Sized {
     /// Filter the genuine games. This is done by ignoring games that took under 5 minutes
     /// and games that were likely bot games.
-    pub fn genuine(self) -> Games<'a, impl Iterator<Item = &'a GameStats>> {
+    fn genuine(self) -> impl Iterator<Item = G> {
         self.filter_by_length(|length| length >= 300.0).filter_bot_games()
     }
 
     /// Filter games with a predicate that takes the length of each game.
-    pub fn filter_by_length(self, f: impl Fn(f32) -> bool) -> Games<'a, impl Iterator<Item = &'a GameStats>> {
-        Games(self.filter(move |game| f(game.round_info.round_length)))
+    fn filter_by_length(self, f: impl Fn(f32) -> bool) -> impl Iterator<Item = G> {
+        self.filter(move |game| f(game.as_ref().round_info.round_length))
     }
 
     /// Ignore games that were likely bot games.
-    pub fn filter_bot_games(self) -> Games<'a, impl Iterator<Item = &'a GameStats>> {
-        Games(self.filter(move |game| {
+    fn filter_bot_games(self) -> impl Iterator<Item = G> {
+        self.filter(move |game| {
             let mut max_marines = 0;
             let mut max_aliens = 0;
-            for player in game.player_stats.values() {
+            for player in game.as_ref().player_stats.values() {
                 if player.marines.time_played > 0.0 {
                     max_marines += 1;
                 }
@@ -44,9 +34,11 @@ impl<'a, I: Iterator<Item = &'a GameStats>> Games<'a, I> {
                 }
             }
             max_marines > 2 && max_aliens > 2
-        }))
+        })
     }
 }
+
+impl<G: AsRef<GameStats>, I: Iterator<Item = G>> GameIterator<G> for I {}
 
 // can be used for games, commander, wins, kills, deaths, assists
 #[derive(Clone, Copy, Default, Serialize)]
@@ -129,7 +121,7 @@ pub struct NS2Stats {
 }
 
 impl NS2Stats {
-    pub fn compute<'a, I: Iterator<Item = &'a GameStats>>(games: Games<'a, I>) -> Self {
+    pub fn compute<'a, I: Iterator<Item = &'a GameStats>>(games: I) -> Self {
         use input_types::WinningTeam;
 
         let mut users = HashMap::new();
@@ -229,7 +221,12 @@ pub struct TeamSummary {
     pub rt_graph: Vec<(f32, u32)>,
 }
 
-#[derive(Debug, Serialize, PartialEq, Eq)]
+impl TeamSummary {
+    pub fn is_commander(&self, player: &str) -> bool {
+        self.commander.as_ref().is_some_and(|comm| comm == player)
+    }
+}
+
 pub enum WinningTeam {
     None,
     Aliens,

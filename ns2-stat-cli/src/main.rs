@@ -3,7 +3,7 @@ use std::path::PathBuf;
 
 use clap::Parser;
 use ns2_stat::input_types::GameStats;
-use ns2_stat::{Games, Map, NS2Stats};
+use ns2_stat::{GameIterator, Map, NS2Stats, summarize_game};
 use rayon::prelude::*;
 
 use table::Alignment;
@@ -63,7 +63,7 @@ fn print_stats(stats: NS2Stats) {
             }
         })
         .collect::<Vec<_>>();
-    users.sort_by_key(|user| -(user.kd * 100f32) as i32);
+    users.sort_by(|user1, user2| f32::total_cmp(&user1.avg_score, &user2.avg_score).reverse());
     table::print_table(
         ["NAME", "KD", "KDA", "GAMES", "COMMANDER", "AVG SCORE", "ACCURACY"],
         [
@@ -102,7 +102,7 @@ fn print_stats(stats: NS2Stats) {
             MapRow { map, marine_wr, total_games }
         })
         .collect::<Vec<_>>();
-    kvp.sort_by_key(|map| -map.marine_wr as i32);
+    kvp.sort_by(|map1, map2| f32::total_cmp(&map1.marine_wr, &map2.marine_wr).reverse());
     table::print_table(
         ["MAP", "MARINE WR", "TOTAL ROUNDS"],
         [Alignment::Left, Alignment::Right, Alignment::Right],
@@ -142,7 +142,7 @@ fn main() {
         eprintln!("Error: {}", err);
         std::process::exit(1);
     });
-    let games = Games(game_stats.iter()).genuine();
+    let games = game_stats.iter().genuine();
     if let Some(players) = args.teams {
         teams::suggest_teams(games, &players, args.marine_com, args.alien_com);
     } else {

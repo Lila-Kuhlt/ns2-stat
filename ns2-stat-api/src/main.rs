@@ -17,8 +17,8 @@ use actix_web::{
 };
 use clap::Parser;
 use notify::Watcher;
-use ns2_stat::{input_types::GameStats, Games, NS2Stats};
-use ns2_stat::{summarize_game, GameSummary};
+use ns2_stat::{summarize_game, GameIterator, GameSummary, NS2Stats};
+use ns2_stat::input_types::GameStats;
 use parking_lot::RwLock;
 use serde::{Deserialize, Serialize};
 
@@ -67,9 +67,9 @@ async fn get_stats(data: Data<AppData>) -> impl Responder {
 #[get("/stats/continuous")]
 async fn get_continuous_stats(data: Data<AppData>, query: Query<DateQuery>) -> Json<BTreeMap<u32, NS2Stats>> {
     let games = data.games.read();
-    let game_stats = Games(games.range(query.to_range_bounds()).map(|(_, game)| game)).genuine().collect::<Vec<_>>();
+    let game_stats = games.range(query.to_range_bounds()).map(|(_, game)| game).genuine().collect::<Vec<_>>();
     let continuous_stats = (0..game_stats.len())
-        .map(|i| (game_stats[i].round_info.round_date, NS2Stats::compute(Games(game_stats[..=i].iter().copied()))))
+        .map(|i| (game_stats[i].round_info.round_date, NS2Stats::compute(game_stats[..=i].iter().copied())))
         .collect::<BTreeMap<_, _>>();
     Json(continuous_stats)
 }
@@ -93,7 +93,7 @@ async fn main() -> io::Result<()> {
     let games = data::load(&args.data_path)?;
 
     let data = Data::new(AppData {
-        stats: RwLock::new(NS2Stats::compute(Games(games.values()).genuine())),
+        stats: RwLock::new(NS2Stats::compute(games.values().genuine())),
         games: RwLock::new(games),
         path: args.data_path,
     });
@@ -110,7 +110,7 @@ async fn main() -> io::Result<()> {
                     return;
                 }
             };
-            *watcher_data.stats.write() = NS2Stats::compute(Games(games.values()).genuine());
+            *watcher_data.stats.write() = NS2Stats::compute(games.values().genuine());
             *watcher_data.games.write() = games;
         }
         Err(e) => eprintln!("notify error: {:?}", e),

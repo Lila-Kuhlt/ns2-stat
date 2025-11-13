@@ -6,7 +6,7 @@ pub struct FormatWith<'a, I, F> {
     separator: &'a str,
 }
 
-pub fn format_with<I, S, F>(iter: I, separator: &str, f: F) -> FormatWith<I, F>
+pub fn format_with<I, S, F>(iter: I, separator: &str, f: F) -> FormatWith<'_, I, F>
 where
     I: Iterator<Item = S>,
     F: FnMut(&mut fmt::Formatter<'_>, S) -> fmt::Result,

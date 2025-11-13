@@ -21,6 +21,12 @@ pub struct GameStats {
     pub marine_comm_stats: HashMap<String, MarineCommStat>,
 }
 
+impl AsRef<GameStats> for GameStats {
+    fn as_ref(&self) -> &GameStats {
+        self
+    }
+}
+
 /// Building completions, deaths and recycles during the game.
 #[derive(Debug, Serialize, Deserialize, Clone)]
 #[serde(rename_all = "camelCase")]
