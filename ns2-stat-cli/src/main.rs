@@ -1,3 +1,8 @@
+mod helpers;
+mod skill;
+mod table;
+mod teams;
+
 use std::fs;
 use std::path::PathBuf;
 
@@ -6,11 +11,7 @@ use ns2_stat::input_types::GameStats;
 use ns2_stat::{GameIterator, Map, NS2Stats, summarize_game};
 use rayon::prelude::*;
 
-use table::Alignment;
-
-mod helpers;
-mod table;
-mod teams;
+use crate::table::Alignment;
 
 #[derive(Parser)]
 struct CliArgs {
@@ -31,6 +32,8 @@ enum Command {
         #[arg(long)]
         alien_com: Option<String>,
     },
+    /// Compute the skill of each player
+    Skills,
 }
 
 struct UserRow {
@@ -155,6 +158,22 @@ fn main() {
             marine_com,
             alien_com,
         }) => teams::suggest_teams(games.map(summarize_game).collect(), players, marine_com, alien_com),
+        Some(Command::Skills) => {
+            let game_summaries = games.map(summarize_game).collect::<Vec<_>>();
+            let mut skills = skill::compute_skills(&game_summaries, 50).into_iter().collect::<Vec<_>>();
+            skills.sort_by(|(_, skill1), (_, skill2)| f32::total_cmp(&skill1.common, &skill2.common));
+            table::print_table(
+                ["NAME", "MARINE SKILL", "ALIEN SKILL", "COMMANDER SKILL"],
+                [Alignment::Left, Alignment::Right, Alignment::Right, Alignment::Right],
+                &skills,
+                |(name, skill)| {
+                    let marine_skill = skill.common + skill.offset;
+                    let alien_skill = skill.common - skill.offset;
+                    let commander_skill = skill.commander;
+                    row!["{name}", "{marine_skill:.2}", "{alien_skill:.2}", "{commander_skill:.2}"]
+                },
+            )
+        }
         None => print_stats(NS2Stats::compute(games)),
     }
 }
