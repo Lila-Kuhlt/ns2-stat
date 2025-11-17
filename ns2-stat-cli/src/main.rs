@@ -44,7 +44,9 @@ enum Command {
     /// Compute the skill of each player
     Skills,
     #[command(name = "ml")]
-    MachineLearning,
+    MachineLearning {
+        players: Vec<String>,
+    },
 }
 
 struct UserRow {
@@ -185,7 +187,7 @@ fn main() {
                 },
             )
         }
-        Some(Command::MachineLearning) => {
+        Some(Command::MachineLearning { players }) => {
             // compute player data
             let stats = NS2Stats::compute(games);
             let mut player_data = HashMap::new();
@@ -285,6 +287,36 @@ fn main() {
 
                 let end = std::time::Instant::now();
                 println!("testing {} accuracy took {:?}", typ, end - start);
+            }
+
+            println!("Team suggestions");
+            println!("================");
+            let mut suggestions = (0..(1 << players.len())).filter_map(|p| {
+                let mut aliens = Vec::new();
+                let mut alien_names = Vec::new();
+                let mut marines = Vec::new();
+                let mut marine_names = Vec::new();
+                for (i, name) in players.iter().enumerate() {
+                    if (p >> i) & 1 == 0 {
+                        aliens.push(player_data.get(name).unwrap().aliens);
+                        alien_names.push(name);
+                    } else {
+                        marines.push(player_data.get(name).unwrap().marines);
+                        marine_names.push(name);
+                    }
+                }
+                if aliens.len().abs_diff(marines.len()) > 1 {
+                    None
+                } else {
+                    let prediction = infer::<MyBackend>(artifact_dir, &device, GameInput { aliens, marines });
+                    Some((alien_names, marine_names, prediction.round_length))
+                }
+            }).collect::<Vec<_>>();
+            suggestions.sort_by(|(_, _, length1), (_, _, length2)| f32::total_cmp(length1, length2).reverse());
+            for (aliens, marines, length) in suggestions.into_iter().take(5) {
+                println!("predicted round length: {:.1} min", length / 60.0);
+                println!("  aliens: {:?}", aliens);
+                println!("  marines: {:?}", marines);
             }
         }
         None => print_stats(NS2Stats::compute(games)),
