@@ -41,7 +41,7 @@ pub trait GameIterator<G: AsRef<GameStats>>: Iterator<Item = G> where Self: Size
 impl<G: AsRef<GameStats>, I: Iterator<Item = G>> GameIterator<G> for I {}
 
 // can be used for games, commander, wins, kills, deaths, assists
-#[derive(Clone, Copy, Default, Serialize)]
+#[derive(Clone, Copy, Debug, Default, Serialize)]
 pub struct Stat<T> {
     pub total: T,
     pub marines: T,
@@ -202,7 +202,7 @@ impl NS2Stats {
     }
 }
 
-#[derive(Debug, Serialize)]
+#[derive(Clone, Copy, Debug, Serialize)]
 pub struct PlayerSummary {
     pub kills: u32,
     pub assists: u32,
@@ -212,7 +212,7 @@ pub struct PlayerSummary {
     pub misses: u32,
 }
 
-#[derive(Debug, Serialize)]
+#[derive(Clone, Debug, Serialize)]
 pub struct TeamSummary {
     pub players: HashMap<String, PlayerSummary>,
     /// The name of the commander, if present.
@@ -244,7 +244,7 @@ impl From<input_types::WinningTeam> for WinningTeam {
     }
 }
 
-#[derive(Debug, Serialize)]
+#[derive(Clone, Debug, Serialize)]
 pub struct GameSummary {
     /// The round date in Unix time.
     pub round_date: u32,
