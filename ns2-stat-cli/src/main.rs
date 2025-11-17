@@ -8,7 +8,7 @@ use std::collections::HashMap;
 use std::fs;
 use std::path::PathBuf;
 
-use burn::backend::{Autodiff, Wgpu};
+use burn::backend::{Autodiff, Candle};
 use burn::optim::AdamConfig;
 use clap::Parser;
 use itertools::Itertools;
@@ -155,10 +155,6 @@ fn load_data<P: AsRef<std::path::Path>>(data: P) -> Result<Vec<GameStats>, Strin
         .collect()
 }
 
-fn square(x: f32) -> f32 {
-    x * x
-}
-
 fn main() {
     let args = CliArgs::parse();
 
@@ -200,55 +196,6 @@ fn main() {
                     marines: PlayerData::new(id, user.average_score().marines, user.kd().marines),
                     aliens: PlayerData::new(id, user.average_score().aliens, user.kd().aliens),
                 });
-            }
-
-            // normalize player_data (x = (x - mean) / std_dev)
-            let mut mean = Stat {
-                total: PlayerData::default(),
-                marines: PlayerData::default(),
-                aliens: PlayerData::default(),
-            };
-            for player_stats in player_data.values() {
-                mean.total.avg_score += player_stats.total.avg_score;
-                mean.total.kd += player_stats.total.kd;
-                mean.marines.avg_score += player_stats.marines.avg_score;
-                mean.marines.kd += player_stats.marines.kd;
-                mean.aliens.avg_score += player_stats.aliens.avg_score;
-                mean.aliens.kd += player_stats.aliens.kd;
-            }
-            let len = player_data.len() as f32;
-            mean.total.avg_score /= len;
-            mean.total.kd /= len;
-            mean.marines.avg_score /= len;
-            mean.marines.kd /= len;
-            mean.aliens.avg_score /= len;
-            mean.aliens.kd /= len;
-            let mut std_dev = Stat {
-                total: PlayerData::default(),
-                marines: PlayerData::default(),
-                aliens: PlayerData::default(),
-            };
-            for player_stats in player_data.values() {
-                std_dev.total.avg_score += square(player_stats.total.avg_score - mean.total.avg_score);
-                std_dev.total.kd += square(player_stats.total.kd - mean.total.kd);
-                std_dev.marines.avg_score += square(player_stats.marines.avg_score - mean.marines.avg_score);
-                std_dev.marines.kd += square(player_stats.marines.kd - mean.marines.kd);
-                std_dev.aliens.avg_score += square(player_stats.aliens.avg_score - mean.aliens.avg_score);
-                std_dev.aliens.kd += square(player_stats.aliens.kd - mean.aliens.kd);
-            }
-            std_dev.total.avg_score = std_dev.total.avg_score.sqrt();
-            std_dev.total.kd = std_dev.total.kd.sqrt();
-            std_dev.marines.avg_score = std_dev.marines.avg_score.sqrt();
-            std_dev.marines.kd = std_dev.marines.kd.sqrt();
-            std_dev.aliens.avg_score = std_dev.aliens.avg_score.sqrt();
-            std_dev.aliens.kd = std_dev.aliens.kd.sqrt();
-            for player_stats in player_data.values_mut() {
-                player_stats.total.avg_score = (player_stats.total.avg_score - mean.total.avg_score) / std_dev.total.avg_score;
-                player_stats.total.kd = (player_stats.total.kd - mean.total.kd) / std_dev.total.kd;
-                player_stats.marines.avg_score = (player_stats.marines.avg_score - mean.marines.avg_score) / std_dev.marines.avg_score;
-                player_stats.marines.kd = (player_stats.marines.kd - mean.marines.kd) / std_dev.marines.kd;
-                player_stats.aliens.avg_score = (player_stats.aliens.avg_score - mean.aliens.avg_score) / std_dev.aliens.avg_score;
-                player_stats.aliens.kd = (player_stats.aliens.kd - mean.aliens.kd) / std_dev.aliens.kd;
             }
 
             // compute game data
@@ -300,7 +247,7 @@ fn main() {
             let game_dataset = GameDataset::new(game_data.clone());
             let test_dataset = GameDataset::new(test_data.clone());
 
-            type MyBackend = Wgpu;
+            type MyBackend = Candle;
             type MyAutodiffBackend = Autodiff<MyBackend>;
 
             let start = std::time::Instant::now();
@@ -309,7 +256,7 @@ fn main() {
             let artifact_dir = "/tmp/ns2";
             train::<MyAutodiffBackend>(
                 artifact_dir,
-                TrainingConfig::new(ModelConfig::new(8, 8, 16), AdamConfig::new()),
+                TrainingConfig::new(ModelConfig::new(8, 8), AdamConfig::new()),
                 &device,
                 game_dataset,
                 test_dataset,

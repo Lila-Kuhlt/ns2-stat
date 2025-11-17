@@ -9,8 +9,6 @@ use crate::ml::data::NUM_PLAYER_FEATURES;
 pub struct Model<B: Backend> {
     player_embedding: Embedding<B>,
     player_layer: Linear<B>,
-    //player_output: Linear<B>,
-    team_layer: Linear<B>,
     output: Linear<B>,
     activation: Relu,
 }
@@ -19,8 +17,6 @@ pub struct Model<B: Backend> {
 pub struct ModelConfig {
     dim_player_embedding: usize,
     size_player_layer: usize,
-    //size_player_output: usize,
-    size_team_layer: usize,
 }
 
 impl ModelConfig {
@@ -28,9 +24,7 @@ impl ModelConfig {
         Model {
             player_embedding: EmbeddingConfig::new(64, self.dim_player_embedding).init(device),
             player_layer: LinearConfig::new(self.dim_player_embedding + NUM_PLAYER_FEATURES, self.size_player_layer).init(device),
-            //player_output: LinearConfig::new(self.size_player_layer, self.size_player_output).init(device),
-            team_layer: LinearConfig::new(self.size_player_layer, self.size_team_layer).init(device),
-            output: LinearConfig::new(self.size_team_layer * 2, 1).init(device),
+            output: LinearConfig::new(self.size_player_layer * 2, 1).init(device),
             activation: Relu::new(),
         }
     }
@@ -45,12 +39,8 @@ impl<B: Backend> Model<B> {
         ], 3);
         let x = self.player_layer.forward(x);
         let x = self.activation.forward(x);
-        //let x = self.player_output.forward(x);
-        //let x = self.activation.forward(x);
         // average players
-        let x = x.mean_dim(2).squeeze_dim::<3>(2);
-        let x = self.team_layer.forward(x);
-        let x = self.activation.forward(x).flatten::<2>(1, 2);
+        let x = x.mean_dim(2).flatten(1, 3);
         let x = self.output.forward(x);
         let x = self.activation.forward(x);
         x
