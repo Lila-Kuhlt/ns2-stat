@@ -4,7 +4,7 @@ use std::collections::HashMap;
 
 use ns2_stat::{GameSummary, WinningTeam};
 
-#[derive(Default)]
+#[derive(Clone, Copy, Default)]
 pub struct Skill {
     pub common: f32,
     pub offset: f32,
@@ -21,12 +21,14 @@ impl Skill {
     }
 }
 
-pub fn compute_skills(games: &[GameSummary], epochs: usize) -> HashMap<String, Skill> {
+const EPOCHS: usize = 100;
+
+pub fn compute_skills(games: &[GameSummary]) -> HashMap<String, Skill> {
     let marine_win_rate = games.iter().filter(|game| game.winning_team == WinningTeam::Marines).count() as f32 / games.len() as f32;
 
     let mut skills: HashMap<String, Skill> = HashMap::new();
 
-    for _ in 0..epochs {
+    for _ in 0..EPOCHS {
         for game in games {
             // model: log(p / (1 - p)) = (sum_i T_i s_i) / n + (sum_i T_i x_i) / 2 + log(marine_win_rate / (1 - marine_win_rate))
             // we assume that all players played for the whole round

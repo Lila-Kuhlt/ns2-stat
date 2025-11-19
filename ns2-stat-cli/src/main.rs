@@ -8,10 +8,11 @@ use std::path::PathBuf;
 
 use clap::Parser;
 use ns2_stat::input_types::GameStats;
-use ns2_stat::{GameIterator, Map, NS2Stats, summarize_game};
+use ns2_stat::{summarize_game, GameIterator, Map, NS2Stats};
 use rayon::prelude::*;
 
 use crate::table::Alignment;
+use crate::teams::Method;
 
 #[derive(Parser)]
 struct CliArgs {
@@ -31,6 +32,8 @@ enum Command {
         marine_com: Option<String>,
         #[arg(long)]
         alien_com: Option<String>,
+        #[arg(long)]
+        skill: bool,
     },
     /// Compute the skill of each player
     Skills,
@@ -157,10 +160,20 @@ fn main() {
             players,
             marine_com,
             alien_com,
-        }) => teams::suggest_teams(games.map(summarize_game).collect(), players, marine_com, alien_com),
+            skill,
+        }) => {
+            teams::suggest_teams(
+                games.map(summarize_game).collect(),
+                players,
+                marine_com,
+                alien_com,
+                if skill { Method::Skill } else { Method::PastGames },
+            );
+        }
         Some(Command::Skills) => {
             let game_summaries = games.map(summarize_game).collect::<Vec<_>>();
-            let mut skills = skill::compute_skills(&game_summaries, 50).into_iter().collect::<Vec<_>>();
+            let skills = skill::compute_skills(&game_summaries);
+            let mut skills = skills.into_iter().collect::<Vec<_>>();
             skills.sort_by(|(_, skill1), (_, skill2)| f32::total_cmp(&skill1.common, &skill2.common));
             table::print_table(
                 ["NAME", "MARINE SKILL", "ALIEN SKILL", "COMMANDER SKILL"],
