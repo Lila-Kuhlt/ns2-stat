@@ -36,7 +36,7 @@ enum Command {
         skill: bool,
     },
     /// Compute the skill of each player
-    Skills,
+    Skill,
 }
 
 struct UserRow {
@@ -170,7 +170,7 @@ fn main() {
                 if skill { Method::Skill } else { Method::PastGames },
             );
         }
-        Some(Command::Skills) => {
+        Some(Command::Skill) => {
             let game_summaries = games.map(summarize_game).collect::<Vec<_>>();
             let skills = skill::compute_skills(&game_summaries);
             let mut skills = skills.into_iter().collect::<Vec<_>>();
